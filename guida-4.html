@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Guida 4 — Resi e rimborsi · Magazzino LwM</title>
+<link rel="stylesheet" href="assets/stile.css">
+</head>
+<body>
+<a class="salta" href="#principale">Vai al contenuto</a>
+
+<button type="button" class="apri-menu" id="apri-menu" aria-label="Apri il menu delle guide">☰ Guide</button>
+
+<nav class="menu" id="menu" aria-label="Le guide">
+  <p class="menu-titolo">Magazzino LwM</p>
+  <a class="menu-voce menu-indice" href="index.html">Indice</a>
+<p class="menu-blocco">Capire</p>
+<a class="menu-voce" href="guida-0.html"><span class="menu-n">0</span>Come funziona il sistema</a>
+<a class="menu-voce" href="guida-1.html"><span class="menu-n">1</span>La mappa di Grist</a>
+<a class="menu-voce" href="guida-2.html"><span class="menu-n">2</span>Gli automatismi (Make)</a>
+<p class="menu-blocco">Fare</p>
+<a class="menu-voce" href="guida-3.html"><span class="menu-n">3</span>Ordini</a>
+<a class="menu-voce attiva" href="guida-4.html"><span class="menu-n">4</span>Resi e rimborsi</a>
+<a class="menu-voce" href="guida-5.html"><span class="menu-n">5</span>Catalogo, articoli e kit</a>
+<a class="menu-voce" href="guida-6.html"><span class="menu-n">6</span>Giacenze e inventario</a>
+<a class="menu-voce" href="guida-7.html"><span class="menu-n">7</span>Report fiscali</a>
+<p class="menu-blocco">Cavarsela da sola</p>
+<a class="menu-voce" href="guida-8.html"><span class="menu-n">8</span>Muoversi in Grist</a>
+<a class="menu-voce" href="guida-9.html"><span class="menu-n">9</span>Manutenzione e problemi</a>
+<p class="menu-blocco">Riferimento</p>
+<a class="menu-voce" href="scheda.html"><span class="menu-n">A4</span>Scheda rapida</a>
+</nav>
+
+<div class="colonna">
+  <div class="barra">
+    <div class="barra-nav"><a href="guida-3.html">‹ Guida 3</a> <a href="guida-5.html">Guida 5 ›</a></div>
+    <div class="barra-strumenti"><button type="button" class="bottone-piatto" id="espandi">Espandi tutto</button><button type="button" class="bottone-piatto" onclick="window.print()">Stampa</button></div>
+  </div>
+  <main id="principale">
+
+<header class="testata">
+  <p class="occhiello">Guida 4</p>
+  <h1>Resi e rimborsi</h1>
+  <p class="versione"><strong>Versione del 13/09/2026</strong> · Sistema «Magazzino LwM»</p>
+</header>
+<nav class="sommario" aria-label="Sezioni della guida">
+  <p class="sommario-titolo">In questa guida</p>
+  <ol class="sommario-voci"><li><a href="#s1"><span class="n">1</span>In breve</a></li><li><a href="#s2"><span class="n">2</span>Cosa succede quando rimborsi</a></li><li><a href="#s3"><span class="n">3</span>La spunta su WooCommerce</a></li><li><a href="#s4"><span class="n">4</span>Le due caselle di Grist, e la terza strada che le precede</a></li><li><a href="#s5"><span class="n">5</span>La passata sui resi</a></li><li><a href="#s6"><span class="n">6</span>Il reso di un kit</a></li><li><a href="#s7"><span class="n">7</span>Rimborsi che non riguardano merce</a></li><li><a href="#s8"><span class="n">8</span>Il reso di un ordine inserito a mano</a></li><li><a href="#s9"><span class="n">9</span>Casi particolari</a></li><li><a href="#s10"><span class="n">10</span>Attenzione a</a></li><li><a href="#s11"><span class="n">11</span>Se qualcosa va storto</a></li><li><a href="#s12"><span class="n">12</span>Dove si continua</a></li></ol>
+</nav>
+<div class="corpo">
+<p>Questa è la guida dei rimborsi: <strong>cosa succede quando ne registri uno, come si dichiara che fine ha fatto la merce, e come si controlla che non sia rimasto niente in sospeso.</strong></p>
+<p>La <a href="guida-2.html">guida 2</a> spiega come lavora l'automatismo che scrive i resi. Questa parte da lì e spiega i gesti, che sono pochi ma quasi tutti silenziosi: sbagliarli non produce nessun messaggio d'errore.</p>
+<hr>
+<h2 id="s1"><a class="ancora" href="#s1">§1</a> In breve</h2>
+<p>Un reso in questo sistema <strong>non cancella niente: aggiunge</strong>. Quando rimborsi un cliente su WooCommerce, in Grist nasce un secondo record collegato alla vendita, con le righe in negativo e con la data del giorno del rimborso. La vendita resta dov'era, valida; è la riga negativa a stornarla.</p>
+<p>Il sistema fa da solo quasi tutto: crea il record, lo collega, eredita magazzino e dati fiscali, e sui kit aggiunge anche le righe dei pezzi. Quello che non può sapere è <strong>una cosa sola</strong>, ed è l'unica che decidi tu:</p>
+<aside class="box box-nota">
+<p><strong>Dov'è il pezzo adesso?</strong></p>
+</aside>
+<p>Da quella domanda dipende se il magazzino torna a contare quella copia oppure no. Non dipende dal fatto che la pratica sia chiusa, né da quanto tempo è passato: dipende da dove si trova fisicamente la merce.</p>
+<div class="tabella"><table>
+<thead><tr><th>Il gesto</th><th>Quando</th><th>Dove</th></tr></thead>
+<tbody><tr><td><strong>Registrare il rimborso</strong></td><td>Quando restituisci i soldi al cliente</td><td>Su WooCommerce — sezione 3</td></tr><tr><td><strong>Dire che fine ha fatto la merce</strong></td><td>Quando lo sai</td><td>In Grist, <em>Resi in attesa di rientro</em> — sezioni 4 e 5</td></tr><tr><td><strong>La passata di controllo</strong></td><td>Una volta al mese, prima della chiusura del periodo</td><td>Le tre pagine dei resi — sezione 5</td></tr></tbody>
+</table></div>
+<p>Non sono in questa guida: come lavora l'automatismo dei rimborsi (<strong><a href="guida-2.html#s4">guida 2</a></strong>, sezione 4), come si leggono le giacenze e come si verifica che un numero sia tornato (<strong><a href="guida-6.html">guida 6</a></strong>), cosa entra nei report fiscali (<strong><a href="guida-7.html">guida 7</a></strong>).</p>
+<hr>
+<h2 id="s2"><a class="ancora" href="#s2">§2</a> Cosa succede quando rimborsi</h2>
+<p>Registri il rimborso sul sito e, di norma entro pochi minuti, in Grist compare un record nuovo.</p>
+<p><strong>Cosa nasce:</strong></p>
+<ul><li>un record di tipo <strong>Reso</strong>, collegato all'ordine di origine;</li><li>con la <strong>data del rimborso</strong>, non quella della vendita;</li><li>con le righe dei prodotti rimborsati, <strong>in negativo</strong>;</li><li>con lo stato <strong>Rimborsato</strong>, sempre;</li><li>con il <strong>magazzino</strong> e i <strong>dati fiscali</strong> copiati dalla vendita: non devi riassegnarli.</li></ul>
+<p>Una cosa che a schermo confonde e vale la pena sapere subito: nella colonna <strong>«ID ordine»</strong> di un reso non c'è il numero dell'ordine, ma <strong>il numero del rimborso</strong> assegnato da WooCommerce. Sono due numeri diversi, ed è corretto così: il legame con la vendita passa dalla colonna dell'ordine di origine, non dal numero.</p>
+<p><strong>Cosa non si tocca.</strong> L'ordine originale resta esattamente com'era: stesso totale, stesse righe, stesse quantità. Su un rimborso <strong>parziale</strong> resta anche nello stato <em>Completato</em>, ed è giusto — quella vendita è avvenuta e in parte è ancora buona. Non esiste uno stato "parzialmente rimborsato" e non va inventato.</p>
+<p><strong>Dove si leggono i numeri, dopo:</strong></p>
+<div class="tabella"><table>
+<thead><tr><th>La domanda</th><th>Dove si risponde</th></tr></thead>
+<tbody><tr><td>Quanto ho incassato davvero su quest'ordine?</td><td>La colonna del <strong>totale netto</strong>, sull'ordine di vendita</td></tr><tr><td>Questo pezzo è stato reso, e quanti ne restano al cliente?</td><td>La colonna della <strong>quantità netta</strong>, sulla riga di vendita</td></tr><tr><td>Ho la merce fisicamente in magazzino?</td><td>Le caselle del rientro, sulla riga di <strong>reso</strong> — sezione 4</td></tr></tbody>
+</table></div>
+<figure class="figura">
+<figcaption>Figura 1 — Una vendita e il suo reso</figcaption>
+<pre>  12 MARZO — la vendita                 20 MAGGIO — il rimborso
+  ─────────────────────                 ───────────────────────
+  Ordine  #17132                        Reso  (collegato a #17132)
+    └─ Libro A     +1                     └─ Libro A     −1
+       12,30 €                               −12,30 €
+
+          │                                     │
+          ▼                                     ▼
+  ┌─────────────────────┐             ┌─────────────────────────┐
+  │ Conta nei report?   │             │ Conta nei report?       │
+  │        SÌ           │             │        SÌ, subito       │
+  ├─────────────────────┤             ├─────────────────────────┤
+  │ Ha mosso merce?     │             │ Ha mosso merce?         │
+  │        SÌ           │             │  solo se dichiari che   │
+  └─────────────────────┘             │  la merce è rientrata   │
+                                      └─────────────────────────┘
+
+  Il 12 marzo resta com'era. Nessun trimestre già consegnato
+  viene riaperto: lo storno atterra nel giorno in cui è avvenuto.</pre>
+</figure>
+<details class="box box-perche">
+<summary>Perché funziona così — due eventi, non una correzione</summary>
+<div class="box-corpo"><p>La vendita e il rimborso sono due fatti accaduti in due giorni diversi, e il sistema li registra come tali. Se invece di aggiungere una riga negativa il sistema cancellasse la vendita, succederebbero due cose: un rimborso di oggi riscriverebbe un trimestre già consegnato al commercialista, e lo storno verrebbe contato due volte, facendo comparire in magazzino un pezzo che non esiste.</p>
+<p>È la ragione per cui <strong>una vendita rimborsata resta valida</strong>. È la riga negativa a compensarla, e i due numeri insieme danno il netto.</p></div>
+</details>
+<hr>
+<h2 id="s3"><a class="ancora" href="#s3">§3</a> La spunta su WooCommerce</h2>
+<p>Prima ancora che qualcosa arrivi in Grist, c'è un gesto che decide una giacenza, e lo fai sul sito.</p>
+<p>Nella finestra del rimborso, sotto l'importo, c'è la casella <strong>«Rifornisci i prodotti rimborsati:»</strong>. Il sistema la legge e la riporta in Grist come «merce rientrata». Vale in entrambi i modi di rimborsare: che tu faccia restituire i soldi al gestore dei pagamenti o che tu registri un rimborso manuale perché li hai già restituiti per altra via, la finestra è la stessa e la casella sta nello stesso posto.</p>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g4-01-woo-finestra-rimborso.png</span></div>
+<figcaption><span class="numero">Screenshot 1</span> La finestra del rimborso su WooCommerce, con l'importo, il campo «Motivo del rimborso (facoltativo):» e la casella «Rifornisci i prodotti rimborsati:» in evidenza.</figcaption>
+</figure>
+<p>La regola è una sola, e conviene impararla in questa forma:</p>
+<aside class="box box-nota">
+<p><strong>La spunta «Rifornisci i prodotti rimborsati:» dichiara un fatto, non un'intenzione.</strong> Si spunta <strong>solo se la merce è già fisicamente rientrata</strong> nel momento in cui registri il rimborso. In ogni altro caso si lascia spenta, e la decisione si prende in Grist quando si sa com'è andata.</p>
+</aside>
+<p>Quello che ne segue, in tutti i casi possibili:</p>
+<div class="tabella"><table>
+<thead><tr><th>Al momento del rimborso</th><th>Sul sito</th><th>Cosa nasce in Grist</th><th>Cosa ti resta da fare</th></tr></thead>
+<tbody><tr><td><strong>1.</strong> La merce è <strong>già rientrata</strong></td><td><strong>Spunti</strong> la casella</td><td>Riga di reso già dichiarata rientrata: non compare fra le pendenze, la giacenza risale subito</td><td>Niente</td></tr><tr><td><strong>2.</strong> La merce <strong>non è ancora rientrata</strong></td><td><strong>Non spunti</strong></td><td>Riga di reso in attesa: compare in <em>Resi in attesa di rientro</em>, la giacenza resta scaricata</td><td>Si chiude più avanti, in uno dei due modi della sezione 4</td></tr></tbody>
+</table></div>
+<p>Il campo <strong>«Motivo del rimborso (facoltativo):»</strong> finisce anch'esso in Grist, sulla testata del reso. Vale la pena scriverci qualcosa di riconoscibile — <em>copia rovinata</em>, <em>pacco mai arrivato</em>, <em>ripensamento</em> — perché è l'unica traccia del perché, e fra sei mesi è quello che ti dirà come mai quella pendenza è stata chiusa in un modo invece che nell'altro.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — la spunta è l'unico caso che non lascia pendenza</p>
+<p>Dei due percorsi qui sopra, quello con la spunta è l'unico in cui <strong>non resta niente a schermo</strong>: la riga non passa dalla pagina delle pendenze, la giacenza è già risalita, e nessuna pagina di controllo la mostra. Se la merce poi non arriva mai, in magazzino hai una copia che non esiste e niente te lo segnala.</p>
+<p>Per questo la regola è formulata al negativo — nel dubbio, non spuntare — e non nella forma comoda «spunta sempre, poi correggi». Gli errori degli altri percorsi restano visibili finché non li chiudi; questo no.</p>
+<p><strong>Se l'hai spuntata per sbaglio si rimedia</strong>, e si rimedia in Grist: apri la riga di reso e <strong>togli</strong> la spunta di <code>prodotto_rientrato</code>. La riga ricompare fra le pendenze e la giacenza torna scarica. Una cosa sola da sapere: la correzione vale per Grist, mentre la disponibilità su WooCommerce è già risalita per conto suo e resta com'è. Sono due numeri separati e nessuno li riconcilia.</p>
+</aside>
+<hr>
+<h2 id="s4"><a class="ancora" href="#s4">§4</a> Le due caselle di Grist, e la terza strada che le precede</h2>
+<p>Questa è la sezione più importante della guida.</p>
+<p>Sulla riga di un reso ci sono due caselle, <code>prodotto_rientrato</code> e <code>chiuso_senza_rientro</code>. Insieme alla spunta di WooCommerce sono <strong>tre modi di ottenere lo stesso effetto visibile</strong> — la riga sparisce dalla lista delle pendenze — con conseguenze diverse sui dati. Nessuno dei tre produce un errore se scelto male.</p>
+<p><strong>Tre rimborsi dello stesso libro, la settimana scorsa.</strong></p>
+<p><strong>Primo.</strong> La cliente ti ha rispedito il libro, il pacco è arrivato lunedì e l'hai aperto. Martedì registri il rimborso. La merce è già sul tavolo: <strong>spunti la casella su WooCommerce</strong>. La riga non passa nemmeno dalle pendenze, la copia torna vendibile.</p>
+<p><strong>Secondo.</strong> La cliente ti scrive che il libro parte oggi. Rimborsi subito, <strong>senza spuntare</strong>. La riga ti aspetta in <em>Resi in attesa di rientro</em>. Venerdì il pacco arriva: apri quella riga e accendi <strong><code>prodotto_rientrato</code></strong>. La copia torna vendibile da quel giorno.</p>
+<p><strong>Terzo.</strong> La cliente ti manda la foto del libro arrivato bagnato. Le dici di tenerlo, non ha senso farselo rispedire. Rimborsi <strong>senza spuntare</strong>, e quando chiudi la pendenza accendi <strong><code>chiuso_senza_rientro</code></strong>. Quella copia non esiste più: il magazzino non deve mostrarla.</p>
+<p>Nei tre casi hai fatto la stessa cosa dal punto di vista della pratica — hai restituito dei soldi e chiuso il discorso — e tre cose diverse dal punto di vista del magazzino. Perché la domanda non è <em>la pratica è finita?</em>, ma <em>dov'è il pezzo adesso?</em>.</p>
+<div class="tabella"><table>
+<thead><tr><th>La casella</th><th>Cosa dichiara</th><th>Effetto sulle giacenze</th></tr></thead>
+<tbody><tr><td><code>prodotto_rientrato</code></td><td>La merce è tornata</td><td><strong>Riaccredita</strong>: quella copia torna disponibile</td></tr><tr><td><code>chiuso_senza_rientro</code></td><td>La merce non tornerà</td><td><strong>Nessuno</strong>: la giacenza resta scaricata</td></tr></tbody>
+</table></div>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — si somigliano a schermo, fanno l'opposto sui dati</p>
+<p>Spuntarne una qualsiasi produce lo stesso identico risultato visibile: la riga sparisce dalla lista, con la stessa soddisfazione. Sbagliare non genera nessun avviso, nessuna cella rossa, nessuna mail.</p>
+<p>Usare <code>prodotto_rientrato</code> su merce persa <strong>crea un pezzo fantasma</strong>: il magazzino mostra disponibile qualcosa che non c'è, e prima o poi proverai a venderlo.</p>
+<p>Usare <code>chiuso_senza_rientro</code> su merce davvero rientrata fa l'opposto: <strong>una copia reale che il sistema non conta</strong>, e che non risulterà disponibile finché non la ritroverai contando il magazzino.</p>
+<p>È il motivo per cui le due caselle hanno nomi lunghi e scomodi invece di essere un'unica spunta "gestito".</p>
+</aside>
+<details class="box box-perche">
+<summary>Perché funziona così — chiudere non vuol dire far tornare i conti</summary>
+<div class="box-corpo"><p>L'intuizione tira dalla parte sbagliata: «il reso è chiuso» suona come «tutto a posto», e da lì a pensare che anche il magazzino debba tornare a posto il passo è breve.</p>
+<p>Non deve. La merce non c'è. La giacenza scaricata dalla vendita è <strong>il numero corretto</strong>: quella copia è uscita e non è tornata. La perdita economica è già registrata altrove — il rimborso è uno storno di incasso, non un movimento di magazzino.</p>
+<p>E in ogni caso lo storno fiscale resta: un reso entra nei report <strong>comunque</strong>, che tu abbia dichiarato il rientro, la chiusura senza rientro, o non abbia ancora deciso. Quello che dichiari qui governa <strong>soltanto le giacenze</strong>. Se rimandi, stai tenendo indietro il magazzino, non il registro.</p></div>
+</details>
+<figure class="figura">
+<figcaption>Figura 2 — Dov'è il pezzo adesso?</figcaption>
+<pre>                       Dov'è il pezzo adesso?
+                                │
+      ┌─────────────┬───────────┴──────────┬──────────────────┐
+      │             │                      │                  │
+  È già tornato   Tornerà,             Non tornerà        Non lo so
+  PRIMA che tu    ma non è             (rotto, perso,     ancora
+  rimborsassi     ancora arrivato      lasciato
+      │             │                  al cliente)            │
+      ▼             ▼                      │                  ▼
+  Spunti la     Nessuna spunta.            ▼             Non spunti
+  casella su    Quando arriva,         `chiuso_senza`     niente e
+  WooCommerce   `prodotto_rientrato`   `_rientro`         lasci la riga
+      │         in Grist               in Grist           dov'è
+      ▼             ▼                      ▼                  ▼
+  giacenza      giacenza               giacenza           giacenza
+  +1 subito     +1 quel giorno         invariata          invariata
+                                                          (torni domani)</pre>
+</figure>
+<p>L'ultimo ramo non è un ripiego: <strong>una pendenza aperta è il posto giusto</strong> per un reso di cui non sai ancora niente. La lista serve a quello.</p>
+<aside class="box box-nota">
+<p>*La chiusura senza rientro è stata implementata e verificata sulle formule, ma non è ancora passata da un caso reale: comportamento atteso, non ancora verificato sul campo. La prima volta che la usi, vale la pena riaprire la pagina <em>Giacenze</em> e controllare che il numero dell'articolo non si sia mosso.*</p>
+</aside>
+<hr>
+<h2 id="s5"><a class="ancora" href="#s5">§5</a> La passata sui resi</h2>
+<p>Una volta al mese, prima di chiudere il periodo, si guardano <strong>tre pagine in quest'ordine</strong>. L'ordine conta, e il motivo è nella prima.</p>
+<h4 id="1-resi-di-kit-da-esplodere-deve-essere-vuota">1 · <em>Resi di kit da esplodere</em> — deve essere vuota</h4>
+<p><strong>Cosa guarda:</strong> i resi di kit a cui mancano le righe dei pezzi.</p>
+<p>Va guardata <strong>per prima</strong>, prima di chiudere qualsiasi pendenza, perché su un reso di kit non esploso la spunta sulla riga del kit non riaccredita niente — il kit non ha giacenza, i pezzi non esistono ancora — e il gesto sembra riuscito. Chiudere le pendenze prima di aver sistemato questa pagina significa spegnere righe senza ottenere nulla.</p>
+<p><strong>Se trovi una riga:</strong> l'esplosione non è andata a buon fine. Cosa fare è nella sezione 6.</p>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g4-02-resi-kit-da-esplodere.png</span></div>
+<figcaption><span class="numero">Screenshot 2</span> La pagina <em>Resi di kit da esplodere</em> con una riga presente e l'avviso nella <span class="campione campione-arancione" aria-hidden="true"></span>colonna arancione.</figcaption>
+</figure>
+<h4 id="2-resi-in-attesa-di-rientro-e-la-tua-lista-di-lavoro">2 · <em>Resi in attesa di rientro</em> — è la tua lista di lavoro</h4>
+<p><strong>Cosa guarda:</strong> le righe di reso per cui non hai ancora detto che fine ha fatto la merce.</p>
+<p>Non è una pagina che deve restare vuota: si riempie e si svuota. Per ogni riga, la domanda della sezione 4 e una delle due caselle.</p>
+<p><strong>Cosa questa pagina non mostra</strong>, e conviene saperlo:</p>
+<ul><li>i resi per cui hai spuntato la casella su WooCommerce: non ci passano mai;</li><li>le <strong>righe dei pezzi</strong> di un kit: su un reso di kit vedi solo la riga del kit, ed è quella l'unica su cui la spunta produce un effetto;</li><li>i rimborsi di solo importo senza righe: li sorveglia la pagina successiva.</li></ul>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g4-03-resi-attesa-caselle.png</span></div>
+<figcaption><span class="numero">Screenshot 3</span> La pagina <em>Resi in attesa di rientro</em> con due o tre righe e le due caselle del rientro visibili.</figcaption>
+</figure>
+<h4 id="3-resi-senza-righe-deve-essere-vuota">3 · <em>Resi senza righe</em> — deve essere vuota</h4>
+<p><strong>Cosa guarda:</strong> i resi che non hanno nessuna riga di prodotto, cioè i rimborsi di solo importo.</p>
+<p>Servono a intercettarli perché <strong>i report sommano righe, non testate</strong>: un reso senza righe ha un totale scritto in chiaro sulla sua testata e vale zero per il Registro Corrispettivi. Cosa farne è nella sezione 7.</p>
+<h4 id="dopo-la-verifica-che-chiude-il-gesto">Dopo, la verifica che chiude il gesto</h4>
+<p>Quando dichiari un rientro, il numero deve muoversi. Riapri la pagina <em>Giacenze</em> e controlla che la giacenza di quell'articolo sia salita di quanto ti aspetti. È l'unico controllo che dice davvero che il gesto ha funzionato: la riga che sparisce dalla lista non lo dice.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — una pagina vuota non è una buona notizia finché non guardi il filtro</p>
+<p>Le tre pagine dei resi funzionano grazie ai loro filtri, e su nessuna delle tre il filtro è bloccato: un clic distratto può rimuoverlo. Una pagina vuota perché non c'è niente da fare e una pagina vuota perché il filtro è saltato <strong>si assomigliano esattamente</strong>.</p>
+<p>Quando trovi <em>Resi senza righe</em> o <em>Resi di kit da esplodere</em> vuote, dai un'occhiata alla barra dei filtri prima di considerarle a posto. Come si leggono e si rimettono a posto i filtri è nella <strong><a href="guida-8.html">guida 8</a></strong>.</p>
+</aside>
+<h4 id="quando-si-smette-di-aspettare">Quando si smette di aspettare</h4>
+<p>Alcune pendenze non si chiudono mai da sole: il cliente ha detto che rispedisce e non ha rispedito, il corriere non ha più notizie del pacco. La convenzione è questa: <strong>alla passata mensile, una pendenza per cui non c'è più ragione di aspettare si chiude con <code>chiuso_senza_rientro</code></strong>.</p>
+<p>Non è una formalità. Una lista che accumula righe morte smette di essere guardata, e a quel punto non segnala più nemmeno quelle vive.</p>
+<hr>
+<h2 id="s6"><a class="ancora" href="#s6">§6</a> Il reso di un kit</h2>
+<p>Su un reso di kit il sistema lavora in due tempi: crea il reso con la riga del kit, poi aggiunge le righe dei pezzi in negativo. Il magazzino si muove <strong>sui pezzi</strong>, mai sul kit.</p>
+<p>Per te cambia una cosa sola, e semplifica:</p>
+<div class="tabella"><table>
+<thead><tr><th>La riga</th><th>Cosa ci fai</th></tr></thead>
+<tbody><tr><td>La riga del <strong>kit</strong></td><td>È qui che dichiari il rientro, <strong>una volta sola</strong>, e vale per tutti i pezzi insieme</td></tr><tr><td>Le righe dei <strong>pezzi</strong></td><td>Niente. Seguono la riga del kit da sole</td></tr></tbody>
+</table></div>
+<p>Nella pagina <em>Resi in attesa di rientro</em> le righe dei pezzi non compaiono nemmeno, e altrove le loro caselle del rientro sono <strong>grigie</strong>: il grigio, in questo documento, vuol dire sempre "non si compila".</p>
+<p><strong>Se trovi una riga in <em>Resi di kit da esplodere</em>.</strong> I pezzi non sono stati scritti e finché non ci sono non c'è niente da riaccreditare. Si rimedia accendendo a mano la casella dell'esplosione su quella riga (<code>esplodi_bundle</code>): il procedimento è lo stesso di un kit dentro un ordine, ed è nella <strong><a href="guida-3.html#s7">guida 3</a></strong>, sezione 7. Poi controlla che i pezzi siano comparsi.</p>
+<p>Puoi farlo in qualunque ordine rispetto alla spunta del rientro: se avevi già dichiarato il rientro sulla riga del kit, i pezzi nascono già corretti. <strong>Quello che conta è che l'esplosione avvenga</strong>, non quando.</p>
+<p><strong>Se è rientrato solo un pezzo del kit.</strong> Non è esprimibile: le caselle sono tutto-o-niente sui componenti, non si può dichiarare che di un kit da tre pezzi ne sono tornati due. Chiudi il reso per quello che è — kit rientrato o kit non rientrato, a seconda di cosa è più vicino al vero — e <strong>sistema la differenza con un movimento a parte</strong>, di tipo <em>Altri movimenti</em>: la procedura è nella <strong><a href="guida-3.html#s12">guida 3</a></strong>, sezione 12. Attenzione al segno, che su quel tipo di record non lo controlla nessuno: merce che entra, quantità negativa.</p>
+<p><strong>Se la ricetta del kit è cambiata dopo la vendita.</strong> È il caso più insidioso di questa guida. Il sistema esplode il reso leggendo la ricetta <strong>di oggi</strong>, non quella del giorno in cui il kit è stato venduto: se nel frattempo hai sostituito un componente, ti rientra in magazzino un pezzo che non è mai uscito, e non rientra quello che avevi spedito. Nessun controllo lo segnala.</p>
+<p>La regola che evita tutto questo è nella <strong><a href="guida-5.html#s11">guida 5</a></strong>, sezione 11, ed è semplice: un kit che cambia composizione diventa un <strong>kit nuovo</strong>, con SKU nuovo. Se però la ricetta è già stata modificata e ti arriva il reso di un kit venduto prima, la correzione si fa così: sulla <strong>riga del pezzo sbagliato</strong> del reso, cambia lo SKU scegliendo quello effettivamente spedito, e non toccare altro. Il rientro continua a comandarsi dalla riga del kit. È lo stesso gesto della sostituzione di un prodotto dentro un kit, spiegato nella <strong><a href="guida-3.html#s9">guida 3</a></strong>, sezione 9. <span class="marcatore"><a href="guida-9.html#s9" title="elenco completo nella guida 9 §9"><em>Comportamento atteso, non ancora verificato sul campo.</em></a></span></p>
+<hr>
+<h2 id="s7"><a class="ancora" href="#s7">§7</a> Rimborsi che non riguardano merce</h2>
+<p>Non tutti i rimborsi sono resi di prodotti. Tre casi si somigliano e vanno trattati in modo diverso.</p>
+<p><strong>Rimborso di solo importo, senza prodotti.</strong> Hai restituito una cifra senza imputarla a nessuna riga — uno sconto tardivo, un disguido. In Grist nasce un reso <strong>senza righe</strong>: non c'è niente da spuntare, e non comparirà mai fra le pendenze. Lo trovi in <em>Resi senza righe</em>, e va sistemato a mano, perché così com'è <strong>non entra nel Registro Corrispettivi</strong>: i report sommano righe. La strada, decisa apposta per questo caso, è aggiungere al reso <strong>una riga</strong>: l'articolo a cui l'importo si riferisce — o quello prevalente, se sono più d'uno — <strong>quantità 0</strong>, e l'importo del rimborso in negativo. Da quel momento lo storno entra nel Registro alla data del rimborso e il record esce da <em>Resi senza righe</em>. Una conseguenza da mettere in conto: la riga appena creata <strong>compare fra le pendenze</strong>, perché nessuna formula può sapere che non c'è merce di mezzo. Si chiude con <code>chiuso_senza_rientro</code>, che è esattamente ciò che dichiara.</p>
+<p><strong>Rimborso imputato a una riga, con quantità zero.</strong> Hai restituito un importo sulla riga di un prodotto senza che tornasse indietro nulla. La riga esiste, vale il suo importo nei report, e <strong>compare regolarmente fra le pendenze</strong> — perché il sistema non può sapere che non c'è merce di mezzo. Si chiude con <code>chiuso_senza_rientro</code>.</p>
+<p><strong>Rimborso che comprende le spese di spedizione.</strong> Qui c'è un limite da conoscere:</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — la spedizione rimborsata non viene stornata da nessuna parte</p>
+<p>Il record di reso <strong>non porta i campi della spedizione</strong>. Se hai rimborsato anche le spese di spedizione, quella parte non viene tolta dalla colonna delle spedizioni del Registro Corrispettivi, che continua a sommare solo quelle positive delle vendite.</p>
+<p>Se il rimborso era di <strong>sola</strong> spedizione, il reso nasce senza righe e almeno lo ritrovi in <em>Resi senza righe</em>. Se era <strong>misto</strong> — prodotti più spedizione — il reso ha le sue righe e <strong>nessuna pagina di controllo se ne accorge</strong>: la parte di spedizione resta fiscalmente invisibile.</p>
+<p>Finché non sarà automatizzato, la contromisura è ricordarsene quando capita: annota nel motivo del rimborso che comprendeva la spedizione, e segnalalo a Paolo con il numero dell'ordine. La correzione si fa sul report, non sul reso — il record di reso non ha le caselle della spedizione, quindi lì non c'è niente da correggere. È anche una delle domande ancora aperte per il commercialista (<strong><a href="guida-7.html#s9">guida 7</a></strong>, sezione 9).</p>
+</aside>
+<hr>
+<h2 id="s8"><a class="ancora" href="#s8">§8</a> Il reso di un ordine inserito a mano</h2>
+<p>Gli ordini che hai inserito tu in Grist non esistono su WooCommerce: nessun automatismo li riguarda, quindi il loro reso <strong>lo scrivi tu</strong>. Il meccanismo è identico, cambia solo che non c'è nessuna spunta a monte e che la riga nasce sempre come "merce non ancora rientrata", cioè nel percorso 2 della sezione 3.</p>
+<p>Si crea come un ordine qualsiasi, dalla maschera <em>Inserimento Ordini</em> (<strong><a href="guida-3.html#s6">guida 3</a></strong>, sezione 6). Questi sono i campi che contano.</p>
+<p><strong>Sulla testata:</strong></p>
+<div class="tabella"><table>
+<thead><tr><th>Campo</th><th>Cosa ci va</th></tr></thead>
+<tbody><tr><td><strong>«ID ordine»</strong></td><td><strong>Non si tocca</strong>: si assegna da solo. È un numero della serie riservata agli inserimenti manuali, e cambiarlo rompe cose che non danno errore</td></tr><tr><td><strong>Data</strong></td><td>Il giorno del <strong>rimborso</strong>, non quello della vendita</td></tr><tr><td><strong>Tipo di record</strong></td><td><code>Reso</code></td></tr><tr><td><strong>Stato</strong></td><td><code>Rimborsato</code>, sempre — anche se l'ordine di origine resta <em>Completato</em> perché il rimborso è parziale</td></tr><tr><td><strong>Canale</strong></td><td>Lo stesso della vendita di origine</td></tr><tr><td><strong>Magazzino</strong></td><td>Quello <strong>da cui la merce era uscita</strong>. Se lo lasci vuoto, il record resta in <em>Ordini Aperti</em> e i pezzi non rientrano in nessuno dei due magazzini</td></tr><tr><td><strong>Totale ordine</strong></td><td>L'importo rimborsato, <strong>in negativo</strong></td></tr><tr><td><strong>Ordine di origine</strong></td><td>La vendita che stai stornando. <strong>Non è facoltativo:</strong> senza, il netto dell'ordine originale non si muove e il reso resta un record isolato</td></tr><tr><td><strong>Motivo del reso</strong></td><td>Testo libero, ed è l'unica traccia del perché</td></tr><tr><td><strong>Il campo della fattura</strong></td><td>Va messo <strong>uguale a quello della vendita che stai stornando</strong> — vedi l'avvertenza qui sotto</td></tr></tbody>
+</table></div>
+<p>Gli ultimi due campi della tabella sono gli unici del riquadro dell'anagrafica che si accendono <strong>solo</strong> sui resi: fuori di lì sono grigi, perché non vogliono dire niente. Sono stati aggiunti alla maschera il 13/09/2026, proprio perché senza il collegamento all'ordine di origine un reso inserito a mano non sta in piedi.</p>
+<p><strong>Sulle righe</strong> (riquadro dei prodotti della maschera):</p>
+<div class="tabella"><table>
+<thead><tr><th>Campo</th><th>Cosa ci va</th></tr></thead>
+<tbody><tr><td><strong>SKU</strong></td><td>L'articolo reso. Per un kit, lo SKU del kit: poi accendi la casella dell'esplosione e i pezzi arrivano da soli (<strong><a href="guida-3.html#s7">guida 3</a></strong>, sezione 7)</td></tr><tr><td><strong>Quantità</strong></td><td><strong>Negativa</strong>. Se sbagli segno, la colonna di controllo della riga si accende con un avviso</td></tr><tr><td><strong>Valori</strong></td><td>Negativi anche quelli</td></tr><tr><td><strong>Rientro</strong></td><td>La riga nasce con le caselle spente: la chiudi dopo, come tutte le altre, dalla pagina delle pendenze</td></tr></tbody>
+</table></div>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — sul reso di una vendita fatturata, il campo della fattura va acceso a mano</p>
+<p>Su un record creato a mano, il campo che decide se una vendita entra nel Registro Corrispettivi <strong>nasce sempre su «senza fattura»</strong>, perché si calcola nell'istante in cui il record viene creato, cioè prima che tu abbia inserito qualunque dato del cliente. Non si riallinea da solo.</p>
+<p>Su un reso questo produce un errore difficile da scoprire: se la vendita era <strong>con</strong> fattura e il suo reso resta <strong>senza</strong>, nel Registro Corrispettivi finisce uno storno <strong>senza la vendita che dovrebbe stornare</strong>, e il totale del trimestre scende di un importo che lì non è mai entrato.</p>
+<p>Regola: prima di lasciare un reso inserito a mano, guarda com'è quel campo sulla vendita di origine e fallo combaciare. Vale lo stesso per gli ordini manuali (<strong><a href="guida-3.html#s5">guida 3</a></strong>, sezione 5).</p>
+</aside>
+<hr>
+<h2 id="s9"><a class="ancora" href="#s9">§9</a> Casi particolari</h2>
+<p>Sono casi rari. Stanno qui perché quando capitano non c'è nulla che li spieghi a schermo.</p>
+<p><strong>Due rimborsi parziali sulla stessa riga.</strong> Se hai fatto un primo rimborso parziale <strong>con</strong> la spunta e poi un secondo sulla stessa riga <strong>senza</strong>, il secondo reso potrebbe nascere già dichiarato rientrato, perché il dato che il sistema legge da WooCommerce è un conteggio che si somma, non una risposta sul singolo rimborso. Non è stato ancora verificato su un caso reale: <span class="marcatore"><a href="guida-9.html#s9" title="elenco completo nella guida 9 §9"><em>comportamento atteso, non ancora verificato sul campo</em></a></span>. Nel frattempo, se ti capita, <strong>controlla la casella del rientro sul secondo reso</strong> prima di considerarlo a posto.</p>
+<p><strong>Rimborso annullato sul sito.</strong> Se cancelli un rimborso su WooCommerce, in Grist non arriva niente: il reso resta, valido sia per i report sia per le giacenze. È lo stesso motivo per cui non arriva la cancellazione di un ordine. <em>Da verificare; nell'attesa, se ti capita, il reso va sistemato a mano</em> — e in quel caso vale la stessa regola degli ordini: si porta su <code>Annullato</code>, non si cancella (<strong><a href="guida-3.html#s11">guida 3</a></strong>, sezione 11).</p>
+<p><strong>Le due caselle accese insieme.</strong> Nulla lo impedisce e nessun controllo lo segnala. <strong>Vince il rientro</strong>: la giacenza si riaccredita e la riga esce dalla lista. È un comportamento deciso, non un caso da temere, ma se ti accorgi di averle accese entrambe conviene spegnere quella che non volevi.</p>
+<p><strong>Articoli che non hanno giacenza.</strong> Su un prodotto virtuale — un webinar, un accesso alla piattaforma — o su un kit, la casella del rientro <strong>non produce nessun effetto</strong>, in nessuno dei due sensi. Non è un guasto: è un gesto che non fa niente, ed è meglio saperlo prima di andarne a cercare l'effetto nelle giacenze.</p>
+<p><strong>Le caselle sulle righe dei pezzi di un kit.</strong> Fuori dalla pagina delle pendenze — per esempio nella pagina di tutte le righe — le due caselle compaiono anche sulle righe dei pezzi, ma su <strong><span class="campione campione-grigio" aria-hidden="true"></span>sfondo grigio</strong>. Il grigio è il segnale che quel campo non va compilato: lì non comandano niente, e il rientro di un kit si dichiara una volta sola sulla riga del kit.</p>
+<hr>
+<h2 id="s10"><a class="ancora" href="#s10">§10</a> Attenzione a</h2>
+<p>I sei errori che questa guida serve a evitare. Nessuno produce un messaggio di errore.</p>
+<p><strong>Spuntare «Rifornisci i prodotti rimborsati:» per abitudine.</strong> È l'unico gesto che non lascia nessuna traccia da nessuna parte: se la merce non arriva, in magazzino resta un pezzo che non esiste.</p>
+<p><strong>Scegliere la casella in base alla pratica invece che alla merce.</strong> «Chiudo perché è tutto sistemato» non è un criterio. Il criterio è dove si trova il pezzo adesso.</p>
+<p><strong>Chiudere le pendenze prima di aver guardato <em>Resi di kit da esplodere</em>.</strong> Su un kit non esploso la spunta non muove un pezzo e sembra riuscita.</p>
+<p><strong>Spuntare le righe dei pezzi di un kit.</strong> Non fanno niente. Il rientro si comanda dalla riga del kit, una volta sola.</p>
+<p><strong>Lasciare senza magazzino un reso inserito a mano.</strong> I pezzi non rientrano in nessuno dei due depositi e il record resta in coda in <em>Ordini Aperti</em>.</p>
+<p><strong>Dare per buona una pagina di controllo vuota senza guardare il filtro.</strong> Su queste tre pagine il filtro non è bloccato, e una pagina svuotata da un clic ha esattamente lo stesso aspetto di una pagina a posto.</p>
+<hr>
+<h2 id="s11"><a class="ancora" href="#s11">§11</a> Se qualcosa va storto</h2>
+<div class="tabella"><table>
+<thead><tr><th>Il sintomo</th><th>Cosa guardare</th></tr></thead>
+<tbody><tr><td>Ho rimborsato ma in Grist non è comparso nessun reso</td><td><a href="guida-2.html#s8">Guida 2</a>, sezione 8: come si vede se l'automatismo ha lavorato</td></tr><tr><td>Il reso c'è ma non trovo la riga fra le pendenze</td><td>Hai spuntato la casella sul sito? Allora è già dichiarata rientrata (sezione 3). Oppure è la riga di un pezzo di kit: guarda la riga del kit</td></tr><tr><td>Ho spuntato il rientro e la giacenza non è salita</td><td>Se è un kit: era esploso? (sezione 6). Se è un prodotto virtuale o un kit: non ha giacenza (sezione 9)</td></tr><tr><td>La giacenza è salita di più di quanto mi aspettavo</td><td><a href="guida-6.html#s9">Guida 6</a>, sezione 9: le tre domande, a partire dalla pagina <em>Movimenti di un articolo</em></td></tr><tr><td>Ho spuntato la casella sbagliata</td><td>Spegnila e accendi l'altra: sono due caselle indipendenti e si correggono in qualunque momento (sezione 4)</td></tr><tr><td>C'è una riga in <em>Resi di kit da esplodere</em></td><td>Sezione 6</td></tr><tr><td>C'è una riga in <em>Resi senza righe</em></td><td>Sezione 7</td></tr><tr><td>Il totale netto dell'ordine non è cambiato dopo un reso inserito a mano</td><td>Manca il collegamento all'ordine di origine (sezione 8)</td></tr><tr><td>Un rimborso che avevo annullato sul sito è ancora in Grist</td><td>Sezione 9, e <a href="guida-9.html">guida 9</a></td></tr><tr><td>Non riesci a capire perché un numero è quello che è</td><td><a href="guida-9.html">Guida 9</a>, con l'elenco di cosa allegare per segnalarlo</td></tr></tbody>
+</table></div>
+<hr>
+<h2 id="s12"><a class="ancora" href="#s12">§12</a> Dove si continua</h2>
+<div class="tabella"><table>
+<thead><tr><th>Se vuoi…</th><th>Guida</th></tr></thead>
+<tbody><tr><td>Capire come lavora l'automatismo che scrive i resi, e quali mail può mandare</td><td>2</td></tr><tr><td>Inserire un ordine a mano, annullarne uno, correggere una riga o uno SKU</td><td>3</td></tr><tr><td>Trasferire merce, o sistemare un rientro parziale di kit</td><td>3, sezione 12</td></tr><tr><td>Creare un kit nuovo quando la composizione cambia</td><td>5, sezione 11</td></tr><tr><td>Leggere le giacenze, verificare che un numero sia tornato, contare il magazzino</td><td>6</td></tr><tr><td>Capire come i resi entrano nei report fiscali, e cosa resta da chiedere al commercialista</td><td>7</td></tr><tr><td>Rimettere a posto un filtro, o esportare una pagina</td><td>8</td></tr><tr><td>Capire perché qualcosa non funziona, o cosa segnalare a Paolo</td><td>9</td></tr></tbody>
+</table></div>
+</div>
+
+  </main>
+  <footer class="pie">
+    <p>Manuale del sistema «Magazzino LwM» · generato il 14/09/2026</p>
+    <p>Per i casi che non stanno nelle guide, e per qualsiasi cosa nuova da costruire, si scrive a Paolo: cosa allegare sta nella <a href="guida-9.html#s11">guida 9 §11</a>.</p>
+  </footer>
+</div>
+
+<div class="lente" id="lente" hidden><img src="" alt=""></div>
+
+<script src="assets/manuale.js"></script>
+</body>
+</html>

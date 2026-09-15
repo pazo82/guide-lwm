@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Guida 1 — La mappa di Grist · Magazzino LwM</title>
+<link rel="stylesheet" href="assets/stile.css">
+</head>
+<body>
+<a class="salta" href="#principale">Vai al contenuto</a>
+
+<button type="button" class="apri-menu" id="apri-menu" aria-label="Apri il menu delle guide">☰ Guide</button>
+
+<nav class="menu" id="menu" aria-label="Le guide">
+  <p class="menu-titolo">Magazzino LwM</p>
+  <a class="menu-voce menu-indice" href="index.html">Indice</a>
+<p class="menu-blocco">Capire</p>
+<a class="menu-voce" href="guida-0.html"><span class="menu-n">0</span>Come funziona il sistema</a>
+<a class="menu-voce attiva" href="guida-1.html"><span class="menu-n">1</span>La mappa di Grist</a>
+<a class="menu-voce" href="guida-2.html"><span class="menu-n">2</span>Gli automatismi (Make)</a>
+<p class="menu-blocco">Fare</p>
+<a class="menu-voce" href="guida-3.html"><span class="menu-n">3</span>Ordini</a>
+<a class="menu-voce" href="guida-4.html"><span class="menu-n">4</span>Resi e rimborsi</a>
+<a class="menu-voce" href="guida-5.html"><span class="menu-n">5</span>Catalogo, articoli e kit</a>
+<a class="menu-voce" href="guida-6.html"><span class="menu-n">6</span>Giacenze e inventario</a>
+<a class="menu-voce" href="guida-7.html"><span class="menu-n">7</span>Report fiscali</a>
+<p class="menu-blocco">Cavarsela da sola</p>
+<a class="menu-voce" href="guida-8.html"><span class="menu-n">8</span>Muoversi in Grist</a>
+<a class="menu-voce" href="guida-9.html"><span class="menu-n">9</span>Manutenzione e problemi</a>
+<p class="menu-blocco">Riferimento</p>
+<a class="menu-voce" href="scheda.html"><span class="menu-n">A4</span>Scheda rapida</a>
+</nav>
+
+<div class="colonna">
+  <div class="barra">
+    <div class="barra-nav"><a href="guida-0.html">‹ Guida 0</a> <a href="guida-2.html">Guida 2 ›</a></div>
+    <div class="barra-strumenti"><button type="button" class="bottone-piatto" id="espandi">Espandi tutto</button><button type="button" class="bottone-piatto" onclick="window.print()">Stampa</button></div>
+  </div>
+  <main id="principale">
+
+<header class="testata">
+  <p class="occhiello">Guida 1</p>
+  <h1>La mappa di Grist</h1>
+  <p class="versione"><strong>Versione dell'11/09/2026</strong> · Sistema «Magazzino LwM»</p>
+</header>
+<nav class="sommario" aria-label="Sezioni della guida">
+  <p class="sommario-titolo">In questa guida</p>
+  <ol class="sommario-voci"><li><a href="#s1"><span class="n">1</span>In breve</a></li><li><a href="#s2"><span class="n">2</span>Otto tabelle, diciassette pagine</a></li><li><a href="#s3"><span class="n">3</span>Le tabelle, una per una</a></li><li><a href="#s4"><span class="n">4</span>Chi scrive cosa</a></li><li><a href="#s5"><span class="n">5</span>Le diciassette pagine</a></li><li><a href="#s6"><span class="n">6</span>Da dove vengono i numeri</a></li><li><a href="#s7"><span class="n">7</span>Attenzione a</a></li><li><a href="#s8"><span class="n">8</span>Dove si continua</a></li></ol>
+</nav>
+<div class="corpo">
+<p>La <a href="guida-0.html">guida 0</a> dice a cosa serve ogni pagina. Questa dice <strong>com'è fatta sotto</strong>: dove stanno davvero i dati, chi scrive ciascun campo, e su cosa è costruita ciascuna schermata.</p>
+<p>Non è una guida da leggere tutta d'un fiato. È la mappa che si riapre quando ti chiedi «ma questo numero da dove esce?» oppure «questo campo lo posso correggere?».</p>
+<hr>
+<h2 id="s1"><a class="ancora" href="#s1">§1</a> In breve</h2>
+<p>Grist tiene i dati in <strong>otto tabelle</strong> e te li mostra in <strong>diciassette pagine</strong>.</p>
+<p>Le tabelle sono i cassetti: lì i dati esistono. Le pagine sono finestre affacciate su quei cassetti, ciascuna con i suoi filtri e le sue colonne. È il motivo per cui lo stesso ordine si vede in quattro schermate diverse, e per cui un articolo può sembrare sparito quando è solo fuori dalla finestra che stai guardando.</p>
+<p>Se di questa guida ricordi una cosa sola, ricorda questa: <strong>le pagine non sono le tabelle.</strong></p>
+<hr>
+<h2 id="s2"><a class="ancora" href="#s2">§2</a> Otto tabelle, diciassette pagine</h2>
+<p>Cinque tabelle contengono i dati veri:</p>
+<div class="tabella"><table>
+<thead><tr><th>Tabella</th><th>Una riga è…</th></tr></thead>
+<tbody><tr><td><code>Articoli</code></td><td>Un oggetto fisico, identificato dal suo SKU. È l'anagrafica del magazzino</td></tr><tr><td><code>Prodotti</code></td><td>Un prodotto come sta a catalogo su WooCommerce (IT ed EN separati)</td></tr><tr><td><code>Ordini</code></td><td>La testata di un ordine, di un reso o di un carico di magazzino</td></tr><tr><td><code>Righe_Ordine</code></td><td>Un prodotto dentro uno di quei tre</td></tr><tr><td><code>Bundle</code></td><td>Un pezzo che sta dentro un kit</td></tr></tbody>
+</table></div>
+<p>Le altre tre non contengono niente di proprio: sono <strong>tabelle di riepilogo</strong>, cioè riassunti automatici delle prime. Sono i motori dei report, e ne parliamo alla fine della sezione 3.</p>
+<figure class="figura">
+<figcaption>Figura 1 — Come si tengono insieme le tabelle</figcaption>
+<pre>        Prodotti                          Bundle
+  (specchio del catalogo)           (la ricetta dei kit)
+            │                               │
+            │ nome, prezzo,                 │ quale kit
+            │ aliquota                      │ contiene cosa
+            ▼                               ▼
+        ┌───────────────────────────────────────┐
+        │              ARTICOLI                 │
+        │     un oggetto fisico = uno SKU       │
+        │        + le sue giacenze              │
+        └───────────────────▲───────────────────┘
+                            │  collegamento
+                            │  tramite SKU
+        ┌───────────────────┴───────────────────┐
+        │            RIGHE_ORDINE               │
+        │       una riga per prodotto           │
+        └───────────────────▲───────────────────┘
+                            │
+        ┌───────────────────┴───────────────────┐
+        │               ORDINI                  │
+        │   una testata per ordine, reso        │
+        │   o carico di magazzino               │
+        └───────────────────────────────────────┘
+
+     Tutti i collegamenti passano dallo SKU, mai da un codice interno.</pre>
+</figure>
+<p>Lo SKU è il perno di tutto. È quello che unisce la versione italiana e quella inglese dello stesso libro in un solo articolo, ed è quello che permette di inserire un ordine a mano scrivendo un codice che conosci invece di cercare un numero.</p>
+<h4 id="una-pagina-e-una-finestra">Una pagina è una finestra</h4>
+<p>Da qui discendono quattro conseguenze pratiche, e sono tutte cose che capitano davvero.</p>
+<p><strong>Più pagine possono guardare la stessa tabella.</strong> Gli ordini si vedono in <em>Ordini</em>, in <em>Ordini Aperti</em>, in <em>Resi senza righe</em> e in <em>Approvvigionamenti</em>: è sempre la stessa tabella, con quattro filtri diversi.</p>
+<p><strong>Quello che scrivi da una pagina finisce nella tabella.</strong> Non esiste una copia di lavoro. Se correggi una giacenza dalla pagina <em>Giacenze</em>, l'hai corretta in <code>Articoli</code>, e la vedranno tutte le altre finestre.</p>
+<p><strong>Un filtro nasconde, non toglie.</strong> Una riga che non compare non è stata cancellata: è fuori dalla finestra. Questo è il caso buono.</p>
+<p><strong>Cancellare una riga la cancella davvero.</strong> Questo è il caso cattivo, ed è il punto in cui i due gesti si somigliano più di quanto dovrebbero.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — «togliere dalla vista» non esiste</p>
+<p>In Grist non c'è un modo per far sparire una riga da una pagina lasciandola nella tabella. Il tasto che elimina la riga la elimina, e la elimina ovunque: dall'elenco, dalle giacenze, dai report.</p>
+<p>Se una riga ti disturba dove non dovrebbe stare, la soluzione è <strong>un filtro</strong> (<a href="guida-8.html#s4">guida 8</a>, sezione 4), mai la cancellazione. E per un ordine sbagliato la strada giusta è metterlo su <code>Annullato</code>, che è uno stato previsto e che il sistema sa leggere: la <a href="guida-3.html">guida 3</a> spiega perché cancellarlo è peggio.</p>
+</aside>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g1-01-dati-grezzi.png</span></div>
+<figcaption><span class="numero">Screenshot 1</span> La schermata <em>Dati grezzi</em> di Grist con l'elenco delle otto tabelle.</figcaption>
+</figure>
+<hr>
+<h2 id="s3"><a class="ancora" href="#s3">§3</a> Le tabelle, una per una</h2>
+<p>Ogni scheda risponde alle stesse domande: cos'è una riga, chi la crea, quali campi contano, quali non si toccano.</p>
+<p>I campi elencati come «non si toccano» sono quelli che il documento calcola da sé. In Grist li riconosci perché hanno lo <strong><span class="campione campione-grigio" aria-hidden="true"></span>sfondo grigio</strong> (<a href="guida-0.html#s8">guida 0</a>, sezione 8). Scriverci dentro non dà errore: dà un valore che poi viene ignorato.</p>
+<hr>
+<h4 id="articoli-lanagrafica-del-magazzino"><code>Articoli</code> — l'anagrafica del magazzino</h4>
+<p><strong>Una riga è</strong> un oggetto fisico identificato dal suo SKU. Le versioni italiana e inglese dello stesso libro sono <strong>un solo articolo</strong>.</p>
+<p><strong>Chi la crea:</strong> tu, quando aggiungi qualcosa a mano, oppure il sistema, quando arriva un ordine con uno SKU che non conosce (e in quel caso ti manda una mail).</p>
+<p><strong>È la tabella da tenere in ordine.</strong> Tutto il resto del sistema le fa domande: il regime fiscale di una vendita, il prezzo di copertina di un report, la giacenza di un magazzino. Un articolo incompleto non blocca niente: produce numeri sbagliati.</p>
+<p><strong>I campi che contano</strong></p>
+<div class="tabella"><table>
+<thead><tr><th>Campo</th><th>Cosa fa</th></tr></thead>
+<tbody><tr><td><code>sku</code></td><td>La chiave di tutto: deve essere identico, carattere per carattere, allo SKU del sito. <strong>Non si cambia</strong> (<a href="guida-5.html">guida 5</a>)</td></tr><tr><td><code>Nome</code></td><td>Il nome che leggi ovunque, anche nei report. Correggibile a mano</td></tr><tr><td><strong>Serie</strong></td><td>La collezione (<code>Down Under</code>, <code>Jungle</code>, <code>Rockies</code>, <code>Savannah</code>). Raggruppa il Report Art.74 e la matrice delle magliette</td></tr><tr><td><strong>Tipo prodotto</strong></td><td><code>libro</code>, <code>cd</code>, <code>kit</code>, <code>t-shirt</code>. Va scelto a mano: senza, una maglietta non entra nella matrice taglie</td></tr><tr><td><code>aliquota_imposta</code></td><td><strong>È il campo da cui esce il regime fiscale.</strong> Il regime non si scrive: si sceglie l'aliquota dal menu, e il regime si calcola. <strong>Si sceglie sempre</strong>, anche <code>standard</code> per il 22%: un'aliquota vuota vale comunque 22%, ma non dice se qualcuno l'ha controllata (<a href="guida-5.html">guida 5</a>)</td></tr><tr><td><code>prezzo_listino</code></td><td>Il prezzo di copertina con cui il Report Art.74 fa i suoi conti. Se è vuoto, il report conta le copie ma i valori restano a zero</td></tr><tr><td><code>genitore</code></td><td>Per una variante (una taglia di maglietta, per esempio): lo SKU del prodotto principale, scritto esattamente. Da lì la variante eredita l'aliquota</td></tr><tr><td><code>tipo_variation</code></td><td>Si sceglie dal menu: <code>simple</code> per un prodotto senza varianti, <code>variable</code> per il prodotto principale di una famiglia (che non si vende e non ha giacenza), <code>variation</code> per una singola variante</td></tr><tr><td><code>taglia_tshirt</code></td><td>La taglia. <strong>Si sceglie sempre a mano</strong>: non si compila mai da sola. Alimenta la matrice: se resta vuota, il pezzo finisce nella colonna <code>N.C.</code> (<a href="guida-6.html">guida 6</a>)</td></tr><tr><td><code>virtual</code></td><td>Dice che l'articolo non ha esistenza fisica (un webinar, l'accesso alla piattaforma). Un articolo virtuale resta fuori dal magazzino</td></tr><tr><td><strong>da verificare</strong></td><td>Si accende da solo sugli articoli creati dal sistema. Lo spegni tu, quando hai controllato</td></tr><tr><td><strong>Giac. iniz. M1 / M2</strong> e le loro date</td><td>Vivono qui, ma si compilano dalla pagina <em>Giacenze</em>: scheda successiva</td></tr></tbody>
+</table></div>
+<p><strong>Non si toccano:</strong> <code>regime_fiscale</code> (esce dall'aliquota), <code>is_bundle</code> (esce dalla tabella <code>Bundle</code>), <code>nome_variation</code> (tiene insieme le varianti di un modello e si calcola dal genitore), <strong>Alert regime fiscale</strong>, <code>check_elimina</code>, <code>membership_kit</code>, <code>Prodotto_IT</code> e <code>Prodotto_EN</code>, e tutte le colonne del venduto e della giacenza attuale.</p>
+<p>Un campo a parte è <code>creato_da_Make</code>: dice da dove viene l'articolo, resta acceso per sempre e non è una cosa da fare. Non confonderlo con <strong>da verificare</strong>, che invece è un lavoro in attesa.</p>
+<p>Una colonna da conoscere è <code>check_elimina</code>, con l'<span class="campione campione-arancione" aria-hidden="true"></span>intestazione arancione dei controlli. Se mostra «⚠ Non eliminare!», quell'articolo è usato da una vendita, da una variante o da una ricetta, e <strong>non si elimina</strong>. Un articolo fuori catalogo, del resto, può restare dov'è per sempre (<a href="guida-5.html">guida 5</a>).</p>
+<details class="box box-perche">
+<summary>Perché funziona così — i campi che si compilano da soli lo fanno una volta sola</summary>
+<div class="box-corpo"><p>Sei campi di questa tabella — nome, prezzo di listino, aliquota, genitore, tipo di variante, virtuale — si riempiono automaticamente <strong>se al momento in cui l'articolo nasce esiste già la riga corrispondente in <code>Prodotti</code></strong>, la copia del catalogo del sito che si aggiorna a mano.</p>
+<p>Succede una volta e non si ripete. Ha due conseguenze, una buona e una da ricordare:</p>
+<ul><li>quello che correggi a mano <strong>resta</strong>: nessun automatismo tornerà a sovrascriverlo;</li><li>quello che alla nascita era vuoto <strong>resta vuoto per sempre</strong>, anche se il prodotto viene aggiunto a <code>Prodotti</code> il giorno dopo: l'unico modo per riempirlo è scriverlo a mano.</li></ul>
+<p>Il secondo caso è quello degli articoli creati dal sistema quando arriva un ordine con uno SKU sconosciuto, ed è esattamente il motivo per cui arriva la mail. La procedura di verifica è nella <a href="guida-5.html">guida 5</a>.</p></div>
+</details>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — le varianti ereditano l'aliquota, ma solo se trovano il genitore</p>
+<p>Su WooCommerce una singola taglia di maglietta non ha un'aliquota propria: la prende dal modello. In Grist questo funziona se <code>genitore</code> contiene lo SKU del modello <strong>e</strong> se esiste un articolo con quello SKU.</p>
+<p>Se manca uno dei due pezzi, il regime non si risolve e l'articolo viene trattato come <strong>22%</strong>. Non arriva nessun avviso: arriva un numero. Su un prodotto Art.74 è un errore che finisce dritto nei report.</p>
+<p>Per questo, in una famiglia nuova, si crea prima il genitore e poi le varianti (<a href="guida-5.html">guida 5</a>).</p>
+</aside>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g1-02-articoli-colonne.png</span></div>
+<figcaption><span class="numero">Screenshot 2</span> La pagina <em>Articoli</em> con le intestazioni colorate, qualche <span class="campione campione-grigio" aria-hidden="true"></span>colonna grigia e almeno una riga con <strong>da verificare</strong> acceso.</figcaption>
+</figure>
+<hr>
+<h4 id="la-pagina-giacenze-la-stessa-tabella-unaltra-finestra">La pagina <code>Giacenze</code> — la stessa tabella, un'altra finestra</h4>
+<p>I numeri del magazzino vivono dentro <code>Articoli</code>, ma non si vedono nella pagina <em>Articoli</em>: le colonne delle giacenze sono mostrate soltanto qui. Nella pratica conviene trattare questa pagina come se fosse una tabella a sé, e sapere che lo è solo per modo di dire: quello che scrivi qui lo stai scrivendo in <code>Articoli</code>.</p>
+<p><strong>I campi che contano</strong></p>
+<div class="tabella"><table>
+<thead><tr><th>Campo</th><th>Cosa fa</th></tr></thead>
+<tbody><tr><td><strong>Giac. iniz. M1 / M2</strong></td><td>I pezzi da cui parte il conto, per ciascuno dei due magazzini. Si scrivono quando l'articolo è nuovo, e poi quasi mai più: quello che succede dopo si registra come movimento (<a href="guida-6.html">guida 6</a>)</td></tr><tr><td><strong>data G.I. M1 / M2</strong></td><td>La data a cui quel numero si riferisce. <strong>È la data da cui il sistema comincia a contare</strong>: tutto ciò che è successo prima viene ignorato. Va compilata sempre, anche con zero pezzi, e non si sposta mai indietro</td></tr></tbody>
+</table></div>
+<p><strong>Non si toccano:</strong> <code>venduto_M1</code>, <code>venduto_M2</code>, <code>venduto_X</code>, <code>Giac. att. M1</code>, <code>Giac. att. M2</code>, <code>Giac. att. TOT</code>.</p>
+<p>Il conto è sempre lo stesso: <strong>giacenza iniziale meno venduto, a partire dalla data</strong>. <code>venduto_X</code> è la colonna dei pezzi usciti da ordini a cui nessuno ha ancora assegnato un magazzino: non appartengono né all'uno né all'altro, ma il totale li toglie lo stesso.</p>
+<p><strong>Cosa non trovi in questa pagina.</strong> Tre filtri tengono fuori i kit, i prodotti virtuali e i genitori delle famiglie di magliette. Non è una dimenticanza: un kit non ha una giacenza propria, perché quello che si muove sono i pezzi che contiene; un prodotto virtuale non ha pezzi da muovere; e il genitore di una famiglia non si vende mai, perché si vendono le sue taglie. La conseguenza è che <strong>la giacenza di un kit non è consultabile da nessuna parte</strong>, ed è corretto così: non esiste.</p>
+<p>Ci sono poi due filtri di comodo, che si cambiano liberamente: uno per tipo di prodotto, uno per isolare i componenti di un certo kit.</p>
+<aside class="box box-nota">
+<p><strong>Le colonne di questa pagina hanno nomi abbreviati.</strong> A schermo leggi <code>Giac. iniz. M1</code>, <code>data G.I. M2</code>, <code>Giac. att. TOT</code>: sono le stesse colonne che altrove — nelle formule, in una segnalazione al consulente — si chiamano <code>Giacenza_iniziale_M1</code>, <code>data_GiacIniz_M2</code>, <code>Giacenza_attuale_TOT</code>. In queste guide usiamo sempre il nome che leggi tu.</p>
+</aside>
+<p>Rettificare una giacenza e registrare un carico di merce sono <strong>due cose diverse</strong>, e non sono intercambiabili: la <a href="guida-6.html">guida 6</a> spiega quando serve l'una e quando l'altra.</p>
+<hr>
+<h4 id="prodotti-lo-specchio-del-catalogo"><code>Prodotti</code> — lo specchio del catalogo</h4>
+<p><strong>Una riga è</strong> un prodotto come sta su WooCommerce, con le versioni italiana e inglese separate.</p>
+<p>Serve a una cosa sola: al momento in cui nasce un articolo, gli passa nome, prezzo, aliquota e i dati sulle varianti. Oggi si aggiorna a mano, e il sistema funziona anche se non è aggiornata: tutto quello che conta si può scrivere direttamente in <code>Articoli</code>. Il resto — compreso perché a volte i campi di un articolo restano vuoti — è nella <strong><a href="guida-5.html">guida 5</a></strong>.</p>
+<hr>
+<h4 id="ordini-le-testate-di-tre-tipi-diversi"><code>Ordini</code> — le testate, di tre tipi diversi</h4>
+<p><strong>Una riga è</strong> la testata di un ordine, di un reso o di un carico di magazzino. Il campo <code>tipo_record</code> dice quale delle tre.</p>
+<p><strong>Chi la crea:</strong> il sistema, per gli ordini che arrivano dal sito e per i resi; tu, per gli ordini inseriti a mano e per i carichi di magazzino.</p>
+<p><strong>I campi che contano</strong></p>
+<div class="tabella"><table>
+<thead><tr><th>Campo</th><th>Cosa fa</th></tr></thead>
+<tbody><tr><td><strong>ID ordine</strong></td><td>Il numero dell'ordine su WooCommerce. <strong>Su un reso contiene il numero del rimborso</strong>, non quello dell'ordine. Sui record che crei tu <strong>se lo dà il sistema</strong>: una numerazione bassa che parte da 1, tenuta separata da quella di WooCommerce (<a href="guida-3.html">guida 3</a>)</td></tr><tr><td><code>data_ordine</code></td><td>La data dell'ordine. Su un reso è la data del rimborso; su un carico, la data in cui la merce è entrata</td></tr><tr><td><code>tipo_record</code></td><td><code>Ordine</code>, <code>Reso</code>, <code>Approvvigionamento</code> o <code>Altri movimenti</code></td></tr><tr><td><code>stato</code></td><td>Decide se il record conta. Entrano nei report e muovono il magazzino solo <code>Completato</code> e <code>Rimborsato</code></td></tr><tr><td><strong>richiede_fattura</strong></td><td>Dice se la vendita è con fattura o senza. <strong>È il campo che decide se un ordine entra nel Registro Corrispettivi</strong>: vedi il riquadro qui sotto</td></tr><tr><td><code>magazzino</code></td><td>Da dove parte la merce. Sta <strong>sulla testata</strong>, non sulle righe: merce che parte da due magazzini richiede due record</td></tr><tr><td><code>canale</code></td><td>Da dove viene l'ordine. Oggi vale <code>woocommerce</code> per tutti, anche per gli ordini dei rappresentanti; fra le scelte c'è già <code>ambassador</code>, e correggerla a mano è innocuo (<a href="guida-3.html">guida 3</a>)</td></tr><tr><td><code>note</code></td><td>Campo libero. Su un carico di magazzino è dove va il riferimento alla fattura del fornitore</td></tr><tr><td><code>piva</code>, <code>cf</code>, <code>fattura_ricevuta</code></td><td>I dati da cui dipende la fattura</td></tr><tr><td><code>totale_ordine</code>, <code>shipping_total</code>, <code>shipping_tax</code>, <code>paypal_fee</code></td><td>Gli importi che arrivano dal sito e finiscono nei report. La spedizione sta in <strong>due</strong> caselle — l'imponibile e la sua IVA — perché nel Registro Corrispettivi entra al lordo, come tutto il resto</td></tr><tr><td><code>ordine_origine</code></td><td>Su un reso: l'ordine che sta stornando. Lo scrive il sistema sui resi che arrivano dal sito; su un reso <strong>inserito a mano lo scrivi tu</strong>, ed è quello che fa muovere il netto dell'ordine stornato (<a href="guida-4.html">guida 4</a>)</td></tr><tr><td><code>motivo_reso</code></td><td>Il motivo scritto su WooCommerce al momento del rimborso. Su entrambi questi campi lo sfondo è grigio quando il record non è un reso</td></tr><tr><td>I campi del cliente e della spedizione</td><td>Si leggono; si correggono se serve, ma la correzione resta in Grist</td></tr></tbody>
+</table></div>
+<p><strong>Non si toccano:</strong> <code>totale_reso</code>, <code>totale_netto</code>, <code>nr_righe_ordine</code>, <code>nr_prodotti</code>, <code>tot_imponibile</code>, <code>lista_sku</code>, <code>check_quantita</code>, <strong>alert_approvv</strong>, <code>shipping_con_tasse</code> — che somma da sola le due caselle della spedizione — e le due colonne che decidono cosa compare in <em>Ordini Aperti</em>.</p>
+<p>Esistono anche due campi previsti per le provvigioni dei rappresentanti, oggi vuoti: se ne parlerà quando quel flusso sarà completo.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — <code>richiede_fattura</code> va guardato, sempre</p>
+<p>È il campo più silenzioso e più pesante della tabella. Da lui dipende se una vendita finisce nel Registro Corrispettivi oppure no, e quindi se quel giorno il commercialista vede l'importo giusto.</p>
+<p>Sugli ordini che arrivano dal sito si compila da solo leggendo P.IVA, codice fiscale e il dato del plugin fatture. Funziona bene, ma <strong>si compila al momento in cui il record nasce e da lì non si muove più</strong>. Se correggi la P.IVA di un ordine dopo, questo campo non si riallinea da solo.</p>
+<p>Sugli ordini inseriti a mano vale la stessa cosa: si calcola quando crei la riga, cioè quando i dati del cliente non ci sono ancora. <strong>Va controllato alla fine dell'inserimento</strong>, non all'inizio.</p>
+<p>Sbagliarlo non produce nessun avviso. Produce un ordine che sparisce dai corrispettivi, o uno che ci compare senza doverci stare.</p>
+</aside>
+<hr>
+<h4 id="righe-ordine-dove-i-numeri-si-formano"><code>Righe_Ordine</code> — dove i numeri si formano</h4>
+<p><strong>Una riga è</strong> un prodotto dentro un ordine, un reso o un carico.</p>
+<p><strong>Chi la crea:</strong> il sistema, riga per riga, quando l'ordine arriva; il sistema, in negativo, quando c'è un rimborso; il sistema di nuovo, quando esplode un kit nei suoi pezzi; tu, quando inserisci un ordine o un carico a mano.</p>
+<p>È la tabella più importante da capire, per una ragione sola: <strong>i report e le giacenze sommano righe, mai testate.</strong> Un ordine senza righe non esiste per nessuno dei due, per quanto il suo totale sia scritto in chiaro sulla testata. È il motivo per cui esiste la pagina <em>Resi senza righe</em>.</p>
+<p><strong>I campi che contano</strong></p>
+<div class="tabella"><table>
+<thead><tr><th>Campo</th><th>Cosa fa</th></tr></thead>
+<tbody><tr><td><code>ordine</code></td><td>A quale testata appartiene la riga</td></tr><tr><td><code>sku</code></td><td>L'articolo, da scegliere nel menu a tendina</td></tr><tr><td><strong>quantita</strong></td><td>I pezzi. Ed è il campo più delicato del documento, per via del segno: le vendite sono positive, i resi e i carichi negativi (<a href="guida-0.html">guida 0</a>, regola 3)</td></tr><tr><td><code>totale_riga</code>, <code>tasse_riga</code>, <code>totale_riga_con_tasse</code></td><td>I valori. <strong>L'ultimo è quello che il Registro Corrispettivi somma</strong></td></tr><tr><td><strong>item id</strong></td><td>Il numero della riga su WooCommerce. È il filo che tiene insieme una vendita e il suo rimborso</td></tr><tr><td><code>esplodi_bundle</code></td><td>L'unica casella di questa tabella che <strong>fa partire qualcosa</strong>: accendendola, il sistema aggiunge le righe dei pezzi di un kit (<a href="guida-3.html">guida 3</a> e <a href="guida-5.html">guida 5</a>)</td></tr><tr><td><strong>prodotto_rientrato</strong></td><td>Su un reso: la merce è tornata indietro. Riaccredita il magazzino. <strong>Può arrivare già acceso</strong>, se al momento del rimborso hai spuntato «Rifornisci i prodotti rimborsati» su WooCommerce — e in quel caso la riga non passa dalla pagina <em>Resi in attesa di rientro</em> (<a href="guida-4.html">guida 4</a>)</td></tr><tr><td><strong>chiuso_senza_rientro</strong></td><td>Su un reso: la merce non tornerà. Chiude la pendenza e lascia il magazzino fermo</td></tr></tbody>
+</table></div>
+<p>Sulle ultime due c'è molto altro da sapere, e sta tutto nella <strong><a href="guida-4.html">guida 4</a></strong>: qui basti che sono due caselle diverse, con due effetti diversi.</p>
+<p><strong>Non si toccano:</strong> <code>data_ordine</code>, <code>richiede_fattura</code>, <code>regime_fiscale</code>, <strong>nome prodotto</strong>, <strong>prezzo_listino</strong>, <code>is_bundle</code>, <code>sku_string</code>, <code>ordine_id_woo</code>, <strong>Anno-Trimestre</strong>, <code>mese</code>, <code>quantita_resa</code>, <code>quantita_netta</code>, <code>da_ricevere</code>, <code>rientrato_effettivo</code>, e le tre colonne di controllo <strong>check_articolo</strong>, <strong>check_quantita</strong> e <strong>check_reso_kit</strong>.</p>
+<p>Tre campi meritano una riga in più. <code>ex_bundle</code> e <code>origine_bundle</code> dicono che quella riga è il pezzo di un kit e da quale kit viene: li scrive il sistema e non vanno modificati. <code>bundle_esploso</code> è la protezione contro le doppie esplosioni: spegnerlo a mano fa arrivare i pezzi una seconda volta, e il magazzino scala il doppio.</p>
+<p>Due colori in questa pagina non dicono niente sui dati e servono solo a leggerla meglio: la colonna dell'ordine alterna <strong>due tonalità di azzurro</strong> a ogni cambio di ordine, e la cella dello SKU prende il colore della <strong>serie</strong> dell'articolo. Nessuno dei due è un divieto.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — le <span class="campione campione-grigio" aria-hidden="true"></span>celle grigie qui non sono sempre colonne intere</p>
+<p>Su una riga che è il pezzo di un kit, le caselle <strong>prodotto_rientrato</strong> e <strong>chiuso_senza_rientro</strong> sono grigie: su quella riga non comandano niente. Il rientro di un kit si dichiara una volta sola, sulla riga del kit, e vale per tutti i pezzi.</p>
+<p>È lo stesso campo che sulla riga sopra è perfettamente valido. Il grigio è per riga, non per colonna.</p>
+</aside>
+<hr>
+<h4 id="bundle-la-ricetta-dei-kit"><code>Bundle</code> — la ricetta dei kit</h4>
+<p><strong>Una riga è</strong> un pezzo dentro un kit. Un kit fatto di tre cose ha tre righe.</p>
+<p><strong>I campi che contano:</strong> <code>bundle_sku</code> (il kit), <code>product_sku</code> (il pezzo, da un menu che non propone i kit: un kit non può contenerne un altro), <code>quantita</code> (quanti pezzi di quello ce ne sono dentro, <strong>scritta sempre, anche quando è 1</strong>).</p>
+<p><strong>Non si toccano:</strong> i due nomi, che si scrivono da soli a partire dagli SKU.</p>
+<p>La tabella ha anche due colonne nascoste che ripetono gli SKU in forma di testo: servono agli automatismi per riconoscere i kit, e non riguardano il lavoro quotidiano.</p>
+<p>Creare e modificare un kit è nella <strong><a href="guida-5.html">guida 5</a></strong>. Vale la pena sapere fin d'ora che questa tabella è ciò che rende un articolo un kit: un articolo che compare qui come <code>bundle_sku</code> smette automaticamente di avere una giacenza propria.</p>
+<hr>
+<h4 id="le-tre-tabelle-di-riepilogo-i-motori-dei-report">Le tre tabelle di riepilogo — i motori dei report</h4>
+<p>Non contengono dati propri. Sono riassunti che Grist ricalcola da solo:</p>
+<ul><li>uno raggruppa le righe d'ordine <strong>per giorno</strong> e produce il <em>REPORT Corrispettivi</em> e il <em>Report Fee Paypal</em>;</li><li>uno raggruppa le righe <strong>per trimestre, regime e prodotto</strong> e produce il <em>REPORT Art. 74</em>;</li><li>uno raggruppa gli articoli <strong>per modello di maglietta</strong> e produce le <em>Giacenze T-Shirt</em>.</li></ul>
+<p>Nella schermata <em>Dati grezzi</em> compaiono con nomi lunghi e poco amichevoli: è normale, sono nomi che si dà Grist da solo.</p>
+<p><strong>Qui non si modifica niente.</strong> E c'è una cosa da sapere che non si vede a schermo: le condizioni che decidono quali vendite entrano in un report — solo quelle fiscalmente valide, solo quelle senza fattura, solo quelle in Art.74 — <strong>non sono filtri della pagina: stanno dentro le formule del riepilogo</strong>. È una scelta voluta, ed è spiegata nella sezione 5.</p>
+<hr>
+<h2 id="s4"><a class="ancora" href="#s4">§4</a> Chi scrive cosa</h2>
+<p>Tre mani scrivono in questo documento, e distinguerle risparmia la maggior parte dei dubbi.</p>
+<div class="tabella"><table>
+<thead><tr><th>Lo scrivi <strong>tu</strong></th><th>Lo scrive il <strong>sistema</strong></th><th>Lo calcola il <strong>documento</strong></th></tr></thead>
+<tbody><tr><td>Magazzino sull'ordine</td><td>Ordini e righe che arrivano dal sito</td><td>Regime fiscale</td></tr><tr><td>Serie, Tipo prodotto, taglia; tipo di variante e genitore, dove mancano</td><td>Resi, con le righe in negativo</td><td>Giacenze e venduto</td></tr><tr><td>Giacenze iniziali e loro date</td><td>Articoli mancanti, con nome e aliquota</td><td>Totali, conteggi, colonne dei report</td></tr><tr><td>Aliquota (sempre, anche <code>standard</code>) e prezzo di listino</td><td>Righe dei pezzi di un kit</td><td>Le colonne di controllo arancioni</td></tr><tr><td>Ordini e carichi inseriti a mano</td><td>Il cambio di stato di un ordine</td><td>Cosa compare in ciascuna pagina</td></tr><tr><td>Le due caselle dei resi</td><td>Il numero degli ordini inseriti a mano</td><td></td></tr></tbody>
+</table></div>
+<p>La terza colonna è quella grigia: si legge, non si scrive. Le altre due si sovrappongono più di quanto sembri, perché su quasi tutto ciò che scrive il sistema tu puoi intervenire dopo — ed è giusto così, visto che gli automatismi copiano ma non giudicano.</p>
+<h4 id="i-nomi-delle-colonne-quello-che-leggi-e-quello-che-ce-sotto">I nomi delle colonne: quello che leggi e quello che c'è sotto</h4>
+<p>Ogni colonna ha due nomi: l'<strong>etichetta</strong>, che è quella che vedi in cima alla colonna, e un <strong>identificativo</strong> interno, che è il nome con cui la chiamano le formule e gli automatismi. Quasi sempre coincidono. In qualche caso no, e le guide usano sempre l'etichetta, cioè quella che leggi tu:</p>
+<div class="tabella"><table>
+<thead><tr><th>Quello che leggi</th><th>Quello che c'è sotto</th></tr></thead>
+<tbody><tr><td><strong>ID ordine</strong></td><td><code>id_woo</code></td></tr><tr><td><strong>item id</strong></td><td><code>idem_id</code></td></tr><tr><td><strong>nome prodotto</strong></td><td><code>id_prodotto_nome</code></td></tr><tr><td><strong>prezzo_listino</strong> (nelle righe d'ordine)</td><td><code>sku_prezzo_listino</code></td></tr></tbody>
+</table></div>
+<p>Nei due report le differenze sono molte di più — <code>Art.74</code>, <code>4%</code>, <code>N.C.</code> e i nomi dei mesi hanno tutti un identificativo diverso alle spalle. Non è un problema: serve solo saperlo, perché se dovessi segnalare qualcosa a Paolo lui potrebbe chiamare una colonna con l'altro nome.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — rinominare una colonna non è un'operazione grafica</p>
+<p>Se cambi il nome di una colonna, di norma Grist cambia <strong>entrambi</strong> i nomi, etichetta e identificativo. Tutto ciò che puntava a quella colonna — formule, report, automatismi — smette di funzionare, e lo fa in silenzio.</p>
+<p>L'etichetta però si può cambiare da sola, lasciando l'identificativo dov'è: nel pannello della colonna i due campi sono legati da un'icona a forma di catena, che si può spezzare. È la strada giusta quando un nome non ti piace, e la <strong><a href="guida-8.html#s9">guida 8</a>, sezione 9</strong> la spiega passo per passo.</p>
+</aside>
+<p>I colori delle intestazioni e lo <span class="campione campione-grigio" aria-hidden="true"></span>sfondo grigio sono spiegati nella <a href="guida-0.html#s8">guida 0</a>, sezione 8. Vale la pena rileggerla una volta prima di mettere mano a una tabella: sono l'unico posto in cui questo documento dice «non toccare» a colpo d'occhio.</p>
+<hr>
+<h2 id="s5"><a class="ancora" href="#s5">§5</a> Le diciassette pagine</h2>
+<h4 id="prima-i-due-tipi-di-filtro">Prima: i due tipi di filtro</h4>
+<p>Ogni pagina è la sua tabella più un filtro. Ma i filtri non sono tutti uguali.</p>
+<p><strong>I filtri che definiscono la pagina.</strong> <em>Ordini Aperti</em> mostra gli ordini che aspettano qualcosa; <em>Approvvigionamenti</em> mostra solo i carichi; <em>Giacenze</em> tiene fuori kit, virtuali e genitori delle magliette. Togliere uno di questi non «mostra qualcosa in più»: trasforma la pagina in un'altra cosa, e nessuno se ne accorge finché non se ne accorge il commercialista.</p>
+<p><strong>I filtri di comodo.</strong> Sono quelli che stanno nella barra in alto e servono a te: il trimestre, un tipo di prodotto, un singolo SKU. Si cambiano quante volte vuoi, non fanno danno.</p>
+<p>Il guaio è che a schermo si somigliano, e i primi non stanno quasi mai in vista: stanno nel menu dei filtri. La regola pratica: <strong>se non sai perché un filtro è lì, non toglierlo.</strong> La <a href="guida-8.html">guida 8</a> spiega come si mettono e si tolgono i filtri (sezione 4) e ha l'elenco pagina per pagina di quali sono gli uni e quali gli altri (sezione 5).</p>
+<details class="box box-perche">
+<summary>Perché funziona così — nei report il filtro non è un filtro</summary>
+<div class="box-corpo"><p>Nei due report fiscali le condizioni importanti — contano solo le vendite fiscalmente valide, solo quelle senza fattura, solo quelle in Art.74 — non sono filtri di pagina. Sono scritte <strong>dentro le formule</strong> che calcolano le colonne.</p>
+<p>È voluto, ed è una precauzione: un filtro di pagina si toglie con un clic e non lascia nessun segno. Un report consegnato al commercialista non può dipendere da un clic. Fatto così, il report resta giusto anche se qualcuno gioca con i filtri.</p>
+<p>Un'eccezione c'è, ed è nel <em>REPORT Art. 74</em>: l'esclusione dei kit è un filtro di pagina, non una formula. Sta nel menu e non in barra, quindi è difficile toglierlo per sbaglio — ma è una delle voci della checklist di chiusura periodo (<a href="guida-7.html">guida 7</a>).</p></div>
+</details>
+<figure class="figura">
+<figcaption>Figura 2 — Le diciassette pagine e le tabelle da cui pescano</figcaption>
+<pre>PER LAVORARE                             costruita su
+  Ordini Aperti ......................... Ordini
+  Inserimento Ordini .................... Ordini + Righe_Ordine
+  Righe_Ordine .......................... Righe_Ordine
+  Movimenti di un articolo .............. Righe_Ordine
+  Ordini ................................ Ordini
+
+LE ANAGRAFICHE
+  Articoli .............................. Articoli
+  Bundle ................................ Bundle
+  Prodotti .............................. Prodotti
+
+I NUMERI
+  Giacenze .............................. Articoli
+  Giacenze T-Shirt ...................... riepilogo di Articoli
+  REPORT Corrispettivi .................. riepilogo di Righe_Ordine
+  REPORT Art. 74 ........................ riepilogo di Righe_Ordine
+  Report Fee Paypal ..................... lo stesso riepilogo dei Corrispettivi
+
+I PRESIDI
+  Resi in attesa di rientro ............. Righe_Ordine
+  Resi senza righe ...................... Ordini
+  Resi di kit da esplodere .............. Righe_Ordine
+  Approvvigionamenti .................... Ordini</pre>
+</figure>
+<h4 id="per-lavorare">Per lavorare</h4>
+<p><strong>Ordini Aperti</strong> — la tua lista di lavoro. Mostra tutto ciò che aspetta ancora qualcosa: ordini non ancora chiusi, e ordini chiusi ma senza magazzino assegnato. Ci può comparire anche un record che un ordine non è — un reso senza magazzino, un movimento eccezionale lasciato a metà — e la <strong>colonna del tipo</strong> è lì per distinguerli. Una riga esce da qui da sola, quando non c'è più niente da fare. <em>Non deve svuotarsi.</em> <a href="guida-3.html">Guida 3</a>.</p>
+<p><strong>Inserimento Ordini</strong> — la maschera per gli ordini che non arrivano dal sito, e per i carichi di magazzino. Quattro riquadri: l'anagrafica dell'ordine, i prodotti, i valori e la fattura, la spedizione. Il riquadro dei prodotti è collegato all'ordine che stai guardando sopra. Un filtro di comodo la limita all'anno in corso. <a href="guida-3.html">Guida 3</a>.</p>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g1-05-inserimento-ordini.png</span></div>
+<figcaption><span class="numero">Screenshot 5</span> La pagina <em>Inserimento Ordini</em> con i quattro riquadri visibili e un ordine aperto.</figcaption>
+</figure>
+<p><strong>Righe_Ordine</strong> — tutte le righe di tutti gli ordini, resi e carichi, con le colonne di controllo in vista. È la pagina dove si va quando bisogna capire cosa è successo davvero. Due filtri di comodo, per trimestre e per SKU.</p>
+<p><strong>Movimenti di un articolo</strong> — la stessa tabella delle righe, filtrata su un SKU alla volta. Mostra tutto quello che è passato per un articolo — vendite, resi, carichi, movimenti — con il tipo, lo stato e il magazzino leggibili sulla riga, e un'ultima colonna che dice se quella riga sta contando nelle giacenze. È la pagina da cui si parte quando un numero del magazzino non torna. <a href="guida-6.html">Guida 6</a>.</p>
+<aside class="box box-nota">
+<p>Mostra <strong>anche</strong> le righe che non contano, ed è il suo scopo: serve a vedere perché un pezzo non è uscito, non a fare somme. Sommare a occhio le quantità di questa pagina non dà la giacenza.</p>
+</aside>
+<p><strong>Ordini</strong> — l'elenco completo delle testate, tutti e tre i tipi insieme. Utile per cercare, meno per lavorare.</p>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g1-03-ordini-tre-tipi.png</span></div>
+<figcaption><span class="numero">Screenshot 3</span> La pagina <em>Ordini</em> con tre righe visibili di tipo diverso: un Ordine, un Reso e un Approvvigionamento.</figcaption>
+</figure>
+<h4 id="le-anagrafiche">Le anagrafiche</h4>
+<p><strong>Articoli</strong> — l'anagrafica del magazzino, senza le colonne delle giacenze. È qui che si controlla un articolo nuovo. <a href="guida-5.html">Guida 5</a>.</p>
+<p><strong>Bundle</strong> — la ricetta dei kit, con un filtro di comodo per isolare un kit alla volta. <a href="guida-5.html">Guida 5</a>.</p>
+<p><strong>Prodotti</strong> — lo specchio del catalogo. Si guarda raramente. <a href="guida-5.html">Guida 5</a>.</p>
+<h4 id="i-numeri">I numeri</h4>
+<p><strong>Giacenze</strong> — i pezzi che hai, per magazzino. Vedi la scheda nella sezione 3.</p>
+<p><strong>Giacenze T-Shirt</strong> — le magliette in forma di matrice: una riga per modello, una colonna per taglia. La colonna <code>N.C.</code> in fondo è un presidio, non un totale: se mostra un numero, ci sono magliette che non si sono agganciate a nessuna taglia. <a href="guida-6.html">Guida 6</a>.</p>
+<p><strong>REPORT Corrispettivi</strong> — le vendite senza fattura, un giorno per riga, divise per regime fiscale. La colonna «Senza regime fiscale» è un presidio in mezzo ai numeri: deve restare a zero. <a href="guida-7.html">Guida 7</a>.</p>
+<p><strong>REPORT Art. 74</strong> — le copie vendute per prodotto, <strong>una riga per trimestre</strong>, con i calcoli dell'editoria. Le colonne dei dodici mesi ci sono tutte, ma in ogni riga solo i tre del suo trimestre possono avere numeri. <a href="guida-7.html">Guida 7</a>.</p>
+<p><strong>Report Fee Paypal</strong> — le commissioni per periodo. È costruito <strong>sullo stesso riepilogo</strong> del Registro Corrispettivi: sono due finestre sulla stessa cosa, con colonne diverse.</p>
+<p>Ciascuno di questi report ha <strong>il suo filtro del trimestre</strong>, indipendente dagli altri. Impostarlo su una pagina non lo imposta sulle altre: è la prima cosa da controllare a ogni chiusura di periodo.</p>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g1-04-giacenze-filtri.png"><img src="assets/img/g1-04-giacenze-filtri.png" alt="La barra dei filtri della pagina Giacenze, con i filtri di comodo in vista e il menu dei filtri aperto." loading="lazy" style="width:854px"></a>
+<figcaption><span class="numero">Screenshot 4</span> La barra dei filtri della pagina <em>Giacenze</em>, con i filtri di comodo in vista e il menu dei filtri aperto.</figcaption>
+</figure>
+<h4 id="i-presidi">I presidi</h4>
+<p>Quattro pagine che non servono a lavorare: servono a sorvegliare. Se non le apri, non te ne accorgi in nessun altro modo.</p>
+<div class="tabella"><table>
+<thead><tr><th>Pagina</th><th>Cosa sorveglia</th><th>Com'è quando è tutto a posto</th></tr></thead>
+<tbody><tr><td><strong>Resi in attesa di rientro</strong></td><td>I rimborsi di cui non hai ancora detto che fine ha fatto la merce</td><td>È una lista di lavoro: si svuota man mano che chiudi le pendenze (<a href="guida-4.html">guida 4</a>)</td></tr><tr><td><strong>Resi senza righe</strong></td><td>I rimborsi di solo importo, che nessun report vedrebbe</td><td><strong>Vuota.</strong> Se compare una riga, va sistemata a mano (<a href="guida-4.html">guida 4</a>)</td></tr><tr><td><strong>Resi di kit da esplodere</strong></td><td>I resi di kit rimasti senza i pezzi</td><td><strong>Vuota.</strong> Se compare una riga, l'esplosione non è andata a buon fine (<a href="guida-4.html">guida 4</a>)</td></tr><tr><td><strong>Approvvigionamenti</strong></td><td>I carichi di magazzino inseriti male</td><td>Piena di carichi, ma <strong>con la colonna degli avvisi vuota</strong> (<a href="guida-6.html">guida 6</a>)</td></tr></tbody>
+</table></div>
+<p>Su <em>Resi in attesa di rientro</em> vale la pena sapere una cosa: i pezzi dei kit non ci compaiono, di proposito. Su un reso di kit c'è una sola riga su cui la spunta produce un effetto, ed è quella del kit.</p>
+<hr>
+<h2 id="s6"><a class="ancora" href="#s6">§6</a> Da dove vengono i numeri</h2>
+<p>Quando un numero non torna, la domanda giusta non è «dov'è l'errore» ma «da dove viene questo numero». Il percorso è sempre lo stesso, e passa sempre dalle righe.</p>
+<figure class="figura">
+<figcaption>Figura 3 — I due percorsi</figcaption>
+<pre>                    ┌────────────────────┐
+                    │    RIGHE_ORDINE    │
+                    │  (tutte le righe)  │
+                    └─────────┬──────────┘
+                              │
+             ┌────────────────┴────────────────┐
+             ▼                                 ▼
+   conta ai fini fiscali?             ha mosso merce vera?
+   dipende dallo stato                dipende dallo stato
+   dell'ordine                        e, sui resi, dal rientro
+             │                                 │
+             ▼                                 ▼
+   REPORT Corrispettivi                  ARTICOLI
+   REPORT Art. 74                     (giacenze calcolate)
+   Report Fee Paypal                          │
+                                              ▼
+                                          Giacenze
+                                       Giacenze T-Shirt</pre>
+</figure>
+<p>Le due domande sono <strong>indipendenti</strong>. Un reso entra nei report a prescindere da cosa dichiari sul rientro della merce; quello che dichiari governa solo il magazzino. È la regola 6 della <a href="guida-0.html">guida 0</a>, ed è la cosa che più spesso si dà per scontata al contrario.</p>
+<p>Un carico di magazzino prende solo la strada di destra: nei report non entra mai, per costruzione.</p>
+<hr>
+<h2 id="s7"><a class="ancora" href="#s7">§7</a> Attenzione a</h2>
+<p>I quattro errori di mappa, cioè quelli che si fanno credendo di fare un'altra cosa.</p>
+<p><strong>Cancellare una riga per non vederla più.</strong> Non esiste il «togli dalla vista»: esiste il filtro, oppure la cancellazione, che è definitiva e vale ovunque.</p>
+<p><strong>Togliere un filtro che definisce una pagina.</strong> <em>Giacenze</em> senza l'esclusione dei kit, un report senza il suo filtro: la pagina continua a funzionare e a mostrare numeri, solo che sono altri numeri.</p>
+<p><strong>Cercare un dato dove non è.</strong> Le giacenze non sono nella pagina <em>Articoli</em>, i kit e i genitori delle magliette non sono nella pagina <em>Giacenze</em>, un reso non ha il numero del suo ordine ma quello del rimborso. Nessuna di queste è una dimenticanza.</p>
+<p><strong>Rinominare una colonna.</strong> Cambia anche il nome interno, e rompe in silenzio tutto ciò che ci puntava. Se un'etichetta non ti piace, si cambia solo l'etichetta: <strong><a href="guida-8.html#s9">guida 8</a>, sezione 9</strong>.</p>
+<hr>
+<h2 id="s8"><a class="ancora" href="#s8">§8</a> Dove si continua</h2>
+<div class="tabella"><table>
+<thead><tr><th>Se vuoi…</th><th>Guida</th></tr></thead>
+<tbody><tr><td>Capire quando partono gli automatismi e che mail mandano</td><td>2</td></tr><tr><td>Assegnare il magazzino, inserire o correggere un ordine</td><td>3</td></tr><tr><td>Chiudere un reso, capire le due caselle</td><td>4</td></tr><tr><td>Creare o correggere un articolo, costruire un kit</td><td>5</td></tr><tr><td>Leggere le giacenze, fare un inventario, registrare un carico</td><td>6</td></tr><tr><td>Preparare i report per il commercialista</td><td>7</td></tr><tr><td>Filtrare, ordinare, cercare, esportare, rinominare un'etichetta</td><td>8</td></tr><tr><td>Capire perché qualcosa non funziona, o cosa segnalare</td><td>9</td></tr></tbody>
+</table></div>
+</div>
+
+  </main>
+  <footer class="pie">
+    <p>Manuale del sistema «Magazzino LwM» · generato il 14/09/2026</p>
+    <p>Per i casi che non stanno nelle guide, e per qualsiasi cosa nuova da costruire, si scrive a Paolo: cosa allegare sta nella <a href="guida-9.html#s11">guida 9 §11</a>.</p>
+  </footer>
+</div>
+
+<div class="lente" id="lente" hidden><img src="" alt=""></div>
+
+<script src="assets/manuale.js"></script>
+</body>
+</html>

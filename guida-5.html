@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Guida 5 — Catalogo, articoli e kit · Magazzino LwM</title>
+<link rel="stylesheet" href="assets/stile.css">
+</head>
+<body>
+<a class="salta" href="#principale">Vai al contenuto</a>
+
+<button type="button" class="apri-menu" id="apri-menu" aria-label="Apri il menu delle guide">☰ Guide</button>
+
+<nav class="menu" id="menu" aria-label="Le guide">
+  <p class="menu-titolo">Magazzino LwM</p>
+  <a class="menu-voce menu-indice" href="index.html">Indice</a>
+<p class="menu-blocco">Capire</p>
+<a class="menu-voce" href="guida-0.html"><span class="menu-n">0</span>Come funziona il sistema</a>
+<a class="menu-voce" href="guida-1.html"><span class="menu-n">1</span>La mappa di Grist</a>
+<a class="menu-voce" href="guida-2.html"><span class="menu-n">2</span>Gli automatismi (Make)</a>
+<p class="menu-blocco">Fare</p>
+<a class="menu-voce" href="guida-3.html"><span class="menu-n">3</span>Ordini</a>
+<a class="menu-voce" href="guida-4.html"><span class="menu-n">4</span>Resi e rimborsi</a>
+<a class="menu-voce attiva" href="guida-5.html"><span class="menu-n">5</span>Catalogo, articoli e kit</a>
+<a class="menu-voce" href="guida-6.html"><span class="menu-n">6</span>Giacenze e inventario</a>
+<a class="menu-voce" href="guida-7.html"><span class="menu-n">7</span>Report fiscali</a>
+<p class="menu-blocco">Cavarsela da sola</p>
+<a class="menu-voce" href="guida-8.html"><span class="menu-n">8</span>Muoversi in Grist</a>
+<a class="menu-voce" href="guida-9.html"><span class="menu-n">9</span>Manutenzione e problemi</a>
+<p class="menu-blocco">Riferimento</p>
+<a class="menu-voce" href="scheda.html"><span class="menu-n">A4</span>Scheda rapida</a>
+</nav>
+
+<div class="colonna">
+  <div class="barra">
+    <div class="barra-nav"><a href="guida-4.html">‹ Guida 4</a> <a href="guida-6.html">Guida 6 ›</a></div>
+    <div class="barra-strumenti"><button type="button" class="bottone-piatto" id="espandi">Espandi tutto</button><button type="button" class="bottone-piatto" onclick="window.print()">Stampa</button></div>
+  </div>
+  <main id="principale">
+
+<header class="testata">
+  <p class="occhiello">Guida 5</p>
+  <h1>Catalogo, articoli e kit</h1>
+  <p class="versione"><strong>Versione dell'11/09/2026</strong> · Sistema «Magazzino LwM»</p>
+</header>
+<nav class="sommario" aria-label="Sezioni della guida">
+  <p class="sommario-titolo">In questa guida</p>
+  <ol class="sommario-voci"><li><a href="#s1"><span class="n">1</span>In breve</a></li><li><a href="#s2"><span class="n">2</span>Le regole del catalogo</a></li><li><a href="#s3"><span class="n">3</span>I campi che si compilano da soli</a></li><li><a href="#s4"><span class="n">4</span>Aliquota e regime fiscale</a></li><li><a href="#s5"><span class="n">5</span>Prodotti semplici, con varianti e varianti</a></li><li><a href="#s6"><span class="n">6</span>La scheda di un articolo completo</a></li><li><a href="#s7"><span class="n">7</span>Creare un articolo a mano</a></li><li><a href="#s8"><span class="n">8</span>Completare un articolo creato dal sistema</a></li><li><a href="#s9"><span class="n">9</span>Quando un prodotto cambia: un articolo nuovo</a></li><li><a href="#s10"><span class="n">10</span>I kit</a></li><li><a href="#s11"><span class="n">11</span>Cambiare la ricetta di un kit</a></li><li><a href="#s12"><span class="n">12</span>Attenzione a</a></li><li><a href="#s13"><span class="n">13</span>Se qualcosa va storto</a></li><li><a href="#s14"><span class="n">14</span>Dove si continua</a></li></ol>
+</nav>
+<div class="corpo">
+<p>Questa è la guida dell'anagrafica: <strong>come si crea un articolo, come si completa quello che il sistema ha creato da solo, come si costruisce un kit, e cosa fare quando un prodotto cambia.</strong></p>
+<p>È anche la guida in cui si decide la qualità di tutto il resto. Ogni vendita chiede all'articolo il suo regime fiscale, ogni report gli chiede nome e prezzo di copertina, ogni giacenza parte da lui. Un articolo incompleto non blocca niente: produce numeri sbagliati che sembrano giusti.</p>
+<hr>
+<h2 id="s1"><a class="ancora" href="#s1">§1</a> In breve</h2>
+<p>Il catalogo vive in due posti: <strong>WooCommerce</strong>, dove si vende, e la tabella <strong><code>Articoli</code></strong> in Grist, dove si contano le giacenze e da cui escono i report. I due vanno tenuti allineati a mano, perché nessun automatismo copia il catalogo da una parte all'altra.</p>
+<p>Accanto agli articoli ci sono due tabelle che servono a loro: <code>Bundle</code>, che contiene la <strong>ricetta</strong> di ogni kit, e <code>Prodotti</code>, che è una copia del catalogo del sito e che puoi anche non toccare mai (sezione 3).</p>
+<p>Il principio da ricordare è uno solo: <strong>le informazioni di un articolo non vengono copiate sulle vendite, vengono lette ogni volta.</strong> Da qui discende la regola che attraversa tutta la guida:</p>
+<ul><li>un dato <strong>sbagliato</strong> si corregge, e la correzione sistema anche il passato;</li><li>un prodotto che <strong>cambia davvero</strong> — un nuovo prezzo di copertina, un'aliquota diversa — non si modifica: diventa un <strong>articolo nuovo</strong>.</li></ul>
+<hr>
+<h2 id="s2"><a class="ancora" href="#s2">§2</a> Le regole del catalogo</h2>
+<h4 id="ogni-modifica-sul-sito-si-ripete-in-grist">Ogni modifica sul sito si ripete in Grist</h4>
+<p>Quando tocchi il catalogo di WooCommerce, in Grist va fatto il gesto corrispondente. Almeno nella tabella <code>Articoli</code>, sempre.</p>
+<div class="tabella"><table>
+<thead><tr><th>Sul sito hai…</th><th>In Grist</th></tr></thead>
+<tbody><tr><td>Creato un prodotto nuovo</td><td>Crei l'articolo (sezione 7). Se prima arriva un ordine, lo crea il sistema e tu lo completi (sezione 8)</td></tr><tr><td>Aggiunto una taglia a una maglietta</td><td>Crei l'articolo della nuova variante (sezioni 5 e 7)</td></tr><tr><td>Corretto un dato sbagliato: nome, prezzo, classe fiscale</td><td>Correggi lo stesso dato in <code>Articoli</code></td></tr><tr><td>Cambiato una caratteristica vera del prodotto</td><td>Non si modifica: si crea un prodotto nuovo, sul sito e in Grist (sezione 9)</td></tr><tr><td>Creato un kit</td><td>Crei l'articolo-kit e la sua ricetta (sezione 10)</td></tr><tr><td>Tolto un prodotto dal catalogo</td><td>Nulla. L'articolo resta dov'è</td></tr></tbody>
+</table></div>
+<p>Due regole valgono in ogni caso.</p>
+<p><strong>Lo SKU è identico a quello del sito, carattere per carattere.</strong> Maiuscole, trattini, spazi: tutto conta. È lo SKU che il sistema usa per riconoscere un prodotto quando arriva un ordine, e se non coincide crea un articolo doppione e ti manda la mail. Ogni prodotto del sito — comprese le singole taglie e i kit — deve avere il suo SKU.</p>
+<p><strong>Lo SKU non si cambia.</strong> Né in Grist né sul sito. È il filo che lega l'articolo ai suoi ordini e al catalogo di WooCommerce: cambiarlo da una parte sola rompe il collegamento, e cambiarlo da tutte e due non è un'operazione da fare senza Paolo. Se un prodotto deve avere un codice diverso, è un prodotto nuovo (sezione 9).</p>
+<details class="box box-perche">
+<summary>Perché funziona così — l'anagrafica è letta oggi</summary>
+<div class="box-corpo"><p>Quando guardi una vendita di marzo, il nome del prodotto, il suo regime fiscale e il suo prezzo di copertina non sono scritti sulla riga di marzo: la riga li chiede all'articolo nel momento in cui la apri. Lo stesso fanno i due report fiscali.</p>
+<p>È comodo quando correggi un errore: sistemi l'aliquota di un libro e tutte le sue vendite passano da sole nella colonna giusta. Ma è la stessa cosa che succede quando cambi un dato <em>vero</em>: se aumenti il prezzo di copertina di un libro, anche i trimestri già consegnati al commercialista si ricalcolano con il prezzo nuovo (<a href="guida-7.html#s5">guida 7</a>, sezione 5).</p>
+<p>Per questo la regola è: <strong>correggere sì, trasformare no.</strong> Un prodotto che cambia diventa un articolo nuovo, e quello vecchio resta com'era, con i dati che aveva quando è stato venduto.</p></div>
+</details>
+<h4 id="un-articolo-non-si-elimina">Un articolo non si elimina</h4>
+<p>Un articolo che ha venduto anche una sola volta non si cancella: le righe d'ordine che lo usano perderebbero l'aggancio, e con lui il regime fiscale e l'effetto sulle giacenze. Lo stesso vale per un articolo che fa da genitore a qualche variante o che compare in una ricetta.</p>
+<p>Non devi ricordarti tu questi casi: nella pagina <em>Articoli</em> la colonna <strong><code>check_elimina</code></strong> li controlla per te.</p>
+<ul><li>Se mostra <strong>«⚠ Non eliminare!»</strong>, l'articolo non si elimina.</li><li>Se è vuota, eliminarlo non rompe niente. Ma nella maggior parte dei casi non c'è motivo di farlo: un articolo fuori catalogo può restare dov'è per sempre.</li></ul>
+<hr>
+<h2 id="s3"><a class="ancora" href="#s3">§3</a> I campi che si compilano da soli</h2>
+<p>Sei campi di <code>Articoli</code> si riempiono automaticamente quando l'articolo nasce, <strong>se in quel momento il prodotto è già presente nella tabella <code>Prodotti</code></strong>: nome, prezzo di listino, aliquota, genitore, tipo di variante e virtuale.</p>
+<p>Lo fanno <strong>una volta sola</strong>. Le conseguenze sono due, e vanno sempre tenute insieme:</p>
+<ul><li>quello che correggi a mano <strong>resta</strong>: nessun automatismo tornerà a sovrascriverlo;</li><li>quello che alla nascita era vuoto <strong>resta vuoto per sempre</strong>, anche se il prodotto viene aggiunto a <code>Prodotti</code> il giorno dopo.</li></ul>
+<p>L'unico modo per riempire un campo nato vuoto è <strong>scriverlo a mano</strong>, copiando il valore dalla pagina <em>Prodotti</em> o direttamente dal sito.</p>
+<p>Da qui una regola pratica: <strong>in un articolo nuovo, lo SKU si scrive per primo.</strong> Il record nasce nel momento in cui scrivi il primo dato. Se quel dato è lo SKU, il sistema trova subito il prodotto corrispondente e compila quello che può. Se cominci dal nome, l'articolo nasce senza SKU, non trova niente, e quei sei campi restano vuoti anche dopo che lo SKU l'hai scritto.</p>
+<p>Tutto questo riguarda l'anagrafica. Nelle righe d'ordine alcuni valori si comportano diversamente e si ricalcolano quando cambiano i dati da cui dipendono: è un'altra regola, e riguarda gli ordini.</p>
+<h4 id="lo-specchio-del-catalogo-la-tabella-prodotti">Lo specchio del catalogo: la tabella <code>Prodotti</code></h4>
+<p><code>Prodotti</code> è una copia del catalogo di WooCommerce, con la versione italiana e quella inglese di ogni prodotto su righe separate. Serve a una cosa sola: passare i sei campi qui sopra a un articolo nel momento in cui nasce.</p>
+<p>Quattro cose da sapere:</p>
+<ul><li><strong>oggi si aggiorna a mano</strong>, e il suo futuro è ancora da decidere;</li><li><strong>il sistema funziona anche se non è aggiornata</strong>: tutto quello che conta sta in <code>Articoli</code>, e i campi si possono sempre scrivere a mano;</li><li><strong>la riga in <code>Articoli</code> va creata comunque</strong>: un prodotto presente solo in <code>Prodotti</code>, per il resto del sistema, non esiste;</li><li><strong>l'ordine conta</strong>. Se la riga di <code>Prodotti</code> c'è già quando nasce l'articolo, i campi si compilano da soli. Se l'articolo nasce prima — ed è il caso normale degli articoli creati dal sistema all'arrivo di un ordine — restano vuoti, e aggiornare <code>Prodotti</code> dopo non li riempie.</li></ul>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g5-01-prodotti-due-lingue.png</span></div>
+<figcaption><span class="numero">Screenshot 1</span> La pagina <em>Prodotti</em> con le due righe, italiana e inglese, dello stesso SKU.</figcaption>
+</figure>
+<hr>
+<h2 id="s4"><a class="ancora" href="#s4">§4</a> Aliquota e regime fiscale</h2>
+<p>Il regime fiscale di un articolo non si scrive: <strong>si sceglie l'aliquota, e il regime si calcola.</strong> L'aliquota è il campo <code>aliquota_imposta</code>, e usa gli stessi codici delle classi fiscali di WooCommerce.</p>
+<div class="tabella"><table>
+<thead><tr><th>Scegli in <code>aliquota_imposta</code></th><th>Il regime diventa</th><th>Quando si usa</th></tr></thead>
+<tbody><tr><td><code>standard</code></td><td>22%</td><td>I prodotti al 22%</td></tr><tr><td><code>reduced-rate</code></td><td>4%</td><td>I prodotti al 4%</td></tr><tr><td><code>zero-rate</code></td><td>Art.74</td><td>I prodotti in Art.74. <strong>È la scelta da usare per gli articoli nuovi</strong></td></tr><tr><td><code>nessuna-tariffa</code></td><td>Art.74</td><td>Anche questa è Art.74: esiste perché sul sito sono in uso entrambe le classi</td></tr><tr><td><code>parent</code></td><td>Quello del genitore</td><td>Solo sulle varianti: l'aliquota la decide il prodotto principale (sezione 5)</td></tr></tbody>
+</table></div>
+<p><strong>Scegli sempre un'aliquota, anche quando è <code>standard</code>.</strong> Il perché è nel riquadro qui sotto.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — un'aliquota vuota vale 22%, senza avvisi</p>
+<p>Su WooCommerce l'aliquota ordinaria è registrata come <strong>vuota</strong>: non ha un codice suo. Grist si adegua, e tratta un'aliquota vuota <strong>sempre</strong> come standard, cioè 22%.</p>
+<p>Il problema è che Grist non può distinguere un prodotto che è davvero al 22% da uno a cui nessuno ha mai scelto l'aliquota. Se la dimentichi, l'articolo diventa 22% in silenzio. Su un libro in Art.74 è un errore che finisce dritto nei report.</p>
+<p>Per questo, anche sui prodotti al 22%, si sceglie <code>standard</code>. Così una cella vuota vuol dire sempre una cosa sola: <strong>quell'aliquota nessuno l'ha ancora controllata.</strong></p>
+</aside>
+<figure class="figura">
+<figcaption>Figura 1 — Da dove esce il regime di una vendita</figcaption>
+<pre>         Una riga d'ordine: un libro, una taglia di maglietta, un kit
+                                    │
+                                    ▼
+                     l'articolo con quello SKU
+                                    │
+                                    ▼
+                          che aliquota ha?
+            ┌───────────────────────┼─────────────────────────┐
+            │                       │                         │
+    standard, reduced-rate,      parent                     vuota
+    zero-rate, nessuna-tariffa      │                         │
+            │                       ▼                         │
+            │          c'è in Articoli un genitore            │
+            │          con lo SKU scritto in `genitore`?      │
+            │               │                  │              │
+            │              SÌ                 NO ─────────────┤
+            │               │                                 │
+            │               ▼                                 ▼
+            │      vale l'aliquota del genitore              22%
+            │               │                          (nessun avviso)
+            ▼               ▼
+            il regime: Art.74 · 4% · 22%
+                                    │
+                                    ▼
+          REPORT Corrispettivi · REPORT Art. 74
+          letto ogni volta che apri la pagina</pre>
+</figure>
+<p>Tre cose che la figura non dice.</p>
+<p><strong>Il regime di un kit è quello dell'articolo-kit.</strong> Nel Registro Corrispettivi l'intero valore del kit va sotto il suo regime; nel Report Art.74 contano invece i pezzi, ciascuno con il proprio. La <a href="guida-7.html">guida 7</a> (figura 2) spiega perché.</p>
+<p><strong>«Alert regime fiscale»</strong> si accende quando la versione italiana e quella inglese dello stesso prodotto hanno classi fiscali diverse sul sito. È un errore del catalogo di WooCommerce, e va corretto lì. Grist non si riallinea da solo: se anche l'articolo ha l'aliquota sbagliata, si corregge a mano.</p>
+<p><strong>«Senza regime fiscale» diverso da zero</strong>, nel Registro Corrispettivi, vuol dire che su un articolo c'è un'aliquota che Grist non sa leggere — un valore fuori dall'elenco, arrivato dal sito — oppure che una riga d'ordine non si è agganciata a nessun articolo. Si risale all'articolo e si sceglie l'aliquota giusta.</p>
+<p><strong>Correggere un'aliquota sbagliata</strong> è un gesto sicuro e voluto: tutte le vendite di quell'articolo, anche passate, passano nel regime corretto. Se invece il regime di un prodotto cambia davvero, non si tocca l'aliquota: sezione 9.</p>
+<hr>
+<h2 id="s5"><a class="ancora" href="#s5">§5</a> Prodotti semplici, con varianti e varianti</h2>
+<p>Il campo <code>tipo_variation</code> dice che tipo di prodotto è l'articolo. Le scelte sono tre.</p>
+<p><strong><code>simple</code> — un prodotto senza varianti.</strong> Un libro, un CD. È il caso più comune, e l'articolo sta in piedi da solo.</p>
+<p><strong><code>variable</code> — un prodotto che ha delle varianti.</strong> Una maglietta, le cui varianti sono le taglie. Questa riga fa da <strong>cappello</strong> a tutta la famiglia:</p>
+<ul><li>contiene <strong>l'aliquota di tutta la famiglia</strong>;</li><li><strong>non compare mai nelle righe d'ordine</strong>, perché nessuno compra «la maglietta»: si compra una taglia;</li><li><strong>non ha giacenza</strong>, e infatti non compare nella pagina <em>Giacenze</em>.</li></ul>
+<p><strong><code>variation</code> — una variante specifica.</strong> Ogni taglia è un articolo a sé, con il suo SKU, le sue vendite e la sua giacenza. È collegata al suo genitore tramite il campo <strong><code>genitore</code></strong>, che contiene <strong>lo SKU del prodotto <code>variable</code></strong>, scritto esattamente.</p>
+<p>Dal genitore la variante eredita <strong>soltanto l'aliquota</strong>, e solo se la sua è <code>parent</code>. Tutto il resto — nome, serie, tipo prodotto, taglia — ogni variante lo ha per conto suo.</p>
+<p>Il campo <strong><code>nome_variation</code></strong> tiene insieme la famiglia: sul genitore vale il suo SKU, sulle varianti lo SKU del genitore. Si calcola da solo — ha lo <span class="campione campione-grigio" aria-hidden="true"></span>sfondo grigio — ed è la chiave con cui la pagina <em>Giacenze T-Shirt</em> costruisce una riga per ogni modello.</p>
+<p><em>(SKU inventati per l'esempio)</em></p>
+<figure class="figura">
+<figcaption>Figura 2 — Una famiglia di magliette</figcaption>
+<pre>                    ┌──────────────────────────────────────┐
+                    │  TS-JUNGLE                           │
+                    │  tipo_variation:    variable         │
+                    │  aliquota_imposta:  standard   ◄──── l'aliquota di tutta la famiglia
+                    │  nome_variation:    TS-JUNGLE        │
+                    │  mai negli ordini · nessuna giacenza │
+                    └───────▲─────────────▲─────────────▲──┘
+                            │             │             │
+                  genitore: TS-JUNGLE     │             │
+                            │             │             │
+          ┌─────────────────┴──┐ ┌────────┴─────────┐ ┌─┴─────────────────┐
+          │  TS-JUNGLE-S       │ │  TS-JUNGLE-M     │ │  TS-JUNGLE-L      │
+          │  variation         │ │  variation       │ │  variation        │
+          │  aliquota: parent  │ │  aliquota: parent│ │  aliquota: parent │
+          │  taglia: S         │ │  taglia: M       │ │  taglia: L        │
+          └────────────────────┘ └──────────────────┘ └───────────────────┘
+
+          nome_variation = TS-JUNGLE su tutte e quattro le righe:
+          è quello che le mette sulla stessa riga delle Giacenze T-Shirt</pre>
+</figure>
+<p>Perché una maglietta compaia correttamente nella matrice delle taglie servono tutte queste cose insieme, sulla riga della variante: <code>tipo_variation</code> su <code>variation</code>, il <code>genitore</code> giusto, <strong>Tipo prodotto</strong> su <code>t-shirt</code> e la <strong>taglia</strong>. La taglia si sceglie <strong>sempre a mano</strong>, dal menu: non si compila mai da sola. Se manca, il pezzo finisce nella colonna <code>N.C.</code> della matrice (<a href="guida-6.html">guida 6</a>).</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — una variante senza genitore diventa 22%</p>
+<p>Se su una variante con aliquota <code>parent</code> il campo <code>genitore</code> è vuoto, contiene uno SKU scritto male, oppure il genitore non esiste in <code>Articoli</code>, il regime non si risolve e l'articolo viene trattato come <strong>22%</strong>. Nessun avviso. Su una maglietta probabilmente non cambia niente; su un prodotto editoriale sì.</p>
+<p>Per questo, in una famiglia nuova, si crea <strong>prima il genitore e poi le varianti</strong>.</p>
+</aside>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g5-02-articoli-famiglia-tshirt.png</span></div>
+<figcaption><span class="numero">Screenshot 2</span> La pagina <em>Articoli</em> filtrata su una famiglia di magliette: il genitore e due o tre varianti, con le colonne <code>tipo_variation</code>, <code>genitore</code>, <code>nome_variation</code> e <code>aliquota_imposta</code> in vista.</figcaption>
+</figure>
+<hr>
+<h2 id="s6"><a class="ancora" href="#s6">§6</a> La scheda di un articolo completo</h2>
+<p>Questa è la lista da ripassare ogni volta che crei un articolo o ne completi uno creato dal sistema. Tutti i campi, tranne le giacenze, stanno nella pagina <em>Articoli</em>.</p>
+<div class="tabella"><table>
+<thead><tr><th>Campo</th><th>Cosa ci va</th><th>Se manca o è sbagliato</th></tr></thead>
+<tbody><tr><td><code>sku</code></td><td>Identico a quello del sito. <strong>Si scrive per primo</strong></td><td>Al primo ordine nasce un doppione</td></tr><tr><td><code>Nome</code></td><td>Il nome del prodotto</td><td>È il titolo che compare nel Report Art.74</td></tr><tr><td><code>aliquota_imposta</code></td><td><strong>Sempre scelta</strong>, anche <code>standard</code> (sezione 4)</td><td>Vale 22%, senza avvisi</td></tr><tr><td><code>tipo_variation</code></td><td><code>simple</code>, <code>variable</code> o <code>variation</code> (sezione 5)</td><td>La variante resta fuori dalla matrice magliette</td></tr><tr><td><code>genitore</code></td><td>Solo sulle varianti: lo SKU del prodotto <code>variable</code></td><td>Il regime della variante diventa 22%</td></tr><tr><td><code>prezzo_listino</code></td><td>Il prezzo di copertina, su tutto ciò che è in Art.74</td><td>Nel Report Art.74 le copie ci sono, i valori restano a zero</td></tr><tr><td><strong>Serie</strong></td><td>La collezione</td><td>Nei report la riga resta senza serie</td></tr><tr><td><strong>Tipo prodotto</strong></td><td><code>libro</code>, <code>cd</code>, <code>kit</code> o <code>t-shirt</code></td><td>Una maglietta non entra nella matrice</td></tr><tr><td><code>taglia_tshirt</code></td><td>Solo sulle varianti di magliette, <strong>sempre a mano</strong></td><td>Il pezzo finisce nella colonna <code>N.C.</code></td></tr><tr><td><code>virtual</code></td><td>Acceso sui prodotti senza esistenza fisica: webinar, accesso alla piattaforma</td><td>Il prodotto entra nelle giacenze e i suoi ordini chiedono un magazzino</td></tr><tr><td><strong>Giac. iniz. M1 / M2</strong> e le <strong>due date</strong></td><td>Nella pagina <em>Giacenze</em> (<a href="guida-6.html">guida 6</a>). <strong>Le date sempre</strong>, anche se i pezzi sono zero. I pezzi che hai in magazzino conviene registrarli come carico, non scriverli qui</td><td>Le colonne del venduto vanno in errore appena l'articolo compare in una riga d'ordine</td></tr></tbody>
+</table></div>
+<p>Sul genitore di una famiglia le giacenze non servono: non ha pezzi propri e non compare nella pagina <em>Giacenze</em>.</p>
+<p>Se l'articolo è un kit, alla scheda si aggiunge la ricetta: sezione 10.</p>
+<hr>
+<h2 id="s7"><a class="ancora" href="#s7">§7</a> Creare un articolo a mano</h2>
+<p>Serve quando un prodotto nuovo sta per andare in vendita, oppure quando devi inserire a mano un ordine che contiene qualcosa che in Grist non c'è ancora (<a href="guida-3.html#s6">guida 3</a>, sezione 6).</p>
+<ol><li><strong>Prendi lo SKU dal sito</strong>, copiandolo invece di riscriverlo.</li><li><strong>Controlla che non esista già</strong> nella pagina <em>Articoli</em>, con il filtro dello SKU o con la ricerca (<a href="guida-8.html">guida 8</a>). Se c'è, non va ricreato.</li><li><strong>Nella riga vuota in fondo alla tabella scrivi per primo lo SKU</strong>, e conferma.</li><li><strong>Guarda cosa si è compilato da solo.</strong> Se il prodotto era già in <code>Prodotti</code>, alcuni campi sono pieni: controllali, non darli per buoni. Un'aliquota rimasta vuota va comunque scelta.</li><li><strong>Completa la scheda</strong> (sezione 6).</li><li><strong>Se è una famiglia con varianti</strong>, crea prima il genitore e poi le varianti, ripetendo i passi da 3 a 5 per ciascuna.</li><li><strong>Vai nella pagina <em>Giacenze</em></strong> e inserisci giacenze iniziali e date (<a href="guida-6.html">guida 6</a>).</li><li><strong>Se è un kit</strong>, prosegui con la sezione 10.</li></ol>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — un articolo non si crea dal menu a tendina</p>
+<p>Nelle righe d'ordine e nella ricetta dei kit, lo SKU si sceglie da un menu a tendina. Se scrivi uno SKU che non esiste, Grist ti propone di aggiungerlo con un <strong>«+»</strong>: accettando, crea un articolo con il solo SKU.</p>
+<p>Quell'articolo nasce senza aliquota — quindi al 22% — e senza la casella «da verificare», quindi nessuno ti ricorderà di completarlo. Gli articoli si creano <strong>dalla pagina <em>Articoli</em></strong>, dove hai la scheda sott'occhio.</p>
+</aside>
+<p><strong>Se una riga d'ordine è già stata scritta con quello SKU</strong> — la riconosci perché è accesa in arancione, con l'avviso che lo SKU non è stato trovato — creare l'articolo non basta. Torna sulla riga e <strong>riseleziona lo SKU dal menu</strong>: è quel gesto che la aggancia all'articolo appena creato.</p>
+<hr>
+<h2 id="s8"><a class="ancora" href="#s8">§8</a> Completare un articolo creato dal sistema</h2>
+<p>Quando arriva un ordine con uno SKU che Grist non conosce, il sistema crea l'articolo da solo e ti manda la mail <em>«Nuovi articoli creati in Grist automaticamente»</em> (<a href="guida-2.html#s6">guida 2</a>, sezione 6). Nella pagina <em>Articoli</em> l'articolo ha la casella <strong>«da verificare»</strong> accesa, in arancione.</p>
+<p>Il sistema prende dall'ordine solo quello che c'è: <strong>lo SKU, il nome come compare nell'ordine e l'aliquota</strong>. Tutto il resto nasce vuoto — prezzo, serie, tipo prodotto, tipo di variante, genitore, virtuale — <strong>date delle giacenze comprese</strong>.</p>
+<p>Se c'è una cosa da fare subito, sono le date: finché mancano, le colonne del venduto di quell'articolo sono già in errore — lo sono dal momento in cui l'ordine che l'ha creato è arrivato.</p>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g5-03-articolo-da-verificare.png</span></div>
+<figcaption><span class="numero">Screenshot 3</span> La pagina <em>Articoli</em> con un articolo creato dal sistema: «da verificare» acceso in arancione, aliquota vuota o <code>parent</code>, prezzo di listino vuoto.</figcaption>
+</figure>
+<p>La verifica, in quest'ordine:</p>
+<ol><li><strong>È davvero un prodotto nuovo?</strong> Se in <code>Articoli</code> c'è già un articolo che sembra lo stesso, con uno SKU appena diverso, vuol dire che lo SKU del sito non coincide con quello di Grist. Non correggere lo SKU: è un caso da segnalare (<a href="guida-9.html">guida 9</a>).</li><li><strong>L'aliquota: guardala in Grist, non nella mail.</strong> Se è vuota, scegli quella giusta — <code>standard</code> se il prodotto è davvero al 22%. Se è <code>parent</code>, è una variante: passo 3.</li><li><strong>È una variante?</strong> Scegli <code>variation</code> in <code>tipo_variation</code>, scrivi nel campo <code>genitore</code> lo SKU del prodotto principale e controlla che quel genitore esista in <code>Articoli</code>: se non c'è, crealo (sezione 7). Per una maglietta: <strong>Tipo prodotto</strong> su <code>t-shirt</code> e la taglia.</li><li><strong>È un kit?</strong> Crea la ricetta (sezione 10) e leggi il riquadro qui sotto.</li><li><strong>È un prodotto virtuale?</strong> Accendi <code>virtual</code>.</li><li><strong>Completa il resto della scheda</strong>: nome, prezzo di listino, serie, tipo prodotto (sezione 6).</li><li><strong>Inserisci giacenze iniziali e date</strong> nella pagina <em>Giacenze</em> (<a href="guida-6.html">guida 6</a>).</li><li><strong>Spegni «da verificare».</strong> Solo adesso, a scheda finita.</li></ol>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — la mail e Grist possono dire due cose diverse</p>
+<p>Sulle varianti la mail riporta spesso <strong>«aliquota: n.d.»</strong>, ma in Grist l'articolo ha <code>parent</code>: il sistema riconosce che si tratta di una variante e scrive <code>parent</code> al posto del vuoto.</p>
+<p>Non è un errore. Ma <code>parent</code> funziona solo se il genitore c'è: finché non lo colleghi, quella variante vale 22%. La verifica si fa sempre sulla scheda in Grist, mai sul testo della mail.</p>
+</aside>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — se l'articolo nuovo è un kit, l'ordine che l'ha creato non è stato esploso</p>
+<p>Quando il sistema non conosce uno SKU, non può sapere che è un kit: registra la riga, crea l'articolo e non aggiunge nessun pezzo. I componenti di quell'ordine non sono usciti dal magazzino.</p>
+<p>Creare la ricetta sistema gli ordini <strong>futuri</strong>, non quello. Dopo aver creato la ricetta, vai nella pagina <em>Righe_Ordine</em>, filtra sullo SKU del kit e, sulla riga del kit, <strong>accendi <code>esplodi_bundle</code></strong>: è lo stesso gesto dei kit inseriti a mano (<a href="guida-3.html#s7">guida 3</a>, sezione 7). <span class="marcatore"><a href="guida-9.html#s9" title="elenco completo nella guida 9 §9"><em>(comportamento atteso, non ancora verificato sul campo)</em></a></span></p>
+</aside>
+<p><strong>Non lasciare articoli da verificare in sospeso.</strong> Un articolo con la casella accesa è una delle voci della checklist di chiusura trimestre (<a href="guida-7.html#s8">guida 7</a>, sezione 8): se l'aliquota non è risolta, le sue vendite sono già nel report sbagliato. E una casella che resta accesa su molti articoli smette di segnalare qualcosa.</p>
+<hr>
+<h2 id="s9"><a class="ancora" href="#s9">§9</a> Quando un prodotto cambia: un articolo nuovo</h2>
+<p>Esce una nuova edizione di un libro con un prezzo di copertina diverso. Un prodotto cambia regime fiscale. In tutti i casi in cui cambia una <strong>caratteristica vera</strong> del prodotto — non un dato scritto male — la regola è la stessa: <strong>non si modifica l'articolo esistente, se ne crea uno nuovo.</strong></p>
+<ol><li><strong>Sul sito</strong>, crea un prodotto nuovo con <strong>uno SKU nuovo</strong> e le caratteristiche nuove.</li><li><strong>Il prodotto vecchio si nasconde dal catalogo, non si cancella.</strong> Gli ordini passati continuano a fare riferimento a lui: se un giorno ne rimborsi uno, il rimborso deve poterlo ritrovare.</li><li><strong>In Grist</strong>, crea l'articolo nuovo (sezione 7). Quello vecchio resta com'è, con i dati di quando è stato venduto.</li><li><strong>Se il prodotto stava in un kit</strong>, aggiorna la ricetta sostituendo il componente vecchio con quello nuovo (sezione 11).</li><li><strong>Se in magazzino ci sono ancora pezzi</strong> registrati sul vecchio articolo che da ora vendi con il nuovo SKU, spostali con <strong>un movimento</strong>: un solo record <code>Altri movimenti</code>, stesso magazzino, una riga positiva sullo SKU vecchio e una negativa sul nuovo. La procedura è nella <a href="guida-6.html">guida 6</a>.</li></ol>
+<p>In questo modo i report dei periodi passati restano uguali a quelli che hai consegnato, e i nuovi partono con i dati giusti.</p>
+<hr>
+<h2 id="s10"><a class="ancora" href="#s10">§10</a> I kit</h2>
+<h4 id="le-tre-cose-che-servono">Le tre cose che servono</h4>
+<p>Un kit, in Grist, esiste solo se ci sono tutte e tre queste cose:</p>
+<ul><li><strong>i componenti</strong>, come articoli completi in <code>Articoli</code>;</li><li><strong>il kit stesso</strong>, come articolo in <code>Articoli</code>, con lo SKU con cui è venduto sul sito;</li><li><strong>la ricetta</strong>, nella pagina <em>Bundle</em>: una riga per ogni componente.</li></ul>
+<p>Ognuna ha il suo lettore. Il <strong>Registro Corrispettivi</strong> legge l'articolo-kit: tutto il valore della vendita va sotto il regime del kit. Le <strong>giacenze</strong> e il <strong>Report Art.74</strong> leggono i pezzi, che il sistema aggiunge da solo accanto alla riga del kit usando la ricetta. Un kit non ha giacenza propria (<a href="guida-0.html">guida 0</a>, regola 9).</p>
+<h4 id="creare-un-kit">Creare un kit</h4>
+<ol><li><strong>Controlla che i componenti esistano già</strong> in <code>Articoli</code>, con la scheda completa (sezione 6). Se ne manca uno, crealo prima.</li><li><strong>Crea l'articolo-kit</strong> (sezione 7):<ul><li>lo SKU <strong>identico a quello del kit sul sito</strong>;</li><li>l'aliquota del regime con cui il kit è venduto;</li><li><strong>Tipo prodotto</strong> su <code>kit</code>.</li></ul></li></ol>
+<p>Le giacenze e il prezzo di listino non servono: un kit non ha pezzi propri e non compare nel Report Art.74.</p>
+<ol><li><strong>Nella pagina <em>Bundle</em>, scrivi la ricetta</strong>, una riga per componente:<ul><li>in <code>bundle_sku</code> il kit;</li><li>in <code>product_sku</code> il componente;</li><li>in <code>quantita</code> quanti pezzi di quel componente ci sono nel kit. <strong>La quantità si scrive sempre, anche quando è 1.</strong></li></ul></li></ol>
+<p>Il menu dei componenti non propone i kit: un kit non può contenere un altro kit.</p>
+<ol><li><strong>Controlla il risultato.</strong> Con il filtro della pagina <em>Bundle</em> isola il kit e rileggi la ricetta. Poi apri la pagina <em>Giacenze</em>: il kit non deve più comparire, e il filtro dei kit deve mostrarti i suoi componenti.</li><li><strong>Fallo prima che il kit vada in vendita.</strong> Il sistema usa la ricetta nel momento in cui arriva l'ordine: un kit venduto senza ricetta non scarica nessun pezzo.</li></ol>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g5-04-bundle-ricetta.png"><img src="assets/img/g5-04-bundle-ricetta.png" alt="La pagina Bundle filtrata su un kit: una riga per componente, con le quantità compilate, e la riga vuota in fondo dove si aggiunge il componente successivo." loading="lazy" style="width:990px"></a>
+<figcaption><span class="numero">Screenshot 4</span> La pagina <em>Bundle</em> filtrata su un kit: una riga per componente, con le quantità compilate, e la riga vuota in fondo dove si aggiunge il componente successivo.</figcaption>
+</figure>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g5-05-giacenze-filtro-kit.png"><img src="assets/img/g5-05-giacenze-filtro-kit.png" alt="La pagina Giacenze con il filtro dei kit impostato su un kit: si vedono i componenti, il kit no." loading="lazy" style="width:1146px"></a>
+<figcaption><span class="numero">Screenshot 5</span> La pagina <em>Giacenze</em> con il filtro dei kit impostato su un kit: si vedono i componenti, il kit no.</figcaption>
+</figure>
+<h4 id="il-kit-che-ha-venduto-prima-di-avere-la-ricetta">Il kit che ha venduto prima di avere la ricetta</h4>
+<p>Succede quando un kit va in vendita sul sito prima che in Grist esista la sua ricetta, oppure quando l'articolo-kit l'ha creato il sistema all'arrivo del primo ordine (sezione 8).</p>
+<p><strong>Come te ne accorgi.</strong> Finché la ricetta non c'è, il kit compare nella pagina <em>Giacenze</em> come se fosse un prodotto normale, con numeri che non hanno senso. Nelle righe dell'ordine, sotto la riga del kit, non ci sono i pezzi.</p>
+<p><strong>Come si rimedia.</strong> Crea la ricetta, poi nella pagina <em>Righe_Ordine</em> filtra sullo SKU del kit: su ogni riga di vendita rimasta senza pezzi, e con <code>bundle_esploso</code> spento, accendi <code>esplodi_bundle</code>. <span class="marcatore"><a href="guida-9.html#s9" title="elenco completo nella guida 9 §9"><em>(comportamento atteso, non ancora verificato sul campo)</em></a></span> Gli eventuali resi di quel kit compariranno invece nella pagina <em>Resi di kit da esplodere</em> (<a href="guida-4.html">guida 4</a>).</p>
+<p>Sulle vendite, a differenza dei resi, <strong>nessuna pagina di controllo intercetta questo caso</strong>: è il motivo per cui la ricetta va creata prima.</p>
+<hr>
+<h2 id="s11"><a class="ancora" href="#s11">§11</a> Cambiare la ricetta di un kit</h2>
+<p>La ricetta viene letta <strong>nel momento in cui un kit viene esploso</strong>, e un kit viene esploso due volte nella sua vita: quando si vende e quando torna indietro. Cambiare la ricetta non tocca le vendite già registrate, ma vale per tutto quello che succede dopo — <strong>resi di vendite passate compresi</strong>.</p>
+<figure class="figura">
+<figcaption>Figura 3 — Cambiare una ricetta: il passato resta, i resi arrivano dal passato</figcaption>
+<pre>   MARZO                        APRILE                        MAGGIO
+   si vende un kit              cambi la ricetta              il cliente rende
+   ricetta: A + B + C           A + B + D                     il kit di marzo
+        │                            │                             │
+        ▼                            ▼                             ▼
+   escono A, B, C               la vendita di marzo           il reso viene esploso
+                                non cambia:                   con la ricetta di OGGI:
+                                sono usciti A, B, C           rientrano A, B, D
+                                                                   │
+                                                                   ▼
+                                                     C non torna in magazzino,
+                                                     D risale senza essere mai uscito</pre>
+</figure>
+<p><strong>La strada raccomandata: un kit nuovo.</strong> Se la composizione di un kit cambia, crea un kit nuovo con <strong>uno SKU nuovo, anche sul sito</strong>, e la sua ricetta (sezione 10). Il kit vecchio si nasconde dal catalogo e la sua ricetta resta intatta: i resi delle vendite passate continueranno a far rientrare i pezzi giusti.</p>
+<p><strong>Se proprio serve modificare la ricetta</strong> — e c'è un caso in cui è la strada giusta: quando un componente è stato sostituito da un articolo nuovo (sezione 9) — modificala sulla riga del componente, nella pagina <em>Bundle</em>. Poi tieni a mente la conseguenza della figura: <strong>ogni reso futuro di un kit venduto prima della modifica va corretto a mano</strong>. Sulle righe dei pezzi di quel reso, cambia lo SKU del componente che non era nel kit con quello che c'era davvero, come si fa per un ordine singolo (<a href="guida-3.html#s9">guida 3</a>, sezione 9). <span class="marcatore"><a href="guida-9.html#s9" title="elenco completo nella guida 9 §9"><em>(comportamento atteso, non ancora verificato sul campo)</em></a></span></p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — la ricetta di un kit già venduto non si cancella</p>
+<p>Un articolo è un kit <strong>perché ha una ricetta</strong>. Se cancelli tutte le righe della ricetta, per Grist quel kit torna a essere un prodotto normale, e lo fa anche all'indietro:</p>
+<ul><li>ricompare nella pagina <em>Giacenze</em>, e le sue vendite passate cominciano a scaricare una giacenza che non esiste;</li><li>se il suo regime è Art.74, entra nei Report Art.74, <strong>anche nei trimestri già consegnati</strong>, e le sue copie si sommano a quelle dei pezzi già contate.</li></ul>
+<p>Nessun messaggio d'errore. Un kit che non si vende più non si smonta: si nasconde dal sito, e la ricetta resta.</p>
+</aside>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — si cambia la ricetta, non la riga</p>
+<p>Questa sezione vale quando il kit cambia <strong>per sempre</strong>. Se in un solo ordine hai spedito un pezzo diverso da quello previsto, la ricetta non si tocca: si corregge la riga di quell'ordine (<a href="guida-3.html#s9">guida 3</a>, sezione 9).</p>
+</aside>
+<hr>
+<h2 id="s12"><a class="ancora" href="#s12">§12</a> Attenzione a</h2>
+<p>I sette errori che questa guida serve a evitare. Nessuno di questi produce un messaggio di errore.</p>
+<p><strong>Modificare il catalogo sul sito senza ripetere il gesto in Grist.</strong> I due cataloghi non si parlano. Quello che non riporti in <code>Articoli</code> non esiste per le giacenze e per i report.</p>
+<p><strong>Cambiare uno SKU.</strong> Rompe il collegamento fra l'articolo, i suoi ordini e il sito. Un prodotto con un codice nuovo è un prodotto nuovo.</p>
+<p><strong>Modificare un articolo invece di crearne uno nuovo.</strong> Correggere un errore è giusto; cambiare prezzo o regime a un prodotto che è cambiato davvero riscrive anche i trimestri passati.</p>
+<p><strong>Eliminare un articolo con «⚠ Non eliminare!».</strong> Le righe d'ordine, le varianti o le ricette che lo usano perdono l'aggancio.</p>
+<p><strong>Lasciare l'aliquota vuota.</strong> Vale 22%, in silenzio. Si sceglie sempre, anche <code>standard</code>.</p>
+<p><strong>Dimenticare le date delle giacenze.</strong> Le colonne del venduto vanno in errore appena l'articolo compare in una riga d'ordine, e su un articolo creato dal sistema questo è già successo.</p>
+<p><strong>Modificare la ricetta di un kit senza pensare ai resi.</strong> I resi delle vendite passate verranno esplosi con la ricetta nuova. Se il kit cambia, meglio un kit nuovo.</p>
+<hr>
+<h2 id="s13"><a class="ancora" href="#s13">§13</a> Se qualcosa va storto</h2>
+<div class="tabella"><table>
+<thead><tr><th>Il sintomo</th><th>La causa probabile</th><th>Cosa fare</th></tr></thead>
+<tbody><tr><td>Le colonne del venduto di un articolo sono in errore</td><td>Mancano le date delle giacenze iniziali</td><td>Inseriscile nella pagina <em>Giacenze</em> (<a href="guida-6.html">guida 6</a>)</td></tr><tr><td>Una riga d'ordine è accesa in arancione: SKU non trovato</td><td>L'articolo non esiste, o lo SKU è diverso</td><td>Crea l'articolo (sezione 7), poi <strong>riseleziona lo SKU</strong> sulla riga</td></tr><tr><td>Nel Registro, «Senza regime fiscale» è diverso da zero</td><td>Un'aliquota che Grist non sa leggere, o una riga senza articolo</td><td>Risali all'articolo e scegli l'aliquota (sezione 4)</td></tr><tr><td>Un titolo del Report Art.74 ha le copie ma i valori a zero</td><td>Manca il prezzo di listino</td><td>Compilalo in <em>Articoli</em>: il report si aggiorna da solo</td></tr><tr><td>Un libro Art.74 finisce nella colonna del 22%</td><td>Aliquota vuota, oppure variante senza genitore</td><td>Sezioni 4 e 5</td></tr><tr><td>I componenti di un kit non scendono</td><td>La ricetta manca, lo SKU del kit non coincide con il sito, o il kit ha venduto prima della ricetta</td><td>Sezione 10</td></tr><tr><td>Un kit compare nella pagina <em>Giacenze</em></td><td>Non ha ancora una ricetta, oppure la ricetta è stata cancellata</td><td>Sezioni 10 e 11</td></tr><tr><td>Una maglietta non compare nelle <em>Giacenze T-Shirt</em></td><td>Manca <strong>Tipo prodotto</strong>, <code>tipo_variation</code> o il <code>genitore</code></td><td>Sezione 5</td></tr><tr><td>Una maglietta compare nella colonna <code>N.C.</code></td><td>Manca la taglia</td><td>Sceglila dal menu (sezione 5, <a href="guida-6.html">guida 6</a>)</td></tr><tr><td>Arriva la mail di un articolo nuovo per un prodotto che esiste già</td><td>Lo SKU sul sito non coincide con quello in Grist</td><td>Non correggere lo SKU: <a href="guida-9.html">guida 9</a></td></tr></tbody>
+</table></div>
+<hr>
+<h2 id="s14"><a class="ancora" href="#s14">§14</a> Dove si continua</h2>
+<div class="tabella"><table>
+<thead><tr><th>Se vuoi…</th><th>Guida</th></tr></thead>
+<tbody><tr><td>Capire quando il sistema crea un articolo e cosa dice la mail</td><td>2</td></tr><tr><td>Inserire un kit in un ordine, o sostituire un pezzo in un ordine solo</td><td>3</td></tr><tr><td>Capire cosa succede quando un kit torna indietro</td><td>4</td></tr><tr><td>Inserire giacenze iniziali e date, leggere la matrice delle magliette</td><td>6</td></tr><tr><td>Capire come i kit e i prezzi di copertina entrano nei report</td><td>7</td></tr><tr><td>Filtrare e cercare un articolo</td><td>8</td></tr><tr><td>Segnalare uno SKU che non coincide, o rimediare a un articolo eliminato</td><td>9</td></tr></tbody>
+</table></div>
+</div>
+
+  </main>
+  <footer class="pie">
+    <p>Manuale del sistema «Magazzino LwM» · generato il 14/09/2026</p>
+    <p>Per i casi che non stanno nelle guide, e per qualsiasi cosa nuova da costruire, si scrive a Paolo: cosa allegare sta nella <a href="guida-9.html#s11">guida 9 §11</a>.</p>
+  </footer>
+</div>
+
+<div class="lente" id="lente" hidden><img src="" alt=""></div>
+
+<script src="assets/manuale.js"></script>
+</body>
+</html>

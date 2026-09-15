@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Guida 0 — Come funziona il sistema · Magazzino LwM</title>
+<link rel="stylesheet" href="assets/stile.css">
+</head>
+<body>
+<a class="salta" href="#principale">Vai al contenuto</a>
+
+<button type="button" class="apri-menu" id="apri-menu" aria-label="Apri il menu delle guide">☰ Guide</button>
+
+<nav class="menu" id="menu" aria-label="Le guide">
+  <p class="menu-titolo">Magazzino LwM</p>
+  <a class="menu-voce menu-indice" href="index.html">Indice</a>
+<p class="menu-blocco">Capire</p>
+<a class="menu-voce attiva" href="guida-0.html"><span class="menu-n">0</span>Come funziona il sistema</a>
+<a class="menu-voce" href="guida-1.html"><span class="menu-n">1</span>La mappa di Grist</a>
+<a class="menu-voce" href="guida-2.html"><span class="menu-n">2</span>Gli automatismi (Make)</a>
+<p class="menu-blocco">Fare</p>
+<a class="menu-voce" href="guida-3.html"><span class="menu-n">3</span>Ordini</a>
+<a class="menu-voce" href="guida-4.html"><span class="menu-n">4</span>Resi e rimborsi</a>
+<a class="menu-voce" href="guida-5.html"><span class="menu-n">5</span>Catalogo, articoli e kit</a>
+<a class="menu-voce" href="guida-6.html"><span class="menu-n">6</span>Giacenze e inventario</a>
+<a class="menu-voce" href="guida-7.html"><span class="menu-n">7</span>Report fiscali</a>
+<p class="menu-blocco">Cavarsela da sola</p>
+<a class="menu-voce" href="guida-8.html"><span class="menu-n">8</span>Muoversi in Grist</a>
+<a class="menu-voce" href="guida-9.html"><span class="menu-n">9</span>Manutenzione e problemi</a>
+<p class="menu-blocco">Riferimento</p>
+<a class="menu-voce" href="scheda.html"><span class="menu-n">A4</span>Scheda rapida</a>
+</nav>
+
+<div class="colonna">
+  <div class="barra">
+    <div class="barra-nav"> <a href="guida-1.html">Guida 1 ›</a></div>
+    <div class="barra-strumenti"><button type="button" class="bottone-piatto" id="espandi">Espandi tutto</button><button type="button" class="bottone-piatto" onclick="window.print()">Stampa</button></div>
+  </div>
+  <main id="principale">
+
+<header class="testata">
+  <p class="occhiello">Guida 0</p>
+  <h1>Come funziona il sistema</h1>
+  <p class="versione"><strong>Versione dell'11/09/2026</strong> · Sistema «Magazzino LwM»</p>
+</header>
+<nav class="sommario" aria-label="Sezioni della guida">
+  <p class="sommario-titolo">In questa guida</p>
+  <ol class="sommario-voci"><li><a href="#s1"><span class="n">1</span>In breve</a></li><li><a href="#s2"><span class="n">2</span>I quattro pezzi e chi fa cosa</a></li><li><a href="#s3"><span class="n">3</span>Che strada fa un ordine</a></li><li><a href="#s4"><span class="n">4</span>I tre automatismi, in mezza pagina</a></li><li><a href="#s5"><span class="n">5</span>Le regole di fondo</a></li><li><a href="#s6"><span class="n">6</span>La routine di lavoro</a></li><li><a href="#s7"><span class="n">7</span>Dove si guarda cosa</a></li><li><a href="#s8"><span class="n">8</span>Come leggere i colori</a></li><li><a href="#s9"><span class="n">9</span>Cosa il sistema non fa</a></li><li><a href="#s10"><span class="n">10</span>Fin dove arrivi tu, da dove si chiama Paolo</a></li><li><a href="#s11"><span class="n">11</span>Come sono fatte queste guide</a></li></ol>
+</nav>
+<div class="corpo">
+<p>Questa versione descrive il sistema come è oggi: la struttura di Grist, i tre automatismi e le pagine che trovi a schermo.</p>
+<p>Il sistema resta <strong>in collaudo fino a fine 2026</strong>. Vuol dire che le automazioni sono costruite e provate, ma non hanno ancora attraversato un anno di ordini veri, con tutte le stranezze che un anno porta. Dove una guida descrive un comportamento che ci aspettiamo ma che non abbiamo ancora visto succedere su un caso reale, lo trovi segnalato così:</p>
+<aside class="box box-nota">
+<p><span class="marcatore"><a href="guida-9.html#s9" title="elenco completo nella guida 9 §9"><em>comportamento atteso, non ancora verificato sul campo</em></a></span></p>
+</aside>
+<p>Non è un avviso di pericolo. È un modo per sapere, quando un numero non torna, se stai guardando qualcosa di rodato o qualcosa che nessuno ha ancora messo alla prova. L'elenco completo di questi punti sta nella <a href="guida-9.html">guida 9</a>.</p>
+<hr>
+<h2 id="s1"><a class="ancora" href="#s1">§1</a> In breve</h2>
+<p>Il sistema tiene il conto di tre movimenti — <strong>quello che vendi, quello che ti torna indietro, quello che carichi</strong> — su due magazzini, e da quel conto ricava due cose: le giacenze aggiornate e i report da mandare al commercialista ogni trimestre.</p>
+<p>Non fa altro. Non prepara spedizioni, non emette fatture, non gestisce il sito. Quelle restano dove sono sempre state.</p>
+<hr>
+<h2 id="s2"><a class="ancora" href="#s2">§2</a> I quattro pezzi e chi fa cosa</h2>
+<p><strong>WooCommerce</strong> è dove si vende. Ci sono il catalogo, gli ordini dei clienti, gli ordini che i rappresentanti inseriscono con il plugin Sales Agent, e i rimborsi. È il posto in cui le cose <em>succedono</em>.</p>
+<p><strong>Grist</strong> è dove si conta. È un documento unico, «Magazzino LwM», con dentro le tabelle, le pagine di lavoro e i report. È il posto in cui lavori tutti i giorni, ed è l'unico posto in cui il magazzino esiste davvero.</p>
+<p><strong>Make</strong> è il postino fra i due. Sono tre automatismi che copiano da WooCommerce a Grist. Non decidono niente: eseguono sempre gli stessi passaggi, nello stesso ordine.</p>
+<p><strong>Le mail</strong> sono l'allarme. Ne arrivano di tre tipi, e solo quando c'è qualcosa da guardare. Nessuna mail non significa "è andato tutto bene": significa che nessuno dei tre controlli si è acceso.</p>
+<aside class="box box-nota">
+<p>Durante il collaudo le mail arrivano a <strong>tre destinatari</strong> — te, Virginia e Paolo. È voluto: finché il sistema è in rodaggio, un avviso che non capisci lo sta guardando anche chi l'ha costruito. A fine collaudo si decide se lasciare così o restringere.</p>
+</aside>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — l'autorizzazione delle mail scade ogni sei mesi</p>
+<p>Le notifiche partono da un indirizzo di posta creato apposta per il sistema, e il collegamento che lo autorizza a spedire <strong>va rinnovato ogni sei mesi</strong>. La prossima scadenza è il <strong>14 febbraio 2027</strong>: conviene metterla in calendario adesso.</p>
+<p>Il problema non è il rinnovo, che è una cosa di due minuti. È che se scade, le mail smettono di partire e nessuno lo annuncia — e siccome l'assenza di mail di solito significa "nessun controllo si è acceso", un collegamento morto è indistinguibile dalla calma. Come si rinnova: <a href="guida-9.html#s6">guida 9</a>, sezione 6.</p>
+</aside>
+<figure class="figura">
+<figcaption>Figura 1 — I quattro pezzi</figcaption>
+<pre>   ┌─────────────────────┐                                ┌─────────────────────┐
+   │    WooCommerce      │      1. ordini nuovi           │       GRIST         │
+   │                     │ ─────────────────────────────► │   «Magazzino LwM»   │
+   │  sito + Sales Agent │      2. stati e rimborsi       │                     │
+   │  catalogo, ordini,  │ ─────────────────────────────► │  giacenze, report,  │
+   │  rimborsi           │            (Make)              │  presidi            │
+   │                     │                                │                     │
+   │                     │ ◄ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  │                     │
+   └─────────────────────┘   niente torna indietro        └──────────▲──────────┘
+                                                                     │
+                                       3. esplosione kit ────────────┤
+                                                                     │
+                                  inserimenti manuali ───────────────┘
+                                  (ordini a mano, carichi, movimenti)
+
+                         Make, quando serve, avvisa via ✉ mail</pre>
+</figure>
+<details class="box box-perche">
+<summary>Perché funziona così — il traffico va in una direzione sola</summary>
+<div class="box-corpo"><p>Tutto scorre da WooCommerce a Grist, mai al contrario. Grist non tocca il sito: non cambia stati, non aggiorna disponibilità, non annulla ordini.</p>
+<p>Ha una conseguenza pratica che conviene tenere a mente: <strong>la disponibilità mostrata sul sito e la giacenza di Grist sono due numeri diversi</strong>, e nessuno li riconcilia. WooCommerce scala il suo contatore quando vende; Grist calcola il suo dalle righe. Se carichi cento copie in magazzino e le registri in Grist, il sito non lo sa.</p></div>
+</details>
+<hr>
+<h2 id="s3"><a class="ancora" href="#s3">§3</a> Che strada fa un ordine</h2>
+<p>Un ordine tipo, dall'inizio alla fine.</p>
+<p>Arriva su WooCommerce, da un cliente o da un rappresentante. Nel giro di pochi secondi il primo automatismo lo scrive in Grist: la testata dell'ordine e una riga per ogni prodotto. Se uno dei prodotti ha uno SKU che in Grist non esiste ancora, se lo crea da solo e ti manda una mail per dirtelo. Se uno dei prodotti è un kit, aggiunge anche una riga per ogni pezzo che lo compone.</p>
+<p>A quel punto l'ordine compare nella pagina <strong>Ordini Aperti</strong>, con la casella del magazzino vuota e colorata di arancione. Questo è il primo dei tre momenti in cui serve una persona: <strong>scegliere da quale magazzino parte la merce</strong>. Nessuna regola può farlo al posto tuo, e finché non lo fai le giacenze dei due magazzini non si aggiornano. Nella stessa passata conviene dare un'occhiata alla colonna della fattura, che è lì accanto: è un controllo, non un lavoro, ed è spiegato nella <a href="guida-3.html">guida 3</a>.</p>
+<p>Da lì in poi l'ordine va avanti da solo. Quando su WooCommerce passa a "Completato", il secondo automatismo aggiorna lo stato anche in Grist. Se in seguito rimborsi qualcosa, sempre il secondo automatismo crea in Grist un <strong>record di reso</strong>, separato dall'ordine, con le righe in negativo.</p>
+<p>Il reso porta il secondo intervento umano: <strong>dire cos'è successo alla merce</strong>, cioè se è tornata indietro oppure se non tornerà. Finché non lo dici, il rimborso conta per il fisco ma il magazzino resta fermo.</p>
+<p>C'è un caso in cui quella decisione è già stata presa, e senza passare da Grist: se al momento del rimborso hai spuntato <strong>«Rifornisci i prodotti rimborsati»</strong> su WooCommerce, il sistema registra la merce come già rientrata e la giacenza risale subito. Da qui la regola, che vale sempre: <strong>quella spunta si mette solo se la merce è già tornata davvero.</strong> Il perché, e cosa fare se l'hai messa per sbaglio, sono nella <a href="guida-4.html">guida 4</a>.</p>
+<p>Il terzo intervento è quello che fai quando arriva una mail: <strong>completare un articolo che il sistema ha creato da solo</strong> — sceglierne l'aliquota, riempire i dati che mancano, inserire giacenze iniziali e date. La procedura è nella <a href="guida-5.html">guida 5</a>.</p>
+<p>A fine trimestre, tutte le righe valide del periodo entrano nei due report e il lavoro è fatto.</p>
+<figure class="figura">
+<figcaption>Figura 2 — La strada di un ordine</figcaption>
+<pre>  WooCommerce          Make            Grist                    Tu
+  ───────────          ────            ─────                    ──
+
+  ordine nuovo  ──────► scrive ──────► testata + righe
+                        (crea articoli mancanti,
+                         esplode i kit)
+                                              │
+                                              ▼
+                                       «Ordini Aperti»  ────────► 👤 scegli il magazzino
+                                                                     (casella arancione)
+  stato cambia  ──────► aggiorna ────► stato aggiornato
+  (Completato)
+
+  rimborso      ──────► crea ────────► record di RESO
+                                       + righe negative
+                                              │
+                                              ▼
+                                       «Resi in attesa       ──► 👤 merce rientrata?
+                                        di rientro»               oppure si chiude
+                                                                  senza rientro?
+
+  (in qualunque momento)  ✉ mail ─────────────────────────────► 👤 verifica l'articolo
+                                                                    creato dal sistema
+                                              │
+                                              ▼
+                                       fine trimestre: i due report</pre>
+</figure>
+<hr>
+<h2 id="s4"><a class="ancora" href="#s4">§4</a> I tre automatismi, in mezza pagina</h2>
+<div class="tabella"><table>
+<thead><tr><th></th><th>Quando parte</th><th>Cosa scrive in Grist</th><th>Cosa <strong>non</strong> fa</th></tr></thead>
+<tbody><tr><td><strong>Raccolta ordini</strong></td><td>Appena nasce un ordine su WooCommerce</td><td>Testata e righe. Crea gli articoli mancanti, esplode i kit, manda la mail sugli articoli nuovi</td><td>Non tocca più l'ordine dopo averlo scritto</td></tr><tr><td><strong>Aggiornamento ordini e resi</strong></td><td>A ogni modifica di un ordine su WooCommerce</td><td>Il cambio di stato; i record di reso con le righe negative. Manda le due mail di allarme</td><td>Non crea ordini nuovi. Non decide se la merce è rientrata</td></tr><tr><td><strong>Esplosione kit</strong></td><td>Quando in Grist si accende la spunta su una riga-kit</td><td>Le righe dei pezzi che compongono il kit</td><td>Non riguarda i kit già esplosi dagli altri due</td></tr></tbody>
+</table></div>
+<p>Il secondo automatismo gira molte volte a vuoto, ed è normale: WooCommerce lo avvisa a ogni salvataggio di un ordine, anche quando non è cambiato niente di rilevante. Un'esecuzione in cui non succede nulla è il caso più frequente e più sano.</p>
+<p>I dettagli — quali mail arrivano, cosa contengono, cosa fare quando arrivano — stanno nella <strong><a href="guida-2.html">guida 2</a></strong>.</p>
+<hr>
+<h2 id="s5"><a class="ancora" href="#s5">§5</a> Le regole di fondo</h2>
+<p>Sono dieci, raggruppate in tre famiglie. Se ricordi solo queste, la maggior parte delle altre guide diventa facile.</p>
+<h4 id="come-circolano-i-dati">Come circolano i dati</h4>
+<p><strong>1. Grist non riscrive nulla su WooCommerce.</strong> Quello che correggi in Grist resta in Grist. Se annulli un ordine sul sito, la modifica arriva; se sistemi una quantità in Grist, sul sito non cambia niente. Vale anche per le giacenze: caricare merce in Grist non aggiorna la disponibilità del negozio.</p>
+<p><strong>2. Una tabella sola, quattro tipi di record.</strong> La tabella <code>Ordini</code> non contiene solo gli ordini. Contiene quattro cose diverse, distinte da un campo:</p>
+<ul><li><strong>Ordine</strong> — una vendita.</li><li><strong>Reso</strong> — un rimborso. Lo crea il sistema, con le righe in negativo.</li><li><strong>Approvvigionamento</strong> — un carico di magazzino, cioè merce che entra. Lo inserisci tu, a mano, e nessun automatismo lo riguarda.</li><li><strong>Altri movimenti</strong> — tutto il resto: uno spostamento fra magazzini, la correzione di un ordine partito da due depositi, una rottura. Lo inserisci tu, e sul segno delle quantità sei sola: è l'unico dei quattro su cui nessun controllo guarda se hai messo più o meno (<a href="guida-3.html">guida 3</a>).</li></ul>
+<p>Chi apre quella tabella e la legge come "l'elenco delle vendite" fa una somma sbagliata. Nei report la distinzione è già gestita: approvvigionamenti e movimenti eccezionali ne restano fuori per costruzione.</p>
+<p><strong>3. I numeri contano le uscite: un carico si scrive in negativo.</strong> È la cosa più controintuitiva del sistema, e vale la pena leggerla due volte. Le quantità sulle righe non contano i pezzi: contano <strong>i pezzi che escono dal magazzino</strong>. Una vendita è positiva. Un reso è negativo, perché la merce rientra. Un carico è negativo per la stessa ragione.</p>
+<details class="box box-perche">
+<summary>Perché funziona così</summary>
+<div class="box-corpo"><p>La giacenza si calcola come <em>giacenza iniziale meno quantità uscite</em>. Tenendo questa convenzione, vendite, resi e carichi attraversano tutti le stesse formule, e non serve una formula in più per ogni caso nuovo. Il prezzo da pagare è che il segno va scritto a mano sui carichi, e a mano si sbaglia: per questo la riga si accende con un avviso se metti una quantità positiva su un reso o su un approvvigionamento.</p></div>
+</details>
+<h4 id="come-si-contano-vendite-e-resi">Come si contano vendite e resi</h4>
+<p><strong>4. Ogni ordine entra una volta sola.</strong> WooCommerce può annunciare lo stesso ordine più volte. Il sistema tiene buona la prima e ignora le altre. È voluto: se ne accettasse due, il magazzino si scaricherebbe due volte. Le modifiche successive all'ordine — lo stato, i rimborsi — arrivano invece da un canale diverso e vengono recepite.</p>
+<p><strong>5. Un reso non cancella la vendita: la storna.</strong> Quando rimborsi, in Grist non sparisce niente. Nasce un secondo record, collegato all'originale, con le righe in negativo e con <strong>la data del rimborso</strong>, non quella della vendita. La vendita resta lì, valida, ed è la riga negativa a compensarla.</p>
+<details class="box box-perche">
+<summary>Perché funziona così</summary>
+<div class="box-corpo"><p>Due ragioni, una fiscale e una pratica.</p>
+<p>Quella fiscale: un rimborso di oggi su una vendita di tre mesi fa non deve toccare un trimestre già consegnato al commercialista. Atterrando nel giorno del rimborso, non lo tocca.</p>
+<p>Quella pratica: se togliessimo di mezzo anche la vendita, lo storno verrebbe contato due volte e comparirebbe in magazzino un pezzo che non esiste. È un errore che abbiamo commesso davvero, in fase di costruzione, e non dava nessun messaggio di errore: dava solo un numero sbagliato dall'aria plausibile.</p></div>
+</details>
+<p><strong>6. Su ogni riga il sistema si fa due domande diverse.</strong> La prima è <em>conta ai fini fiscali?</em> e dipende solo dallo stato dell'ordine: entrano nei report gli ordini <strong>Completato</strong> e <strong>Rimborsato</strong>. Restano fuori <code>In lavorazione</code>, <code>In sospeso</code>, <code>In attesa di pagamento</code>, <code>Annullato</code> e <code>Fallito</code>.</p>
+<p>La seconda è <em>ha mosso merce vera?</em> e per i resi dipende anche da quello che dici tu sul rientro fisico.</p>
+<p>Le due domande sono indipendenti, e la distinzione conta:</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — il rientro fisico non c'entra con i report</p>
+<p>Quello che dichiari sul rientro della merce governa <strong>soltanto le giacenze</strong>. Un reso entra nei report fiscali comunque, che tu abbia confermato il rientro, dichiarato che la merce non tornerà, o non abbia ancora deciso. Se rimandi, stai tenendo indietro il magazzino, non il registro.</p>
+</aside>
+<h4 id="dove-serve-una-persona">Dove serve una persona</h4>
+<p><strong>7. Il magazzino lo sceglie qualcuno, e finché non lo sceglie il conto non torna.</strong> Non esiste un criterio automatico per decidere da dove parte la merce: lo decidi tu. Finché la casella è vuota resta <strong>arancione</strong>, e i pezzi di quell'ordine escono dal totale generale ma non da nessuno dei due magazzini. È il "venduto orfano".</p>
+<p>Con una passata a settimana è del tutto normale trovare ordini arancioni e un venduto orfano diverso da zero: è la coda di lavoro, non un errore. Diventa un problema solo se resta lì per settimane, perché nel frattempo le giacenze dei singoli magazzini sono più alte del vero.</p>
+<p>Fa eccezione un caso: gli ordini che contengono <strong>soltanto prodotti virtuali</strong> non hanno merce da spedire, quindi non chiedono un magazzino e la casella non si accende. Se ne trovi uno con la casella bianca e vuota, non è una dimenticanza.</p>
+<p><strong>8. Un reso si chiude in due modi diversi, e non sono intercambiabili.</strong> Quando rimborsi, la riga finisce nella pagina <em>Resi in attesa di rientro</em> e ci resta finché non dici tu cos'è successo alla merce — <strong>a meno che tu non abbia già spuntato «Rifornisci i prodotti rimborsati» su WooCommerce</strong>, nel qual caso hai già dichiarato che la merce è tornata e la riga non ci arriva nemmeno. Vale la pena dirlo una volta di più: quella spunta si mette solo quando il pacco è già sul tavolo.</p>
+<p>Per tutti gli altri resi, le caselle sono due:</p>
+<ul><li><strong>merce rientrata</strong> — il pezzo è tornato indietro, rientra in magazzino, la giacenza risale.</li><li><strong>chiuso senza rientro</strong> — il pezzo non tornerà: era danneggiato, l'ha perso il corriere, non valeva la spesa di rispedirlo. La pendenza si chiude e il magazzino <strong>non si muove</strong>.</li></ul>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — le due caselle si somigliano, i loro effetti no</p>
+<p>Spuntarne una qualsiasi fa la stessa cosa a schermo: la riga sparisce dalla lista. Sui dati fanno l'opposto, e sbagliare non produce nessun avviso.</p>
+<p>Due rimborsi identici dello stesso libro. Nel primo il cliente te lo rispedisce e arriva: <strong>merce rientrata</strong>, e quella copia torna vendibile. Nel secondo il cliente ti manda la foto della copia rovinata e gli dici di tenerla: <strong>chiuso senza rientro</strong>, perché quella copia non esiste più. Se sul secondo spunti "merce rientrata" per far sparire la riga, ti ritrovi in magazzino una copia fantasma che prima o poi proverai a vendere.</p>
+<p>La regola pratica: la casella la scegli in base a <strong>dov'è il pezzo adesso</strong>, non al fatto che la pratica sia finita. È la stessa regola della spunta su WooCommerce, ed è l'unica da ricordare: conta dov'è la merce, non a che punto è la pratica.</p>
+</aside>
+<p>Su un reso di kit compare <strong>solo la riga del kit</strong>, non quelle dei pezzi che lo compongono: quello che dichiari lì vale per tutti i componenti insieme. È voluto — spuntare un componente alla volta non avrebbe alcun effetto, ed era una trappola.</p>
+<p><strong>9. I kit non hanno una giacenza propria.</strong> Un kit è un contenitore: quello che si muove sono i pezzi che contiene. Quando vendi un kit, il sistema aggiunge da sé le righe dei componenti ed è su quelle che il magazzino scala.</p>
+<p>Per questo nella pagina <em>Giacenze</em> i kit <strong>non compaiono per niente</strong>: quella pagina elenca solo le cose che un magazzino ce l'hanno davvero. Se ci cerchi un kit e non lo trovi, non è un errore e non manca nulla — non è che ne hai zero, è che contarli non vorrebbe dire niente. Vale lo stesso per i prodotti virtuali, come i webinar o l'accesso alla piattaforma: nessuna giacenza, quindi fuori dall'elenco.</p>
+<p>Nel testo delle guide li chiamiamo sempre <strong>kit</strong>; in Grist la tabella che dice di cosa è fatto ciascuno si chiama <code>Bundle</code>.</p>
+<p><strong>10. Questo sistema sbaglia in silenzio.</strong> Quasi nessuno degli errori possibili produce un messaggio di errore. Un segno invertito, un magazzino non assegnato, un articolo senza regime fiscale, la casella sbagliata su un reso: nessuno di questi ferma niente. Producono un numero sbagliato che sembra plausibile, ed è il tipo di errore peggiore, perché non c'è motivo di andarlo a cercare.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — i presidi sono l'unico sistema d'allarme</p>
+<p>Ci sono quattro pagine in Grist che non servono a lavorare: servono a sorvegliare. Due <strong>devono restare vuote</strong> — <em>Resi senza righe</em> e <em>Resi di kit da esplodere</em> — e se ci trovi una riga, quella riga chiede qualcosa. Le altre due sono liste di lavoro: <em>Resi in attesa di rientro</em> contiene le pendenze aperte e si svuota man mano che le chiudi; <em>Approvvigionamenti</em> contiene tutti i carichi, e lì a dover essere vuota è la colonna degli avvisi.</p>
+<p>In entrambi i casi vale la stessa cosa: se non le apri mai, non te ne accorgi in nessun altro modo.</p>
+</aside>
+<hr>
+<h2 id="s6"><a class="ancora" href="#s6">§6</a> La routine di lavoro</h2>
+<div class="tabella"><table>
+<thead><tr><th>Quando</th><th>Cosa guardi</th><th>Cosa deve mostrare</th></tr></thead>
+<tbody><tr><td><strong>Ogni settimana</strong></td><td><em>Ordini Aperti</em></td><td>Gli ordini che aspettano ancora qualcosa. Le <span class="campione campione-arancione" aria-hidden="true"></span>caselle arancioni del magazzino sono la parte che dipende da te; nella stessa passata si controlla la colonna della fattura (<a href="guida-3.html">guida 3</a>)</td></tr><tr><td><strong>Ogni mese</strong></td><td><em>Resi di kit da esplodere</em></td><td>Vuota. <strong>Si guarda per prima</strong>, prima di chiudere le pendenze: vedi la nota qui sotto</td></tr><tr><td></td><td><em>Resi in attesa di rientro</em></td><td>Le pendenze aperte. Per ciascuna dici se la merce è tornata o se si chiude senza rientro, e la riga sparisce</td></tr><tr><td></td><td><em>Resi senza righe</em></td><td>Vuota</td></tr><tr><td><strong>Ogni trimestre</strong></td><td><em>REPORT Corrispettivi</em> e <em>REPORT Art. 74</em></td><td>I numeri del trimestre da mandare al commercialista (<a href="guida-7.html">guida 7</a>)</td></tr><tr><td></td><td>Una <strong>copia di sicurezza</strong> del documento</td><td>Scaricata e messa da parte, con la data nel nome (<a href="guida-9.html">guida 9</a>)</td></tr><tr><td></td><td><strong>Gli ordini del trimestre sul sito e quelli in Grist</strong> — primi due trimestri</td><td>Lo stesso numero. Se non coincidono, <a href="guida-9.html">guida 9</a></td></tr><tr><td><strong>Quando arriva una mail</strong></td><td>Dipende dalla mail</td><td><a href="guida-2.html">Guida 2</a></td></tr><tr><td><strong>Dopo ogni carico di merce</strong></td><td><em>Approvvigionamenti</em>, poi <em>Giacenze</em></td><td>La riga appena inserita <strong>senza avvisi</strong>, e il numero salito davvero: vedi la nota qui sotto</td></tr><tr><td><strong>Dopo ogni modifica al catalogo del sito</strong></td><td><em>Articoli</em></td><td>La stessa modifica riportata in Grist. Un prodotto che cambia davvero diventa un articolo nuovo (<a href="guida-5.html">guida 5</a>)</td></tr></tbody>
+</table></div>
+<p>Tre righe meritano una nota.</p>
+<p><em>Resi di kit da esplodere</em> va guardata <strong>prima</strong> delle altre due, e non è un capriccio d'ordine. Se il reso di un kit non è stato esploso, i suoi pezzi in Grist non esistono: dichiarare che la merce è rientrata sulla riga del kit non ricarica niente, perché il kit non ha giacenza. Il gesto sembra riuscito e non muove un pezzo. Svuotata quella pagina, invece, le pendenze si chiudono e i conti tornano.</p>
+<p><em>Ordini Aperti</em> non deve svuotarsi. Contiene tutto ciò che è ancora in movimento: ordini in lavorazione, ordini in attesa di pagamento, ordini già completati ma senza magazzino assegnato. Una lista mai vuota è la normalità; quello che guardi è se qualcosa ci resta più a lungo di quanto dovrebbe.</p>
+<p>L'ultima riga è diversa da tutte le altre: non è una scadenza di calendario, è il passo finale della procedura di carico. Un approvvigionamento deve avere diverse cose giuste insieme, e nessuna di esse, se sbagliata, dà errore. <strong>La colonna degli avvisi ne sorveglia quattro</strong>: lo stato, il magazzino, il segno delle quantità e il record rimasto senza righe. Se mostra qualcosa, il record esiste, si vede, e non conta niente.</p>
+<p>Su quelle quattro puoi fidarti. Ne restano però fuori altre tre — la data, lo SKU non agganciato, lo SKU di un kit al posto dei componenti — che rendono il carico inutile lasciando la riga pulita. Per questo il controllo che chiude davvero la procedura è un altro, e costa lo stesso tempo: <strong>apri <em>Giacenze</em> e verifica che il numero sia salito.</strong> La <a href="guida-6.html">guida 6</a> spiega quali sono i tre casi e come si riconoscono.</p>
+<p>Le due righe trimestrali nuove sono diverse da tutte le altre: non guardano il lavoro, guardano il sistema. Non servono a trovare qualcosa da fare, servono ad accorgersi di una cosa che non ti sta chiamando. Insieme a loro ce n'è una che torna ogni sei mesi — l'autorizzazione della posta — e una da fare ogni tanto, il numero di righe del documento. Il calendario completo, con il perché di ciascuna, è nella <strong><a href="guida-9.html#s2">guida 9</a>, sezione 2</strong>.</p>
+<hr>
+<h2 id="s7"><a class="ancora" href="#s7">§7</a> Dove si guarda cosa</h2>
+<p>Diciassette pagine, che si dividono in quattro famiglie.</p>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g0-01-barra-pagine.png</span></div>
+<figcaption><span class="numero">Screenshot 1</span> La barra laterale di Grist con l'elenco completo delle pagine visibile.</figcaption>
+</figure>
+<p><strong>Per lavorare</strong></p>
+<div class="tabella"><table>
+<thead><tr><th>Se ti chiedi…</th><th>Apri</th></tr></thead>
+<tbody><tr><td>Quali ordini aspettano ancora qualcosa da me?</td><td><em>Ordini Aperti</em></td></tr><tr><td>Come inserisco un ordine che non viene dal sito?</td><td><em>Inserimento Ordini</em></td></tr><tr><td>Cosa c'è dentro un ordine, riga per riga?</td><td><em>Righe_Ordine</em></td></tr><tr><td>L'elenco completo degli ordini, resi e carichi?</td><td><em>Ordini</em></td></tr><tr><td>Perché questo articolo ha questa giacenza?</td><td><em>Movimenti di un articolo</em></td></tr></tbody>
+</table></div>
+<p><strong>Le anagrafiche</strong></p>
+<div class="tabella"><table>
+<thead><tr><th>Se ti chiedi…</th><th>Apri</th></tr></thead>
+<tbody><tr><td>Che dati ha questo articolo? Che regime fiscale?</td><td><em>Articoli</em></td></tr><tr><td>Di cosa è fatto questo kit?</td><td><em>Bundle</em></td></tr><tr><td>Com'era il catalogo di WooCommerce all'ultimo aggiornamento?</td><td><em>Prodotti</em> (si aggiorna a mano: il catalogo di oggi è sul sito)</td></tr></tbody>
+</table></div>
+<p><strong>I numeri</strong></p>
+<div class="tabella"><table>
+<thead><tr><th>Se ti chiedi…</th><th>Apri</th></tr></thead>
+<tbody><tr><td>Quanti pezzi ho, e dove?</td><td><em>Giacenze</em></td></tr><tr><td>Quante magliette ho, per modello e taglia?</td><td><em>Giacenze T-Shirt</em></td></tr><tr><td>Cosa mando al commercialista?</td><td><em>REPORT Corrispettivi</em>, <em>REPORT Art. 74</em></td></tr><tr><td>Quanto mi sono costate le commissioni PayPal?</td><td><em>Report Fee Paypal</em></td></tr></tbody>
+</table></div>
+<p><strong>I presidi</strong></p>
+<div class="tabella"><table>
+<thead><tr><th>Cosa sorveglia</th><th>Pagina</th><th>Come dev'essere</th></tr></thead>
+<tbody><tr><td>Merce rimborsata di cui non hai ancora detto la sorte</td><td><em>Resi in attesa di rientro</em></td><td>Una lista di lavoro: si svuota chiudendo le pendenze</td></tr><tr><td>Rimborsi che non compaiono nei report perché privi di righe</td><td><em>Resi senza righe</em></td><td>Vuota</td></tr><tr><td>Resi di kit a cui mancano i pezzi</td><td><em>Resi di kit da esplodere</em></td><td>Vuota</td></tr><tr><td>Carichi di magazzino inseriti male</td><td><em>Approvvigionamenti</em></td><td>Piena di carichi, ma senza avvisi</td></tr></tbody>
+</table></div>
+<p>Cosa contiene esattamente ciascuna pagina, quali colonne guardare e chi le scrive: <strong><a href="guida-1.html">guida 1</a></strong>.</p>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g0-02-ordini-aperti-magazzino.png</span></div>
+<figcaption><span class="numero">Screenshot 2</span> La pagina <em>Ordini Aperti</em> con il menu a tendina del magazzino aperto su un ordine, e almeno un altro ordine con la <span class="campione campione-arancione" aria-hidden="true"></span>casella arancione visibile.</figcaption>
+</figure>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g0-03-resi-attesa-rientro.png</span></div>
+<figcaption><span class="numero">Screenshot 3</span> La pagina <em>Resi in attesa di rientro</em> con le due caselle affiancate su una stessa riga.</figcaption>
+</figure>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g0-04-mail-avviso.png</span></div>
+<figcaption><span class="numero">Screenshot 4</span> Una mail di avviso come arriva in casella.</figcaption>
+</figure>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g0-05-vista-vuota.png</span></div>
+<figcaption><span class="numero">Screenshot 5</span> Una vista di presidio vuota, ad esempio <em>Resi di kit da esplodere</em>.</figcaption>
+</figure>
+<hr>
+<h2 id="s8"><a class="ancora" href="#s8">§8</a> Come leggere i colori</h2>
+<p>I colori delle colonne non sono decorazione: dicono a cosa serve un campo e se puoi scriverci.</p>
+<div class="tabella"><table>
+<thead><tr><th>Cosa vedi</th><th>Cosa vuol dire</th></tr></thead>
+<tbody><tr><td><strong>Intestazione arancione</strong></td><td>Colonna di controllo: sorveglia qualcosa e si accende quando c'è da guardare</td></tr><tr><td><strong>Intestazione viola chiaro</strong></td><td>Campo che riguarda i resi</td></tr><tr><td><strong>Intestazione azzurra</strong></td><td>Campo che riguarda la spedizione</td></tr><tr><td><strong>Sfondo grigio</strong> (colonna intera o singola cella)</td><td><strong>Non compilare.</strong> O lo scrive il sistema, o su quella riga quel campo non ha senso</td></tr><tr><td><strong>Cella arancione</strong></td><td>Quella riga chiede qualcosa: manca il magazzino, l'articolo è da verificare</td></tr><tr><td><strong>Bande di colore alternate</strong> (due tonalità della stessa tinta)</td><td>Solo un aiuto di lettura: separano un gruppo di righe dal successivo. Non dicono niente su cosa si può scrivere</td></tr></tbody>
+</table></div>
+<p>Lo <span class="campione campione-grigio" aria-hidden="true"></span>sfondo grigio è l'unica cosa nel documento che comunica un divieto a colpo d'occhio, ed è il colore da imparare per primo. Scrivere in una <span class="campione campione-grigio" aria-hidden="true"></span>cella grigia non produce un errore: produce un valore che il sistema poi ignora, o che riscrive da solo alla prima occasione, lasciandoti convinta di aver fatto qualcosa. Attenzione a non confonderlo con le bande alternate della pagina <em>Righe_Ordine</em>, che sono azzurre proprio per non somigliargli: quelle servono a vedere dove finisce un ordine e comincia il successivo.</p>
+<details class="box box-perche">
+<summary>Perché funziona così</summary>
+<div class="box-corpo"><p>Grist ti lascia modificare qualunque cosa, comprese le colonne calcolate. Non c'è un blocco: il grigio è il blocco.</p></div>
+</details>
+<p>L'<span class="campione campione-arancione" aria-hidden="true"></span>intestazione arancione, poi, è il modo per ritrovare i controlli anche fuori dalle quattro pagine di presidio. Alcuni vivono dentro pagine normali: nel <em>REPORT Corrispettivi</em> la colonna «Senza regime fiscale» intercetta le righe che sfuggirebbero al calcolo dell'IVA, nelle <em>Giacenze T-Shirt</em> la colonna <code>N.C.</code> segnala le magliette rimaste senza taglia riconosciuta, e nella pagina <em>Articoli</em> la colonna <code>check_elimina</code> dice quali articoli non vanno eliminati. Sono in mezzo ai dati che stai già guardando, e l'arancione è ciò che li distingue.</p>
+<hr>
+<h2 id="s9"><a class="ancora" href="#s9">§9</a> Cosa il sistema non fa</h2>
+<p>Vale la pena averlo chiaro adesso, invece di scoprirlo il giorno in cui serve.</p>
+<p><strong>Non aggiorna le disponibilità su WooCommerce.</strong> Le giacenze di Grist restano in Grist. È un possibile sviluppo futuro, non una cosa che esiste oggi. Se le scorte sono gestite anche sul sito, carichi e conte vanno quindi rifatti anche lì: è una delle poche cose che in questo sistema si fanno due volte.</p>
+<p><strong>Non copia il catalogo da WooCommerce a Grist.</strong> Un prodotto nuovo o un dato corretto sul sito non arriva da solo nella tabella degli articoli. L'unica eccezione è l'articolo che il sistema crea quando arriva un ordine con uno SKU sconosciuto, e anche quello va completato a mano. Ogni modifica al catalogo va quindi riportata anche in Grist (<a href="guida-5.html">guida 5</a>).</p>
+<p><strong>Non conserva i dati di un prodotto al momento della vendita.</strong> Nome, regime fiscale e prezzo di copertina vengono letti dall'articolo ogni volta che apri un report: se li cambi, cambiano anche i trimestri passati. Per questo un dato sbagliato si corregge, ma un prodotto che cambia davvero diventa un articolo nuovo (<a href="guida-5.html">guida 5</a>).</p>
+<p><strong>Non gestisce le spedizioni.</strong> Preparazione, etichette, tracking: tutto fuori dal sistema, come prima.</p>
+<p><strong>Non distingue ancora gli ordini dei rappresentanti da quelli diretti.</strong> Arrivano in Grist e funzionano esattamente come gli altri, ma il campo che indica il canale è uguale per tutti. È una situazione temporanea: per completare quella parte serve un ordine vero inserito da un rappresentante, su cui leggere come WooCommerce trasmette l'informazione sull'agente. Finché non ne passa uno, la mappatura non si può finire.</p>
+<p><strong>Non fa uscire dalla lista gli ordini falliti.</strong> Un pagamento non riuscito non conta per niente — né report né magazzino — ma resta in <em>Ordini Aperti</em> finché qualcuno non gli cambia stato. Se se ne accumulano, sono rumore in fondo alla lista.</p>
+<p><strong>Non si accorge di un ordine perso e mai più toccato.</strong> Se il primo automatismo fallisce e su quell'ordine nessuno mette più mano, non arriva nessun avviso. Il controllo esiste, ma si attiva solo se l'ordine viene modificato in seguito — cosa che di norma accade, perché prima o poi passa a "Completato". Non è però una riconciliazione: nessun automatismo confronta gli ordini di WooCommerce con quelli di Grist. Il confronto si fa a mano, ed è raccomandato per i primi due trimestri, quando prepari i report (<a href="guida-9.html#s2">guida 9</a>, sezione 2).</p>
+<p><strong>Non vede i rimborsi di solo importo.</strong> Su WooCommerce puoi rimborsare una somma senza indicare quali prodotti stai rimborsando: uno sconto concesso a posteriori, il rimborso delle sole spese di spedizione. In quel caso in Grist nasce il record di reso, ma <strong>senza righe</strong> — e siccome tutti e tre i report sommano le righe, quel rimborso non compare da nessuna parte, Registro Corrispettivi incluso. Non c'entra il rientro della merce: è proprio che non c'è nessuna riga da sommare. È il motivo per cui esiste la vista <em>Resi senza righe</em>: quello che ci trovi va sistemato a mano, aggiungendo al reso una riga con quantità zero e l'importo in negativo. Come si fa, e cosa succede dopo: <a href="guida-4.html">guida 4</a>.</p>
+<p><strong>Non storna le spese di spedizione rimborsate.</strong> Quando rimborsi un ordine, il reso che nasce in Grist porta con sé i prodotti ma non la spedizione: se il rimborso comprendeva anche quella, quella parte non viene tolta da nessuna colonna del Registro Corrispettivi. Se il rimborso è di <strong>sola</strong> spedizione lo intercetta la vista <em>Resi senza righe</em>, perché il reso nasce senza righe. Se invece è <strong>misto</strong> — prodotti più spedizione — il reso le righe ce le ha, quindi non compare in nessun presidio e nulla lo segnala. Quando ti capita, va annotato nel motivo del rimborso e segnalato (<a href="guida-4.html">guida 4</a> e <a href="guida-7.html">guida 7</a>).</p>
+<p><strong>Non recepisce le modifiche fatte a un ordine dopo la sua creazione.</strong> Da WooCommerce arrivano il cambio di stato e i rimborsi. Nient'altro: se cambi una quantità, correggi un prezzo, aggiungi o togli un prodotto da un ordine esistente, in Grist non arriva niente e nessuno te lo segnala. Quelle correzioni vanno rifatte a mano anche qui (<a href="guida-3.html">guida 3</a>).</p>
+<p><strong>Non si accorge se cancelli un ordine su WooCommerce.</strong> Gli automatismi vengono avvisati quando un ordine nasce e quando cambia, ma <strong>non quando viene cancellato</strong>. Un ordine cancellato dal sito resta in Grist come se nulla fosse: continua a scaricare il magazzino e continua a entrare nei report del trimestre.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — un ordine sbagliato si annulla, non si cancella</p>
+<p>Portalo su <code>Annullato</code>: quel cambio di stato arriva regolarmente in Grist, e da lì l'ordine esce dai report e smette di muovere il magazzino. La cancellazione, invece, lascia in Grist un ordine che sul sito non esiste più — e non c'è niente che te lo segnali. Se è già successo, l'ordine in Grist si porta su <code>Annullato</code> a mano: è lo stesso gesto, fatto dall'altra parte (<a href="guida-9.html#s7">guida 9</a>, sezione 7).</p>
+</aside>
+<p><strong>Non si accorge se annulli un rimborso su WooCommerce.</strong> Vale la stessa regola degli ordini, per lo stesso motivo: il reso resta in Grist, continua a stornare nei report e, se avevi dichiarato il rientro, continua a tenere quella copia in magazzino. Si sistema a mano, portando il reso su <code>Annullato</code> (<a href="guida-4.html">guida 4</a>). <span class="marcatore"><a href="guida-9.html#s9" title="elenco completo nella guida 9 §9"><em>(comportamento atteso, non ancora verificato sul campo)</em></a></span></p>
+<p><strong>Non tiene lo storico delle giacenze iniziali.</strong> Riscrivere una giacenza iniziale sovrascrive il valore precedente, e non resta traccia né del vecchio numero né del fatto che qualcuno l'abbia cambiato. Peggio: spostando la data di riferimento, tutti i movimenti anteriori escono dal conto.</p>
+<p>È il motivo per cui quel campo si usa in due soli casi — un articolo nuovo e il primo avvio — mentre tutto ciò che accade davvero si registra come movimento: un carico per la merce che arriva, un movimento per quello che si sposta o per una differenza trovata contando. I movimenti restano tutti, con la loro data, e si rileggono nella pagina <em>Movimenti di un articolo</em>. Quando usare l'uno e quando l'altro: <a href="guida-6.html">guida 6</a>.</p>
+<p><strong>I carichi di magazzino sono interamente manuali</strong> e non sono ancora stati provati su un caso vero. <span class="marcatore"><a href="guida-9.html#s9" title="elenco completo nella guida 9 §9"><em>(comportamento atteso, non ancora verificato sul campo)</em></a></span></p>
+<p><strong>La chiusura di un reso senza rientro</strong> è stata aggiunta da poco e non è ancora stata usata su un caso vero: la prima volta che la usi, vale la pena aprire <em>Giacenze</em> e controllare che il numero <strong>non</strong> si sia mosso (<a href="guida-4.html">guida 4</a>). <span class="marcatore"><a href="guida-9.html#s9" title="elenco completo nella guida 9 §9"><em>(comportamento atteso, non ancora verificato sul campo)</em></a></span></p>
+<p><strong>Il piano gratuito di Grist tiene 5.000 righe in tutto il documento</strong>, non per tabella. Ai volumi attuali le vendite ne consumano poche centinaio l'anno: la voce grossa è <code>Prodotti</code>, che da sola ne occupa circa 1.200. Non è un problema imminente, ma è un numero da guardare ogni tanto — si legge in «Dati grezzi» (<a href="guida-8.html#s13">guida 8</a>, sezione 13).</p>
+<hr>
+<h2 id="s10"><a class="ancora" href="#s10">§10</a> Fin dove arrivi tu, da dove si chiama Paolo</h2>
+<p>Sono tue tutte le attività ordinarie: i controlli periodici, le correzioni sui dati, l'assegnazione dei magazzini, la chiusura dei resi, la creazione di articoli e di kit, l'inserimento dei carichi, la gestione delle viste, il riavvio di un automatismo che risulta fermo e il rinnovo semestrale dell'autorizzazione della posta.</p>
+<p>Restano a Paolo le modifiche alle formule, agli automatismi di Make, ai collegamenti fra i sistemi, gli identificativi delle colonne, e qualsiasi cosa nuova da costruire. Lo SKU di un articolo esistente, invece, non si cambia: se un prodotto ha bisogno di un codice diverso, è un prodotto nuovo (<a href="guida-5.html">guida 5</a>).</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — rinominare una colonna non è come rinominare un file</p>
+<p>Ogni colonna ha due nomi: l'<strong>etichetta</strong>, che è quella che leggi tu in cima alla colonna, e l'<strong>identificativo</strong>, che è il nome con cui la chiamano le formule e gli automatismi. Normalmente Grist li cambia insieme, quindi rinominare una colonna significa cambiare anche l'identificativo — e tutto ciò che puntava a quel nome smette di funzionare in silenzio: formule che non calcolano più, automatismi che scrivono in un campo che non esiste.</p>
+<p>L'etichetta però si può cambiare <strong>da sola</strong>, ed è un'operazione del tutto sicura: nel pannello della colonna i due nomi sono tenuti insieme da un'icona a forma di catena, e cliccandola smettono di seguirsi. Se una colonna ha un nome che ti confonde, cambiala pure — ma da lì. La procedura, con lo screenshot, è nella <strong><a href="guida-8.html#s9">guida 8</a>, sezione 9</strong>.</p>
+</aside>
+<p>Il confine non è un muro: se una cosa ordinaria non ti riesce, si chiede. Ma le formule sono il punto in cui un intervento in buona fede fa il danno più grande, perché cambia i numeri di tutto lo storico senza dire niente a nessuno. La <a href="guida-9.html">guida 9</a> spiega cosa segnalare e come, in modo che una segnalazione basti.</p>
+<hr>
+<h2 id="s11"><a class="ancora" href="#s11">§11</a> Come sono fatte queste guide</h2>
+<p>Le guide sono dieci più una scheda riassuntiva. Sono brevi e indipendenti: si leggono le prime tre all'inizio, le altre quando serve.</p>
+<p>Dentro trovi due tipi di riquadro, e solo quelli:</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione</p>
+<p>— l'errore che costa caro, di solito quello che non dà nessun messaggio.</p>
+</aside>
+<details class="box box-perche">
+<summary>Perché funziona così</summary>
+<div class="box-corpo"><p>— il motivo dietro una scelta, quando conoscerlo aiuta ad accorgersi di qualcosa.</p></div>
+</details>
+<p>I nomi tecnici — colonne, tabelle, pagine — compaiono in <code>carattere come questo</code> soltanto quando ti servono per trovare qualcosa a schermo. Nel discorso normale usiamo le parole normali, e quando una colonna ha un nome a schermo diverso da quello interno, usiamo <strong>quello che leggi tu</strong>.</p>
+<div class="tabella"><table>
+<thead><tr><th>#</th><th>Guida</th><th>A cosa serve</th></tr></thead>
+<tbody><tr><td>0</td><td>Come funziona il sistema</td><td>Questa</td></tr><tr><td>1</td><td>La mappa di Grist</td><td>Le tabelle e le pagine, cosa presidia ciascuna, quali campi contano</td></tr><tr><td>2</td><td>Gli automatismi</td><td>I tre scenari nel dettaglio e le mail che possono arrivare</td></tr><tr><td>3</td><td>Ordini</td><td>Ordini Aperti, assegnare il magazzino, inserire e modificare ordini, kit, rappresentanti</td></tr><tr><td>4</td><td>Resi e rimborsi</td><td>Cosa succede quando rimborsi, le due uscite di un reso, il reso di un kit, i casi delicati</td></tr><tr><td>5</td><td>Catalogo, articoli e kit</td><td>Tenere allineati sito e Grist, articoli nuovi e varianti, regime fiscale, kit, cosa fare quando un prodotto cambia</td></tr><tr><td>6</td><td>Giacenze e inventario</td><td>Leggere le giacenze, registrare i carichi, contare il magazzino, capire i conti che non tornano</td></tr><tr><td>7</td><td>Report fiscali</td><td>Cosa contengono, chi entra e chi esce, la procedura fino all'invio al commercialista</td></tr><tr><td>8</td><td>Muoversi in Grist</td><td>Filtri, ricerche, colonne, export, e cosa non toccare mai</td></tr><tr><td>9</td><td>Manutenzione e problemi</td><td>Controlli, sintomi e rimedi, limiti noti, cosa segnalare</td></tr><tr><td>—</td><td><a href="scheda.html">Scheda A4</a></td><td>Una pagina sola: la routine, le viste da controllare, i pochi "mai fare"</td></tr></tbody>
+</table></div>
+</div>
+
+  </main>
+  <footer class="pie">
+    <p>Manuale del sistema «Magazzino LwM» · generato il 14/09/2026</p>
+    <p>Per i casi che non stanno nelle guide, e per qualsiasi cosa nuova da costruire, si scrive a Paolo: cosa allegare sta nella <a href="guida-9.html#s11">guida 9 §11</a>.</p>
+  </footer>
+</div>
+
+<div class="lente" id="lente" hidden><img src="" alt=""></div>
+
+<script src="assets/manuale.js"></script>
+</body>
+</html>

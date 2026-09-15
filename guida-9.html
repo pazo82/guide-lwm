@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Guida 9 — Manutenzione e problemi · Magazzino LwM</title>
+<link rel="stylesheet" href="assets/stile.css">
+</head>
+<body>
+<a class="salta" href="#principale">Vai al contenuto</a>
+
+<button type="button" class="apri-menu" id="apri-menu" aria-label="Apri il menu delle guide">☰ Guide</button>
+
+<nav class="menu" id="menu" aria-label="Le guide">
+  <p class="menu-titolo">Magazzino LwM</p>
+  <a class="menu-voce menu-indice" href="index.html">Indice</a>
+<p class="menu-blocco">Capire</p>
+<a class="menu-voce" href="guida-0.html"><span class="menu-n">0</span>Come funziona il sistema</a>
+<a class="menu-voce" href="guida-1.html"><span class="menu-n">1</span>La mappa di Grist</a>
+<a class="menu-voce" href="guida-2.html"><span class="menu-n">2</span>Gli automatismi (Make)</a>
+<p class="menu-blocco">Fare</p>
+<a class="menu-voce" href="guida-3.html"><span class="menu-n">3</span>Ordini</a>
+<a class="menu-voce" href="guida-4.html"><span class="menu-n">4</span>Resi e rimborsi</a>
+<a class="menu-voce" href="guida-5.html"><span class="menu-n">5</span>Catalogo, articoli e kit</a>
+<a class="menu-voce" href="guida-6.html"><span class="menu-n">6</span>Giacenze e inventario</a>
+<a class="menu-voce" href="guida-7.html"><span class="menu-n">7</span>Report fiscali</a>
+<p class="menu-blocco">Cavarsela da sola</p>
+<a class="menu-voce" href="guida-8.html"><span class="menu-n">8</span>Muoversi in Grist</a>
+<a class="menu-voce attiva" href="guida-9.html"><span class="menu-n">9</span>Manutenzione e problemi</a>
+<p class="menu-blocco">Riferimento</p>
+<a class="menu-voce" href="scheda.html"><span class="menu-n">A4</span>Scheda rapida</a>
+</nav>
+
+<div class="colonna">
+  <div class="barra">
+    <div class="barra-nav"><a href="guida-8.html">‹ Guida 8</a> </div>
+    <div class="barra-strumenti"><button type="button" class="bottone-piatto" id="espandi">Espandi tutto</button><button type="button" class="bottone-piatto" onclick="window.print()">Stampa</button></div>
+  </div>
+  <main id="principale">
+
+<header class="testata">
+  <p class="occhiello">Guida 9</p>
+  <h1>Manutenzione e problemi</h1>
+  <p class="versione"><strong>Versione del 14/09/2026</strong> · Sistema «Magazzino LwM»</p>
+</header>
+<nav class="sommario" aria-label="Sezioni della guida">
+  <p class="sommario-titolo">In questa guida</p>
+  <ol class="sommario-voci"><li><a href="#s1"><span class="n">1</span>In breve</a></li><li><a href="#s2"><span class="n">2</span>Il calendario dei controlli</a></li><li><a href="#s3"><span class="n">3</span>I tre posti dove si guarda prima di chiedere</a></li><li><a href="#s4"><span class="n">4</span>Sintomo → causa → azione</a></li><li><a href="#s5"><span class="n">5</span>Quando un automatismo è fermo</a></li><li><a href="#s6"><span class="n">6</span>La posta che smette di partire</a></li><li><a href="#s7"><span class="n">7</span>Rimediare a un guaio già fatto</a></li><li><a href="#s8"><span class="n">8</span>I limiti noti</a></li><li><a href="#s9"><span class="n">9</span>Le cose non ancora provate sul campo</a></li><li><a href="#s10"><span class="n">10</span>Quello che resta a Paolo</a></li><li><a href="#s11"><span class="n">11</span>Come si segnala un problema</a></li><li><a href="#s12"><span class="n">12</span>Dove si continua</a></li></ol>
+</nav>
+<div class="corpo">
+<p>Questa guida si apre in tre momenti: <strong>a scadenza</strong>, per i controlli che nessuno ti ricorderà di fare; <strong>quando qualcosa non torna</strong> e non sai nemmeno da che parte cominciare; e <strong>prima di scrivere a Paolo</strong>, per mettere nel messaggio le cose giuste.</p>
+<hr>
+<h2 id="s1"><a class="ancora" href="#s1">§1</a> In breve</h2>
+<p>C'è una frase che torna in tutte le guide e che qui diventa il criterio di tutto: <strong>quasi niente, in questo sistema, si rompe facendo rumore.</strong> Un automatismo fermo non manda un messaggio. Un ordine cancellato sul sito continua a scaricare il magazzino. Le mail che smettono di partire producono una casella di posta tranquilla.</p>
+<p>Da qui la regola: <strong>il silenzio non è una conferma.</strong> I controlli non si fanno quando si sospetta qualcosa, si fanno a calendario — è l'unico modo per accorgersi di una cosa che non ti sta chiamando.</p>
+<p>L'altra metà della guida serve al momento opposto, quando qualcosa non torna davvero. Lì l'istinto giusto non è cercare l'errore ma <strong>ricostruire da dove viene il numero</strong>, e per farlo ci sono tre posti precisi.</p>
+<div class="tabella"><table>
+<thead><tr><th>Se vuoi…</th><th>Sezione</th></tr></thead>
+<tbody><tr><td>Sapere cosa controllare, e ogni quanto</td><td>2</td></tr><tr><td>Capire dove guardare quando un numero non torna</td><td>3</td></tr><tr><td>Partire da un sintomo e trovare la guida giusta</td><td>4</td></tr><tr><td>Riaccendere un automatismo fermo, o riprendere un lavoro a metà</td><td>5</td></tr><tr><td>Rinnovare l'autorizzazione della posta</td><td>6</td></tr><tr><td>Rimediare a un ordine cancellato, uno SKU doppio, un articolo eliminato</td><td>7</td></tr><tr><td>Sapere cosa il sistema non riesce a intercettare</td><td>8</td></tr><tr><td>Sapere cosa non è ancora stato provato sul campo</td><td>9</td></tr><tr><td>Capire cosa puoi fare tu e cosa no</td><td>10</td></tr><tr><td>Scrivere a Paolo una segnalazione che basti</td><td>11</td></tr></tbody>
+</table></div>
+<hr>
+<h2 id="s2"><a class="ancora" href="#s2">§2</a> Il calendario dei controlli</h2>
+<div class="tabella"><table>
+<thead><tr><th>Quando</th><th>Cosa guardi</th><th>Dove</th></tr></thead>
+<tbody><tr><td><strong>Ogni settimana e ogni mese</strong></td><td>La routine di lavoro: ordini aperti, pendenze dei resi</td><td><a href="guida-0.html#s6">Guida 0</a>, sezione 6</td></tr><tr><td><strong>Ogni mese</strong></td><td>I tre automatismi accesi in Make</td><td>Sezione 5</td></tr><tr><td><strong>Ogni trimestre</strong>, insieme ai report</td><td>Il numero di righe del documento</td><td>Sezione 2, qui sotto</td></tr><tr><td></td><td>La copia di sicurezza del documento</td><td>Sezione 2, qui sotto</td></tr><tr><td></td><td>Il confronto fra gli ordini del sito e quelli di Grist <em>(primi due trimestri)</em></td><td>Sezione 2, qui sotto</td></tr><tr><td><strong>Ogni sei mesi</strong></td><td>L'autorizzazione della posta — <strong>la prossima scade il 14 febbraio 2027</strong></td><td>Sezione 6</td></tr><tr><td><strong>Quando arriva una mail in inglese da Make</strong></td><td>Se un automatismo si è spento da solo</td><td>Sezione 5</td></tr></tbody>
+</table></div>
+<p>La prima riga è la routine operativa e sta tutta nella <a href="guida-0.html">guida 0</a>: non la ripetiamo qui. Le altre sono i controlli di manutenzione, e sono quelli che nessuna pagina ti mostrerà mai da sola.</p>
+<h4 id="il-numero-di-righe">Il numero di righe</h4>
+<p>Il piano gratuito di Grist tiene <strong>5.000 righe in tutto il documento</strong>, non per tabella. Il conteggio si legge in «Dati grezzi», dove ogni tabella è elencata con il suo numero di righe (<a href="guida-8.html#s13">guida 8</a>, sezione 13).</p>
+<p>Ai volumi attuali le vendite consumano poche centinaia di righe l'anno. La voce grossa è <code>Prodotti</code>, che da sola ne occupa circa 1.200 — ed è la tabella che il sistema non usa per funzionare. Non è un'emergenza: è che il limite, quando arriva, arriva senza preavviso, e conviene vederlo avvicinarsi con un anno di anticipo.</p>
+<h4 id="la-copia-di-sicurezza">La copia di sicurezza</h4>
+<p><strong>Una volta a trimestre, scarica una copia dell'intero documento</strong> e tienila da parte con la data nel nome.</p>
+<p>Si fa dal <strong>menu di condivisione</strong>, in alto a destra dello schermo, con la voce che esporta il documento intero. È esattamente l'export che la <a href="guida-7.html">guida 7</a> ti dice di <strong>non</strong> usare per i report, perché scarica tutte le tabelle e tutte le righe senza filtri: qui è quello giusto, per la stessa ragione.</p>
+<details class="box box-perche">
+<summary>Perché funziona così — la rete di Grist dura trenta giorni</summary>
+<div class="box-corpo"><p>Grist salva da sé delle copie complete del documento, ma sul piano gratuito <strong>si torna indietro al massimo di 30 giorni</strong>. Un errore fatto a gennaio e scoperto a marzo non si annulla più: si ricostruisce a mano.</p>
+<p>La copia trimestrale serve a quello. Non la aprirai quasi mai, e il giorno in cui serve vale il trimestre intero.</p></div>
+</details>
+<h4 id="il-confronto-con-il-sito">Il confronto con il sito</h4>
+<p>Nessuno, in questo sistema, confronta periodicamente gli ordini di WooCommerce con quelli di Grist. Se il primo automatismo perde un ordine e su quell'ordine nessuno mette più mano, non arriva nessun avviso.</p>
+<p>Per i <strong>primi due trimestri</strong>, quando prepari i report, vale la pena fare il confronto a mano: conta gli ordini del trimestre su WooCommerce e confrontali con quelli della pagina <em>Ordini</em> filtrata sullo stesso periodo. Se i numeri non coincidono, le cause sono tre, in ordine di probabilità: un ordine <strong>cancellato</strong> sul sito (che in Grist è rimasto), un ordine <strong>inserito a mano</strong> in Grist (che sul sito non c'è mai stato), un ordine <strong>mai arrivato</strong>. I primi due si spiegano e si chiudono; il terzo è da segnalare.</p>
+<p>Dopo due trimestri puliti, il controllo diventa facoltativo.</p>
+<hr>
+<h2 id="s3"><a class="ancora" href="#s3">§3</a> I tre posti dove si guarda prima di chiedere</h2>
+<p>Quasi tutte le domande che ti verranno hanno una di queste tre forme, e ciascuna ha il suo posto.</p>
+<figure class="figura">
+<figcaption>Figura 1 — Le tre porte</figcaption>
+<pre>   LA DOMANDA                                 DOVE SI RISPONDE
+   ──────────                                 ────────────────
+
+   «Questo numero di magazzino
+    non torna»                    ────────►   Pagina  MOVIMENTI DI UN ARTICOLO
+                                              filtrata sullo SKU
+                                              → tutti i movimenti, uno per uno
+
+   «Questo dato era diverso,
+    chi l'ha cambiato?»           ────────►   STORIA DOCUMENTO → «Attività»
+                                              → chi, cosa, quando
+
+   «Questo ordine (o questo reso)
+    non è mai arrivato»           ────────►   MAKE → cronologia dello scenario
+                                              → ha girato, o è fermo?</pre>
+</figure>
+<p><strong>La pagina <em>Movimenti di un articolo</em></strong> è lo strumento di diagnosi delle giacenze: filtri su uno SKU e vedi tutti i suoi movimenti — vendite, resi, carichi, differenze — con tipo, stato, magazzino e quantità. Il metodo completo, con le tre domande da farsi nell'ordine, è nella <strong><a href="guida-6.html#s9">guida 6</a>, sezione 9</strong>. Ricorda solo la trappola: quella pagina mostra <strong>anche</strong> le righe che non contano, ed è il motivo per cui esiste. Sommare a occhio non dà il venduto.</p>
+<p><strong>«Storia documento»</strong>, nel pannello di sinistra, ha una scheda <strong>«Attività»</strong> che elenca le modifiche recenti e chi le ha fatte — tu e Virginia entrate con due account diversi, quindi qui si distingue. È il posto giusto quando un numero è cambiato e nessuno si ricorda di aver toccato niente, ed è anche il posto dove ritrovare <strong>un valore vecchio</strong> che è stato sovrascritto. Guardare la storia è sicuro; <strong>riportare indietro</strong> il documento a una copia precedente no: è un'operazione da consulente.</p>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g9-01-storia-documento.png</span></div>
+<figcaption><span class="numero">Screenshot 1</span> Il pannello «Storia documento» aperto sulla scheda «Attività», con qualche modifica recente e due utenti diversi visibili.</figcaption>
+</figure>
+<p><strong>La cronologia di Make</strong> risponde solo alla domanda «ha girato o è fermo». Come si legge, e perché il verde non è una garanzia, è nella <strong><a href="guida-2.html#s8">guida 2</a>, sezione 8</strong>.</p>
+<p>Un'ultima cosa prima di allarmarti: se la stranezza riguarda <strong>quello che vedi a schermo</strong> e non un numero — una pagina con meno righe del solito, una colonna sparita — la causa è quasi sempre un filtro o una colonna nascosta, e si risolve in <a href="guida-8.html">guida 8</a>. Ricaricare la pagina rimette a posto tutto ciò che non è stato salvato.</p>
+<hr>
+<h2 id="s4"><a class="ancora" href="#s4">§4</a> Sintomo → causa → azione</h2>
+<p>Questa tabella non sostituisce quelle delle singole guide: serve quando non sai nemmeno in quale guida guardare.</p>
+<div class="tabella"><table>
+<thead><tr><th>Il sintomo</th><th>La causa probabile</th><th>Dove si va</th></tr></thead>
+<tbody><tr><td>Un ordine c'è sul sito e non in Grist</td><td>L'automatismo era fermo, o l'esecuzione si è interrotta</td><td>Sezione 5</td></tr><tr><td>Un ordine cancellato sul sito continua a contare</td><td>Le cancellazioni non arrivano in Grist</td><td>Sezione 7</td></tr><tr><td>Un rimborso annullato sul sito è ancora in Grist</td><td>Stessa ragione</td><td>Sezione 7</td></tr><tr><td>I totali del trimestre non tornano con WooCommerce</td><td>Un ordine cancellato, una modifica di riga non recepita, un rimborso di solo importo</td><td><a href="guida-7.html#s10">Guida 7</a>, sezione 10</td></tr><tr><td>Un trimestre vecchio mostra numeri diversi da quelli inviati</td><td>L'anagrafica viene letta oggi: qualcuno ha cambiato un prezzo, un nome o una data</td><td>Sezione 8, <a href="guida-7.html">guida 7</a> sezione 5</td></tr><tr><td>Una giacenza non torna</td><td>Le tre domande, a partire da <em>Movimenti di un articolo</em></td><td><a href="guida-6.html#s9">Guida 6</a>, sezione 9</td></tr><tr><td>Un carico inserito non ha alzato niente</td><td>Data anteriore, SKU non agganciato, SKU di un kit, stato non <code>Completato</code></td><td><a href="guida-6.html#s5">Guida 6</a>, sezione 5</td></tr><tr><td>Una riga d'ordine è accesa in arancione</td><td>Lo SKU non si aggancia a nessun articolo</td><td><a href="guida-5.html#s13">Guida 5</a>, sezione 13 — se l'articolo è stato eliminato, sezione 7 qui</td></tr><tr><td>Arriva la mail «articolo nuovo» per un prodotto che esiste già</td><td>Lo SKU del sito non coincide con quello di Grist</td><td>Sezione 7</td></tr><tr><td>Lo stesso prodotto compare due volte, con lo stock diviso</td><td>Stessa causa</td><td>Sezione 7</td></tr><tr><td>Le mail di avviso hanno smesso di arrivare</td><td>Autorizzazione scaduta, oppure automatismo fermo</td><td>Sezioni 6 e 5</td></tr><tr><td>Un numero è diventato zero dopo che qualcuno ha rinominato qualcosa</td><td>Una colonna o una voce di menu rinominata</td><td>Si chiama Paolo (sezione 10)</td></tr><tr><td>Un kit non ha giacenza da nessuna parte</td><td>È corretto: un kit non ha giacenza propria</td><td>Sezione 8</td></tr><tr><td>Una pagina mostra meno righe del solito</td><td>Un filtro</td><td><a href="guida-8.html#s4">Guida 8</a>, sezioni 4 e 5</td></tr><tr><td>Non riesci a capire perché un numero è quello che è</td><td>—</td><td>Sezione 11: cosa allegare per segnalarlo</td></tr></tbody>
+</table></div>
+<hr>
+<h2 id="s5"><a class="ancora" href="#s5">§5</a> Quando un automatismo è fermo</h2>
+<p><strong>Acceso è l'unica condizione normale</strong>, per tutti e tre. Te ne accorgi in tre modi: dal controllo mensile, da un ordine che non è arrivato, oppure da una mail.</p>
+<h4 id="la-mail-che-sembra-pubblicita">La mail che sembra pubblicità</h4>
+<p>Quando uno scenario sbaglia più volte di seguito, <strong>Make lo spegne da solo</strong> e avvisa l'intestatario dell'account, che sei tu. È una mail in inglese, con l'aspetto delle comunicazioni di servizio che si archiviano senza leggere. <strong>Paolo non la riceve:</strong> finché non glielo dici, per lui non è successo niente.</p>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g9-02-mail-scenario-disattivato.png</span></div>
+<figcaption><span class="numero">Screenshot 2</span> La mail di Make che comunica la disattivazione di uno scenario, come arriva in casella.</figcaption>
+</figure>
+<h4 id="riaccenderlo">Riaccenderlo</h4>
+<p>Si riaccende con l'interruttore accanto al nome dello scenario, nella schermata iniziale di Make.</p>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g9-03-make-scenario-spento.png</span></div>
+<figcaption><span class="numero">Screenshot 3</span> La schermata di Make con uno dei tre scenari spento, l'interruttore grigio accanto ai due accesi.</figcaption>
+</figure>
+<p>Se mentre era spento sono arrivati degli ordini, Make non li ha buttati: li ha messi in coda. Riaccendendo lo scenario ti chiederà cosa farne — se <strong>eliminare</strong> i dati vecchi in attesa o <strong>processarli</strong>.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — alla domanda sulla coda si risponde sempre «processa»</p>
+<p>Scegliere di eliminare cancella gli ordini arrivati mentre l'automatismo era fermo. Non tornano più, non compaiono da nessuna parte, e <strong>nessun avviso te lo segnalerà</strong>: te ne accorgeresti solo confrontando gli ordini del trimestre col sito, mesi dopo.</p>
+<p>Non c'è nessun caso in cui la risposta giusta sia eliminare. Se la coda è lunga e la cosa ti mette a disagio, fermati e chiedi a Paolo: la coda resta lì ad aspettare.</p>
+</aside>
+<figure class="figura">
+<figcaption>Figura 2 — Cosa succede mentre è fermo</figcaption>
+<pre>   AUTOMATISMO SPENTO                      AUTOMATISMO RIACCESO
+   ──────────────────                      ────────────────────
+
+   Ordine 17412  ──┐
+   Ordine 17413  ──┤                       «Processa»  ──►  tutti scritti in Grist,
+   Ordine 17414  ──┼──►  [ in coda ]  ──►                   uno dopo l'altro
+   Ordine 17415  ──┘                            │
+                                                └──  «Elimina»  ──►  persi, senza avviso</pre>
+</figure>
+<p>Quanto si può restare fermi? La coda non ha una scadenza a giorni, e il numero di richieste che può contenere è dell'ordine delle migliaia: con due o trecento ordini l'anno non lo si sfiora nemmeno. In pratica, <strong>uno scenario fermo per qualche giorno non fa perdere ordini</strong> — a patto di rispondere «processa».</p>
+<details class="box box-perche">
+<summary>Perché funziona così — rigiocare vecchi ordini non crea doppioni</summary>
+<div class="box-corpo"><p>Prima di scrivere un ordine, l'automatismo controlla se in Grist c'è già: se lo trova, si ferma. È la stessa protezione che rende innocuo salvare due volte lo stesso ordine sul sito.</p>
+<p>È il motivo per cui processare una coda di venti payload vecchi è sicuro: quelli già scritti vengono riconosciuti e saltati.</p></div>
+</details>
+<p><strong>Avvisa Paolo comunque</strong>, anche se sembra tutto tornato a posto. Uno scenario che si spegne da solo ha una causa, e la causa non si spegne da sola.</p>
+<h4 id="un-lavoro-rimasto-a-meta">Un lavoro rimasto a metà</h4>
+<p>Quando un'esecuzione si interrompe nel mezzo, Make la mette da parte invece di buttarla. Le trovi nella pagina dello scenario, in una sezione dedicata alle esecuzioni incomplete — in inglese, <strong>«Incomplete executions»</strong> — separata dalla cronologia normale.</p>
+<p>Ogni riga si apre e si può <strong>riprendere</strong>: Make riparte dal punto in cui si era fermata, senza rifare quello che aveva già fatto. È il gesto giusto quando l'interruzione è stata un intoppo passeggero, per esempio un'indisponibilità momentanea di Grist o di WooCommerce.</p>
+<p>Due cautele:</p>
+<ul><li><strong>Prima guarda in Grist.</strong> Se nel frattempo hai già sistemato quell'ordine a mano, la ripresa lo rifarebbe: in quel caso la riga si scarta, non si riprende.</li><li><strong>Se una ripresa fallisce di nuovo, fermati.</strong> Due tentativi bastano; al terzo il problema non è passeggero ed è da segnalare.</li></ul>
+<figure class="screenshot">
+<div class="segnaposto"><span class="segnaposto-etichetta">immagine da catturare</span><span class="segnaposto-file">g9-04-esecuzioni-incomplete.png</span></div>
+<figcaption><span class="numero">Screenshot 4</span> La sezione delle esecuzioni incomplete di uno scenario, con una riga in attesa.</figcaption>
+</figure>
+<p><span class="marcatore"><a href="guida-9.html#s9" title="elenco completo nella guida 9 §9"><em>(Le diciture di questa sezione sono in inglese, come metà dell'interfaccia di Make, e non sono state ancora viste su un caso reale: finora non ci sono state esecuzioni incomplete. Se quello che trovi a schermo non corrisponde, è un caso da segnalare — comportamento atteso, non ancora verificato sul campo.)</em></a></span></p>
+<hr>
+<h2 id="s6"><a class="ancora" href="#s6">§6</a> La posta che smette di partire</h2>
+<p>Le mail di avviso partono da un indirizzo creato apposta per il sistema, e il collegamento fra quell'indirizzo e Make <strong>va rinnovato ogni sei mesi</strong>. La prossima scadenza è il <strong>14 febbraio 2027</strong>.</p>
+<p>Il punto non è la procedura, che dura trenta secondi. È la conseguenza: se scade, <strong>le mail smettono di partire in silenzio</strong>. E siccome in questo sistema «nessuna mail» significa di norma «nessun problema», un guasto della posta ha esattamente lo stesso aspetto di una settimana tranquilla.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — mettilo in calendario adesso</p>
+<p>Un promemoria il <strong>7 febbraio 2027</strong>, che si ripete ogni sei mesi. È l'unica scadenza di tutto il sistema che non ha nessun modo di ricordarsi da sola.</p>
+</aside>
+<h4 id="come-si-rinnova">Come si rinnova</h4>
+<ol><li>In Make, nel pannello di sinistra, apri <strong>«Credentials»</strong> e poi <strong>«Connections»</strong>.</li><li>Trova la riga <strong>«Gmail per notifiche Magazzino LwM»</strong>.</li><li>Clicca il pulsante <strong>«Reauthorize»</strong>, a destra sulla stessa riga, e conferma con l'account della posta del magazzino.</li></ol>
+<h4 id="dove-si-legge-la-scadenza">Dove si legge la scadenza</h4>
+<p>La data è scritta dentro la finestra del modulo Gmail, dentro uno degli scenari, in questa forma:</p>
+<aside class="box box-nota">
+<p><em>You have until February 14th 2027, 05:12 PM (Sun) to reauthorize your connection. See our online help for instructions.</em></p>
+</aside>
+<p>È l'unico motivo per cui vale la pena aprire un modulo di Make: <strong>si guarda la data e si chiude senza salvare niente</strong>. La regola della <a href="guida-2.html">guida 2</a> resta valida anche qui — un modulo aperto e salvato per sbaglio continua a girare e a risultare verde, e il danno si vede giorni dopo sotto forma di numero sbagliato.</p>
+<h4 id="cosa-continua-a-funzionare-anche-senza-posta">Cosa continua a funzionare anche senza posta</h4>
+<p>Le mail non sono l'unico presidio, e vale la pena saperlo per non immaginare il peggio. Un articolo creato automaticamente resta comunque marcato <strong>«da verificare»</strong> in arancione dentro <em>Articoli</em>, anche se la mail non parte. Quello che si perde è la sollecitazione, non l'informazione: le tre mail vanno a te, a Virginia e a Paolo, e le cose che segnalano si ritrovano tutte anche guardando Grist.</p>
+<hr>
+<h2 id="s7"><a class="ancora" href="#s7">§7</a> Rimediare a un guaio già fatto</h2>
+<h4 id="un-ordine-cancellato-sul-sito">Un ordine cancellato sul sito</h4>
+<p>Le cancellazioni non arrivano in Grist: l'ordine resta, continua a scaricare il magazzino e continua a entrare nei report.</p>
+<p><strong>Il rimedio: portalo su <code>Annullato</code> in Grist.</strong> Lo trovi cercandone il numero nella pagina <em>Ordini</em>. Lo stato <code>Annullato</code> lo toglie dai report e dal magazzino lasciandone traccia — che è sempre preferibile a eliminarlo, qui come sul sito.</p>
+<p>Per il futuro vale la regola della <a href="guida-3.html">guida 3</a>: un ordine sbagliato <strong>si annulla, non si cancella</strong>, e quel cambio di stato arriva in Grist da solo.</p>
+<h4 id="un-rimborso-annullato-sul-sito">Un rimborso annullato sul sito</h4>
+<p>Stessa ragione e stessa forma: il record di reso resta in Grist, continua a stornare nei report e, se avevi dichiarato il rientro, tiene in magazzino una copia che non c'è. Si porta il <strong>reso</strong> su <code>Annullato</code>: la procedura è nella <a href="guida-4.html#s9">guida 4</a>, sezione 9. <span class="marcatore"><a href="guida-9.html#s9" title="elenco completo nella guida 9 §9"><em>(comportamento atteso, non ancora verificato sul campo)</em></a></span></p>
+<h4 id="lo-sku-del-sito-non-coincide-con-quello-di-grist">Lo SKU del sito non coincide con quello di Grist</h4>
+<p>Te ne accorgi in due modi: arriva la mail «articolo nuovo» per un prodotto che sai benissimo di avere già, oppure lo stesso prodotto compare <strong>due volte</strong> nelle giacenze, con lo stock diviso fra i due codici.</p>
+<p>La sequenza è questa, e il primo passo è quello che conta:</p>
+<ol><li><strong>Non toccare lo SKU in Grist.</strong> È la regola del catalogo, e non ha eccezioni: lo SKU di un articolo esistente non si cambia (<a href="guida-5.html">guida 5</a>).</li><li><strong>Correggi lo SKU sul sito</strong>, riportandolo identico a quello di Grist.</li><li><strong>Riaggancia le righe d'ordine già arrivate.</strong> La correzione sul sito non tocca gli ordini passati, che restano con il codice vecchio: su ciascuna riga arancione si <strong>riseleziona lo SKU</strong> dal menu (<a href="guida-5.html#s13">guida 5</a>, sezione 13). Ricreare o correggere l'articolo non le riaggancia da solo.</li><li><strong>L'articolo doppione.</strong> Prova a eliminarlo: se la colonna del presidio non protesta, non ha più niente attaccato e se ne può andare. Se protesta, vuol dire che qualcosa lo referenzia ancora — una riga d'ordine o una ricetta — e allora <strong>resta dov'è e si segnala</strong>.</li><li><strong>Le giacenze finite sul doppione</strong> si spostano sull'articolo buono con un solo movimento a due righe, come spiega la <a href="guida-6.html#s7">guida 6</a>, sezione 7.</li></ol>
+<h4 id="un-articolo-eliminato-per-errore">Un articolo eliminato per errore</h4>
+<p>Succede, e non è irreparabile. Quello che si rompe è preciso:</p>
+<ul><li>nelle <strong>righe d'ordine</strong> che lo usavano, lo SKU e le colonne che ne derivavano — il nome del prodotto, e il resto — si svuotano, e si accende l'avviso arancione «SKU non trovato in Articoli»;</li><li>nelle <strong>ricette</strong> dei kit di cui era componente, la riga resta ma senza il prodotto;</li><li><strong>giacenze iniziali, date e dati anagrafici</strong> di quell'articolo se ne vanno con lui.</li></ul>
+<p>Il rimedio, nell'ordine:</p>
+<ol><li><strong>Ricrea l'articolo con lo stesso identico SKU</strong> e i suoi dati (<a href="guida-5.html#s7">guida 5</a>, sezione 7).</li><li><strong>Riseleziona lo SKU su ogni riga d'ordine</strong> rimasta arancione. Le trovi filtrando o cercando nelle righe: è il passo più lungo, e non c'è modo di saltarlo.</li><li><strong>Rimetti il componente</strong> nelle righe di <code>Bundle</code> rimaste vuote.</li><li><strong>Reinserisci giacenza iniziale e date</strong> nella pagina <em>Giacenze</em>: senza le date, le colonne del venduto vanno in errore (<a href="guida-6.html#s6">guida 6</a>, sezione 6).</li></ol>
+<details class="box box-perche">
+<summary>Perché funziona così — i vecchi valori si ritrovano</summary>
+<div class="box-corpo"><p>Se non ricordi la giacenza iniziale o la data che c'era prima, non tirare a indovinare: la scheda «Attività» della storia del documento conserva i valori precedenti (sezione 3). È uno dei pochi casi in cui quella pagina serve a ricostruire e non solo a capire.</p>
+<p>Vale però solo entro i 30 giorni delle copie di Grist. Oltre, è un caso da segnalare.</p></div>
+</details>
+<h4 id="una-modifica-fatta-alle-righe-sul-sito">Una modifica fatta alle righe sul sito</h4>
+<p>Quantità corrette, prezzi cambiati, prodotti aggiunti o tolti da un ordine esistente: da WooCommerce non arriva niente. <strong>Si rifanno a mano anche in Grist</strong>, ed è la procedura della <a href="guida-3.html#s10">guida 3</a>, sezione 10.</p>
+<hr>
+<h2 id="s8"><a class="ancora" href="#s8">§8</a> I limiti noti</h2>
+<p>Sono tutti già dichiarati nelle altre guide. Stanno insieme qui perché hanno una cosa in comune: <strong>nessuno di essi produce un errore, un colore o una mail.</strong></p>
+<div class="tabella"><table>
+<thead><tr><th>Il limite</th><th>Come te ne accorgi</th><th>Cosa fare</th></tr></thead>
+<tbody><tr><td>Un ordine <strong>cancellato</strong> sul sito resta in Grist</td><td>Solo confrontando col sito</td><td>Sezione 7</td></tr><tr><td>Un <strong>rimborso annullato</strong> sul sito resta in Grist</td><td>Solo se te lo ricordi</td><td>Sezione 7</td></tr><tr><td>Le <strong>modifiche alle righe</strong> fatte sul sito non arrivano</td><td>Solo se te lo ricordi</td><td>Sezione 7</td></tr><tr><td>Un <strong>kit venduto senza ricetta</strong> non scarica i pezzi</td><td>Il kit compare nella pagina <em>Giacenze</em></td><td><a href="guida-5.html#s10">Guida 5</a>, sezioni 10 e 11</td></tr><tr><td>Il <strong>reso di un kit dopo un cambio di ricetta</strong> fa rientrare il pezzo nuovo</td><td>Nessun modo automatico</td><td><a href="guida-4.html#s6">Guida 4</a>, sezione 6</td></tr><tr><td>L'<strong>anagrafica è letta oggi</strong>: cambiare un prezzo o un nome riscrive i trimestri passati</td><td>Riaprendo un trimestre vecchio e trovandolo diverso</td><td><a href="guida-5.html#s9">Guida 5</a>, sezione 9: un prodotto che cambia è un articolo nuovo</td></tr><tr><td>L'avviso sui <strong>carichi</strong> non guarda la data, lo SKU non agganciato e lo SKU di un kit</td><td>La riga sembra pulita e la giacenza non si muove</td><td>Riapri <em>Giacenze</em> e verifica che il numero sia salito (<a href="guida-6.html#s5">guida 6</a>, sezione 5)</td></tr><tr><td>Gli <strong>«Altri movimenti»</strong> non hanno nessun presidio: nemmeno sul segno</td><td>Nessuno</td><td>La checklist della <a href="guida-3.html#s12">guida 3</a>, sezione 12</td></tr><tr><td>La colonna <code>N.C.</code> delle magliette si accende <strong>solo se la differenza è positiva</strong></td><td>Una variante senza taglia con giacenza a zero non compare</td><td><a href="guida-6.html#s8">Guida 6</a>, sezione 8</td></tr><tr><td>La <strong>giacenza di un kit</strong> non è consultabile in nessuna pagina</td><td>Cercandola e non trovandola</td><td>È corretto: guarda i componenti (<a href="guida-6.html#s3">guida 6</a>, sezione 3)</td></tr><tr><td>La <strong>spedizione rimborsata</strong> non viene stornata da nessuna colonna</td><td>Nel caso misto — prodotti più spedizione — nessun presidio la intercetta</td><td>Annotalo nel motivo del rimborso e segnalalo (<a href="guida-4.html#s7">guida 4</a>, sezione 7)</td></tr><tr><td>Una <strong>giacenza fantasma</strong> nasce da «Rifornisci i prodotti rimborsati» spuntata per abitudine</td><td>La pendenza non compare in nessuna vista</td><td>Togli il flag in Grist (<a href="guida-4.html#s4">guida 4</a>, sezione 4)</td></tr><tr><td>Gli ordini <strong><code>Fallito</code></strong> restano in <em>Ordini Aperti</em> per sempre</td><td>Si accumulano in fondo alla lista</td><td>Non contano per niente; portarli su <code>Annullato</code> li toglie di mezzo</td></tr><tr><td>Le <strong>giacenze del sito</strong> e quelle di Grist non si parlano</td><td>Sono due numeri separati</td><td>Se le scorte sono gestite anche sul sito, carichi e conte si rifanno anche lì</td></tr><tr><td><strong>Nessuno riconcilia</strong> gli ordini del sito con quelli di Grist</td><td>—</td><td>Il confronto trimestrale della sezione 2</td></tr></tbody>
+</table></div>
+<hr>
+<h2 id="s9"><a class="ancora" href="#s9">§9</a> Le cose non ancora provate sul campo</h2>
+<p>Il sistema è in collaudo. Le procedure qui sotto sono scritte e coerenti, ma non sono ancora passate da un caso reale: quando ti capita la prima volta, vale la pena fare il controllo della terza colonna.</p>
+<div class="tabella"><table>
+<thead><tr><th>Il caso</th><th>Dove sta la procedura</th><th>Cosa controllare la prima volta</th></tr></thead>
+<tbody><tr><td>Un <strong>carico di merce</strong></td><td><a href="guida-6.html#s5">Guida 6</a>, sezione 5</td><td>Che il numero in <em>Giacenze</em> sia salito di quanto ti aspetti</td></tr><tr><td>Una <strong>conta di magazzino</strong> con differenza registrata</td><td><a href="guida-6.html#s7">Guida 6</a>, sezione 7</td><td>Il segno della differenza, e il numero dopo</td></tr><tr><td>Un <strong>trasferimento fra magazzini</strong></td><td><a href="guida-3.html#s12">Guida 3</a>, sezione 12</td><td>Che un magazzino scenda e l'altro salga, del totale giusto</td></tr><tr><td>Un reso <strong>chiuso senza rientro</strong></td><td><a href="guida-4.html#s4">Guida 4</a>, sezione 4</td><td>Che la giacenza <strong>non</strong> si sia mossa</td></tr><tr><td>Un <strong>rientro parziale di kit</strong></td><td><a href="guida-4.html#s6">Guida 4</a>, sezione 6 e <a href="guida-3.html#s12">guida 3</a>, sezione 12</td><td>Il segno, che qui non lo controlla nessuno</td></tr><tr><td>Un <strong>doppio rimborso parziale</strong> sulla stessa riga</td><td><a href="guida-4.html#s9">Guida 4</a>, sezione 9</td><td>La casella del rientro sul secondo reso: potrebbe nascere già spuntata</td></tr><tr><td>Un <strong>rimborso di solo importo</strong> completato con la riga a quantità zero</td><td><a href="guida-4.html#s7">Guida 4</a>, sezione 7</td><td>Che il reso esca da <em>Resi senza righe</em> e compaia nel Registro</td></tr><tr><td>Il <strong>reso di un ordine inserito a mano</strong></td><td><a href="guida-4.html#s8">Guida 4</a>, sezione 8</td><td>Il campo della fattura e il magazzino, che nascono entrambi sbagliati</td></tr><tr><td>L'<strong>esplosione a posteriori</strong> di una riga-kit</td><td><a href="guida-5.html#s8">Guida 5</a>, sezioni 8 e 10</td><td>Che sotto la riga del kit compaiano i pezzi</td></tr><tr><td>La correzione dello <strong>SKU su un reso</strong> dopo un cambio di ricetta</td><td><a href="guida-4.html#s6">Guida 4</a>, sezione 6</td><td>Che rientri il pezzo giusto</td></tr><tr><td>Un <strong>ordine da rappresentante</strong></td><td><a href="guida-3.html#s13">Guida 3</a>, sezione 13</td><td>Che arrivi e si comporti come gli altri</td></tr><tr><td>Un <strong>rimborso annullato</strong> sul sito</td><td>Sezione 7</td><td>Che in Grist non arrivi niente, come previsto</td></tr></tbody>
+</table></div>
+<p>Quando uno di questi casi passa senza sorprese, <strong>dillo a Paolo</strong>: si depenna da questo elenco e la guida si alleggerisce di una riga.</p>
+<hr>
+<h2 id="s10"><a class="ancora" href="#s10">§10</a> Quello che resta a Paolo</h2>
+<p><strong>Tuo, senza chiedere:</strong> i controlli di questa guida, le correzioni sui dati, l'assegnazione dei magazzini, la chiusura dei resi, la creazione di articoli e di kit, i carichi e le conte, i filtri e le colonne delle viste, il riavvio di un automatismo fermo, il rinnovo dell'autorizzazione della posta.</p>
+<p><strong>Di Paolo:</strong></p>
+<ul><li>le <strong>formule</strong> di Grist, anche quando sembra si tratti di una virgola;</li><li>gli <strong>identificativi delle colonne</strong> e le <strong>voci dei menu</strong> che formule e automatismi leggono (<a href="guida-8.html#s9">guida 8</a>, sezioni 9 e 10);</li><li>i <strong>moduli di Make</strong>, i collegamenti fra i sistemi e i webhook;</li><li>lo <strong>SKU di un articolo esistente</strong>, che non si cambia: se un prodotto ha bisogno di un codice diverso, è un prodotto nuovo;</li><li>il <strong>ripristino</strong> del documento a una copia precedente;</li><li><strong>pagine e viste nuove</strong>, e qualsiasi cosa da costruire.</li></ul>
+<p>Il confine non è un muro: se una cosa ordinaria non ti riesce, si chiede. Ma le voci di questo elenco hanno tutte la stessa proprietà — <strong>quando si rompono non lo dicono</strong>, e il danno si presenta settimane dopo sotto forma di numeri che sembrano plausibili.</p>
+<hr>
+<h2 id="s11"><a class="ancora" href="#s11">§11</a> Come si segnala un problema</h2>
+<p>Una segnalazione completa risparmia tre scambi di messaggi, e spesso è la differenza fra un problema risolto in giornata e uno risolto la settimana dopo.</p>
+<p><strong>Cosa scrivere:</strong></p>
+<ol><li><strong>Cosa ti aspettavi</strong> e <strong>cosa hai visto</strong> — le due cose separate, anche se sembra ovvio.</li><li><strong>Dove</strong>: la pagina di Grist, oppure il nome dello scenario di Make.</li><li><strong>Quale record</strong>: l'<strong>ID dell'ordine</strong>, il numero che leggi nella colonna «ID ordine», oppure lo <strong>SKU</strong> dell'articolo. È l'unico posto in queste guide in cui serve un codice e non un nome.</li><li><strong>Quando</strong>: data e ora, almeno approssimative. Servono a ritrovare l'esecuzione in Make e la modifica nella storia del documento.</li><li><strong>Cosa hai già provato</strong>, e cosa è successo.</li></ol>
+<p><strong>Cosa allegare:</strong></p>
+<ul><li>lo screenshot della pagina <strong><em>Movimenti di un articolo</em> filtrata sullo SKU</strong>, se il problema riguarda una giacenza: è l'allegato che risolve più casi di tutti gli altri messi insieme;</li><li>lo screenshot della pagina dove hai visto la stranezza, <strong>compresa la barra dei filtri</strong>;</li><li>lo screenshot dell'<strong>esecuzione in Make</strong>, se il problema riguarda un ordine o un reso che non è arrivato;</li><li>la <strong>mail</strong> ricevuta, se ne è arrivata una.</li></ul>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — segnalare presto conta più che segnalare bene</p>
+<p>Grist tiene le copie del documento per <strong>30 giorni</strong>. Dentro quella finestra, un errore fatto su molti record si può ancora annullare tornando indietro; fuori, si ricostruisce a mano, riga per riga.</p>
+<p>Se il sospetto è che qualcosa abbia toccato <strong>molti dati insieme</strong> — una formula, una rinomina, un'importazione — scrivi subito, anche con mezza informazione. Per tutto il resto, prenditi pure il tempo di compilare bene la scheda qui sopra.</p>
+</aside>
+<hr>
+<h2 id="s12"><a class="ancora" href="#s12">§12</a> Dove si continua</h2>
+<div class="tabella"><table>
+<thead><tr><th>Se vuoi…</th><th>Guida</th></tr></thead>
+<tbody><tr><td>Rivedere come funziona il sistema nel suo insieme e la routine di lavoro</td><td>0</td></tr><tr><td>Capire quale pagina guarda quale tabella</td><td>1</td></tr><tr><td>Sapere cosa fa ciascun automatismo e cosa dicono le tre mail</td><td>2</td></tr><tr><td>Annullare un ordine, correggerne uno, registrare un movimento eccezionale</td><td>3</td></tr><tr><td>Chiudere un reso, capire le due caselle del rientro</td><td>4</td></tr><tr><td>Creare o correggere un articolo, costruire un kit</td><td>5</td></tr><tr><td>Leggere le giacenze, registrare un carico, contare il magazzino</td><td>6</td></tr><tr><td>Preparare i report per il commercialista</td><td>7</td></tr><tr><td>Rimettere a posto un filtro, cambiare un'etichetta, esportare</td><td>8</td></tr></tbody>
+</table></div>
+</div>
+
+  </main>
+  <footer class="pie">
+    <p>Manuale del sistema «Magazzino LwM» · generato il 14/09/2026</p>
+    <p>Per i casi che non stanno nelle guide, e per qualsiasi cosa nuova da costruire, si scrive a Paolo: cosa allegare sta nella <a href="guida-9.html#s11">guida 9 §11</a>.</p>
+  </footer>
+</div>
+
+<div class="lente" id="lente" hidden><img src="" alt=""></div>
+
+<script src="assets/manuale.js"></script>
+</body>
+</html>
