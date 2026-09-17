@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Guida 2 — Gli automatismi (Make) · Magazzino LwM</title>
+<link rel="stylesheet" href="assets/stile.css">
+</head>
+<body>
+<a class="salta" href="#principale">Vai al contenuto</a>
+
+<button type="button" class="apri-menu" id="apri-menu" aria-label="Apri il menu delle guide">☰ Guide</button>
+
+<nav class="menu" id="menu" aria-label="Le guide">
+  <p class="menu-titolo">Magazzino LwM</p>
+  <a class="menu-voce menu-indice" href="index.html">Indice</a>
+<p class="menu-blocco">Capire</p>
+<a class="menu-voce" href="guida-0.html"><span class="menu-n">0</span>Come funziona il sistema</a>
+<a class="menu-voce" href="guida-1.html"><span class="menu-n">1</span>La mappa di Grist</a>
+<a class="menu-voce attiva" href="guida-2.html"><span class="menu-n">2</span>Gli automatismi (Make)</a>
+<p class="menu-blocco">Fare</p>
+<a class="menu-voce" href="guida-3.html"><span class="menu-n">3</span>Ordini</a>
+<a class="menu-voce" href="guida-4.html"><span class="menu-n">4</span>Resi e rimborsi</a>
+<a class="menu-voce" href="guida-5.html"><span class="menu-n">5</span>Catalogo, articoli e kit</a>
+<a class="menu-voce" href="guida-6.html"><span class="menu-n">6</span>Giacenze e inventario</a>
+<a class="menu-voce" href="guida-7.html"><span class="menu-n">7</span>Report fiscali</a>
+<p class="menu-blocco">Cavarsela da sola</p>
+<a class="menu-voce" href="guida-8.html"><span class="menu-n">8</span>Muoversi in Grist</a>
+<a class="menu-voce" href="guida-9.html"><span class="menu-n">9</span>Manutenzione e problemi</a>
+<p class="menu-blocco">Riferimento</p>
+<a class="menu-voce" href="scheda.html"><span class="menu-n">A4</span>Scheda rapida</a>
+</nav>
+
+<div class="colonna">
+  <div class="barra">
+    <div class="barra-nav"><a href="guida-1.html">‹ Guida 1</a> <a href="guida-3.html">Guida 3 ›</a></div>
+    <div class="barra-strumenti"><button type="button" class="bottone-piatto" id="espandi">Espandi tutto</button><button type="button" class="bottone-piatto" onclick="window.print()">Stampa</button></div>
+  </div>
+  <main id="principale">
+
+<header class="testata">
+  <p class="occhiello">Guida 2</p>
+  <h1>Gli automatismi (Make)</h1>
+  <p class="versione"><strong>Versione dell'11/09/2026</strong> · Sistema «Magazzino LwM»</p>
+</header>
+<nav class="sommario" aria-label="Sezioni della guida">
+  <p class="sommario-titolo">In questa guida</p>
+  <ol class="sommario-voci"><li><a href="#s1"><span class="n">1</span>In breve</a></li><li><a href="#s2"><span class="n">2</span>Cosa vedi quando apri Make</a></li><li><a href="#s3"><span class="n">3</span>Raccolta ordini</a></li><li><a href="#s4"><span class="n">4</span>Aggiornamento ordini e resi</a></li><li><a href="#s5"><span class="n">5</span>Esplosione kit</a></li><li><a href="#s6"><span class="n">6</span>Le tre mail</a></li><li><a href="#s7"><span class="n">7</span>Gli avvisi che manda Make stesso</a></li><li><a href="#s8"><span class="n">8</span>Come si vede se ha funzionato</a></li><li><a href="#s9"><span class="n">9</span>Cosa gli automatismi non fanno</a></li><li><a href="#s10"><span class="n">10</span>Attenzione a</a></li><li><a href="#s11"><span class="n">11</span>Dove si continua</a></li></ol>
+</nav>
+<div class="corpo">
+<p>La <a href="guida-0.html">guida 0</a> dice che esistono tre automatismi e cosa fanno in mezza pagina. Questa dice il resto: <strong>quando partono davvero, cosa scrivono, cosa non fanno, e cosa ti chiedono quando ti scrivono.</strong></p>
+<p>Non è una guida su Make. È una guida su cosa succede mentre non stai guardando.</p>
+<hr>
+<h2 id="s1"><a class="ancora" href="#s1">§1</a> In breve</h2>
+<p>Make è il programma che tiene insieme WooCommerce e Grist. Ci lavorano tre automatismi, e girano da soli: nella maggior parte dei mesi non avrai motivo di aprirlo.</p>
+<p>Quello che serve sapere si riduce a tre domande, e questa guida serve a saper rispondere a quelle:</p>
+<ul><li><strong>È arrivato?</strong> — un ordine è finito in Grist oppure no.</li><li><strong>Cosa mi chiede questa mail?</strong> — ne esistono tre, e solo una chiede un lavoro ordinario.</li><li><strong>È fermo?</strong> — riconoscere un automatismo spento, prima che si accumulino i giorni.</li></ul>
+<p>Una frase che vale per tutti e tre, e che torna in ogni guida: <strong>gli automatismi copiano, non giudicano.</strong> Prendono quello che trovano su WooCommerce e lo scrivono in Grist. Se quello che trovano è sbagliato, lo scrivono sbagliato, senza segnalare nulla.</p>
+<p>Se di questa guida ricordi una cosa sola, ricorda questa: <strong>il silenzio non è una conferma.</strong></p>
+<hr>
+<h2 id="s2"><a class="ancora" href="#s2">§2</a> Cosa vedi quando apri Make</h2>
+<p>L'account Make è <strong>il tuo</strong>. Paolo lo usa come ospite: tu vedi tutto quello che vede lui, e in più ricevi delle notifiche che a lui non arrivano (ne parliamo alla sezione 8).</p>
+<p>Aprendolo trovi tre scenari, che sono i tre automatismi. Portano nomi tecnici, un po' diversi da quelli che usiamo nelle guide:</p>
+<div class="tabella"><table>
+<thead><tr><th>Come lo chiamiamo qui</th><th>Come si chiama in Make</th></tr></thead>
+<tbody><tr><td><strong>Raccolta ordini</strong></td><td><code>Raccolta ordini da WC a Grist - v2</code></td></tr><tr><td><strong>Aggiornamento ordini e resi</strong></td><td><code>Aggiornamento ordini da WC a Grist</code></td></tr><tr><td><strong>Esplosione kit</strong></td><td><code>Esplosione kit da Grist</code></td></tr></tbody>
+</table></div>
+<p>Accanto a ciascuno c'è un interruttore. <strong>Acceso è l'unica condizione normale</strong>, per tutti e tre. Se ne trovi uno spento, qualcosa è successo: la <a href="guida-9.html">guida 9</a> spiega cosa guardare e come riaccenderlo.</p>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g2-01-make-tre-scenari.png"><img src="assets/img/g2-01-make-tre-scenari.png" alt="La schermata iniziale di Make con i tre scenari elencati e i rispettivi interruttori accesi." loading="lazy" style="width:1105px"></a>
+<figcaption><span class="numero">Screenshot 1</span> I tre automatismi. Accesi è l'unica condizione normale.</figcaption>
+</figure>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — in Make non ci sono i colori di Grist</p>
+<p>In Grist lo <span class="campione campione-grigio" aria-hidden="true"></span>sfondo grigio ti dice «questo non si tocca». In Make non esiste niente del genere: hai i permessi per aprire e modificare qualunque cosa, e nessun colore, nessun avviso e nessuna richiesta di conferma ti fermeranno.</p>
+<p>Il problema non è che un errore qui sia difficile da fare. È che <strong>non produce nessun sintomo</strong>: uno scenario modificato per sbaglio continua a girare e a risultare verde, e la cosa si scopre giorni dopo, sotto forma di un numero sbagliato in un report.</p>
+<p>Quello che puoi fare da sola: <strong>guardare</strong> la cronologia, e <strong>riaccendere</strong> uno scenario fermo (<a href="guida-9.html">guida 9</a>). Quello che non va fatto mai: aprire un modulo e salvarlo, anche solo per vedere com'è fatto dentro. Se hai bisogno di capire cosa fa, chiedi a Paolo: costa un messaggio.</p>
+</aside>
+<p>I tre automatismi non partono da soli a orari fissi: ciascuno aspetta un fatto preciso.</p>
+<figure class="figura">
+<figcaption>Figura 1 — Chi accende cosa</figcaption>
+<pre>   IL FATTO CHE LO ACCENDE              L'AUTOMATISMO              COSA SCRIVE IN GRIST
+   ─────────────────────────            ──────────────             ─────────────────────
+
+   Nasce un ordine
+   su WooCommerce           ────────►   Raccolta ordini    ──────► Testata + righe
+                                                                   Articoli mancanti
+                                                                   Pezzi dei kit
+
+   Un ordine viene salvato              Aggiornamento              Cambio di stato
+   su WooCommerce           ────────►   ordini e resi      ──────► Resi (righe negative)
+   (anche solo aperto e chiuso)                                │
+                                                               │
+                                                               │ (se il reso è un kit)
+                                                               ▼
+   Si accende una casella   ────────►   Esplosione kit     ──────► Righe dei pezzi
+   in Grist                                                        del kit</pre>
+</figure>
+<p>Il terzo è l'unico che parte <strong>da Grist</strong> e non dal sito. Ed è anche l'unico che può essere acceso da un altro automatismo: quando torna indietro un kit, il secondo accende la casella e il terzo si mette al lavoro.</p>
+<hr>
+<h2 id="s3"><a class="ancora" href="#s3">§3</a> Raccolta ordini</h2>
+<p><strong>Quando parte.</strong> Appena un ordine nasce su WooCommerce. Una volta sola: dopo averlo scritto, questo automatismo non torna più su quell'ordine.</p>
+<p><strong>Cosa scrive in Grist.</strong></p>
+<ul><li>La testata dell'ordine e tutte le sue righe.</li><li>Gli <strong>articoli che ancora non esistono</strong> in anagrafica. Ne scrive il nome e l'aliquota e li segna come <em>creato da Make</em> e come <strong>da verificare</strong>. Tutto il resto lo lascia vuoto, <strong>comprese le date delle giacenze</strong>. Poi ti manda una mail (sezione 6).</li><li>Le <strong>righe dei pezzi</strong>, se nell'ordine c'è un kit.</li></ul>
+<p><strong>Cosa non fa.</strong></p>
+<ul><li>Non assegna il magazzino: quello resta il tuo primo intervento, su ogni ordine.</li><li>Non completa gli articoli che crea: prezzo di listino, serie, tipo di variante, genitore, virtuale e date delle giacenze nell'ordine non ci sono (<a href="guida-5.html">guida 5</a>).</li><li>Non riconosce un kit la cui ricetta non esiste ancora: scrive la riga del kit senza i pezzi, e nessuna pagina lo segnala (<a href="guida-5.html">guida 5</a>).</li><li>Non distingue un ordine di un rappresentante da uno diretto. <span class="marcatore"><a href="guida-9.html#s9" title="elenco completo nella guida 9 §9"><em>(comportamento atteso, non ancora verificato sul campo: manca un ordine vero da rappresentante su cui leggere come WooCommerce trasmette l'informazione)</em></a></span></li><li>Non torna più sull'ordine. Tutto quello che succede dopo è affare del secondo automatismo.</li></ul>
+<p><strong>Come ti accorgi che ha lavorato.</strong> L'ordine compare in <em>Ordini Aperti</em> nel giro di qualche minuto, con la <span class="campione campione-arancione" aria-hidden="true"></span>casella arancione del magazzino da compilare.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — un ordine entra una volta sola</p>
+<p>C'è una protezione che impedisce di scrivere due volte lo stesso ordine, ed è quella che ti salva quando WooCommerce avvisa Make più volte per lo stesso fatto. Ha però un rovescio: se un ordine finisce in Grist e poi viene <strong>cancellato</strong>, non ci tornerà da solo. Nessuno lo riscriverà, e nessuno ti dirà che manca.</p>
+<p>È uno dei motivi per cui in Grist non si cancella: si annulla.</p>
+</aside>
+<hr>
+<h2 id="s4"><a class="ancora" href="#s4">§4</a> Aggiornamento ordini e resi</h2>
+<p><strong>Quando parte.</strong> A ogni salvataggio di un ordine su WooCommerce. È il più operoso dei tre e, quasi sempre, <strong>non fa niente</strong>: WooCommerce lo avvisa anche quando apri un ordine e lo richiudi senza cambiare nulla. Un'esecuzione in cui non succede niente è il caso più frequente e più sano.</p>
+<p>Ogni volta che si sveglia, si fa quattro domande.</p>
+<figure class="figura">
+<figcaption>Figura 2 — Le quattro domande</figcaption>
+<pre>                        Un ordine è stato salvato su WooCommerce
+                                        │
+                                        ▼
+                    ┌───────────────────────────────────────┐
+                    │  Questo ordine c'è in Grist?          │
+                    └───────────────────────────────────────┘
+                          │                        │
+                        NO │                        │ SÌ
+                          ▼                        ▼
+                 ┌──────────────────┐   ┌──────────────────────────┐
+                 │ Lo stato è       │   │ Lo stato è cambiato?     │
+                 │ riconoscibile?   │   │                          │
+                 └──────────────────┘   └──────────────────────────┘
+                    │           │              │            │
+                 SÌ │           │ NO        SÌ │            │ NO
+                    ▼           ▼              ▼            ▼
+              ✉️ «Ordine     ✉️ «Stato      Aggiorna lo   non fa nulla
+               presente su    ordine non     stato in
+               WooCommerce    riconosciuto»  Grist
+               ma non su
+               Grist»                 ┌──────────────────────────┐
+                                      │ Ci sono rimborsi nuovi?  │
+                                      └──────────────────────────┘
+                                              │            │
+                                           SÌ │            │ NO
+                                              ▼            ▼
+                                        Scrive il reso   non fa nulla</pre>
+</figure>
+<p>Due cose che questa figura non mostra e che vale la pena sapere:</p>
+<ul><li><strong>Le domande sullo stato e sui rimborsi si fanno tutte e due.</strong> Un rimborso che porta l'ordine a «Rimborsato» fa scattare entrambe le risposte nella stessa esecuzione, ed è giusto così: cambia lo stato <em>e</em> nasce il reso.</li><li><strong>L'avviso sull'ordine mancante non scatta subito.</strong> C'è un margine di dieci minuti dalla creazione dell'ordine, perché nei primi istanti è normale che l'ordine non sia ancora in Grist: il primo automatismo ci sta ancora lavorando.</li></ul>
+<p><strong>Cosa scrive quando c'è un reso.</strong> Crea un record di tipo <em>Reso</em>, collegato all'ordine originale, con le righe in negativo. Tre dettagli che spiegano cose che a schermo sembrano strane:</p>
+<ul><li><strong>La data è quella del rimborso</strong>, non quella dell'ordine. Un ordine di marzo rimborsato a maggio produce un reso datato maggio, ed è corretto: il rimborso pesa sul periodo in cui è avvenuto.</li><li><strong>Il magazzino e i dati fiscali</strong> vengono ereditati dall'ordine originale. Non devi riassegnarli.</li><li><strong>Se il reso riguarda un kit</strong>, accende la casella dell'esplosione, così il terzo automatismo scrive i pezzi in negativo.</li></ul>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — una casella su WooCommerce decide una giacenza in Grist</p>
+<p>Quando registri un rimborso su WooCommerce, nella finestra c'è la casella <strong>«Rifornisci i prodotti rimborsati»</strong>. Questo automatismo la legge, e la riporta in Grist come «merce rientrata».</p>
+<p>Se l'hai spuntata, la riga di reso <strong>non comparirà</strong> in <em>Resi in attesa di rientro</em> e la giacenza risalirà subito, senza che tu debba fare nulla. Se non l'hai spuntata, la riga ti aspetta in quella pagina finché non dici tu com'è andata.</p>
+<p>Da qui la regola: <strong>quella casella si spunta solo se la merce è già fisicamente tornata.</strong> Non è una dichiarazione d'intenti, è la constatazione di un fatto.</p>
+<p>Se l'hai spuntata per sbaglio si rimedia, e si rimedia in Grist: apri la riga di reso e <strong>togli</strong> la spunta di «merce rientrata». La riga ricompare fra le pendenze e la giacenza torna scarica. Attenzione a una cosa sola: la correzione vale per Grist, mentre la disponibilità su WooCommerce è già risalita per conto suo e resta com'è.</p>
+<p>I casi completi — merce che rientra dopo, merce che non rientrerà, kit — sono nella <strong><a href="guida-4.html">guida 4</a></strong>, insieme all'immagine della finestra del rimborso.</p>
+</aside>
+<p><strong>Cosa non fa.</strong></p>
+<ul><li>Non crea ordini nuovi: se un ordine non è in Grist, ti avvisa e basta.</li><li>Non si accorge di un ordine <strong>cancellato</strong> o messo nel cestino su WooCommerce. Anzi: gli ordini cestinati vengono ignorati di proposito, per non riempire la casella di avvisi inutili. È il motivo per cui un ordine sbagliato si porta su «Annullato».</li><li>Non decide se la merce è rientrata. La legge da WooCommerce, se c'è, altrimenti aspetta te.</li></ul>
+<p><strong>Come ti accorgi che ha lavorato.</strong> Lo stato dell'ordine in Grist corrisponde a quello sul sito, e dopo un rimborso compare un nuovo record di tipo <em>Reso</em>.</p>
+<hr>
+<h2 id="s5"><a class="ancora" href="#s5">§5</a> Esplosione kit</h2>
+<p><strong>Quando parte.</strong> Da Grist, non dal sito, e in due modi:</p>
+<ul><li><strong>da solo</strong>, quando il secondo automatismo registra il reso di un kit;</li><li><strong>a mano</strong>, quando sei tu ad accendere la casella dell'esplosione su una riga: succede con i kit inseriti a mano in un ordine, con un kit che ha venduto prima di avere la sua ricetta, oppure quando un'esplosione non è andata a buon fine. Il gesto è nella <a href="guida-3.html">guida 3</a> (dentro un ordine) e nella <a href="guida-5.html">guida 5</a> (il kit senza ricetta).</li></ul>
+<p><strong>Cosa scrive.</strong> Le righe dei pezzi che compongono il kit, prese dalla ricetta nella tabella <code>Bundle</code>, con lo stesso segno della riga da cui nascono: positive se il kit è stato venduto, negative se è stato reso. Poi accende la casella <strong>kit esploso</strong>, che serve a non farlo due volte.</p>
+<p><strong>Cosa non fa.</strong> Non riguarda i kit già esplosi dagli altri due automatismi. E soprattutto: <strong>non manda nessuna mail.</strong> È l'unico dei tre senza voce, quindi è l'unico per cui il silenzio non dice proprio niente.</p>
+<p><strong>Come ti accorgi che ha lavorato.</strong> Sotto la riga del kit compaiono le righe dei pezzi, e la casella <strong>kit esploso</strong> risulta accesa. Se la casella dell'esplosione è accesa ma quella di <em>kit esploso</em> no, e i pezzi non ci sono, l'esplosione non è avvenuta: <a href="guida-9.html">guida 9</a>.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — la casella «kit esploso» non va spenta</p>
+<p>Serve a impedire che i pezzi vengano scritti due volte. Spegnerla a mano non «rifà» l'esplosione: <strong>la duplica</strong>, e ti ritrovi con il doppio dei pezzi scaricati dal magazzino, senza alcun errore a segnalarlo.</p>
+<p>Se un'esplosione è andata storta e va rifatta, è un caso da <a href="guida-9.html">guida 9</a>, non da rimediare spegnendo caselle.</p>
+</aside>
+<p>Serve a vedere in un colpo solo come i tre automatismi si passano il lavoro. L'esempio è un kit «Set 3 libri» composto da tre titoli.</p>
+<figure class="figura">
+<figcaption>Figura 3 — Un kit venduto e poi reso: chi scrive cosa</figcaption>
+<pre>  MARZO — il cliente compra il kit
+  ────────────────────────────────
+  Raccolta ordini scrive:      Ordine #1042
+                                 └─ Set 3 libri          +1     ← con il suo prezzo
+                                     ├─ Libro A          +1     ← pezzi, prezzo 0
+                                     ├─ Libro B          +1
+                                     └─ Libro C          +1
+
+  Il magazzino si scarica sui tre libri. Sul kit, no: il kit non ha giacenza.
+
+
+  MAGGIO — il cliente rende il kit e viene rimborsato
+  ──────────────────────────────────────────────────
+  Aggiornamento scrive:        Reso (collegato a #1042, data: maggio)
+                                 └─ Set 3 libri          −1
+                                        │
+                                        │ accende la casella dell'esplosione
+                                        ▼
+  Esplosione kit scrive:                ├─ Libro A       −1
+                                        ├─ Libro B       −1
+                                        └─ Libro C       −1
+
+  Il magazzino si ricarica sui tre libri — ma solo quando la merce
+  risulta rientrata. Fino ad allora le righe restano lì, senza contare.</pre>
+</figure>
+<p>Il punto da portarsi via: quando c'è un kit di mezzo, <strong>il lavoro è diviso fra due automatismi</strong>. Se il secondo funziona e il terzo no, in Grist trovi il reso del kit senza i suoi pezzi — e siccome il kit non ha giacenza, il magazzino non si muove di un pezzo. La pagina <em>Resi di kit da esplodere</em> esiste per intercettare esattamente questo, e va guardata <strong>prima</strong> di chiudere i resi del mese.</p>
+<hr>
+<h2 id="s6"><a class="ancora" href="#s6">§6</a> Le tre mail</h2>
+<p>Arrivano da <strong>«Magazzino LwM»</strong> e le ricevete in tre: tu, Virginia e Paolo. È la configurazione del periodo di collaudo, pensata perché nessun avviso resti senza qualcuno che lo legga.</p>
+<div class="tabella"><table>
+<thead><tr><th>Nell'oggetto leggi…</th><th>Cos'è successo</th><th>Cosa devi fare</th></tr></thead>
+<tbody><tr><td><em>Nuovi articoli creati in Grist automaticamente</em></td><td>Un ordine conteneva prodotti non ancora in anagrafica, che sono stati creati con i dati minimi</td><td>Completarli. È l'unica mail di lavoro ordinario</td></tr><tr><td>⚠️ <em>Ordine … presente su WooCommerce ma non su Grist</em></td><td>Un ordine non è mai arrivato in Grist</td><td>Recuperarlo, o segnalarlo</td></tr><tr><td>⚠️ <em>Stato ordine non riconosciuto</em></td><td>È arrivato uno stato che il sistema non sa tradurre</td><td>Girarla a Paolo</td></tr></tbody>
+</table></div>
+<h4 id="nuovi-articoli-creati-in-grist-automaticamente">«Nuovi articoli creati in Grist automaticamente»</h4>
+<p>È l'unica delle tre che descrive una cosa normale. La mail elenca gli articoli creati, uno per riga, con SKU, nome e aliquota, e ricorda cosa manca: verificare nome e aliquota, aggiungere il prezzo di listino, controllare se si tratta in realtà di un kit, inserire le giacenze iniziali nei due magazzini, e verificare se è la variante di un prodotto che ha bisogno anche del suo «genitore».</p>
+<p>Il <strong>come</strong> si fa è nella <a href="guida-5.html">guida 5</a>. Qui bastano tre avvertenze di lettura:</p>
+<ul><li><strong>«aliquota: n.d.» non vuol dire che manchi il dato.</strong> Vuol dire che sul sito il prodotto ha l'aliquota ordinaria, il 22%, che su WooCommerce non ha un codice proprio — oppure che è una variante. In Grist troverai l'aliquota vuota, o <code>parent</code> se è una variante: in entrambi i casi va controllata e <strong>scelta</strong>, anche quando è davvero <code>standard</code>. Se quel prodotto è un libro in Art.74, è il caso da sistemare per primo.</li><li><strong>Le giacenze sono a zero e le date sono vuote.</strong> Non è la giacenza reale, è l'assenza di un dato. E l'errore arriva subito: finché non inserisci le date, le colonne del venduto di quell'articolo <strong>vanno in errore appena l'articolo compare in una riga d'ordine</strong> — cioè immediatamente, visto che è stato proprio un ordine a crearlo.</li><li><strong>Se l'articolo nuovo è un kit</strong>, l'ordine che l'ha fatto nascere non è stato esploso: dopo aver creato la ricetta, l'esplosione su quella riga la accendi tu (<a href="guida-5.html">guida 5</a>).</li></ul>
+<p>Gli articoli in attesa restano marcati <strong>da verificare</strong> in anagrafica, quindi anche se la mail si perde il lavoro non si perde.</p>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g2-02-mail-articoli-creati.png"><img src="assets/img/g2-02-mail-articoli-creati.png" alt="La mail «Nuovi articoli creati in Grist automaticamente» come arriva in casella, con l'elenco degli articoli visibile." loading="lazy" style="width:985px"></a>
+<figcaption><span class="numero">Screenshot 2</span> Il sistema ha creato l'articolo da solo, ma il lavoro comincia qui: l'elenco dice cosa manca.</figcaption>
+</figure>
+<h4 id="ordine-presente-su-woocommerce-ma-non-su-grist">⚠️ «Ordine … presente su WooCommerce ma non su Grist»</h4>
+<p>Il primo automatismo non ha registrato quell'ordine e qualcuno, più tardi, ha toccato l'ordine sul sito: è a quel punto che il secondo se n'è accorto. La mail riporta data, stato, totale e cliente, così puoi ritrovarlo.</p>
+<p>Le vie sono due: reinserire l'ordine a mano in Grist (<a href="guida-3.html">guida 3</a>), oppure segnalarlo a Paolo perché rilanci l'esecuzione fallita. Se l'ordine ha molte righe, la seconda è più rapida e più sicura.</p>
+<p>Quello che conta è <strong>non lasciarlo lì</strong>: finché quell'ordine non è in Grist, la sua merce non risulta scaricata dal magazzino e le sue righe non entrano nei report del trimestre.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — questo avviso non arriva sempre</p>
+<p>Scatta solo se qualcuno <strong>rimette mano</strong> all'ordine sul sito dopo che è andato perso. Di norma succede, perché prima o poi ogni ordine passa a «Completato». Ma se un ordine si perde e nessuno lo tocca più, non arriva nessuna mail e nessuno se ne accorge.</p>
+<p>Non esiste, oggi, nessun controllo che confronti periodicamente gli ordini di WooCommerce con quelli di Grist, e nemmeno il giro settimanale su <em>Ordini Aperti</em> lo intercetta: un ordine mancante semplicemente non c'è, e una lista non può mostrare quello che non contiene. È un limite dichiarato, non una svista.</p>
+</aside>
+<h4 id="stato-ordine-non-riconosciuto">⚠️ «Stato ordine non riconosciuto»</h4>
+<p>Un ordine è arrivato con uno stato che il sistema non sa tradurre in italiano — succede quando su WooCommerce viene aggiunto uno stato nuovo, spesso da un plugin. Lo stato in Grist <strong>non è stato aggiornato</strong> ed è rimasto quello di prima.</p>
+<p><strong>Non è un lavoro tuo.</strong> È una modifica da fare dentro Make, e va a Paolo: giragli la mail così com'è, contiene già tutto quello che gli serve.</p>
+<p>Nel frattempo l'ordine in Grist ha uno stato vecchio: se era «In lavorazione» e sul sito è passato a qualcos'altro, in Grist resta «In lavorazione». Vale la pena controllarlo, perché lo stato decide se quell'ordine entra nei report e muove il magazzino.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — il silenzio non è una conferma</p>
+<p>Le mail arrivano quando l'automatismo si accorge di qualcosa. Se un automatismo è <strong>fermo</strong>, non si accorge di niente e quindi non scrive niente: la casella resta tranquilla proprio mentre le cose vanno peggio.</p>
+<p>C'è anche un modo tecnico in cui le mail smettono di partire pur essendo tutto acceso: il collegamento con Gmail che permette a Make di scriverti <strong>va riautorizzato ogni tanto</strong>, e quando scade gli avvisi si fermano senza che nessuno lo dica. Non è un guasto, è una scadenza. La procedura, che è di pochi clic, è nella <strong><a href="guida-9.html">guida 9</a></strong>.</p>
+<p>Per questo il controllo non è «non mi è arrivato niente, quindi va bene», ma «gli ordini in Grist tornano con quelli sul sito».</p>
+</aside>
+<hr>
+<h2 id="s7"><a class="ancora" href="#s7">§7</a> Gli avvisi che manda Make stesso</h2>
+<p>Oltre alle tre mail, ce n'è un quarto tipo, di natura diversa: quando uno scenario sbaglia più volte di seguito, <strong>Make lo spegne da solo</strong> e avvisa l'intestatario dell'account.</p>
+<p>L'intestatario sei tu. <strong>Paolo non riceve questi avvisi.</strong> Finché non glielo dici, per lui è come se non fosse successo niente.</p>
+<p>Sono mail di Make, in inglese, e sono facili da scambiare per pubblicità del servizio. Se ne arriva una, la sequenza è: guarda se lo scenario è spento, riaccendilo se te la senti (<a href="guida-9.html">guida 9</a>), e <strong>avvisa Paolo comunque</strong> — anche se sembra tutto tornato a posto, perché uno scenario che si spegne da solo ha una causa che va guardata.</p>
+<hr>
+<h2 id="s8"><a class="ancora" href="#s8">§8</a> Come si vede se ha funzionato</h2>
+<p><strong>Prima in Grist, sempre.</strong> È lì che stanno le cose che ti interessano, ed è il controllo che risponde alla domanda vera. L'ordine c'è? Cercalo per numero in <em>Ordini</em>. Il reso è comparso? Guarda in <em>Ordini</em> o nella pagina dei resi.</p>
+<p><strong>Poi in Make, se serve.</strong> Ogni scenario ha una cronologia delle esecuzioni: una riga per volta, con l'esito. Serve per rispondere a «l'automatismo ha girato o è fermo da tre giorni?».</p>
+<p>Due cose da sapere per leggerla senza spaventarsi:</p>
+<ul><li><strong>Tante esecuzioni in cui non è successo niente sono normali</strong>, soprattutto sul secondo automatismo. Non sono errori.</li><li><strong>Verde vuol dire «è arrivato in fondo», non «i dati sono giusti».</strong> Un'esecuzione può concludersi bene avendo copiato un dato sbagliato: gli automatismi copiano, non giudicano.</li></ul>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g2-03-cronologia-esecuzioni.png"><img src="assets/img/g2-03-cronologia-esecuzioni.png" alt="La cronologia di uno scenario, con una serie di esecuzioni riuscite." loading="lazy" style="width:1138px"></a>
+<figcaption><span class="numero">Screenshot 3</span> La prova che un automatismo ha girato: una riga per ogni volta, con esito e durata.</figcaption>
+</figure>
+<p><strong>Sui consumi non c'è da preoccuparsi.</strong> Make conta le operazioni e il piano attivo ne comprende diecimila al mese: con il volume di ordini attuale, poco più di duecento all'anno, ne restano largamente in avanzo anche contando tutte le volte in cui il secondo automatismo gira a vuoto. Se un giorno il volume crescesse molto, è una cosa da rivedere — non oggi.</p>
+<p>Un'ultima cosa, che serve solo a sapere che esiste: quando un'esecuzione si interrompe a metà, Make la mette da parte invece di buttarla, su tutti e tre gli scenari. Vuol dire che una cosa rimasta a metà <strong>si può riprendere</strong> invece di essere rifatta a mano. Come si fa è nella <a href="guida-9.html">guida 9</a>.</p>
+<hr>
+<h2 id="s9"><a class="ancora" href="#s9">§9</a> Cosa gli automatismi non fanno</h2>
+<p>Non è l'elenco dei limiti del sistema, che sta nella <a href="guida-0.html">guida 0</a>. Sono le cose che <em>sembrano</em> dover arrivare da un automatismo e non arrivano.</p>
+<div class="tabella"><table>
+<thead><tr><th>Te lo aspetteresti da…</th><th>E invece</th></tr></thead>
+<tbody><tr><td><strong>Raccolta ordini</strong> — che assegni il magazzino</td><td>Non lo fa nessuno: è il tuo primo intervento su ogni ordine (<a href="guida-3.html">guida 3</a>)</td></tr><tr><td><strong>Raccolta ordini</strong> — che completi i nuovi articoli: prezzo di listino, varianti, virtuale, date delle giacenze</td><td>Nell'ordine non ci sono. Li metti tu (<a href="guida-5.html">guida 5</a>)</td></tr><tr><td><strong>Raccolta ordini</strong> — che esploda un kit la cui ricetta non esiste ancora</td><td>Scrive la riga del kit senza pezzi, e nessuna pagina lo segnala. Crei la ricetta e accendi l'esplosione a mano (<a href="guida-5.html">guida 5</a>)</td></tr><tr><td><strong>Aggiornamento</strong> — che si accorga di un ordine cancellato</td><td>Le cancellazioni non arrivano. Si annulla, non si cancella</td></tr><tr><td><strong>Aggiornamento</strong> — che veda un rimborso di solo importo</td><td>Il reso nasce <strong>senza righe</strong> e non compare in nessun report. Lo intercetta la pagina <em>Resi senza righe</em> (<a href="guida-4.html">guida 4</a>)</td></tr><tr><td><strong>Aggiornamento</strong> — che decida se la merce è tornata</td><td>La legge da WooCommerce se c'è; altrimenti la decisione è tua (<a href="guida-4.html">guida 4</a>)</td></tr><tr><td><strong>Aggiornamento</strong> — che recepisca una modifica alle righe di un ordine</td><td>Arrivano solo lo stato e i rimborsi. Quantità, prezzi e righe aggiunte o tolte no: si rifanno a mano in Grist (<a href="guida-3.html">guida 3</a>)</td></tr><tr><td><strong>Qualcuno</strong> — che aggiorni le disponibilità sul sito quando vendi offline</td><td>Non esiste. Le giacenze di Grist restano in Grist</td></tr><tr><td><strong>Qualcuno</strong> — che copi in Grist le modifiche al catalogo del sito</td><td>Non esiste. Ogni prodotto nuovo o dato corretto sul sito va riportato in <em>Articoli</em> (<a href="guida-5.html">guida 5</a>)</td></tr><tr><td><strong>Qualcuno</strong> — che registri i carichi di magazzino</td><td>Interamente a mano (<a href="guida-6.html">guida 6</a>)</td></tr><tr><td><strong>Qualcuno</strong> — che confronti gli ordini del sito con quelli di Grist</td><td>Nessun automatismo lo fa. È un confronto che si fa a mano quando si chiudono i report del trimestre, raccomandato per i primi due (<a href="guida-9.html">guida 9</a>)</td></tr><tr><td><strong>Qualcuno</strong> — che distingua gli ordini dei rappresentanti</td><td>Il campo del canale è uguale per tutti, per ora</td></tr><tr><td><strong>Qualcuno</strong> — che registri uno spostamento fra magazzini</td><td>Non esiste. È un record che inserisci tu, di tipo <em>Altri movimenti</em> (<a href="guida-3.html">guida 3</a>)</td></tr><tr><td><strong>Make</strong> — la chiusura di un reso senza rientro</td><td>Non passa da Make: è una casella in Grist, e la trovi solo lì (<a href="guida-4.html">guida 4</a>)</td></tr></tbody>
+</table></div>
+<hr>
+<h2 id="s10"><a class="ancora" href="#s10">§10</a> Attenzione a</h2>
+<p><strong>Cercare in Make una cosa che sta in Grist.</strong> Le due caselle dei resi, l'assegnazione del magazzino, i carichi: nessuna di queste passa dagli automatismi. In Make non c'è niente da cercare e niente da sistemare.</p>
+<p><strong>Aprire un modulo per capire com'è fatto.</strong> È il gesto più innocuo che c'è e il più rischioso di questa guida: non chiede conferme, non lascia tracce visibili, e il danno si manifesta come numero sbagliato giorni dopo.</p>
+<p><strong>Prendere il verde per una garanzia.</strong> Dice che l'automatismo è arrivato in fondo. Non dice che ha scritto la cosa giusta.</p>
+<p><strong>Aspettare una mail che non arriverà.</strong> Il terzo automatismo non ne manda nessuna, e gli altri due tacciono se sono fermi. I controlli si fanno sui dati, non sulla casella di posta.</p>
+<hr>
+<h2 id="s11"><a class="ancora" href="#s11">§11</a> Dove si continua</h2>
+<div class="tabella"><table>
+<thead><tr><th>Se vuoi…</th><th>Guida</th></tr></thead>
+<tbody><tr><td>Capire com'è fatto Grist sotto, e chi scrive ciascun campo</td><td>1</td></tr><tr><td>Assegnare il magazzino, correggere un ordine, inserire un kit a mano</td><td>3</td></tr><tr><td>Chiudere un reso, capire le due caselle e la spunta su WooCommerce</td><td>4</td></tr><tr><td>Completare un articolo creato in automatico, costruire un kit</td><td>5</td></tr><tr><td>Riaccendere uno scenario fermo, riautorizzare Gmail, segnalare un problema</td><td>9</td></tr></tbody>
+</table></div>
+</div>
+
+  </main>
+  <footer class="pie">
+    <p>Manuale del sistema «Magazzino LwM» · generato il 17/09/2026</p>
+    <p>Per i casi che non stanno nelle guide, e per qualsiasi cosa nuova da costruire, si scrive a Paolo: cosa allegare sta nella <a href="guida-9.html#s11">guida 9 §11</a>.</p>
+  </footer>
+</div>
+
+<div class="lente" id="lente" hidden><img src="" alt=""></div>
+
+<script src="assets/manuale.js"></script>
+</body>
+</html>

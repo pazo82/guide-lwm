@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Guida 3 — Ordini · Magazzino LwM</title>
+<link rel="stylesheet" href="assets/stile.css">
+</head>
+<body>
+<a class="salta" href="#principale">Vai al contenuto</a>
+
+<button type="button" class="apri-menu" id="apri-menu" aria-label="Apri il menu delle guide">☰ Guide</button>
+
+<nav class="menu" id="menu" aria-label="Le guide">
+  <p class="menu-titolo">Magazzino LwM</p>
+  <a class="menu-voce menu-indice" href="index.html">Indice</a>
+<p class="menu-blocco">Capire</p>
+<a class="menu-voce" href="guida-0.html"><span class="menu-n">0</span>Come funziona il sistema</a>
+<a class="menu-voce" href="guida-1.html"><span class="menu-n">1</span>La mappa di Grist</a>
+<a class="menu-voce" href="guida-2.html"><span class="menu-n">2</span>Gli automatismi (Make)</a>
+<p class="menu-blocco">Fare</p>
+<a class="menu-voce attiva" href="guida-3.html"><span class="menu-n">3</span>Ordini</a>
+<a class="menu-voce" href="guida-4.html"><span class="menu-n">4</span>Resi e rimborsi</a>
+<a class="menu-voce" href="guida-5.html"><span class="menu-n">5</span>Catalogo, articoli e kit</a>
+<a class="menu-voce" href="guida-6.html"><span class="menu-n">6</span>Giacenze e inventario</a>
+<a class="menu-voce" href="guida-7.html"><span class="menu-n">7</span>Report fiscali</a>
+<p class="menu-blocco">Cavarsela da sola</p>
+<a class="menu-voce" href="guida-8.html"><span class="menu-n">8</span>Muoversi in Grist</a>
+<a class="menu-voce" href="guida-9.html"><span class="menu-n">9</span>Manutenzione e problemi</a>
+<p class="menu-blocco">Riferimento</p>
+<a class="menu-voce" href="scheda.html"><span class="menu-n">A4</span>Scheda rapida</a>
+</nav>
+
+<div class="colonna">
+  <div class="barra">
+    <div class="barra-nav"><a href="guida-2.html">‹ Guida 2</a> <a href="guida-4.html">Guida 4 ›</a></div>
+    <div class="barra-strumenti"><button type="button" class="bottone-piatto" id="espandi">Espandi tutto</button><button type="button" class="bottone-piatto" onclick="window.print()">Stampa</button></div>
+  </div>
+  <main id="principale">
+
+<header class="testata">
+  <p class="occhiello">Guida 3</p>
+  <h1>Ordini</h1>
+  <p class="versione"><strong>Versione del 13/09/2026</strong> · Sistema «Magazzino LwM»</p>
+</header>
+<nav class="sommario" aria-label="Sezioni della guida">
+  <p class="sommario-titolo">In questa guida</p>
+  <ol class="sommario-voci"><li><a href="#s1"><span class="n">1</span>In breve</a></li><li><a href="#s2"><span class="n">2</span>Una tabella, quattro tipi di record</a></li><li><a href="#s3"><span class="n">3</span>La lista di lavoro: *Ordini Aperti*</a></li><li><a href="#s4"><span class="n">4</span>Assegnare il magazzino</a></li><li><a href="#s5"><span class="n">5</span>Il campo della fattura</a></li><li><a href="#s6"><span class="n">6</span>Inserire un ordine a mano</a></li><li><a href="#s7"><span class="n">7</span>Un kit dentro un ordine</a></li><li><a href="#s8"><span class="n">8</span>Leggere le righe di un ordine</a></li><li><a href="#s9"><span class="n">9</span>Sostituire un prodotto dentro un kit</a></li><li><a href="#s10"><span class="n">10</span>Modificare un ordine</a></li><li><a href="#s11"><span class="n">11</span>Annullare, non cancellare</a></li><li><a href="#s12"><span class="n">12</span>Movimenti eccezionali: trasferimenti e correzioni</a></li><li><a href="#s13"><span class="n">13</span>Ordini da rappresentante</a></li><li><a href="#s14"><span class="n">14</span>Attenzione a</a></li><li><a href="#s15"><span class="n">15</span>Se qualcosa va storto</a></li><li><a href="#s16"><span class="n">16</span>Dove si continua</a></li></ol>
+</nav>
+<div class="corpo">
+<p>La <a href="guida-0.html">guida 0</a> racconta la strada che fa un ordine. Questa dice cosa fai tu lungo quella strada: <strong>assegnare il magazzino, controllare la fattura, inserire un ordine che non è arrivato dal sito, correggerne uno già esistente.</strong></p>
+<p>È la guida da tenere aperta quando lavori sugli ordini. Non parla di resi — quelli sono nella <a href="guida-4.html">guida 4</a> — né di carichi di magazzino, che stanno nella <a href="guida-6.html">guida 6</a>.</p>
+<hr>
+<h2 id="s1"><a class="ancora" href="#s1">§1</a> In breve</h2>
+<p>Gli ordini arrivano da soli. Quello che resta da fare sono quattro cose, e nessuna di queste il sistema può farla al posto tuo:</p>
+<div class="tabella"><table>
+<thead><tr><th>Il gesto</th><th>Quando</th><th>Se non lo fai</th></tr></thead>
+<tbody><tr><td><strong>Assegnare il magazzino</strong></td><td>Ogni settimana, su <em>Ordini Aperti</em></td><td>Le giacenze dei due magazzini restano più alte del vero</td></tr><tr><td><strong>Controllare il campo della fattura</strong></td><td>Sugli stessi ordini, nella stessa passata</td><td>Una vendita entra o esce dal Registro Corrispettivi quando non doveva</td></tr><tr><td><strong>Inserire un ordine a mano</strong></td><td>Quando un ordine non è arrivato, o non viene dal sito</td><td>Quella vendita non esiste: né a magazzino né per il commercialista</td></tr><tr><td><strong>Correggere un ordine</strong></td><td>Quando qualcosa non torna</td><td>Il numero sbagliato resta, e nessuno lo segnala</td></tr></tbody>
+</table></div>
+<p>E una regola che vale sopra tutte, perché è quella che si paga più cara: <strong>un ordine sbagliato si annulla, non si cancella.</strong> Sezione 11.</p>
+<hr>
+<h2 id="s2"><a class="ancora" href="#s2">§2</a> Una tabella, quattro tipi di record</h2>
+<p>La tabella degli ordini non contiene solo ordini. Contiene quattro cose diverse, distinte dalla colonna del tipo (<code>tipo_record</code>), e vale la pena averle chiare adesso perché le incontri tutte nelle stesse pagine.</p>
+<div class="tabella"><table>
+<thead><tr><th>Tipo</th><th>Cos'è</th><th>Chi lo crea</th><th>Segno delle quantità</th><th>Nei report?</th><th>Muove il magazzino?</th></tr></thead>
+<tbody><tr><td><strong>Ordine</strong></td><td>Una vendita</td><td>Il sistema, o tu a mano</td><td>Positivo</td><td>Sì</td><td>Sì</td></tr><tr><td><strong>Reso</strong></td><td>Un rimborso</td><td>Il sistema, o tu a mano</td><td>Negativo</td><td>Sì</td><td>Solo se la merce rientra</td></tr><tr><td><strong>Approvvigionamento</strong></td><td>Un carico di merce</td><td>Tu, a mano</td><td>Negativo</td><td>No</td><td>Sì</td></tr><tr><td><strong>Altri movimenti</strong></td><td>Tutto il resto</td><td>Tu, a mano</td><td><strong>Dipende</strong></td><td>No</td><td>Sì</td></tr></tbody>
+</table></div>
+<p>Le prime tre le trovi spiegate altrove: gli ordini qui, i resi nella <strong><a href="guida-4.html">guida 4</a></strong>, i carichi nella <strong><a href="guida-6.html">guida 6</a></strong>. Sui resi vale la stessa distinzione degli ordini: quelli dei rimborsi fatti su WooCommerce li scrive il sistema, mentre il reso di un ordine che avevi inserito a mano lo scrivi tu, perché su quell'ordine nessun automatismo interviene (<a href="guida-4.html">guida 4</a>). Sul quarto tipo, che è nuovo, serve qualche riga in più.</p>
+<h4 id="altri-movimenti-il-tipo-per-i-casi-che-non-rientrano-negli-a">«Altri movimenti»: il tipo per i casi che non rientrano negli altri</h4>
+<p>Serve per la merce che si sposta senza che ci sia stata né una vendita né un acquisto: un trasferimento da un magazzino all'altro, la correzione di un ordine partito da due depositi, una rottura, un omaggio, un caso che non avevamo previsto.</p>
+<p>Funziona come gli altri: uno stato, un magazzino, una data, e una o più righe con SKU e quantità. Non entra in nessun report — quindi non tocca niente di ciò che va al commercialista — e muove le giacenze come qualunque altro movimento.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — è l'unico tipo su cui il segno non lo controlla nessuno</p>
+<p>La regola è sempre quella: <strong>le quantità contano i pezzi che escono dal magazzino.</strong> Merce che esce, quantità positiva. Merce che entra, quantità negativa.</p>
+<p>Su un ordine, su un reso e su un carico esiste un controllo che accende la riga quando il segno è quello sbagliato, perché su ciascuno di quei tre il segno giusto è uno solo. Qui no, e non per dimenticanza: su un movimento eccezionale <strong>entrambi i segni sono legittimi</strong>, dipende da cosa stai registrando. Nessuna formula può sapere cosa avevi in mente.</p>
+<p>La conseguenza è che qui il segno lo controlli tu, e un segno invertito non produce nessun avviso: produce un magazzino che sale invece di scendere, del doppio della quantità che avevi in mente.</p>
+</aside>
+<p>C'è una seconda cosa da sapere, ed è la ragione per cui questa sezione contiene un'avvertenza in più delle altre: <strong>i movimenti eccezionali non hanno una pagina di presidio.</strong> La pagina <em>Approvvigionamenti</em> mostra solo i carichi e la sua colonna di avvisi si accende solo su quelli; le altre pagine di controllo riguardano i resi. Un movimento eccezionale lasciato incompleto — senza magazzino, o in uno stato che non conta — semplicemente non compare da nessuna parte.</p>
+<p>L'unica rete è che, finché è incompleto, lo trovi in <em>Ordini Aperti</em>. Le procedure e la checklist sono nella <strong>sezione 12</strong>.</p>
+<hr>
+<h2 id="s3"><a class="ancora" href="#s3">§3</a> La lista di lavoro: <em>Ordini Aperti</em></h2>
+<p>È la pagina da cui comincia la settimana. Contiene tutto ciò che aspetta ancora qualcosa, e ci finisce per <strong>due motivi diversi</strong>, che conviene saper distinguere a colpo d'occhio.</p>
+<figure class="figura">
+<figcaption>Figura 1 — Perché questo ordine è in <em>Ordini Aperti</em></figcaption>
+<pre>                        ┌─────────────────────────────┐
+                        │  L'ordine è già chiuso?     │
+                        │  (Completato, Annullato,    │
+                        │   Rimborsato)               │
+                        └─────────────────────────────┘
+                              │                │
+                           NO │                │ SÌ
+                              ▼                ▼
+                    ┌──────────────────┐  ┌─────────────────────────┐
+                    │ È in lista       │  │ Ha un magazzino         │
+                    │ perché è ancora  │  │ assegnato?              │
+                    │ in movimento     │  └─────────────────────────┘
+                    │                  │        │            │
+                    │ Non dipende      │     NO │            │ SÌ
+                    │ da te: aspetta   │        ▼            ▼
+                    │ un pagamento,    │   È in lista    esce dalla
+                    │ una spedizione,  │   perché        lista da solo
+                    │ una conferma     │   aspetta te
+                    └──────────────────┘   👤 casella
+                                            arancione</pre>
+</figure>
+<p>Il primo caso è la coda naturale del negozio: ordini in lavorazione, in attesa di pagamento, in sospeso. Non chiedono niente, si chiudono da soli.</p>
+<p>Il secondo è il tuo lavoro: un ordine <strong>già completato</strong> a cui nessuno ha detto da quale magazzino è partita la merce. È la <span class="campione campione-arancione" aria-hidden="true"></span>casella arancione, ed è la ragione per cui questa pagina esiste.</p>
+<p><strong>La colonna del tipo.</strong> In questa lista può comparire anche un record che un ordine non è: un reso che ha ereditato un magazzino vuoto, un movimento eccezionale lasciato a metà. La colonna del tipo te lo dice, ed è il primo posto dove guardare quando una riga sembra fuori posto.</p>
+<p><strong>Questa pagina non deve svuotarsi.</strong> Una coda c'è sempre. Quello che guardi non è che sia vuota, ma che nessuno ci resti più a lungo del dovuto — un ordine completato senza magazzino da tre settimane è un problema, lo stesso ordine da tre giorni è normale amministrazione.</p>
+<p><strong>Cosa non ci trovi.</strong> Un ordine che non è mai arrivato in Grist. Una lista non può mostrare quello che non contiene, e questa in particolare non è una riconciliazione con il sito: se il sistema perde un ordine, te ne accorgi da una mail o non te ne accorgi affatto (<a href="guida-2.html">guida 2</a>).</p>
+<h4 id="i-sette-stati-e-cosa-fa-ciascuno">I sette stati, e cosa fa ciascuno</h4>
+<div class="tabella"><table>
+<thead><tr><th>Stato</th><th>Resta in <em>Ordini Aperti</em>?</th><th>Entra nei report?</th><th>Muove il magazzino?</th></tr></thead>
+<tbody><tr><td>In attesa di pagamento</td><td>Sì</td><td>No</td><td>No</td></tr><tr><td>In lavorazione</td><td>Sì</td><td>No</td><td>No</td></tr><tr><td>In sospeso</td><td>Sì</td><td>No</td><td>No</td></tr><tr><td>Fallito</td><td>Sì</td><td>No</td><td>No</td></tr><tr><td><strong>Completato</strong></td><td>Solo se manca il magazzino</td><td><strong>Sì</strong></td><td><strong>Sì</strong></td></tr><tr><td><strong>Rimborsato</strong></td><td>Solo se manca il magazzino</td><td><strong>Sì</strong></td><td><strong>Sì</strong></td></tr><tr><td>Annullato</td><td>No</td><td>No</td><td>No</td></tr></tbody>
+</table></div>
+<p>Due righe meritano una nota.</p>
+<p><strong>Annullato è l'unico modo di far uscire un ordine dalla lista senza che conti.</strong> È il motivo per cui è lo strumento giusto per un ordine sbagliato (sezione 11).</p>
+<p><strong>Fallito, invece, resta in lista.</strong> Un pagamento non andato a buon fine non conta per niente — né report né magazzino — ma non esce dalla coda da solo. Se ne accumulano, sono rumore: valuta con Paolo se convenga portarli su <code>Annullato</code> o escluderli dalla vista.</p>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g3-01-ordini-aperti-tipi.png"><img src="assets/img/g3-01-ordini-aperti-tipi.png" alt="La pagina Ordini Aperti con la colonna del tipo visibile, righe di stato diverso e almeno due caselle del magazzino arancioni." loading="lazy" style="width:826px"></a>
+<figcaption><span class="numero">Screenshot 1</span> La lista di lavoro. L'arancione è la parte che dipende da te; la colonna del tipo distingue gli ordini da tutto il resto.</figcaption>
+</figure>
+<hr>
+<h2 id="s4"><a class="ancora" href="#s4">§4</a> Assegnare il magazzino</h2>
+<p>Il gesto più frequente del sistema: apri il menu a tendina sulla riga e scegli <strong>Magazzino Interno</strong> o <strong>Magazzino Cooperativa</strong>. Non c'è altro da fare, le giacenze si aggiornano da sole.</p>
+<p>Tre cose che conviene sapere.</p>
+<p><strong>Il magazzino sta sulla testata, non sulle righe.</strong> Un ordine parte da un magazzino solo. Merce che esce da entrambi è un caso che il sistema non prevede: si gestisce con una correzione, ed è nella sezione 12.</p>
+<p><strong>Si assegna anche a ordine già chiuso.</strong> Anzi, è il caso normale: quando fai la passata settimanale, buona parte degli ordini è già su «Completato». Non c'è nessuna finestra da rispettare.</p>
+<p><strong>Finché la casella è vuota, quei pezzi sono in un limbo.</strong> Escono dal totale generale ma non da nessuno dei due magazzini: è il "venduto orfano" della <a href="guida-6.html">guida 6</a>. Non è un errore, è una coda — diventa un problema solo se ci resta.</p>
+<p><strong>Quando la casella non si accende.</strong> Gli ordini di soli prodotti virtuali — un corso, un ebook — non hanno merce da spedire e non chiedono nessun magazzino: nella pratica non ti restano mai in <em>Ordini Aperti</em>. Li trovi normalmente nella pagina <em>Ordini</em>, dove non si distinguono in nulla dagli altri, e la casella del magazzino vuota non è una dimenticanza.</p>
+<hr>
+<h2 id="s5"><a class="ancora" href="#s5">§5</a> Il campo della fattura</h2>
+<p>È il campo più silenzioso e più pesante di tutta la tabella, ed è per questo che il controllo va fatto nella stessa passata dell'assegnazione del magazzino: le due colonne sono l'una accanto all'altra in <em>Ordini Aperti</em>, e guardarle insieme non costa un minuto in più.</p>
+<p><strong>Cosa decide.</strong> Se una vendita finisce nel <strong>Registro Corrispettivi</strong> oppure no. Acceso vuol dire «questa vendita è fatturata», e quindi fuori dal registro dei corrispettivi. Spento vuol dire «vendita senza fattura», e quindi dentro.</p>
+<p><strong>Come si compila da solo.</strong> Sugli ordini che arrivano dal sito lo calcola Grist quando il record nasce, guardando in quest'ordine: il dato del plugin fatture, poi la P.IVA e il codice fiscale, poi il documento richiesto dal cliente. Nella pratica funziona bene.</p>
+<p><strong>Come riconoscere un ordine da fatturare.</strong> Nella maggior parte dei casi te lo dicono i dati del cliente: se ha lasciato una <strong>partita IVA</strong> o un <strong>codice fiscale</strong>, o se ha chiesto fattura al momento dell'acquisto, il campo si accende da solo. Le due colonne della P.IVA e del codice fiscale le trovi nella pagina <em>Ordini</em> e nel riquadro dei valori della maschera di inserimento. Quando l'accordo è stato preso fuori dal sito — una scuola che chiede fattura per mail, un cliente che manda la P.IVA dopo — quel dato in WooCommerce non c'è, e il campo resta spento: è il caso in cui devi intervenire tu.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — si calcola una volta sola e non si riallinea mai</p>
+<p>Il valore si scrive nel momento in cui il record nasce, e da lì <strong>non si muove più</strong>. Se correggi la partita IVA di un ordine il giorno dopo, questo campo resta com'era.</p>
+<p>Sugli ordini che inserisci a mano la cosa ha una conseguenza netta: il record nasce quando scrivi il primo dato, cioè <strong>prima</strong> che tu abbia inserito i dati del cliente. Il campo nasce quindi sempre su «senza fattura». Se quella vendita è fatturata, <strong>lo accendi tu, alla fine dell'inserimento.</strong></p>
+<p>Sbagliarlo non produce nessun avviso. Produce una vendita che sparisce dai corrispettivi, o una che ci compare senza doverci stare. È il tipo di errore che si scopre a trimestre consegnato.</p>
+</aside>
+<p>Puoi accenderlo e spegnerlo liberamente: nessun automatismo tornerà a sovrascrivere quello che scrivi.</p>
+<hr>
+<h2 id="s6"><a class="ancora" href="#s6">§6</a> Inserire un ordine a mano</h2>
+<p>Serve in tre casi: un ordine che non è mai arrivato in Grist (te lo segnala una mail, <a href="guida-2.html">guida 2</a>), una vendita avvenuta fuori da WooCommerce, un ordine da rappresentante finché quel percorso non è collaudato.</p>
+<h4 id="prima-di-aprire-la-maschera">Prima di aprire la maschera</h4>
+<p><strong>Controlla che i prodotti esistano già</strong> nella tabella <em>Articoli</em>. Se manca qualcosa, crealo prima: la procedura è nella <a href="guida-5.html">guida 5</a>. Una riga con uno SKU che non si aggancia a nessun articolo è una riga cieca — niente regime fiscale, nessun effetto sulle giacenze — e si riconosce solo dalla riga arancione nella pagina delle righe d'ordine. Se l'articolo lo crei dopo, la riga non si aggancia da sola: va riselezionato lo SKU.</p>
+<p><strong>Se nell'ordine c'è un kit, controlla anche la sua ricetta</strong> nella tabella <em>Bundle</em>: devono esserci tutti i componenti, con le quantità giuste. Senza ricetta il kit non è un kit, e l'esplosione non partirà.</p>
+<h4 id="la-maschera-inserimento-ordini-riquadro-per-riquadro">La maschera <em>Inserimento Ordini</em>, riquadro per riquadro</h4>
+<p>I quattro riquadri sono finestre sulla stessa riga: quello in alto è l'ordine, quello dei prodotti segue l'ordine selezionato sopra (<a href="guida-1.html">guida 1</a>).</p>
+<p><strong>1 · Anagrafica ordine.</strong> Data, tipo di record, stato, canale, cliente, più i due campi che valgono solo sui resi.</p>
+<ul><li>Il <strong>numero dell'ordine si compila da solo</strong> e non va toccato: vedi il riquadro qui sotto.</li><li>La <strong>data</strong> è quella dell'ordine, non quella in cui lo stai inserendo. Decide il giorno del Registro Corrispettivi e il trimestre del Report Art.74.</li><li>Il <strong>tipo di record</strong> va messo su <code>Ordine</code>. È un menu, e le altre voci portano altrove.</li><li>Lo <strong>stato</strong>: metti quello vero. Se la vendita è conclusa e la merce è partita, <code>Completato</code>; se aspetti un bonifico, <code>In attesa di pagamento</code>. Ricorda che solo <code>Completato</code> e <code>Rimborsato</code> fanno contare l'ordine.</li><li>L'<strong>ordine di origine</strong> e il <strong>motivo del reso</strong> sono grigi, e devono restarlo: si accendono solo quando il tipo di record è <code>Reso</code>. Se stai inserendo un reso e non un ordine, la procedura cambia in alcuni punti ed è nella <strong><a href="guida-4.html">guida 4</a></strong>.</li></ul>
+<p><strong>2 · Valore ordine e fattura.</strong> Il totale complessivo, le spese di spedizione <strong>con la loro IVA</strong>, il metodo di pagamento, e poi il campo della fattura con la P.IVA e il codice fiscale se servono.</p>
+<ul><li>Sugli ordini inseriti a mano il pagamento è di norma un <strong>bonifico</strong>: la casella delle commissioni PayPal resta a zero, ed è corretto.</li><li>Lo <strong>sconto</strong> non è necessario: gli sconti sono già dentro i totali delle righe.</li><li>Le <strong>spese di spedizione</strong> vanno qui, sulla testata, non su una riga prodotto: è da qui che il Registro Corrispettivi le prende. Le caselle da compilare sono <strong>due</strong> — l'imponibile e la sua IVA — perché nel report la spedizione entra al lordo come tutto il resto. La terza, quella che le somma, è grigia: si calcola da sola.</li><li><strong>Il campo della fattura si controlla adesso</strong>, che è la fine dell'inserimento dei dati del cliente (sezione 5).</li></ul>
+<p><strong>3 · Spedizione.</strong> Il magazzino e, se ti serve, l'indirizzo. Il magazzino puoi metterlo subito: è l'unico momento in cui hai tutto sott'occhio.</p>
+<p><strong>4 · Prodotti.</strong> Una riga per articolo:</p>
+<ul><li><strong>SKU</strong> — si digita e si sceglie dal menu a tendina.</li><li><strong>Quantità</strong> — positiva, sono pezzi che escono.</li><li><strong>Totale di riga con imposta</strong> — è il valore lordo della riga, ed è <strong>il numero su cui è costruito tutto il Registro Corrispettivi</strong>. Scrivilo con attenzione: è l'unico dato economico della riga che conta davvero.</li><li>Il <strong>prezzo unitario</strong> e il <strong>regime fiscale</strong> si calcolano da soli. Il regime esce dall'articolo: se ti sembra sbagliato, il posto da correggere è l'anagrafica, non la riga.</li><li>La casella <strong><code>is_bundle</code></strong> si accende da sola quando lo SKU è un kit mappato. Se sai di aver inserito un kit e resta spenta, la ricetta in <em>Bundle</em> non c'è: fermati e sistemala, altrimenti quella vendita non scaricherà nulla.</li><li>Le caselle <strong><code>ex_bundle</code></strong> e <strong><code>origine_bundle</code></strong> si compilano solo nel caso descritto alla fine della sezione 7. Normalmente si lasciano stare.</li></ul>
+<p><strong>5 · Infine, i kit.</strong> Se c'è una riga-kit, accendi l'esplosione: sezione 7.</p>
+<details class="box box-perche">
+<summary>Perché funziona così — il numero dell'ordine se lo dà il sistema</summary>
+<div class="box-corpo"><p>Gli ordini che arrivano da WooCommerce hanno numeri alti, sopra 17000. Gli ordini inseriti a mano usano invece una numerazione bassa che parte da 1, e il sistema la assegna da solo: quando crei un nuovo record, cerca il numero più alto già usato sotto quella soglia e prende il successivo.</p>
+<p>Le due numerazioni non si incontreranno mai, ed è questo che le tiene separate: gli automatismi cercano gli ordini per numero, e un ordine inserito a mano con un numero "da WooCommerce" verrebbe scambiato per qualcos'altro.</p>
+<p>Quindi: <strong>il numero non si tocca</strong>, né sui record nuovi né su quelli esistenti. Cambiarlo a mano su un ordine arrivato dal sito è peggio ancora — il prossimo aggiornamento non lo riconoscerebbe più e ne creerebbe un doppione.</p></div>
+</details>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — la maschera mostra solo l'anno in corso</p>
+<p>Il riquadro dell'anagrafica ha un filtro sulla data impostato sull'anno corrente. Se inserisci un ordine datato in un altro anno — capita a gennaio, con gli ordini di dicembre — quell'ordine <strong>sparisce dalla maschera nel momento in cui scrivi la data</strong>, e con lui il riquadro dei prodotti: non è andato perso, è semplicemente fuori dalla finestra.</p>
+<p>Il filtro si cambia come tutti gli altri (<a href="guida-8.html">guida 8</a>): allargalo all'anno precedente, compila l'ordine, e rimettilo com'era. In alternativa, inserisci prima le righe e sistema la data alla fine.</p>
+</aside>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g3-02-maschera-prodotti.png"><img src="assets/img/g3-02-maschera-prodotti.png" alt="Il riquadro PRODOTTI della maschera con una riga in compilazione: SKU scelto dal menu a tendina, quantità e totale di riga." loading="lazy" style="width:870px"></a>
+<figcaption><span class="numero">Screenshot 2</span> Sulle righe inserite a mano i campi che scrivi tu sono tre: SKU, quantità e totale di riga con imposta.</figcaption>
+</figure>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g3-03-maschera-fattura.png"><img src="assets/img/g3-03-maschera-fattura.png" alt="Il riquadro VALORE ORDINE e FATTURA a inserimento finito, con il campo della fattura in evidenza." loading="lazy" style="width:861px"></a>
+<figcaption><span class="numero">Screenshot 3</span> L'ultimo controllo prima di chiudere: su un ordine inserito a mano questo campo nasce sempre spento.</figcaption>
+</figure>
+<hr>
+<h2 id="s7"><a class="ancora" href="#s7">§7</a> Un kit dentro un ordine</h2>
+<p>Un kit non ha giacenza propria: quello che si muove sono i pezzi che contiene. Perché il magazzino scali, accanto alla riga del kit devono comparire le righe dei suoi componenti.</p>
+<p><strong>Se l'ordine arriva dal sito, ci sono già.</strong> Il sistema le scrive da solo: le riconosci perché stanno sotto la riga-kit e valgono zero. Non c'è niente da fare.</p>
+<p><strong>Se l'ordine lo inserisci tu, l'esplosione la avvii tu.</strong> Sulla riga del kit accendi la casella <code>esplodi_bundle</code>. Nel giro di qualche secondo:</p>
+<ol><li>compaiono le righe dei componenti, a prezzo zero, con la quantità già moltiplicata;</li><li>si accende la casella <code>bundle_esploso</code>;</li><li>la casella che hai acceso si rispegne da sola.</li></ol>
+<p>Se dopo qualche minuto non è successo niente, non riaccenderla a ripetizione: è un caso da <a href="guida-9.html">guida 9</a>.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — la casella «kit esploso» non si spegne mai</p>
+<p>Serve a impedire che i pezzi vengano scritti due volte. Spegnerla a mano non "rifà" l'esplosione: <strong>la duplica</strong>, e ti ritrovi con il doppio dei pezzi scaricati dal magazzino, senza nessun errore a segnalarlo.</p>
+<p>Se un'esplosione è andata a metà — qualche componente c'è e qualcuno manca — non si rimedia da qui: le righe già scritte vanno tolte prima, ed è una cosa da <a href="guida-9.html">guida 9</a>.</p>
+</aside>
+<p><strong>Il caso raro: scrivere i componenti a mano.</strong> Se per qualsiasi motivo scrivi tu le righe dei pezzi invece di usare la casella, allora devi compilare a mano anche i due campi che dicono da dove vengono: la casella che marca la riga come pezzo di un kit, e il campo con lo SKU del kit d'origine. Non sono cosmetici: senza il secondo, se un giorno quel kit tornasse indietro, il rientro dei pezzi non si aggancerebbe alla riga del kit e il magazzino non si ricaricherebbe.</p>
+<p>Costruire e modificare i kit è nella <strong><a href="guida-5.html">guida 5</a></strong>. Come si comporta un kit quando torna indietro, nella <strong><a href="guida-4.html">guida 4</a></strong>.</p>
+<hr>
+<h2 id="s8"><a class="ancora" href="#s8">§8</a> Leggere le righe di un ordine</h2>
+<p>La pagina <em>Righe_Ordine</em> è dove si va quando bisogna capire cosa è successo davvero: mostra tutte le righe di tutti i record, con le colonne di controllo in vista. Ha tre aiuti di lettura che vale la pena riconoscere.</p>
+<div class="tabella"><table>
+<thead><tr><th>Cosa vedi</th><th>Cosa vuol dire</th></tr></thead>
+<tbody><tr><td>La colonna dell'ordine a <strong><span class="campione campione-azzurro" aria-hidden="true"></span>bande azzurre alternate</strong></td><td>Cambia tonalità a ogni cambio di ordine. Serve solo a vedere dove finisce un ordine e comincia il successivo</td></tr><tr><td>La cella dello <strong>SKU colorata</strong></td><td>Il colore è la <strong>serie</strong> a cui appartiene l'articolo: rosso per <em>Down Under</em>, verde per <em>Savannah</em>, e così via</td></tr><tr><td>Una riga <strong>accesa in arancione</strong></td><td>Un controllo è scattato: lo SKU non si è agganciato a nessun articolo, oppure la quantità ha il segno sbagliato</td></tr></tbody>
+</table></div>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — le <span class="campione campione-azzurro" aria-hidden="true"></span>bande azzurre non sono il grigio dei campi bloccati</p>
+<p>Lo sfondo <strong>grigio</strong> vuol dire «non compilare» ed è l'unico divieto che questo documento comunica a colpo d'occhio (<a href="guida-0.html">guida 0</a>). Le due tonalità di azzurro di questa pagina sono un'altra cosa: un aiuto di lettura su una colonna del tutto normale. Se un giorno vedi una <span class="campione campione-grigio" aria-hidden="true"></span>cella grigia qui dentro, è un divieto vero.</p>
+</aside>
+<p>Due filtri comodi in cima alla pagina ti permettono di isolare un trimestre o un singolo SKU: si cambiano liberamente (<a href="guida-8.html">guida 8</a>).</p>
+<hr>
+<h2 id="s9"><a class="ancora" href="#s9">§9</a> Sostituire un prodotto dentro un kit</h2>
+<p>Capita: il kit prevede lo zaino verde e hai spedito quello blu, oppure il titolo previsto era esaurito e ne hai messo un altro. La merce uscita dal magazzino non è quella che il sistema pensa sia uscita, e va corretta.</p>
+<p><strong>La procedura è una sola, e sta sulla riga.</strong> Dalla maschera <em>Inserimento Ordini</em>, riquadro dei prodotti — oppure dalla pagina delle righe d'ordine — trova la riga del componente sbagliato e <strong>cambia lo SKU</strong>, scegliendo quello effettivamente spedito. Non toccare nient'altro della riga: la quantità, il segno e i campi che la legano al kit restano come sono.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — si cambia il prodotto, non il prodotto</p>
+<p>Ci sono due scorciatoie che sembrano equivalenti e non lo sono, e sbagliano entrambe in silenzio.</p>
+<p><strong>Non modificare l'articolo.</strong> Cambiare il nome, il colore o il regime fiscale dell'articolo originale non corregge questo ordine: riscrive la storia di <strong>tutti</strong> gli ordini in cui quell'articolo è mai comparso, compresi i trimestri già consegnati al commercialista.</p>
+<p><strong>Non modificare la ricetta del kit.</strong> Cambiare il componente nella tabella <em>Bundle</em> non tocca gli ordini già scritti e cambia <strong>tutti quelli futuri</strong>, compresi i resi dei kit già venduti. Non è mai la strada per un caso singolo; e anche quando il kit cambia davvero, la strada raccomandata è un kit nuovo (<a href="guida-5.html">guida 5</a>).</p>
+<p>Quello che vuoi correggere è un fatto avvenuto una volta: quindi si corregge nel posto in cui quel fatto è registrato, cioè la riga di quell'ordine.</p>
+</aside>
+<p><strong>Cosa cambia dopo la sostituzione</strong>, e qui c'è una cosa che sorprende quasi tutti:</p>
+<ul><li><strong>Le giacenze si sistemano subito</strong>, ed è il motivo per cui la correzione si fa. Il pezzo sbagliato torna disponibile, quello giusto scala.</li><li><strong>Il Report Art.74 cambia.</strong> In quel report i kit non compaiono: compaiono i loro <strong>pezzi</strong>, ciascuno con il proprio regime fiscale, contati a copie e valorizzati al prezzo di copertina. Se sostituisci un libro in Art.74 con uno al 4%, quella copia esce dal report; se fai il contrario, ci entra.</li><li><strong>Il Registro Corrispettivi non cambia di un centesimo.</strong> Lì il valore della vendita sta tutto sulla riga del kit, sotto il regime del kit, e le righe dei pezzi valgono zero.</li></ul>
+<p>Le due ultime righe insieme sono controintuitive — lo stesso pezzo pesa in un report e non nell'altro — ma sono coerenti: un report conta <strong>copie di libri</strong>, l'altro conta <strong>incassi per regime</strong>. Il trattamento fiscale dei componenti dentro un kit a regime diverso è comunque una delle questioni ancora da porre al commercialista (<a href="guida-7.html">guida 7</a>).</p>
+<hr>
+<h2 id="s10"><a class="ancora" href="#s10">§10</a> Modificare un ordine</h2>
+<p>Puoi correggere quasi tutto: quantità, valori, dati del cliente, indirizzo, note. Quello che scrivi resta — nessun automatismo tornerà a sovrascriverlo — e vale solo in Grist.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — dopo la creazione, da WooCommerce arrivano solo due cose</p>
+<p>Il cambio di <strong>stato</strong> e i <strong>rimborsi</strong>. Nient'altro.</p>
+<p>Se su WooCommerce modifichi la quantità di una riga, cambi un prezzo, aggiungi un prodotto a un ordine esistente o ne togli uno, <strong>in Grist non arriva niente</strong> e nessuno te lo segnala. L'ordine resta com'era il giorno in cui è stato scritto.</p>
+<p>Quindi: quando una modifica di questo tipo la fai sul sito, ricordati di rifarla <strong>anche in Grist</strong>. È una delle poche cose che vanno fatte due volte, e l'unica difesa è saperlo.</p>
+</aside>
+<p>Tre cose da non fare senza pensarci:</p>
+<p><strong>Cambiare la data.</strong> Sposta tutte le righe dell'ordine in un altro giorno, e quindi potenzialmente in un altro trimestre. Su un periodo già consegnato al commercialista è una modifica che va concordata, non fatta.</p>
+<p><strong>Cambiare il numero dell'ordine.</strong> È l'aggancio con cui gli automatismi lo riconoscono: cambiato quello, il prossimo aggiornamento non lo trova più e ne crea un doppione (sezione 6).</p>
+<p><strong>Scrivere in una <span class="campione campione-grigio" aria-hidden="true"></span>cella grigia.</strong> Non dà errore: dà un valore che il sistema ignora o riscrive, lasciandoti convinta di aver fatto qualcosa.</p>
+<hr>
+<h2 id="s11"><a class="ancora" href="#s11">§11</a> Annullare, non cancellare</h2>
+<p>C'è un ordine che non doveva esserci: una prova, un doppione, un acquisto mai perfezionato. Tre gesti sembrano risolverlo. Solo uno funziona.</p>
+<figure class="figura">
+<figcaption>Figura 2 — I tre modi di far sparire un ordine</figcaption>
+<pre>  1. ANNULLI l'ordine su WooCommerce            ✅ è la strada giusta
+     ────────────────────────────────
+     stato → «Annullato»
+              │
+              ▼  il cambio di stato arriva in Grist
+     l'ordine esce dai report, smette di muovere il magazzino,
+     esce da «Ordini Aperti». Resta visibile: è storia, non sporcizia.
+
+
+  2. CANCELLI o CESTINI l'ordine su WooCommerce   ❌ il peggiore
+     ──────────────────────────────────────────
+     spariscono le tracce sul sito
+              │
+              ▼  in Grist NON arriva niente
+     l'ordine resta in Grist esattamente com'era:
+     continua a scaricare il magazzino,
+     continua a entrare nei report del trimestre.
+     Nessun avviso. Nessuna mail. Niente.
+
+
+  3. CANCELLI la riga in Grist                    ❌ definitivo
+     ─────────────────────────
+     la riga sparisce
+              │
+              ▼  ovunque, e per sempre
+     dall'elenco, dalle giacenze, dai report, dallo storico.
+     E se l'ordine esisteva su WooCommerce, non tornerà da solo:
+     nessun automatismo lo riscriverà.</pre>
+</figure>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — la cancellazione è l'unico gesto di cui il sistema non si accorge</p>
+<p>Gli automatismi vengono avvisati quando un ordine nasce e quando cambia. <strong>Non quando viene cancellato</strong>, e nemmeno quando viene messo nel cestino — quelli vengono ignorati di proposito, per non riempire la casella di avvisi inutili.</p>
+<p>Un ordine cancellato dal sito resta quindi in Grist come se nulla fosse, e non c'è niente che te lo segnali. È il modo più semplice di ritrovarsi, a fine trimestre, con dei ricavi che non esistono.</p>
+<p><strong>La raccomandazione, e vale in entrambi i sistemi: meglio annullare che cancellare.</strong> Uno stato <code>Annullato</code> è una cosa che il sistema sa leggere; una riga cancellata è una cosa che nessuno può ricostruire.</p>
+<p>Se è già successo, l'ordine in Grist si porta su <code>Annullato</code> a mano — cioè si applica in Grist il gesto numero 1, visto che dal sito non arriverà più niente. Cancellare la riga sarebbe il gesto numero 3, e vale quello che dice qui sopra. La procedura è nella <a href="guida-9.html#s7">guida 9</a>, sezione 7.</p>
+</aside>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g3-04-woo-stato-annullato.png"><img src="assets/img/g3-04-woo-stato-annullato.png" alt="Il menu degli stati di un ordine su WooCommerce, con Annullato in evidenza." loading="lazy" style="width:480px"></a>
+<figcaption><span class="numero">Screenshot 4</span> Il gesto giusto per un ordine sbagliato: cambiare stato, non cancellare.</figcaption>
+</figure>
+<p>Lo stesso vale per un <strong>rimborso</strong>. Se annulli un rimborso su WooCommerce, in Grist non arriva niente: il record di reso resta, continua a stornare nei report e, se avevi dichiarato il rientro della merce, tiene quella copia in magazzino. Si sistema con lo stesso gesto — si porta il reso su <code>Annullato</code>, non si cancella (<a href="guida-4.html">guida 4</a>). <span class="marcatore"><a href="guida-9.html#s9" title="elenco completo nella guida 9 §9"><em>(comportamento atteso, non ancora verificato sul campo)</em></a></span></p>
+<hr>
+<h2 id="s12"><a class="ancora" href="#s12">§12</a> Movimenti eccezionali: trasferimenti e correzioni</h2>
+<p>Le due procedure che useresti più spesso con il tipo <em>Altri movimenti</em>. Hanno la stessa forma, perché in fondo sono lo stesso movimento.</p>
+<h4 id="trasferire-merce-da-un-magazzino-allaltro">Trasferire merce da un magazzino all'altro</h4>
+<p>Il magazzino sta sulla testata, quindi un solo record non può togliere da un deposito e aggiungere all'altro: <strong>servono due record</strong>, uno per magazzino.</p>
+<p>Cinque copie che si spostano dal Magazzino Interno alla Cooperativa:</p>
+<figure class="figura">
+<figcaption>Figura 3 — Un trasferimento, con i segni</figcaption>
+<pre>   MAGAZZINO INTERNO                      MAGAZZINO COOPERATIVA
+   la merce ESCE                          la merce ENTRA
+   ─────────────────                      ──────────────────────
+
+   Record «Altri movimenti»               Record «Altri movimenti»
+   magazzino: M1. Interno                 magazzino: M2. Cooperativa
+   stato: Completato                      stato: Completato
+   data: quella dello spostamento         data: quella dello spostamento
+
+     └─ riga:  SKU-123    +5                └─ riga:  SKU-123    −5
+                          ▲                                      ▲
+              positivo = esce                        negativo = entra
+
+   Interno: −5 copie                      Cooperativa: +5 copie
+   Totale complessivo: invariato. Ed è giusto: non è entrato né uscito niente.</pre>
+</figure>
+<h4 id="correggere-un-ordine-partito-da-due-magazzini">Correggere un ordine partito da due magazzini</h4>
+<p>Un ordine di dieci copie: sette dall'Interno, tre dalla Cooperativa. Il sistema non prevede il caso, quindi:</p>
+<ol><li>sull'<strong>ordine</strong> assegni il magazzino da cui è uscita la parte più grande — qui l'Interno. Tutte e dieci le copie risultano uscite da lì;</li><li>poi correggi la differenza, ed è esattamente il trasferimento di sopra: le tre copie di troppo scaricate dall'Interno vanno rimesse lì, e tolte alla Cooperativa. Due record «Altri movimenti», <strong>−3 sull'Interno</strong> e <strong>+3 sulla Cooperativa</strong>;</li><li>nelle note di entrambi scrivi il numero dell'ordine che stai correggendo. Fra sei mesi è l'unica cosa che ti dirà perché esistono.</li></ol>
+<h4 id="la-checklist-perche-qui-non-ci-sono-avvisi">La checklist, perché qui non ci sono avvisi</h4>
+<p>Su questi record nessuna colonna si accende. Prima di chiudere, controlla cinque cose:</p>
+<ul><li>[ ] il <strong>tipo</strong> è <code>Altri movimenti</code>;</li><li>[ ] lo <strong>stato</strong> è <code>Completato</code> — con qualunque altro valore il record esiste, si vede, e non muove niente;</li><li>[ ] il <strong>magazzino</strong> è valorizzato;</li><li>[ ] il <strong>segno</strong> delle quantità è quello giusto: positivo se la merce esce da quel magazzino, negativo se entra;</li><li>[ ] la <strong>data</strong> non è anteriore alla data della giacenza iniziale di quel magazzino, altrimenti il movimento viene semplicemente ignorato (<a href="guida-6.html">guida 6</a>).</li></ul>
+<p>Su stato e magazzino c'è una rete: finché mancano, il record ti aspetta in <em>Ordini Aperti</em>. Sul segno e sulla data, invece, sei sola — e lo stesso vale per un record salvato <strong>senza nessuna riga</strong>, che non compare in nessuna lista perché non ha niente da segnalare.</p>
+<p>Con questo stesso tipo di record si registrano altre tre cose, che hanno la loro procedura altrove perché chi le fa sta pensando ad altro. Due riguardano il magazzino e stanno nella <a href="guida-6.html">guida 6</a>: la <strong>differenza trovata contando</strong> i pezzi di un deposito, e lo <strong>spostamento di pezzi da un articolo vecchio a uno nuovo</strong> quando un prodotto è stato sostituito. La terza riguarda i resi ed è nella <a href="guida-4.html">guida 4</a>: il <strong>rientro di una parte sola di un kit</strong>, che le caselle del reso non sanno esprimere — si chiude il reso per intero e si registra qui la differenza, una riga per pezzo, con l'avvertenza sul segno che vale per tutta questa sezione.</p>
+<hr>
+<h2 id="s13"><a class="ancora" href="#s13">§13</a> Ordini da rappresentante</h2>
+<p>Gli ordini raccolti dai rappresentanti passano dal sito come tutti gli altri: arrivano in Grist, compaiono in <em>Ordini Aperti</em>, chiedono il magazzino, entrano nei report. Non c'è niente di diverso da fare.</p>
+<p><span class="marcatore"><a href="guida-9.html#s9" title="elenco completo nella guida 9 §9"><em>(comportamento atteso, non ancora verificato sul campo: manca un ordine vero inserito da un rappresentante su cui leggere come il sito trasmette l'informazione)</em></a></span></p>
+<p><strong>Oggi non si distinguono dagli ordini diretti.</strong> Il campo del canale viene scritto come <code>woocommerce</code> su tutti, e i campi previsti per l'agente e le provvigioni restano vuoti. Per completare quella parte serve un ordine reale: finché non ne passa uno, non si sa dove il plugin depositi quei dati.</p>
+<p><strong>Nel frattempo puoi correggere il canale a mano.</strong> Fra le scelte c'è già la voce <code>ambassador</code>: metterla su un ordine è del tutto innocuo, perché oggi nessuna formula e nessun report leggono quel campo. Serve solo a te, se vuoi tenerne traccia da subito.</p>
+<p><strong>Se un ordine da rappresentante non arriva</strong>, la strada è quella di sempre: lo inserisci a mano (sezione 6).</p>
+<hr>
+<h2 id="s14"><a class="ancora" href="#s14">§14</a> Attenzione a</h2>
+<p>I cinque errori che questa guida serve a evitare. Nessuno di questi produce un messaggio di errore.</p>
+<p><strong>Cancellare invece di annullare.</strong> Su WooCommerce l'ordine resta in Grist e continua a contare; in Grist sparisce da tutto, compreso lo storico.</p>
+<p><strong>Dare per scontato che una modifica fatta sul sito arrivi.</strong> Arrivano solo lo stato e i rimborsi. Quantità, prezzi e righe aggiunte no.</p>
+<p><strong>Lasciare il campo della fattura come lo trovi.</strong> Su un ordine inserito a mano nasce sempre spento, e non si riallinea mai da solo.</p>
+<p><strong>Correggere l'articolo o la ricetta del kit per sistemare un ordine solo.</strong> Il primo riscrive il passato, la seconda cambia il futuro. Quello che vuoi correggere è una riga.</p>
+<p><strong>Registrare un movimento eccezionale con il segno invertito.</strong> È l'unico tipo di record su cui nessun controllo guarda il segno, ed è anche l'unico senza una pagina che lo sorvegli.</p>
+<hr>
+<h2 id="s15"><a class="ancora" href="#s15">§15</a> Se qualcosa va storto</h2>
+<div class="tabella"><table>
+<thead><tr><th>Il sintomo</th><th>Cosa guardare</th></tr></thead>
+<tbody><tr><td>Un ordine c'è su WooCommerce ma non in Grist</td><td><a href="guida-2.html">Guida 2</a>, poi lo inserisci a mano (sezione 6) o lo fai rilanciare a Paolo</td></tr><tr><td>Una riga è accesa in arancione</td><td>Lo SKU non si è agganciato a nessun articolo: correggilo, oppure crea l'articolo (<a href="guida-5.html">guida 5</a>) e poi riseleziona lo SKU sulla riga</td></tr><tr><td>Un kit non ha i suoi pezzi sotto</td><td>L'esplosione non è partita. Se è un ordine, sezione 7; se è un reso, <a href="guida-4.html">guida 4</a></td></tr><tr><td>Le giacenze di un magazzino non tornano</td><td>Comincia dagli ordini senza magazzino in <em>Ordini Aperti</em>, poi <a href="guida-6.html">guida 6</a></td></tr><tr><td>Un ordine è in <em>Ordini Aperti</em> e non capisci perché</td><td>Figura 1, poi la colonna del tipo: potrebbe non essere un ordine</td></tr><tr><td>Un ordine cancellato sul sito è ancora in Grist</td><td><a href="guida-9.html">Guida 9</a></td></tr></tbody>
+</table></div>
+<hr>
+<h2 id="s16"><a class="ancora" href="#s16">§16</a> Dove si continua</h2>
+<div class="tabella"><table>
+<thead><tr><th>Se vuoi…</th><th>Guida</th></tr></thead>
+<tbody><tr><td>Capire cosa fanno gli automatismi e che mail mandano</td><td>2</td></tr><tr><td>Chiudere un reso, capire le due caselle</td><td>4</td></tr><tr><td>Creare un articolo, completare quelli automatici, costruire o modificare un kit</td><td>5</td></tr><tr><td>Leggere le giacenze, fare un inventario, registrare un carico di merce</td><td>6</td></tr><tr><td>Preparare i report per il commercialista</td><td>7</td></tr><tr><td>Cambiare un filtro, cercare, esportare</td><td>8</td></tr><tr><td>Rimediare a un ordine cancellato, riaccendere un automatismo, segnalare un problema</td><td>9</td></tr></tbody>
+</table></div>
+</div>
+
+  </main>
+  <footer class="pie">
+    <p>Manuale del sistema «Magazzino LwM» · generato il 17/09/2026</p>
+    <p>Per i casi che non stanno nelle guide, e per qualsiasi cosa nuova da costruire, si scrive a Paolo: cosa allegare sta nella <a href="guida-9.html#s11">guida 9 §11</a>.</p>
+  </footer>
+</div>
+
+<div class="lente" id="lente" hidden><img src="" alt=""></div>
+
+<script src="assets/manuale.js"></script>
+</body>
+</html>
