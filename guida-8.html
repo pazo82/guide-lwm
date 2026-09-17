@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Guida 8 — Muoversi in Grist · Magazzino LwM</title>
+<link rel="stylesheet" href="assets/stile.css">
+</head>
+<body>
+<a class="salta" href="#principale">Vai al contenuto</a>
+
+<button type="button" class="apri-menu" id="apri-menu" aria-label="Apri il menu delle guide">☰ Guide</button>
+
+<nav class="menu" id="menu" aria-label="Le guide">
+  <p class="menu-titolo">Magazzino LwM</p>
+  <a class="menu-voce menu-indice" href="index.html">Indice</a>
+<p class="menu-blocco">Capire</p>
+<a class="menu-voce" href="guida-0.html"><span class="menu-n">0</span>Come funziona il sistema</a>
+<a class="menu-voce" href="guida-1.html"><span class="menu-n">1</span>La mappa di Grist</a>
+<a class="menu-voce" href="guida-2.html"><span class="menu-n">2</span>Gli automatismi (Make)</a>
+<p class="menu-blocco">Fare</p>
+<a class="menu-voce" href="guida-3.html"><span class="menu-n">3</span>Ordini</a>
+<a class="menu-voce" href="guida-4.html"><span class="menu-n">4</span>Resi e rimborsi</a>
+<a class="menu-voce" href="guida-5.html"><span class="menu-n">5</span>Catalogo, articoli e kit</a>
+<a class="menu-voce" href="guida-6.html"><span class="menu-n">6</span>Giacenze e inventario</a>
+<a class="menu-voce" href="guida-7.html"><span class="menu-n">7</span>Report fiscali</a>
+<p class="menu-blocco">Cavarsela da sola</p>
+<a class="menu-voce attiva" href="guida-8.html"><span class="menu-n">8</span>Muoversi in Grist</a>
+<a class="menu-voce" href="guida-9.html"><span class="menu-n">9</span>Manutenzione e problemi</a>
+<p class="menu-blocco">Riferimento</p>
+<a class="menu-voce" href="scheda.html"><span class="menu-n">A4</span>Scheda rapida</a>
+</nav>
+
+<div class="colonna">
+  <div class="barra">
+    <div class="barra-nav"><a href="guida-7.html">‹ Guida 7</a> <a href="guida-9.html">Guida 9 ›</a></div>
+    <div class="barra-strumenti"><button type="button" class="bottone-piatto" id="espandi">Espandi tutto</button><button type="button" class="bottone-piatto" onclick="window.print()">Stampa</button></div>
+  </div>
+  <main id="principale">
+
+<header class="testata">
+  <p class="occhiello">Guida 8</p>
+  <h1>Muoversi in Grist</h1>
+  <p class="versione"><strong>Versione del 13/09/2026</strong> · Sistema «Magazzino LwM»</p>
+</header>
+<nav class="sommario" aria-label="Sezioni della guida">
+  <p class="sommario-titolo">In questa guida</p>
+  <ol class="sommario-voci"><li><a href="#s1"><span class="n">1</span>In breve</a></li><li><a href="#s2"><span class="n">2</span>Dove sono le cose</a></li><li><a href="#s3"><span class="n">3</span>Temporaneo o salvato</a></li><li><a href="#s4"><span class="n">4</span>Filtrare</a></li><li><a href="#s5"><span class="n">5</span>I filtri che definiscono una pagina</a></li><li><a href="#s6"><span class="n">6</span>Ordinare</a></li><li><a href="#s7"><span class="n">7</span>Cercare</a></li><li><a href="#s8"><span class="n">8</span>Le colonne</a></li><li><a href="#s9"><span class="n">9</span>Cambiare l'etichetta di una colonna</a></li><li><a href="#s10"><span class="n">10</span>I menu a tendina</a></li><li><a href="#s11"><span class="n">11</span>Righe: aggiungere, eliminare, annullare</a></li><li><a href="#s12"><span class="n">12</span>Esportare e stampare</a></li><li><a href="#s13"><span class="n">13</span>Chi ha cambiato cosa, e quanto spazio resta</a></li><li><a href="#s14"><span class="n">14</span>Cosa è tuo e cosa non si tocca</a></li><li><a href="#s15"><span class="n">15</span>Se qualcosa va storto</a></li><li><a href="#s16"><span class="n">16</span>Dove si continua</a></li></ol>
+</nav>
+<div class="corpo">
+<p>Questa guida non parla di magazzino, di ordini o di report: parla dei <strong>gesti che valgono in ogni pagina</strong>. Filtrare, ordinare, cercare, nascondere una colonna, esportare, cambiare il nome di qualcosa.</p>
+<p>Le altre guide la citano ogni volta che una procedura passa di qui. È il posto dove quei rimandi trovano la risposta.</p>
+<hr>
+<h2 id="s1"><a class="ancora" href="#s1">§1</a> In breve</h2>
+<p>C'è una cosa sola da capire prima di tutte le altre, e rende innocuo quasi tutto il resto: <strong>in Grist quello che fai su una pagina è temporaneo finché non premi «Salva»</strong>.</p>
+<p>Puoi filtrare, ordinare, nascondere colonne, spostarle, allargarle. Finché non salvi, stai cambiando solo quello che vedi tu in questo momento. Se hai combinato un pasticcio, ricarichi la pagina e torna tutto com'era.</p>
+<p>Da qui la regola di questa guida: <strong>guarda quanto vuoi, salva solo quando sai perché.</strong></p>
+<p>Le eccezioni sono due, e sono le uniche cose in questo capitolo che fanno danno:</p>
+<ul><li>i <strong>nomi delle colonne</strong>, perché sotto l'etichetta che leggi c'è un identificativo che usano formule e automatismi (sezione 9);</li><li>le <strong>voci dei menu a tendina</strong>, che sembrano etichette ma sono valori, e che formule e automatismi confrontano parola per parola (sezione 10).</li></ul>
+<p>Nessuna delle due dà errore quando la sbagli.</p>
+<div class="tabella"><table>
+<thead><tr><th>Se vuoi…</th><th>Sezione</th></tr></thead>
+<tbody><tr><td>Capire cosa resta e cosa no di quello che tocchi</td><td>3</td></tr><tr><td>Cambiare un filtro, e rimetterlo com'era</td><td>4</td></tr><tr><td>Sapere quali filtri <strong>non</strong> vanno toccati, pagina per pagina</td><td>5</td></tr><tr><td>Ordinare le righe</td><td>6</td></tr><tr><td>Cercare un ordine, uno SKU, un nome</td><td>7</td></tr><tr><td>Nascondere, spostare, allargare una colonna</td><td>8</td></tr><tr><td>Cambiare l'etichetta di una colonna senza rompere niente</td><td>9</td></tr><tr><td>Aggiungere una voce a un menu a tendina</td><td>10</td></tr><tr><td>Aggiungere o eliminare una riga, annullare l'ultima cosa fatta</td><td>11</td></tr><tr><td>Esportare o stampare quello che vedi</td><td>12</td></tr><tr><td>Vedere chi ha cambiato cosa, e quanto spazio resta</td><td>13</td></tr></tbody>
+</table></div>
+<hr>
+<h2 id="s2"><a class="ancora" href="#s2">§2</a> Dove sono le cose</h2>
+<p>Quattro zone dello schermo, e le useremo con questi nomi per tutta la guida.</p>
+<p><strong>A sinistra, l'elenco delle pagine.</strong> In fondo ci sono anche <strong>«Dati grezzi»</strong>, che mostra le tabelle senza filtri (serve a guardare, non a lavorarci: <a href="guida-1.html">guida 1</a>), e <strong>«Storia documento»</strong>, che è la sezione 13.</p>
+<p><strong>In alto, la barra del documento.</strong> La lente, che apre la casella <strong>«Cerca nel documento»</strong>; il menu di condivisione; e, all'estrema destra della pagina, il <strong>menu a tre puntini</strong> da cui si esporta e si stampa.</p>
+<p><strong>Sopra la tabella, la barra dei filtri.</strong> Ci stanno i bottoni dei filtri appuntati, e a destra l'icona <strong>«Sort and filter»</strong>, che <strong>si accende in verde</strong> appena tocchi un filtro o un ordinamento. È la spia più importante di tutta la guida: verde significa «hai cambiato qualcosa e non l'hai salvato».</p>
+<p><strong>A destra, il pannello delle opzioni.</strong> Si apre e si chiude con l'icona in alto a destra. Ha una scheda per il <strong>riquadro</strong> (la tabella che stai guardando) e una per la <strong>colonna</strong> su cui hai il cursore. Quando una procedura dice «apri il pannello della colonna», è questa.</p>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g8-01-quattro-zone.png"><img src="assets/img/g8-01-quattro-zone.png" alt="Una pagina qualsiasi con le quattro zone evidenziate: elenco delle pagine a sinistra, barra del documento in alto con la lente e i tre puntini, barra dei filtri sopra la tabella con l'icona «Sort and filter», pannello delle opzioni a destra." loading="lazy" style="width:760px"></a>
+<figcaption><span class="numero">Screenshot 1</span> Tutto quello che serve in questa guida sta in queste quattro zone.</figcaption>
+</figure>
+<hr>
+<h2 id="s3"><a class="ancora" href="#s3">§3</a> Temporaneo o salvato</h2>
+<p>Le cose che puoi toccare in Grist stanno su tre piani diversi, e confonderli è il motivo per cui questa parte del programma mette soggezione.</p>
+<figure class="figura">
+<figcaption>Figura 1 — I tre piani</figcaption>
+<pre>   ┌─────────────────────────────────────────────────────┐
+   │  1. QUELLO CHE VEDI TU, ADESSO                      │
+   │     filtri, ordinamento, colonne nascoste,          │
+   │     larghezze                                       │
+   │     → nessuno lo vede, si annulla ricaricando       │
+   └─────────────────────────────────────────────────────┘
+                          │  premi «Salva»
+                          ▼
+   ┌─────────────────────────────────────────────────────┐
+   │  2. LA PAGINA, PER TUTTI                            │
+   │     la stessa cosa, ma da adesso in poi             │
+   │     → la vede anche Virginia, e resta               │
+   └─────────────────────────────────────────────────────┘
+
+   ┌─────────────────────────────────────────────────────┐
+   │  3. IL DATO                                         │
+   │     quello che c'è scritto nelle celle              │
+   │     → non si tocca da qui: si scrive, o non si      │
+   │       scrive affatto (guida 1)                      │
+   └─────────────────────────────────────────────────────┘</pre>
+</figure>
+<p>Il primo piano è tuo e non fa danni. Il secondo è condiviso: <strong>il documento lo aprite in due</strong>, e una pagina salvata in un certo modo è quella che troverà anche Virginia. Il terzo è un'altra cosa: filtrare non cancella niente, nascondere non elimina niente.</p>
+<h4 id="come-si-torna-indietro">Come si torna indietro</h4>
+<p>Quando l'icona <strong>«Sort and filter»</strong> è verde, cliccandola trovi due comandi:</p>
+<ul><li><strong>«Salva»</strong> — al passaggio del mouse dice «Save sort &amp; filter settings». Da quel momento la pagina è così per tutti.</li><li><strong>la freccia che torna indietro</strong>, accanto — «Revert sort &amp; filter settings». Rimette la pagina com'era salvata.</li></ul>
+<p>E c'è una terza via, che è la più semplice: <strong>ricarica la pagina</strong>. Tutto quello che non hai salvato sparisce.</p>
+<div class="tabella"><table>
+<thead><tr><th>Il gesto</th><th>Chi lo vede</th><th>Come si torna indietro</th></tr></thead>
+<tbody><tr><td>Cambi un filtro</td><td>Solo tu</td><td>La freccia, o ricarica</td></tr><tr><td><strong>Salvi</strong> un filtro</td><td>Tutti, sempre</td><td>Rimetterlo a mano com'era, e risalvare</td></tr><tr><td>Ordini le righe</td><td>Solo tu</td><td>La freccia, o ricarica</td></tr><tr><td>Nascondi o allarghi una colonna</td><td>Solo tu, finché non salvi</td><td>La freccia, o ricarica</td></tr><tr><td>Cambi l'etichetta di una colonna</td><td>Tutti, subito</td><td>Si riscrive (sezione 9)</td></tr><tr><td>Rinomini una voce di un menu</td><td>Tutti, subito, <strong>e le formule si rompono</strong></td><td>Sezione 10</td></tr><tr><td>Elimini una riga</td><td>Tutti, subito</td><td>Non si torna indietro (sezione 11)</td></tr></tbody>
+</table></div>
+<p>Le ultime tre righe non passano dal pulsante «Salva»: valgono appena le fai.</p>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g8-02-sort-and-filter.png"><img src="assets/img/g8-02-sort-and-filter.png" alt="La barra dei filtri con l'icona «Sort and filter» accesa in verde e il menu aperto sui due comandi, «Salva» e la freccia di ripristino." loading="lazy" style="width:206px"></a>
+<figcaption><span class="numero">Screenshot 2</span> Verde vuol dire: hai cambiato qualcosa e non l'hai ancora salvato. Da qui si salva o si torna indietro.</figcaption>
+</figure>
+<details class="box box-perche">
+<summary>Perché funziona così</summary>
+<div class="box-corpo"><p>Grist tiene separato il modo in cui guardi i dati dai dati stessi. È il motivo per cui puoi frugare in una pagina senza paura: nessun filtro, nessun ordinamento e nessuna colonna nascosta cambia un solo numero, né in magazzino né nei report.</p>
+<p>È anche il motivo per cui i due report fiscali non si fidano dei filtri per le condizioni che contano: quelle stanno dentro le formule, che nessun clic può togliere (<a href="guida-1.html">guida 1</a>).</p></div>
+</details>
+<hr>
+<h2 id="s4"><a class="ancora" href="#s4">§4</a> Filtrare</h2>
+<p>Un filtro <strong>nasconde</strong> delle righe. Non le toglie, non le cancella: le lascia fuori dalla finestra.</p>
+<h4 id="mettere-un-filtro">Mettere un filtro</h4>
+<ol><li>Passa il mouse sull'intestazione della colonna e apri la freccetta del menu.</li><li>Scegli <strong>«Filtra dati»</strong>.</li><li>Compare l'elenco dei valori presenti in quella colonna, ciascuno con la sua casella. Togli la spunta a quelli che non vuoi vedere, oppure clicca <strong>«Nessuno»</strong> e spunta solo quelli che ti interessano. <strong>«Tutto»</strong> li rimette tutti.</li><li>Se i valori sono tanti, la casella di ricerca in cima all'elenco li filtra.</li><li>Quando hai finito, <strong>«Close»</strong> chiude il pannellino.</li></ol>
+<p>Non c'è un pulsante «Applica»: il filtro agisce mentre clicchi, e «Close» chiude soltanto. L'unico gesto che impegna è <strong>«Salva»</strong> (sezione 3).</p>
+<h4 id="filtri-per-intervallo">Filtri per intervallo</h4>
+<p>Sulle colonne di numeri e di date, invece dell'elenco dei valori trovi due caselle, da e a. Sulle date puoi scegliere anche un intervallo <strong>relativo a oggi</strong> — «quest'anno», «gli ultimi 30 giorni» — che si sposta da solo con il passare del tempo.</p>
+<p>Ne hai uno già attivo: la maschera <em>Inserimento Ordini</em> mostra solo gli ordini <strong>dell'anno in corso</strong>. Se a gennaio devi inserire un ordine dell'anno prima, è questo il filtro da allargare, e poi da rimettere com'era (<a href="guida-3.html#s7">guida 3</a>, sezione 7). Oppure, più semplice: allargalo, inserisci l'ordine, e <strong>ricarica la pagina senza salvare</strong>.</p>
+<h4 id="la-puntina">La puntina</h4>
+<p>Ogni filtro può stare <strong>in barra</strong>, come bottone sopra la tabella, oppure <strong>nel menu</strong>, cioè visibile solo aprendo il pannellino dei filtri della colonna. Si passa dall'uno all'altro con la puntina che compare nel pannellino del filtro (non ha scritte: è l'icona a forma di spillo).</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — togliere la puntina non toglie il filtro</p>
+<p>Spuntare un filtro fa sparire il bottone dalla barra, ma <strong>il filtro resta attivo</strong>: le righe continuano a essere nascoste, solo che non lo vedi più scritto da nessuna parte.</p>
+<p>È il motivo per cui una pagina può nascondere righe senza che niente in barra lo dica. Prima di concludere che una pagina è vuota, apri il menu dei filtri.</p>
+</aside>
+<hr>
+<h2 id="s5"><a class="ancora" href="#s5">§5</a> I filtri che definiscono una pagina</h2>
+<p>Alcuni filtri <strong>sono</strong> la pagina. <em>Ordini Aperti</em> è la tabella degli ordini più il filtro che tiene solo quelli aperti; <em>Giacenze</em> sono gli articoli meno i kit, i virtuali e i genitori delle magliette. Toglierli non mostra «qualcosa in più»: trasforma la pagina in un'altra cosa, che continua a mostrare numeri.</p>
+<p>Oggi nel documento la divisione è pulita: <strong>i filtri che definiscono una pagina stanno tutti nel menu, e in barra ci sono solo quelli di comodo.</strong> Non è una garanzia — la puntina la può togliere e rimettere chiunque — ma è la situazione da cui si parte.</p>
+<div class="tabella"><table>
+<thead><tr><th>Pagina</th><th>In barra, li cambi liberamente</th><th>Nel menu, non si toccano</th></tr></thead>
+<tbody><tr><td><em>Ordini Aperti</em></td><td>—</td><td>ordine aperto</td></tr><tr><td><em>Ordini</em></td><td>data</td><td>—</td></tr><tr><td><em>Righe_Ordine</em></td><td>trimestre, SKU</td><td>—</td></tr><tr><td><em>Movimenti di un articolo</em></td><td>SKU</td><td>—</td></tr><tr><td><em>Articoli</em></td><td>SKU, tipo prodotto</td><td>—</td></tr><tr><td><em>Bundle</em></td><td>kit</td><td>—</td></tr><tr><td><em>Giacenze</em></td><td>tipo prodotto, kit di appartenenza</td><td>kit, virtuali, genitori delle magliette</td></tr><tr><td><em>Giacenze T-Shirt</em></td><td>—</td><td>famiglie con almeno una t-shirt, righe senza nome</td></tr><tr><td><em>REPORT Corrispettivi</em></td><td>trimestre</td><td>giorni a totale zero</td></tr><tr><td><em>REPORT Art. 74</em></td><td>trimestre</td><td>Art.74, esclusione dei kit</td></tr><tr><td><em>Report Fee Paypal</em></td><td>trimestre</td><td>giorni a totale zero</td></tr><tr><td><em>Resi in attesa di rientro</em></td><td>—</td><td>da ricevere, esclusione dei pezzi di kit</td></tr><tr><td><em>Resi senza righe</em></td><td>—</td><td>resi, senza righe</td></tr><tr><td><em>Resi di kit da esplodere</em></td><td>—</td><td>controllo dei kit da esplodere</td></tr><tr><td><em>Approvvigionamenti</em></td><td>—</td><td>carichi</td></tr><tr><td><em>Inserimento Ordini</em></td><td>anno in corso <em>(vedi sezione 4)</em></td><td>—</td></tr></tbody>
+</table></div>
+<p>Le cinque viste di presidio — le tre dei resi, <em>Ordini Aperti</em> e <em>Approvvigionamenti</em> — hanno il filtro nel menu e <strong>niente in barra</strong>. Il vantaggio è che non si tolgono per sbaglio; lo svantaggio è che, guardando la pagina, non vedi scritto da nessuna parte perché quelle righe e non altre.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — una vista vuota si guarda insieme al suo filtro</p>
+<p>Quando trovi vuota una delle viste di presidio, la lettura giusta è «non c'è niente da fare» <strong>solo se il filtro è quello di sempre</strong>. Una vista vuota perché qualcuno ha cambiato il filtro ha esattamente lo stesso aspetto di una vista vuota perché è tutto a posto.</p>
+<p>Al primo dubbio: apri il menu dei filtri e confrontalo con la tabella qui sopra.</p>
+</aside>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g8-03-giacenze-menu-filtri.png"><img src="assets/img/g8-03-giacenze-menu-filtri.png" alt="Il menu dei filtri della pagina Giacenze aperto, con i filtri che non compaiono in barra." loading="lazy" style="width:314px"></a>
+<figcaption><span class="numero">Screenshot 3</span> I filtri che definiscono la pagina non stanno in barra: si vedono solo da qui.</figcaption>
+</figure>
+<hr>
+<h2 id="s6"><a class="ancora" href="#s6">§6</a> Ordinare</h2>
+<p>Dal menu dell'intestazione, la voce <strong>«Ordina»</strong>, con la scelta fra crescente e decrescente. Se poi ordini una seconda colonna, questa si aggiunge alla prima invece di sostituirla: prima per serie, poi per nome.</p>
+<p>Due differenze da Excel che vale la pena sapere:</p>
+<ul><li><strong>ordinare non cambia nessun calcolo.</strong> Le formule, le giacenze e i report non si accorgono di come guardi le righe;</li><li><strong>l'ordinamento è vivo.</strong> Se cambi il valore di una cella su cui stai ordinando, la riga si sposta da sola al posto giusto.</li></ul>
+<p>Per il resto vale la sezione 3: l'icona diventa verde, e o salvi o ricarichi.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — «Aggiorna dati» non è un aggiornamento</p>
+<p>Nel pannello di destra, nella scheda del riquadro, la sottoscheda dell'ordinamento contiene in fondo un pulsante <strong>«Aggiorna dati»</strong>. Non aggiorna niente: <strong>congela l'ordine attuale delle righe</strong> e spegne l'ordinamento.</p>
+<p>Ha un nome innocuo, sta accanto ai comandi che usi tutti i giorni, e non si annulla con la freccia di ripristino. Non serve a niente di quello che fai qui: lascialo stare.</p>
+</aside>
+<hr>
+<h2 id="s7"><a class="ancora" href="#s7">§7</a> Cercare</h2>
+<p>La lente in alto, oppure <code>Ctrl+F</code>, apre la casella <strong>«Cerca nel documento»</strong>. La <strong>x</strong> la chiude.</p>
+<p>La ricerca non nasconde niente: <strong>sposta il cursore</strong> sulla prima cella che contiene quello che hai scritto, e a ogni passaggio va alla successiva. Quando le corrispondenze nella pagina finiscono, <strong>passa alla pagina dopo</strong>. Se ti ritrovi improvvisamente altrove, non hai cliccato niente per sbaglio: è la ricerca che ha cambiato pagina.</p>
+<p>Serve soprattutto per tre cose: trovare un ordine dal suo numero, controllare se uno SKU esiste già (<a href="guida-5.html#s7">guida 5</a>, sezione 7), ritrovare un prodotto di cui ricordi il nome ma non il codice.</p>
+<p>Quando invece vuoi <strong>vedere insieme</strong> tutte le righe che riguardano una cosa sola, la ricerca non basta: serve un filtro. Per i movimenti di un articolo c'è già una pagina apposta, con il filtro dello SKU in barra (<a href="guida-6.html#s9">guida 6</a>, sezione 9).</p>
+<hr>
+<h2 id="s8"><a class="ancora" href="#s8">§8</a> Le colonne</h2>
+<p>Dal menu dell'intestazione: <strong>«Nascondi colonna»</strong> la toglie da questa pagina. Per rimetterla, apri il pannello di destra sulla scheda del riquadro: le colonne nascoste sono elencate lì e si riportano fra le visibili.</p>
+<p>Le colonne si spostano trascinandole per l'intestazione, si allargano trascinandone il bordo, e dallo stesso menu si possono bloccare le prime, quelle che restano ferme mentre scorri verso destra.</p>
+<p>Tutto questo è roba della sezione 3: tua, finché non salvi.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — nascondere non è eliminare</p>
+<p>Nello stesso menu, poco più in basso, c'è <strong>«Elimina colonna»</strong>. Nascondere toglie la colonna da una pagina; eliminare la toglie dalla tabella, con tutto quello che contiene, <strong>in tutte le pagine</strong>, e rompe le formule che la usavano.</p>
+<p>È la stessa coppia di gesti che la <a href="guida-1.html">guida 1</a> descrive per le righe — il filtro e la cancellazione — con lo stesso rischio: si somigliano a schermo e non si somigliano per niente nelle conseguenze. Se una colonna ti dà fastidio, nascondila.</p>
+</aside>
+<p>Le colonne con lo <strong><span class="campione campione-grigio" aria-hidden="true"></span>sfondo grigio</strong> si possono nascondere come tutte le altre, ma non si scrivono: il grigio è il divieto (<a href="guida-0.html#s8">guida 0</a>, sezione 8).</p>
+<hr>
+<h2 id="s9"><a class="ancora" href="#s9">§9</a> Cambiare l'etichetta di una colonna</h2>
+<p>Ogni colonna ha due nomi: l'<strong>etichetta</strong>, che leggi in cima, e l'<strong>identificativo</strong>, che è il nome con cui la chiamano le formule e gli automatismi. Normalmente i due si muovono insieme, ed è questo il problema: rinominare una colonna cambia anche l'identificativo, e tutto ciò che ci puntava smette di funzionare in silenzio.</p>
+<p>L'etichetta però si può cambiare <strong>da sola</strong>, ed è un'operazione sicura. Si fa così:</p>
+<ol><li>Apri il menu dell'intestazione e scegli <strong>«Opzioni colonna»</strong>. Si apre il pannello di destra sulla scheda della colonna.</li><li>In cima c'è la sezione <strong>«ETICHETTA E ID DELLA COLONNA»</strong>, con due campi: sopra l'etichetta, sotto l'identificativo.</li><li>Fra i due c'è un'<strong>icona a forma di catena</strong>, senza scritte. Cliccala: la catena si spezza, e da quel momento i due nomi sono indipendenti.</li><li>Scrivi il nome nuovo <strong>solo nel campo di sopra</strong>.</li><li>Controlla che il campo di sotto sia rimasto esattamente com'era.</li></ol>
+<p>Il passo 5 non è pignoleria: è l'unico modo di accorgersi subito se il passo 3 non ha funzionato.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — finché la catena è intatta, cambi tutti e due i nomi</p>
+<p>Vale per qualsiasi strada: il doppio clic sull'intestazione, la voce «Rinomina colonna», il campo dell'etichetta nel pannello. Se la catena non è spezzata, l'identificativo segue.</p>
+<p>E quando l'identificativo cambia, non succede niente di visibile: le formule che lo usavano smettono di calcolare o restituiscono zero, gli automatismi scrivono in un campo che non esiste più. Te ne accorgi dai numeri, giorni dopo.</p>
+</aside>
+<p><strong>L'identificativo non è tuo.</strong> Se un identificativo va cambiato davvero — capita, ma raramente — è un intervento di Paolo, che prima controlla quali formule e quali scenari citano quel nome.</p>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g8-04-etichetta-id-colonna.png"><img src="assets/img/g8-04-etichetta-id-colonna.png" alt="La sezione «ETICHETTA E ID DELLA COLONNA» nel pannello di destra, inquadrata stretta sui due campi e sull'icona a catena fra di loro." loading="lazy" style="width:345px"></a>
+<figcaption><span class="numero">Screenshot 4</span> Prima si spezza la catena, poi si scrive nel campo di sopra. Il campo di sotto deve restare com'è.</figcaption>
+</figure>
+<hr>
+<h2 id="s10"><a class="ancora" href="#s10">§10</a> I menu a tendina</h2>
+<p>Le voci di un menu a tendina sembrano etichette. Non lo sono: sono <strong>valori</strong>, scritti dentro ogni riga e confrontati parola per parola dalle formule. Il magazzino di un ordine non contiene «il primo magazzino»: contiene la stringa <code>M1. Interno</code>.</p>
+<p>I menu di questo documento sono di tre tipi.</p>
+<div class="tabella"><table>
+<thead><tr><th>Tipo</th><th>Quali</th><th>Cosa puoi fare</th></tr></thead>
+<tbody><tr><td><strong>Letti dalle formule</strong></td><td>magazzino, stato, tipo di record, tipo prodotto, taglia, serie</td><td>Niente: né rinominare né eliminare voci</td></tr><tr><td><strong>Letti dalle formule e scritti dagli automatismi</strong></td><td>stato, tipo di record</td><td>Ancora meno: il danno arriverebbe da due parti insieme</td></tr><tr><td><strong>Liberi</strong></td><td>canale</td><td>Aggiungere voci quante ne vuoi</td></tr></tbody>
+</table></div>
+<p>La regola, in una riga: <strong>aggiungere una voce sì, rinominarne una mai.</strong></p>
+<h4 id="aggiungere-una-voce-a-un-menu-libero">Aggiungere una voce a un menu libero</h4>
+<p>Serve per il <strong>canale</strong>, se ti fa comodo tenere traccia della provenienza di un carico — la tipografia, il fornitore dei gadget (<a href="guida-6.html#s5">guida 6</a>, sezione 5).</p>
+<ol><li>Mettiti su una cella di quella colonna e apri <strong>«Opzioni colonna»</strong>.</li><li>Nel pannello di destra, accanto all'elenco delle scelte, clicca <strong>«Edit»</strong>.</li><li>Scrivi la voce nuova nel campo in fondo all'elenco e premi Invio.</li><li>Salva.</li></ol>
+<p>Più veloce ancora: scrivi il valore nuovo direttamente nella cella, e Grist ti propone di aggiungerlo all'elenco.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — rinominare una voce non dà nessun errore, e rompe i conti</p>
+<p>Quando rinomini una voce, Grist aggiorna diligentemente tutte le righe che la contenevano. Quello che <strong>non</strong> aggiorna sono le formule, che continuano a cercare la parola vecchia e non la trovano più. Non restituiscono un errore: restituiscono <strong>zero</strong>.</p>
+<p>È successo l'11 settembre con i due magazzini. Per un giorno il venduto di entrambi i depositi è valso zero su ogni articolo, e le giacenze attuali coincidevano con quelle iniziali. Nessuna cella rossa, nessuna mail: solo numeri sbagliati dall'aria perfettamente normale.</p>
+</aside>
+<details class="box box-perche">
+<summary>Perché funziona così — e perché con gli automatismi è peggio</summary>
+<div class="box-corpo"><p>Su due di questi menu, lo stato e il tipo di record, non scrive solo Grist: scrive anche Make. Gli scenari mandano parole precise — <code>Ordine</code>, <code>Reso</code>, <code>Rimborsato</code>, <code>Completato</code> — perché sono quelle che hanno trovato quando sono stati costruiti.</p>
+<p>Se una di quelle voci venisse rinominata, gli ordini che arrivano dal sito continuerebbero ad arrivare con la parola vecchia, che a quel punto non è più una scelta valida. Il danno entrerebbe da fuori, a ogni ordine nuovo, senza che nessuno abbia più toccato niente.</p></div>
+</details>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g8-05-menu-canale-edit.png"><img src="assets/img/g8-05-menu-canale-edit.png" alt="L'elenco delle scelte del canale aperto con «Edit», con il campo per aggiungere una voce in fondo." loading="lazy" style="width:330px"></a>
+<figcaption><span class="numero">Screenshot 5</span> Il canale è un menu libero: qui si aggiunge, e basta.</figcaption>
+</figure>
+<hr>
+<h2 id="s11"><a class="ancora" href="#s11">§11</a> Righe: aggiungere, eliminare, annullare</h2>
+<p><strong>Aggiungere.</strong> In fondo a ogni tabella c'è una riga vuota: scrivere lì crea una riga nuova. Per gli ordini, però, la strada giusta non è questa ma la maschera <em>Inserimento Ordini</em> (<a href="guida-3.html">guida 3</a>).</p>
+<p><strong>Eliminare.</strong> Dal menu della riga, a sinistra. La riga sparisce dalla tabella e da tutte le pagine, e non c'è modo di rimetterla dov'era.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — per far sparire una riga da una pagina esiste il filtro</p>
+<p>Eliminare è definitivo e vale ovunque: nelle giacenze, nei report, nello storico. Un ordine che non deve più contare <strong>si annulla</strong>, non si cancella — lo stato <code>Annullato</code> è previsto e il sistema sa leggerlo (<a href="guida-3.html#s11">guida 3</a>, sezione 11).</p>
+</aside>
+<p><strong>Annullare l'ultima cosa fatta.</strong> <code>Ctrl+Z</code> recupera quello che hai appena fatto tu, subito dopo averlo fatto. Trattalo come un ripensamento immediato, non come una rete di sicurezza: non contarci per rimediare a qualcosa fatto ieri, né per annullare le modifiche di un'altra persona. Per quello c'è la sezione 13, e in ultima istanza Paolo.</p>
+<hr>
+<h2 id="s12"><a class="ancora" href="#s12">§12</a> Esportare e stampare</h2>
+<p>Dal <strong>menu a tre puntini in alto a destra della pagina</strong>:</p>
+<ul><li><strong>«Scarica come XLSX»</strong> — il formato da preferire;</li><li><strong>«Scarica come CSV»</strong> — da evitare quando i numeri contano: il CSV usa il punto decimale, ed Excel in italiano legge <code>12.30</code> come milledodici;</li><li><strong>«Widget di stampa»</strong> — stampa il riquadro che stai guardando. Su una pagina con più riquadri, come la maschera di inserimento, stampa solo quello selezionato.</li></ul>
+<p>Quello che esce è <strong>esattamente quello che vedi</strong>: solo le righe che passano i filtri, solo le colonne visibili, nell'ordine in cui sono. Se prima di esportare nascondi due colonne, nel file non ci sono.</p>
+<p>Per <strong>la conta del magazzino</strong>, la strada è questa: filtra <em>Giacenze</em> su quello che stai per contare, poi stampa o esporta (<a href="guida-6.html#s7">guida 6</a>, sezione 7).</p>
+<p>Per <strong>i due report fiscali</strong> la procedura completa — controllo dei filtri, export, pulizia del file — sta nella <strong><a href="guida-7.html#s7">guida 7</a>, sezione 7</strong>, insieme all'avvertenza sull'altro comando di esportazione, quello del menu di condivisione, che scarica l'intero documento senza filtri e non va usato per i report.</p>
+<p>Quello stesso comando ha però un uso giusto, ed è l'unico: la <strong>copia di sicurezza trimestrale</strong>, dove scaricare tutto senza filtri è esattamente quello che serve (<a href="guida-9.html#s2">guida 9</a>, sezione 2).</p>
+<hr>
+<h2 id="s13"><a class="ancora" href="#s13">§13</a> Chi ha cambiato cosa, e quanto spazio resta</h2>
+<h4 id="la-storia-del-documento">La storia del documento</h4>
+<p>Nel pannello di sinistra, <strong>«Storia documento»</strong> apre due schede:</p>
+<ul><li><strong>«Attività»</strong> elenca le modifiche recenti, con chi le ha fatte. Siccome tu e Virginia entrate con due account diversi, qui si distingue. Di base mostra la tabella che stai guardando; una casella permette di vedere tutte le tabelle insieme.</li><li><strong>«Snapshot»</strong> sono le copie complete del documento che Grist salva da sé. Sul piano gratuito <strong>si torna indietro di 30 giorni</strong>.</li></ul>
+<p>«Attività» è il posto giusto da guardare quando un numero non torna e non capisci perché: spesso la risposta è una modifica di cui nessuno si ricorda. Riportare il documento a uno snapshot, invece, è un'operazione da consulente — si chiama Paolo, e prima dei 30 giorni.</p>
+<h4 id="il-limite-dei-record">Il limite dei record</h4>
+<p>Il piano gratuito tiene <strong>5.000 righe in tutto il documento</strong>, non per tabella. Il conteggio si legge in <strong>«Dati grezzi»</strong>, dove ogni tabella è elencata con il suo numero di righe.</p>
+<p>Ai volumi attuali le vendite consumano poco: fra testate e righe, un anno di ordini vale qualche centinaio di righe. La voce grossa è <strong><code>Prodotti</code></strong>, che da sola ne occupa circa 1.200 — ed è la tabella che il sistema non usa per funzionare (<a href="guida-5.html#s3">guida 5</a>, sezione 3). Se un giorno lo spazio stringesse, è da lì che si comincerebbe.</p>
+<p>Vale la pena dare un'occhiata a quel numero quando si preparano i report del trimestre, insieme agli altri due controlli che si fanno in quell'occasione (<a href="guida-9.html#s2">guida 9</a>, sezione 2). Non è un'emergenza: è che il limite, quando arriva, arriva senza preavviso.</p>
+<hr>
+<h2 id="s14"><a class="ancora" href="#s14">§14</a> Cosa è tuo e cosa non si tocca</h2>
+<div class="tabella"><table>
+<thead><tr><th>Tuo, senza pensarci</th><th>Non si tocca</th></tr></thead>
+<tbody><tr><td>Filtri, anche salvarli</td><td>Gli identificativi delle colonne</td></tr><tr><td>Ordinamenti</td><td>Le voci dei menu che formule e automatismi leggono</td></tr><tr><td>Nascondere, spostare, allargare colonne</td><td>«Elimina colonna»</td></tr><tr><td>Cambiare un'etichetta, con la catena spezzata</td><td>Le formule</td></tr><tr><td>Aggiungere voci a un menu libero</td><td>«Aggiorna dati»</td></tr><tr><td>Cercare, esportare, stampare</td><td>Le impostazioni del documento e i collegamenti con Make</td></tr><tr><td>Guardare «Dati grezzi» e «Storia documento»</td><td>Eliminare tabelle o pagine; ripristinare uno snapshot</td></tr></tbody>
+</table></div>
+<p>La colonna di destra ha una cosa in comune: <strong>nessuna di quelle azioni dà un messaggio d'errore.</strong> È il motivo per cui stanno in un elenco invece che in un lucchetto.</p>
+<hr>
+<h2 id="s15"><a class="ancora" href="#s15">§15</a> Se qualcosa va storto</h2>
+<div class="tabella"><table>
+<thead><tr><th>Sintomo</th><th>Dove guardare</th></tr></thead>
+<tbody><tr><td>Una pagina mostra meno righe del solito</td><td>Sezione 4, e la tabella della sezione 5</td></tr><tr><td>Una vista di presidio è vuota e non ti fidi</td><td>Sezione 5</td></tr><tr><td>Hai cambiato qualcosa e non sai cosa</td><td>Ricarica la pagina (sezione 3)</td></tr><tr><td>Hai salvato un filtro per sbaglio</td><td>Rimettilo com'era con la tabella della sezione 5, e risalva</td></tr><tr><td>Una colonna è sparita</td><td>Sezione 8: probabilmente è nascosta, non eliminata</td></tr><tr><td>Ti sei ritrovata su un'altra pagina</td><td>Sezione 7: è la ricerca</td></tr><tr><td>Un numero è diventato zero dopo che qualcuno ha rinominato qualcosa</td><td>Sezione 10, e chiama Paolo</td></tr><tr><td>Non capisci chi ha cambiato cosa</td><td>Sezione 13</td></tr></tbody>
+</table></div>
+<hr>
+<h2 id="s16"><a class="ancora" href="#s16">§16</a> Dove si continua</h2>
+<div class="tabella"><table>
+<thead><tr><th>Se vuoi…</th><th>Guida</th></tr></thead>
+<tbody><tr><td>Capire come sono fatte le pagine e perché i filtri sono quelli</td><td>1</td></tr><tr><td>Inserire o correggere un ordine, annullarne uno</td><td>3</td></tr><tr><td>Chiudere un reso</td><td>4</td></tr><tr><td>Controllare se un articolo esiste già, creare un kit</td><td>5</td></tr><tr><td>Leggere le giacenze, preparare una conta</td><td>6</td></tr><tr><td>Scaricare i report per il commercialista</td><td>7</td></tr><tr><td>Capire perché qualcosa non funziona, o cosa segnalare a Paolo</td><td>9</td></tr></tbody>
+</table></div>
+</div>
+
+  </main>
+  <footer class="pie">
+    <p>Manuale del sistema «Magazzino LwM» · generato il 17/09/2026</p>
+    <p>Per i casi che non stanno nelle guide, e per qualsiasi cosa nuova da costruire, si scrive a Paolo: cosa allegare sta nella <a href="guida-9.html#s11">guida 9 §11</a>.</p>
+  </footer>
+</div>
+
+<div class="lente" id="lente" hidden><img src="" alt=""></div>
+
+<script src="assets/manuale.js"></script>
+</body>
+</html>

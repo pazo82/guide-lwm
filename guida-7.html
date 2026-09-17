@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Guida 7 — Report fiscali · Magazzino LwM</title>
+<link rel="stylesheet" href="assets/stile.css">
+</head>
+<body>
+<a class="salta" href="#principale">Vai al contenuto</a>
+
+<button type="button" class="apri-menu" id="apri-menu" aria-label="Apri il menu delle guide">☰ Guide</button>
+
+<nav class="menu" id="menu" aria-label="Le guide">
+  <p class="menu-titolo">Magazzino LwM</p>
+  <a class="menu-voce menu-indice" href="index.html">Indice</a>
+<p class="menu-blocco">Capire</p>
+<a class="menu-voce" href="guida-0.html"><span class="menu-n">0</span>Come funziona il sistema</a>
+<a class="menu-voce" href="guida-1.html"><span class="menu-n">1</span>La mappa di Grist</a>
+<a class="menu-voce" href="guida-2.html"><span class="menu-n">2</span>Gli automatismi (Make)</a>
+<p class="menu-blocco">Fare</p>
+<a class="menu-voce" href="guida-3.html"><span class="menu-n">3</span>Ordini</a>
+<a class="menu-voce" href="guida-4.html"><span class="menu-n">4</span>Resi e rimborsi</a>
+<a class="menu-voce" href="guida-5.html"><span class="menu-n">5</span>Catalogo, articoli e kit</a>
+<a class="menu-voce" href="guida-6.html"><span class="menu-n">6</span>Giacenze e inventario</a>
+<a class="menu-voce attiva" href="guida-7.html"><span class="menu-n">7</span>Report fiscali</a>
+<p class="menu-blocco">Cavarsela da sola</p>
+<a class="menu-voce" href="guida-8.html"><span class="menu-n">8</span>Muoversi in Grist</a>
+<a class="menu-voce" href="guida-9.html"><span class="menu-n">9</span>Manutenzione e problemi</a>
+<p class="menu-blocco">Riferimento</p>
+<a class="menu-voce" href="scheda.html"><span class="menu-n">A4</span>Scheda rapida</a>
+</nav>
+
+<div class="colonna">
+  <div class="barra">
+    <div class="barra-nav"><a href="guida-6.html">‹ Guida 6</a> <a href="guida-8.html">Guida 8 ›</a></div>
+    <div class="barra-strumenti"><button type="button" class="bottone-piatto" id="espandi">Espandi tutto</button><button type="button" class="bottone-piatto" onclick="window.print()">Stampa</button></div>
+  </div>
+  <main id="principale">
+
+<header class="testata">
+  <p class="occhiello">Guida 7</p>
+  <h1>Report fiscali</h1>
+  <p class="versione"><strong>Versione del 11/09/2026</strong> · Sistema «Magazzino LwM»</p>
+</header>
+<nav class="sommario" aria-label="Sezioni della guida">
+  <p class="sommario-titolo">In questa guida</p>
+  <ol class="sommario-voci"><li><a href="#s1"><span class="n">1</span>In breve</a></li><li><a href="#s2"><span class="n">2</span>I due report non raccontano la stessa cosa</a></li><li><a href="#s3"><span class="n">3</span>Chi entra nei report e chi resta fuori</a></li><li><a href="#s4"><span class="n">4</span>Il Registro Corrispettivi, colonna per colonna</a></li><li><a href="#s5"><span class="n">5</span>Il Report Art. 74, colonna per colonna</a></li><li><a href="#s6"><span class="n">6</span>Il terzo report, che non è fiscale</a></li><li><a href="#s7"><span class="n">7</span>La procedura, dal filtro al file</a></li><li><a href="#s8"><span class="n">8</span>La checklist di chiusura periodo</a></li><li><a href="#s9"><span class="n">9</span>Sei punti ancora da confermare</a></li><li><a href="#s10"><span class="n">10</span>Se qualcosa non torna</a></li><li><a href="#s11"><span class="n">11</span>Dove si continua</a></li></ol>
+</nav>
+<div class="corpo">
+<p>Questa è la guida della chiusura di trimestre: <strong>cosa contengono i due report che vanno al commercialista, quali vendite ci entrano e quali no, e la procedura per tirarli fuori da Grist.</strong></p>
+<p>È anche la ragione per cui questo sistema esiste. Tutto il resto — gli ordini, i resi, i carichi, le giacenze — serve a far arrivare quattro volte l'anno due file corretti.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Prima di cominciare — i primi trimestri vanno verificati</p>
+<p>Il sistema è collaudato sulle formule e sui casi di prova, ma <strong>non ha ancora prodotto un trimestre reale completo.</strong> Per i primi due o tre trimestri, prima di considerare buoni i numeri, confrontali con una fonte esterna: il riepilogo vendite di WooCommerce per i totali, l'estratto PayPal per gli incassi.</p>
+<p>Non è sfiducia nello strumento. È il modo normale di mettere in servizio qualcosa che produce numeri fiscali: si controlla finché non si è visto tornare tutto due o tre volte di seguito. Quando succede, questa avvertenza si spegne.</p>
+</aside>
+<hr>
+<h2 id="s1"><a class="ancora" href="#s1">§1</a> In breve</h2>
+<p>Ogni trimestre si fanno cinque cose, in quest'ordine:</p>
+<div class="tabella"><table>
+<thead><tr><th></th><th>Cosa</th><th>Dove</th></tr></thead>
+<tbody><tr><td>1</td><td>I controlli di chiusura periodo — sette voci</td><td>Sezione 8</td></tr><tr><td>2</td><td>Impostare il trimestre <strong>su ciascuna</strong> delle pagine dei report</td><td>Sezione 7</td></tr><tr><td>3</td><td>Scaricare i due file in XLSX</td><td>Sezione 7</td></tr><tr><td>4</td><td>Ripulire e sistemare il layout</td><td>Sezione 7</td></tr><tr><td>5</td><td>Inviare al commercialista</td><td>—</td></tr></tbody>
+</table></div>
+<p>Il grosso del lavoro è il punto 1, e non si fa in chiusura: si fa durante il trimestre, ogni settimana, sugli ordini. Se la routine della <a href="guida-0.html">guida 0</a> è stata seguita, la chiusura è mezz'ora di lavoro.</p>
+<p>Le due cose da non sbagliare sono la scelta dell'export (sezione 7) e la riga dei totali nel Registro (sezione 4). Entrambe producono un file dall'aria perfettamente normale.</p>
+<hr>
+<h2 id="s2"><a class="ancora" href="#s2">§2</a> I due report non raccontano la stessa cosa</h2>
+<p>È la cosa più importante da avere chiara, perché quasi tutte le domande che verranno dopo si sciolgono da sole una volta capito questo: <strong>uno conta gli incassi per regime fiscale, l'altro conta le copie di libri vendute.</strong> Sono due letture diverse delle stesse righe d'ordine.</p>
+<div class="tabella"><table>
+<thead><tr><th></th><th><strong>REPORT Corrispettivi</strong></th><th><strong>REPORT Art. 74</strong></th></tr></thead>
+<tbody><tr><td><strong>Cosa conta</strong></td><td>Quanto hai incassato, diviso per regime fiscale</td><td>Quante copie hai venduto, titolo per titolo</td></tr><tr><td><strong>Una riga è</strong></td><td>Un giorno</td><td>Un titolo, in un trimestre</td></tr><tr><td><strong>Quali vendite include</strong></td><td>Solo quelle <strong>senza fattura</strong></td><td><strong>Tutte</strong> quelle in Art.74, fatture comprese</td></tr><tr><td><strong>Da dove esce il valore</strong></td><td>Dal totale della riga d'ordine, tasse incluse</td><td>Dalle copie × il prezzo di copertina dell'articolo</td></tr><tr><td><strong>Un kit venduto</strong></td><td>Vale per intero, sotto il regime del kit</td><td>Non compare: compaiono i suoi <strong>pezzi</strong>, ciascuno sotto il proprio regime</td></tr><tr><td><strong>A cosa serve</strong></td><td>È il registro dei corrispettivi</td><td>È la dichiarazione dell'editoria</td></tr></tbody>
+</table></div>
+<p>Le due righe centrali sono quelle che sorprendono, e tornano più avanti: la terza nella sezione 5, la quinta nella figura 2.</p>
+<p>C'è poi un terzo report, <em>Report Fee Paypal</em>, che non è fiscale: sezione 6.</p>
+<hr>
+<h2 id="s3"><a class="ancora" href="#s3">§3</a> Chi entra nei report e chi resta fuori</h2>
+<p>Questa parte è comune ai due report ed è automatica: nessuna delle condizioni qui sotto dipende da un filtro che qualcuno deve ricordarsi di mettere.</p>
+<p><strong>Contano le vendite in due stati soli: <code>Completato</code> e <code>Rimborsato</code>.</strong> Tutto il resto — in lavorazione, in attesa di pagamento, in sospeso, annullato, fallito — resta fuori. La tabella completa dei sette stati è nella <a href="guida-3.html#s3">guida 3</a>, sezione 3.</p>
+<p><strong>Contano solo gli ordini e i resi.</strong> I carichi di magazzino e i movimenti eccezionali sono nella stessa tabella degli ordini, ma non entrano in nessun report: un carico di merce non è un ricavo negativo.</p>
+<p><strong>I resi entrano come righe negative, alla data del rimborso.</strong> Non alla data della vendita. Un rimborso fatto oggi su una vendita di tre mesi fa non riapre un trimestre già consegnato: si scarica sul trimestre corrente.</p>
+<figure class="figura">
+<figcaption>Figura 1 — Come una riga d'ordine finisce (o non finisce) nei report</figcaption>
+<pre>                        ┌──────────────────────────────┐
+                        │  Che tipo di record è?       │
+                        └──────────────────────────────┘
+                     Ordine │ Reso        │ Approvvigionamento
+                            │             │ Altro movimento
+                            ▼             ▼
+              ┌──────────────────────┐   FUORI
+              │  In che stato è?     │   da entrambi i report
+              └──────────────────────┘
+        Completato │              │ tutti gli altri
+        Rimborsato │              ▼
+                   ▼            FUORI
+        ┌────────────────────────────┐
+        │  La riga è di un articolo  │
+        │  in regime Art.74?         │
+        └────────────────────────────┘
+            SÌ │                │ NO
+               ▼                │
+    ┌─────────────────────┐     │
+    │  REPORT Art. 74     │     │
+    │  conta le copie,    │     │
+    │  fatture comprese   │     │
+    └─────────────────────┘     │
+               │                │
+               └────────┬───────┘
+                        ▼
+              ┌──────────────────────┐
+              │  È una vendita       │
+              │  con fattura?        │
+              └──────────────────────┘
+                  SÌ │        │ NO
+                     ▼        ▼
+                  FUORI    ┌─────────────────────┐
+              dal Registro │ REPORT Corrispettivi│
+                           │ sotto il regime     │
+                           │ della riga          │
+                           └─────────────────────┘</pre>
+</figure>
+<p>Una riga Art.74 senza fattura passa quindi da <strong>tutti e due</strong> i report, e non è un doppio conteggio: in uno è un incasso, nell'altro è una copia.</p>
+<details class="box box-perche">
+<summary>Perché funziona così — queste condizioni non sono filtri</summary>
+<div class="box-corpo"><p>Tutto quello che hai appena letto è scritto <strong>dentro le formule</strong> che calcolano le colonne, non nella barra dei filtri. È una precauzione voluta: un filtro si toglie con un clic e non lascia nessun segno, e un report che va al commercialista non può dipendere da un clic. Il criterio completo è nella <a href="guida-1.html#s5">guida 1</a>, sezione 5.</p></div>
+</details>
+<h4 id="le-tre-cose-che-nessuna-formula-puo-intercettare">Le tre cose che nessuna formula può intercettare</h4>
+<p>Sono già spiegate altrove, ma è a fine trimestre che si pagano, quindi vale la pena rivederle qui in tre righe.</p>
+<p><strong>Un rimborso di solo importo non compare in nessun report.</strong> Se su WooCommerce rimborsi una somma senza indicare quali prodotti, in Grist nasce un reso <strong>senza righe</strong> — e i report sommano le righe. È il motivo per cui la pagina <em>Resi senza righe</em> deve essere vuota (<a href="guida-4.html">guida 4</a>).</p>
+<p><strong>Un ordine cancellato su WooCommerce resta in Grist.</strong> Continua a contare nei report come se nulla fosse. Un ordine sbagliato si porta su <code>Annullato</code>, non si cancella (<a href="guida-3.html#s11">guida 3</a>, sezione 11).</p>
+<p><strong>Le modifiche fatte alle righe sul sito non arrivano.</strong> Quantità corrette, prezzi cambiati, prodotti aggiunti o tolti da un ordine già esistente: vanno rifatte a mano anche in Grist (<a href="guida-3.html#s10">guida 3</a>, sezione 10).</p>
+<p>Nessuna delle tre dà un errore o una mail. Tutte e tre danno un numero sbagliato dall'aria plausibile.</p>
+<hr>
+<h2 id="s4"><a class="ancora" href="#s4">§4</a> Il Registro Corrispettivi, colonna per colonna</h2>
+<p>Una riga per ogni giorno in cui è successo qualcosa. Le colonne sono sei più due di intestazione.</p>
+<div class="tabella"><table>
+<thead><tr><th>Colonna</th><th>Cosa contiene</th></tr></thead>
+<tbody><tr><td><strong>Trimestre</strong></td><td>Il trimestre a cui appartiene il giorno. È la colonna su cui agisce il filtro</td></tr><tr><td><strong>data ordine</strong></td><td>Il giorno</td></tr><tr><td><strong>Art.74</strong></td><td>Quanto hai incassato quel giorno, senza fattura, su prodotti in regime Art.74</td></tr><tr><td><strong>4%</strong></td><td>Lo stesso, sui prodotti al 4%</td></tr><tr><td><strong>22%</strong></td><td>Lo stesso, sui prodotti al 22%, <strong>spese di spedizione comprese</strong></td></tr><tr><td><strong>Senza regime fiscale</strong></td><td>Un presidio, non un dato. Vedi sotto</td></tr><tr><td><em>Spedizioni</em></td><td>Il di-cui: quanto di quella colonna 22% sono spese di spedizione</td></tr><tr><td><em>22% senza spedizione</em></td><td>Il di-cui contrario: quanto sono prodotti</td></tr></tbody>
+</table></div>
+<p><strong>Le prime quattro colonne dei valori sommano al corrispettivo del giorno.</strong> Art.74 + 4% + 22% + Senza regime fiscale: è quello. Le ultime due sono lo stesso denaro guardato più da vicino — stanno in fondo, staccate, proprio perché non vanno sommate insieme alle altre.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — la riga dei totali in Excel</p>
+<p>Quando aggiungi la riga dei totali nel file scaricato, <strong>somma solo le prime quattro colonne dei valori.</strong> Le ultime due sono già dentro il 22%: aggiungerle significa contare le spese di spedizione due volte, e ottenere un corrispettivo di trimestre più alto del vero.</p>
+<p>Se ti serve un totale anche di quelle, mettilo in una riga a parte e chiamalo per quello che è: un dettaglio, non un addendo. Il modo più semplice per non sbagliare è trascinare la somma <strong>solo fino a «Senza regime fiscale»</strong> e fermarsi lì.</p>
+</aside>
+<p><strong>«Senza regime fiscale» deve restare a zero.</strong> Non è una categoria di vendite: è la colonna che raccoglie le righe fiscalmente valide il cui regime non si è risolto: prodotti con un'aliquota che Grist non sa leggere, oppure righe che non si sono agganciate a nessun articolo. Ha l'<span class="campione campione-arancione" aria-hidden="true"></span>intestazione arancione delle colonne di controllo e si accende da sola se il valore supera lo zero. Se ci trovi qualcosa, quella vendita sta uscendo dal conteggio dei regimi: si risale all'articolo e si sistema l'aliquota (<a href="guida-5.html">guida 5</a>). <strong>Non si consegna un trimestre con quella colonna diversa da zero.</strong></p>
+<p><strong>Nessuna colonna dell'IVA, ed è voluto.</strong> Il report espone gli imponibili lordi per regime; lo scorporo dell'imposta lo fa il commercialista partendo dal regime, che è già lì. È una scelta che abbiamo confermato insieme.</p>
+<p><strong>Un giorno può comparire con tutte le colonne a zero.</strong> Succede quando quel giorno ci sono state solo vendite con fattura: l'ordine esiste, ma nel registro dei corrispettivi non ci va nulla. Non è un errore.</p>
+<aside class="box box-nota">
+<p><strong>Nota — le spese di spedizione entrano al lordo dell'IVA.</strong> Come tutto il resto del report: la colonna <em>Spedizioni</em> somma l'imponibile della spedizione più la sua imposta. Vale anche per lo storico, che è stato allineato.</p>
+<p>Sugli ordini che inserisci a mano i campi da compilare sono quindi <strong>due</strong> — l'imponibile della spedizione e la sua IVA — e il terzo, quello che li somma, si calcola da solo: lo riconosci perché è grigio, come tutti i campi che il sistema scrive al posto tuo (<a href="guida-3.html">guida 3</a>).</p>
+</aside>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g7-01-report-corrispettivi.png"><img src="assets/img/g7-01-report-corrispettivi.png" alt="La pagina REPORT Corrispettivi con il filtro del trimestre in barra e tutte le colonne visibili, scegliendo un giorno in cui si veda che 22% è la somma di 22% senza spedizione e Spedizioni." loading="lazy" style="width:900px"></a>
+<figcaption><span class="numero">Screenshot 1</span> Il registro come si consegna: un giorno per riga. Le ultime due colonne sono il dettaglio della terza — si leggono, non si sommano.</figcaption>
+</figure>
+<hr>
+<h2 id="s5"><a class="ancora" href="#s5">§5</a> Il Report Art. 74, colonna per colonna</h2>
+<p>Una riga per ogni titolo venduto <strong>in quel trimestre</strong>. Il primo blocco di colonne descrive il prodotto, il secondo conta le copie, il terzo fa i calcoli dell'editoria.</p>
+<div class="tabella"><table>
+<thead><tr><th>Colonna</th><th>Cosa contiene</th></tr></thead>
+<tbody><tr><td><strong>Serie</strong></td><td>La collezione a cui appartiene il titolo</td></tr><tr><td><strong>Titolo</strong></td><td>Il nome dell'articolo</td></tr><tr><td><strong>sku</strong></td><td>Il codice. Serve a te, non al commercialista</td></tr><tr><td><strong>Prezzo Copertina</strong></td><td>Il prezzo di listino dell'articolo</td></tr><tr><td><strong>I dodici mesi</strong></td><td>Le copie vendute in ciascun mese</td></tr><tr><td><strong>I quattro totali trimestrali</strong></td><td>La somma dei tre mesi di ciascun trimestre</td></tr><tr><td><strong>TOTALE</strong></td><td>Le copie del trimestre</td></tr><tr><td><strong>Totale Cessione</strong></td><td>Copie × prezzo di copertina</td></tr><tr><td><strong>Resi forfettari 70%</strong></td><td>Il 70% delle copie, arrotondato</td></tr><tr><td><strong>Residui</strong></td><td>Copie meno resi forfettari</td></tr><tr><td><strong>Lordo sogg. IVA</strong></td><td>Residui × prezzo di copertina</td></tr></tbody>
+</table></div>
+<p>Un esempio per leggere la catena: 40 copie di un libro da 12 € di copertina fanno 480 € di Totale Cessione; il forfait è 28 copie, i residui 12, e il lordo soggetto a IVA 144 €.</p>
+<p><strong>Il 70% è un forfait fissato nella formula.</strong> È un parametro fiscale, non una misura di quello che è successo davvero: nessuno conta i resi reali per calcolarlo. Se il commercialista indicasse una percentuale diversa, si cambia — ma è una modifica alle formule, e la fa Paolo.</p>
+<h4 id="le-quattro-cose-non-ovvie-di-questo-report">Le quattro cose non ovvie di questo report</h4>
+<p><strong>Una riga è un titolo <em>in un trimestre</em>, non un titolo.</strong> I dodici mesi in colonna fanno pensare a una vista annuale, ma non lo è: in ogni riga solo i tre mesi del suo trimestre possono avere numeri, gli altri nove sono a zero. Togliendo il filtro del trimestre non ottieni una riga per titolo con l'anno intero: ne ottieni <strong>quattro</strong>, una per trimestre. Le colonne dei mesi fuori periodo sono quelle da eliminare prima di inviare.</p>
+<p><strong>Ci sono anche le vendite con fattura.</strong> A differenza del Registro, questo report non distingue: conta tutte le copie vendute in Art.74, fatturate o no. È corretto — conta copie, non corrispettivi — ma è la ragione per cui i due file non si riconciliano fra loro e non ha senso provarci.</p>
+<p><strong>I kit non compaiono; compaiono i loro pezzi.</strong> Ed è il punto che merita l'esempio.</p>
+<figure class="figura">
+<figcaption>Figura 2 — Lo stesso kit, visto dai due report</figcaption>
+<pre>  Vendita: 1 kit "Jungle Box" — 30 € — regime del kit: 22%
+  Contiene: 1 libro in Art.74 (copertina 12 €) + 1 maglietta
+
+  ┌──────────────────────────────┐   ┌──────────────────────────────┐
+  │  REPORT Corrispettivi        │   │  REPORT Art. 74              │
+  ├──────────────────────────────┤   ├──────────────────────────────┤
+  │                              │   │                              │
+  │  30 €  nella colonna 22%     │   │  Il kit non c'è.             │
+  │                              │   │                              │
+  │  Il libro pesa zero.         │   │  Il libro: 1 copia,          │
+  │  La maglietta pesa zero.     │   │  valorizzata 12 €            │
+  │                              │   │  (prezzo di copertina)       │
+  │  Conta il kit intero,        │   │                              │
+  │  sotto il regime del kit.    │   │  Conta il pezzo,             │
+  │                              │   │  sotto il regime del pezzo.  │
+  └──────────────────────────────┘   └──────────────────────────────┘</pre>
+</figure>
+<p>Sembra una contraddizione e non lo è: <strong>un report conta incassi per regime, l'altro conta copie di libri.</strong> Il libro dentro il kit non ha un prezzo di vendita proprio — il cliente ha pagato 30 € per il kit — quindi nel registro dei corrispettivi non può valere nulla di suo. Ma una copia è stata comunque venduta, e nel report dell'editoria si conta, valorizzata a copertina.</p>
+<p>La conseguenza pratica arriva quando si sostituisce un pezzo dentro un kit: cambia il Report Art.74 e non cambia il Registro (<a href="guida-3.html#s9">guida 3</a>, sezione 9).</p>
+<p><strong>Il prezzo di copertina, il titolo e la serie sono letti oggi.</strong> Non vengono congelati al momento della vendita: il report li chiede all'anagrafica ogni volta che lo apri.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — cambiare il prezzo di listino riscrive i trimestri passati</p>
+<p>Se domani aumenti il prezzo di copertina di un libro, tutti i Report Art.74 di questo sistema — compresi quelli dei trimestri già consegnati — si ricalcolano con il prezzo nuovo. Lo stesso vale per il nome del titolo e per la serie.</p>
+<p>Il file che hai già inviato al commercialista resta ovviamente com'era: il problema si presenta il giorno in cui riapri la pagina per ricontrollare un periodo vecchio e trovi numeri diversi da quelli che avevi mandato.</p>
+<p>Per questo <strong>un prezzo di copertina che cambia non si modifica</strong>: diventa un prodotto nuovo, con uno SKU nuovo, sul sito e in Grist, e l'articolo vecchio resta con il prezzo di allora (<a href="guida-5.html#s9">guida 5</a>, sezione 9). Il prezzo di listino si corregge solo quando era <strong>sbagliato</strong> — e in quel caso è giusto che si correggano anche i trimestri passati.</p>
+</aside>
+<p><strong>Un titolo senza vendite nel trimestre non compare.</strong> Il report elenca ciò che si è mosso, non il catalogo: un libro Art.74 con zero copie vendute semplicemente non ha una riga. Se il commercialista si aspetta l'elenco completo dei titoli, con gli zeri, va detto — oggi non esce così.</p>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g7-02-report-art74.png"><img src="assets/img/g7-02-report-art74.png" alt="La pagina REPORT Art. 74 su un trimestre pieno, con la barra dei filtri visibile e le colonne dei mesi scorse fino a mostrarne alcuni a zero." loading="lazy" style="width:859px"></a>
+<figcaption><span class="numero">Screenshot 2</span> Una riga per titolo e per trimestre. I nove mesi fuori periodo restano a zero: sono le colonne da togliere prima di inviare.</figcaption>
+</figure>
+<hr>
+<h2 id="s6"><a class="ancora" href="#s6">§6</a> Il terzo report, che non è fiscale</h2>
+<p><em>Report Fee Paypal</em> mostra, giorno per giorno, il venduto, le commissioni PayPal e il totale degli ordini. Serve a te, per vedere quanto pesano le commissioni in un periodo: non fa parte di quello che si manda al commercialista.</p>
+<p>Una cosa sola va saputa, ed è tecnica: <strong>è costruito sullo stesso riepilogo del Registro Corrispettivi.</strong> Sono due finestre sulla stessa cosa, con colonne diverse. Toccare una formula di là cambia anche di qua, e viceversa — motivo per cui le formule dei report non si toccano (<a href="guida-8.html">guida 8</a>).</p>
+<p>Le sue tre colonne, a differenza del Registro, comprendono anche le vendite con fattura.</p>
+<hr>
+<h2 id="s7"><a class="ancora" href="#s7">§7</a> La procedura, dal filtro al file</h2>
+<p><strong>1 · Controlla i filtri.</strong> Prima di scaricare qualsiasi cosa, guarda la barra in alto della pagina e assicurati che sia selezionato <strong>solo il trimestre che ti interessa</strong>. È il passo che salta più facilmente, perché un report con il filtro sbagliato ha esattamente lo stesso aspetto di uno giusto.</p>
+<p>Ogni pagina ha il suo filtro, indipendente dalle altre: impostarlo sul Registro non lo imposta sull'Art.74. Vanno fatte una per una.</p>
+<p><strong>2 · Scarica.</strong> Clicca i <strong>tre puntini in alto a destra</strong> della pagina e scegli <strong>«Scarica come XLSX»</strong>. Il file conterrà esattamente quello che vedi: solo le righe che passano i filtri, solo le colonne visibili.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — due export che si somigliano e non fanno la stessa cosa</p>
+<p>Nel menu di condivisione, in alto a destra dello schermo, c'è un'altra voce di esportazione. Quella scarica <strong>tutte le tabelle del documento, con tutte le righe e nessun filtro applicato</strong>: al posto del trimestre ti ritrovi l'intera storia del magazzino.</p>
+<p>È il tipo di errore che non si vede subito, perché il file si apre normalmente e le colonne sono quelle giuste. Quello da usare per i report è <strong>sempre</strong> il menu a tre puntini della pagina.</p>
+<p>Vale anche la pena preferire XLSX al CSV: il CSV scrive i numeri con il punto decimale, ed Excel in italiano legge <code>12.30</code> come milledodici.</p>
+</aside>
+<p><strong>3 · Ripulisci il file.</strong> Sul file scaricato si elimina o si nasconde quello che al commercialista non serve:</p>
+<ul><li>nel <strong>Report Art. 74</strong>: la colonna dello sku e i mesi che non appartengono al trimestre;</li><li>nel <strong>Registro Corrispettivi</strong>: le colonne che scegli di non mostrare.</li></ul>
+<p><strong>4 · Aggiungi i totali e sistema il layout.</strong> Attenzione alla riga dei totali del Registro: sezione 4.</p>
+<p><strong>5 · Invia.</strong></p>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g7-03-scarica-xlsx.png"><img src="assets/img/g7-03-scarica-xlsx.png" alt="Il menu a tre puntini della pagina aperto, con la voce «Scarica come XLSX» ben leggibile." loading="lazy" style="width:291px"></a>
+<figcaption><span class="numero">Screenshot 3</span> L'export giusto: rispetta il filtro del trimestre e le colonne che vedi.</figcaption>
+</figure>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g7-04-esporta-documento.png"><img src="assets/img/g7-04-esporta-documento.png" alt="Il menu di condivisione aperto sulla voce di esportazione del documento intero." loading="lazy" style="width:367px"></a>
+<figcaption><span class="numero">Screenshot 4</span> L'export sbagliato: scarica tutte le tabelle e tutte le righe, senza filtri. Da non usare per i report.</figcaption>
+</figure>
+<hr>
+<h2 id="s8"><a class="ancora" href="#s8">§8</a> La checklist di chiusura periodo</h2>
+<p>Sette voci. Accanto a ciascuna c'è il motivo, perché una checklist di cui non si capisce lo scopo si esegue distrattamente.</p>
+<div class="tabella"><table>
+<thead><tr><th></th><th>Controllo</th><th>Perché</th></tr></thead>
+<tbody><tr><td>1</td><td><strong>Il trimestre giusto su tutte e tre le pagine dei report</strong></td><td>Sono filtri indipendenti. Capita normalmente che puntino a trimestri diversi</td></tr><tr><td>2</td><td><strong>I due filtri del <em>REPORT Art. 74</em> al loro posto</strong> — regime Art.74 e kit esclusi</td><td>Senza il secondo i kit ricompaiono, e le loro copie si sommano a quelle dei pezzi già contati</td></tr><tr><td>3</td><td><strong><em>Ordini Aperti</em>: magazzino assegnato e colonna della fattura controllata</strong></td><td>Il campo della fattura decide se una vendita entra nel Registro. Sugli ordini inseriti a mano nasce sempre su «senza fattura»</td></tr><tr><td>4</td><td><strong><em>Resi di kit da esplodere</em> vuota</strong> — si guarda <strong>per prima</strong></td><td>Su un kit non esploso i pezzi non esistono, e le pendenze si chiudono male</td></tr><tr><td>5</td><td><strong><em>Resi senza righe</em> vuota</strong></td><td>È l'unico presidio che intercetta i rimborsi fiscalmente invisibili</td></tr><tr><td>6</td><td><strong>«Senza regime fiscale» a zero su tutto il trimestre</strong></td><td>Ogni euro lì dentro è una vendita che non è stata attribuita a nessun regime</td></tr><tr><td>7</td><td><strong>Nessun articolo con «da verificare» acceso</strong></td><td>Un articolo nato con l'aliquota non risolta viene dichiarato al 22%. Su un libro Art.74 finisce dritto nel report sbagliato</td></tr></tbody>
+</table></div>
+<p><strong>Cosa non è in questa lista, e perché.</strong> Le pendenze di <em>Resi in attesa di rientro</em> non c'entrano con i report: quello che dichiari sul rientro fisico della merce governa <strong>soltanto le giacenze</strong>. Un reso entra nei report comunque, che tu abbia confermato il rientro o no. Se sei indietro con quelle pendenze puoi chiudere il trimestre lo stesso — sei indietro con il magazzino, non con il fisco (<a href="guida-0.html#s5">guida 0</a>, sezione 5).</p>
+<p>Tre gesti che si fanno nella stessa occasione. Non entrano nella checklist perché non toccano i numeri che stai per consegnare, ma il trimestre è il momento naturale per farli: dare un'occhiata al numero di righe del documento, scaricare una copia di sicurezza dell'intero documento, e — per i primi due trimestri — confrontare gli ordini del periodo sul sito con quelli in Grist. Sono tre minuti, e sono spiegati nella <strong><a href="guida-9.html#s2">guida 9</a>, sezione 2</strong>.</p>
+<hr>
+<h2 id="s9"><a class="ancora" href="#s9">§9</a> Sei punti ancora da confermare</h2>
+<p>Sono dubbi di Paolo, non cose che non funzionano: il sistema si comporta come descritto qui sotto, e il comportamento è deliberato. Vanno però verificati con il commercialista, perché sono scelte di merito fiscale e non tecniche. Se su qualcuna hai già la risposta, dilla e si chiude.</p>
+<p><strong>1 · Il kit trattato in due modi.</strong> È il criterio della figura 2, concordato insieme: nel Registro il kit vale per intero sotto il proprio regime, nel Report Art.74 si scompone nei pezzi. Vale la pena avere una conferma esplicita che sia corretto trattare lo stesso kit nei due modi.</p>
+<p><strong>2 · Quali stati contano ai fini fiscali.</strong> Oggi contano <code>Completato</code> e <code>Rimborsato</code>. Un ordine <code>In lavorazione</code> — pagato ma non ancora spedito — resta fuori. Da confermare che sia la lettura giusta.</p>
+<p><strong>3 · Tutte le spese di spedizione nel 22%.</strong> Oggi la spedizione finisce interamente nella colonna del 22%, qualunque cosa contenga il pacco.</p>
+<p><strong>4 · La spedizione rimborsata su un reso.</strong> Qui c'è una conseguenza operativa, non solo una domanda:</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — una spedizione rimborsata non si storna da sola</p>
+<p>Quando si rimborsa un ordine, il reso che nasce in Grist porta con sé i prodotti, ma <strong>non le spese di spedizione</strong>. Se il rimborso comprendeva anche la spedizione, quella parte non viene tolta da nessuna colonna del Registro.</p>
+<p>Il caso peggiore è quello <strong>misto</strong> — prodotti più spedizione — perché il reso ha le sue righe e quindi non compare nemmeno in <em>Resi senza righe</em>: nessun presidio lo intercetta. Se ti capita di rimborsare anche la spedizione, annotalo nel motivo del rimborso e segnalalo a Paolo con il numero dell'ordine: per ora la correzione si fa qui, sul report, perché il record di reso non ha le caselle della spedizione. Il caso è descritto anche nella <a href="guida-4.html">guida 4</a>.</p>
+</aside>
+<p><strong>5 · Le commissioni PayPal sul reso.</strong> Di norma PayPal non restituisce la commissione su un ordine rimborsato, e il sistema si comporta di conseguenza: sul reso la commissione è zero.</p>
+<p><strong>6 · La data del corrispettivo negativo.</strong> Il sistema storna alla data del rimborso, per non riaprire un periodo già dichiarato. Da confermare che sia la prassi corretta, e se serva una «pratica di reso» numerata.</p>
+<p>Finché non arriva una risposta diversa, il sistema resta com'è. Cambiare uno qualsiasi di questi comportamenti significa toccare le formule dei report: lo fa Paolo, mai da soli.</p>
+<hr>
+<h2 id="s10"><a class="ancora" href="#s10">§10</a> Se qualcosa non torna</h2>
+<div class="tabella"><table>
+<thead><tr><th>Sintomo</th><th>Da dove viene</th><th>Cosa fare</th></tr></thead>
+<tbody><tr><td><strong>Il report è vuoto, o quasi</strong></td><td>Il filtro del trimestre punta a un periodo senza vendite</td><td>Guarda la barra dei filtri: è la causa nove volte su dieci</td></tr><tr><td><strong>Un titolo ha le copie ma i valori a zero</strong></td><td>Quell'articolo non ha il prezzo di listino</td><td>Si compila in <em>Articoli</em> (<a href="guida-5.html">guida 5</a>). Il report si aggiorna da sé</td></tr><tr><td><strong>I totali non tornano con WooCommerce</strong></td><td>Le tre cose della sezione 3: un ordine cancellato sul sito, una modifica di riga non recepita, un rimborso di solo importo</td><td>Parti da <em>Resi senza righe</em>, poi confronta gli ordini del periodo</td></tr><tr><td><strong>Manca un giorno intero</strong></td><td>Nessuna riga valida quel giorno: ordini rimasti in uno stato che non conta, oppure solo vendite con fattura</td><td>Apri <em>Ordini</em> filtrando su quella data e guarda gli stati</td></tr><tr><td><strong>Un trimestre vecchio mostra numeri diversi da quelli inviati</strong></td><td>Qualcuno ha cambiato un prezzo di copertina, un nome o la data di un ordine</td><td>Sezione 5. Se non è chiaro cosa è cambiato, è un caso da segnalare</td></tr></tbody>
+</table></div>
+<p>Per tutto il resto — e per capire cosa allegare quando scrivi a Paolo — <a href="guida-9.html">guida 9</a>.</p>
+<hr>
+<h2 id="s11"><a class="ancora" href="#s11">§11</a> Dove si continua</h2>
+<div class="tabella"><table>
+<thead><tr><th>Se vuoi…</th><th>Guida</th></tr></thead>
+<tbody><tr><td>Capire come funziona il sistema nel suo insieme</td><td>0</td></tr><tr><td>Sapere quale pagina guarda quale tabella</td><td>1</td></tr><tr><td>Capire cosa fanno gli automatismi e quali mail mandano</td><td>2</td></tr><tr><td>Controllare il magazzino e il campo della fattura sugli ordini</td><td>3</td></tr><tr><td>Chiudere le pendenze dei resi</td><td>4</td></tr><tr><td>Correggere il regime fiscale o il prezzo di copertina di un articolo</td><td>5</td></tr><tr><td>Leggere le giacenze, caricare, contare il magazzino</td><td>6</td></tr><tr><td>Cambiare un filtro, cercare, esportare in generale</td><td>8</td></tr><tr><td>Rimediare a un errore già fatto, segnalare un problema</td><td>9</td></tr></tbody>
+</table></div>
+</div>
+
+  </main>
+  <footer class="pie">
+    <p>Manuale del sistema «Magazzino LwM» · generato il 17/09/2026</p>
+    <p>Per i casi che non stanno nelle guide, e per qualsiasi cosa nuova da costruire, si scrive a Paolo: cosa allegare sta nella <a href="guida-9.html#s11">guida 9 §11</a>.</p>
+  </footer>
+</div>
+
+<div class="lente" id="lente" hidden><img src="" alt=""></div>
+
+<script src="assets/manuale.js"></script>
+</body>
+</html>

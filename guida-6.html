@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Guida 6 — Giacenze e inventario · Magazzino LwM</title>
+<link rel="stylesheet" href="assets/stile.css">
+</head>
+<body>
+<a class="salta" href="#principale">Vai al contenuto</a>
+
+<button type="button" class="apri-menu" id="apri-menu" aria-label="Apri il menu delle guide">☰ Guide</button>
+
+<nav class="menu" id="menu" aria-label="Le guide">
+  <p class="menu-titolo">Magazzino LwM</p>
+  <a class="menu-voce menu-indice" href="index.html">Indice</a>
+<p class="menu-blocco">Capire</p>
+<a class="menu-voce" href="guida-0.html"><span class="menu-n">0</span>Come funziona il sistema</a>
+<a class="menu-voce" href="guida-1.html"><span class="menu-n">1</span>La mappa di Grist</a>
+<a class="menu-voce" href="guida-2.html"><span class="menu-n">2</span>Gli automatismi (Make)</a>
+<p class="menu-blocco">Fare</p>
+<a class="menu-voce" href="guida-3.html"><span class="menu-n">3</span>Ordini</a>
+<a class="menu-voce" href="guida-4.html"><span class="menu-n">4</span>Resi e rimborsi</a>
+<a class="menu-voce" href="guida-5.html"><span class="menu-n">5</span>Catalogo, articoli e kit</a>
+<a class="menu-voce attiva" href="guida-6.html"><span class="menu-n">6</span>Giacenze e inventario</a>
+<a class="menu-voce" href="guida-7.html"><span class="menu-n">7</span>Report fiscali</a>
+<p class="menu-blocco">Cavarsela da sola</p>
+<a class="menu-voce" href="guida-8.html"><span class="menu-n">8</span>Muoversi in Grist</a>
+<a class="menu-voce" href="guida-9.html"><span class="menu-n">9</span>Manutenzione e problemi</a>
+<p class="menu-blocco">Riferimento</p>
+<a class="menu-voce" href="scheda.html"><span class="menu-n">A4</span>Scheda rapida</a>
+</nav>
+
+<div class="colonna">
+  <div class="barra">
+    <div class="barra-nav"><a href="guida-5.html">‹ Guida 5</a> <a href="guida-7.html">Guida 7 ›</a></div>
+    <div class="barra-strumenti"><button type="button" class="bottone-piatto" id="espandi">Espandi tutto</button><button type="button" class="bottone-piatto" onclick="window.print()">Stampa</button></div>
+  </div>
+  <main id="principale">
+
+<header class="testata">
+  <p class="occhiello">Guida 6</p>
+  <h1>Giacenze e inventario</h1>
+  <p class="versione"><strong>Versione del 12/09/2026</strong> · Sistema «Magazzino LwM»</p>
+</header>
+<nav class="sommario" aria-label="Sezioni della guida">
+  <p class="sommario-titolo">In questa guida</p>
+  <ol class="sommario-voci"><li><a href="#s1"><span class="n">1</span>In breve</a></li><li><a href="#s2"><span class="n">2</span>Come nasce il numero</a></li><li><a href="#s3"><span class="n">3</span>Leggere la pagina *Giacenze*</a></li><li><a href="#s4"><span class="n">4</span>Contare o registrare?</a></li><li><a href="#s5"><span class="n">5</span>Registrare un carico di merce</a></li><li><a href="#s6"><span class="n">6</span>Le giacenze di un articolo nuovo</a></li><li><a href="#s7"><span class="n">7</span>Contare il magazzino</a></li><li><a href="#s8"><span class="n">8</span>La matrice delle magliette</a></li><li><a href="#s9"><span class="n">9</span>Quando i conti non tornano</a></li><li><a href="#s10"><span class="n">10</span>Attenzione a</a></li><li><a href="#s11"><span class="n">11</span>Se qualcosa va storto</a></li><li><a href="#s12"><span class="n">12</span>Dove si continua</a></li></ol>
+</nav>
+<div class="corpo">
+<p>Questa è la guida del magazzino: <strong>come si leggono le giacenze, come si registra la merce che arriva, come si conta quello che c'è davvero, e cosa fare quando i conti non tornano.</strong></p>
+<p>La <a href="guida-1.html">guida 1</a> dice dove stanno i campi delle giacenze e quali sono da non toccare. Questa parte da lì e spiega i gesti.</p>
+<hr>
+<h2 id="s1"><a class="ancora" href="#s1">§1</a> In breve</h2>
+<p>Le giacenze non si scrivono: <strong>si calcolano</strong>. Nella pagina <em>Giacenze</em> c'è un solo dato che metti tu — quanti pezzi c'erano a una certa data — e tutto il resto il sistema lo ricava dai movimenti: le vendite, i resi rientrati, i carichi di merce.</p>
+<p>Da qui i tre gesti di questa guida:</p>
+<div class="tabella"><table>
+<thead><tr><th>Il gesto</th><th>Quando</th><th>Dove</th></tr></thead>
+<tbody><tr><td><strong>Leggere</strong> le giacenze</td><td>Quando ti chiedi quanti pezzi hai e dove</td><td>Sezione 3</td></tr><tr><td><strong>Registrare un carico</strong></td><td>Quando arriva merce</td><td>Sezione 5</td></tr><tr><td><strong>Contare</strong> il magazzino</td><td>Quando vuoi sapere se i numeri corrispondono alla realtà</td><td>Sezione 7</td></tr></tbody>
+</table></div>
+<p>Ce n'è un quarto, che sta altrove: la merce che <strong>si sposta</strong> invece di entrare — un trasferimento fra i due magazzini, la correzione di un ordine partito da entrambi — si registra come <em>Altri movimenti</em>, e la procedura è nella <strong><a href="guida-3.html#s12">guida 3</a>, sezione 12</strong>. La meccanica è la stessa che troverai qui.</p>
+<p>I resi non sono in questa guida: quello che dichiari sul rientro della merce muove le giacenze, ma si fa dalle pagine dei resi (<strong><a href="guida-4.html">guida 4</a></strong>).</p>
+<hr>
+<h2 id="s2"><a class="ancora" href="#s2">§2</a> Come nasce il numero</h2>
+<p>Il conto è sempre questo, per ciascuno dei due magazzini:</p>
+<aside class="box box-nota">
+<p><strong>quanti pezzi c'erano alla data di partenza</strong> − <strong>quanti ne sono usciti da quella data in poi</strong></p>
+</aside>
+<p>Il primo numero lo scrivi tu: è la <strong>giacenza iniziale</strong>, con la sua <strong>data di riferimento</strong>. Il secondo il sistema lo somma dalle righe di tutti i movimenti.</p>
+<p>La parola «usciti» va presa alla lettera: le quantità sulle righe contano i pezzi che <strong>escono</strong> dal magazzino. Una vendita è positiva, un reso rientrato e un carico sono negativi, perché la merce entra. È la regola 3 della <a href="guida-0.html">guida 0</a>, e in questa guida la incontri a ogni procedura.</p>
+<h4 id="quando-un-movimento-conta">Quando un movimento conta</h4>
+<p>Perché una riga entri nel conto di un magazzino servono <strong>cinque cose insieme</strong>. Nessuna di queste, se manca, produce un errore.</p>
+<div class="tabella"><table>
+<thead><tr><th>Serve che…</th><th>Altrimenti</th></tr></thead>
+<tbody><tr><td>lo <strong>stato</strong> del record sia <code>Completato</code> o <code>Rimborsato</code></td><td>il record esiste, si vede, e non muove niente</td></tr><tr><td>il <strong>magazzino</strong> sia assegnato sulla testata</td><td>i pezzi finiscono nel venduto orfano: escono dal totale, da nessuno dei due magazzini</td></tr><tr><td>la <strong>data</strong> non sia anteriore alla data di partenza di quel magazzino</td><td>il movimento viene ignorato, del tutto e in silenzio</td></tr><tr><td>lo <strong>SKU</strong> della riga sia agganciato a un articolo</td><td>la riga è cieca: nessun effetto sulle giacenze (<a href="guida-5.html">guida 5</a>)</td></tr><tr><td>l'articolo <strong>non sia un kit</strong> e non sia un prodotto virtuale</td><td>non hanno giacenza: la riga viene saltata</td></tr></tbody>
+</table></div>
+<p>Sui resi ce n'è una sesta: la merce deve risultare <strong>rientrata</strong>. Un rimborso senza rientro dichiarato conta per il fisco e non per il magazzino (<a href="guida-4.html">guida 4</a>).</p>
+<h4 id="i-due-magazzini">I due magazzini</h4>
+<p>Le colonne dicono <strong>M1</strong> e <strong>M2</strong>, e il menu del magazzino sugli ordini dice <code>M1. Interno</code> e <code>M2. Cooperativa</code>: M1 è il Magazzino Interno, M2 la Cooperativa. Le colonne che leggi nella pagina <em>Giacenze</em> sono «Giac. iniz.», «data G.I.», <code>venduto</code> e «Giac. att.», ciascuna nelle sue due versioni.</p>
+<figure class="figura">
+<figcaption>Figura 1 — La data è un taglio</figcaption>
+<pre>   data G.I. M1 = 1 luglio · Giac. iniz. M1 = 40
+   ─────────────────────────────────────────────────────────────────────►
+        │                    │                        │
+   15 giugno              1 LUGLIO                 10 luglio
+   carico di 20           ▲                        vendita di 3
+   pezzi                  │                              │
+        │             il taglio                          │
+        ▼                                                ▼
+   IGNORATO                                         CONTATA
+   (è prima della data)                             40 − 3 = 37
+
+   Il carico del 15 giugno non viene sommato: si presume che quei 20 pezzi
+   siano già dentro il 40 che hai dichiarato al 1° luglio.</pre>
+</figure>
+<details class="box box-perche">
+<summary>Perché funziona così — la data dice «da qui in poi conta tu»</summary>
+<div class="box-corpo"><p>La giacenza iniziale non è «quanti pezzi ho comprato in tutto»: è <strong>quanti pezzi c'erano all'inizio di quel giorno</strong>. Tutto ciò che è successo prima è già dentro quel numero, e il sistema lo ignora di proposito — altrimenti conterebbe due volte gli stessi pezzi.</p>
+<p>È il motivo per cui la data non è un dettaglio anagrafico ma un vero comando, e per cui un carico datato prima della data di partenza non ha alcun effetto. È anche il motivo per cui <strong>spostare indietro una data</strong> non è un gesto innocuo: riaccende movimenti già compresi nel numero che hai scritto.</p></div>
+</details>
+<p>Per i pezzi usciti da ordini senza magazzino il sistema usa la <strong>più vecchia</strong> delle due date. Conta solo sapere che, se le due date sono molto diverse fra loro, il venduto orfano parte dalla prima delle due.</p>
+<hr>
+<h2 id="s3"><a class="ancora" href="#s3">§3</a> Leggere la pagina <em>Giacenze</em></h2>
+<p>Ogni colonna risponde a una domanda diversa, e non sono intercambiabili.</p>
+<div class="tabella"><table>
+<thead><tr><th>Se ti chiedi…</th><th>Guarda</th></tr></thead>
+<tbody><tr><td>Quanti pezzi ho in tutto?</td><td><strong>Giac. att. TOT</strong></td></tr><tr><td>Da quale magazzino posso spedire?</td><td><strong>Giac. att. M1</strong> e <strong>Giac. att. M2</strong></td></tr><tr><td>Quanto è uscito da quando conto?</td><td><code>venduto_M1</code>, <code>venduto_M2</code></td></tr><tr><td>Ci sono ordini di cui non so ancora il magazzino?</td><td><code>venduto_X</code></td></tr></tbody>
+</table></div>
+<h4 id="le-quattro-facce-di-una-cella">Le quattro facce di una cella</h4>
+<p><strong>Vuota</strong> vuol dire che la giacenza <strong>non esiste</strong>: è un kit o un prodotto virtuale. Non è zero.</p>
+<p><strong>Zero</strong> vuol dire zero pezzi, ed è un'informazione.</p>
+<p><strong>In errore</strong> vuol dire che manca una data di partenza. L'errore compare <strong>appena quell'articolo compare in una riga d'ordine</strong> — quindi, sugli articoli creati dal sistema, praticamente subito, perché è un ordine a crearli. Si risolve scrivendo le date (sezione 6).</p>
+<p><strong>Negativa</strong> è sempre un segnale, mai un dato: significa che sono usciti più pezzi di quanti ce n'erano. Le cause sono nella sezione 9.</p>
+<h4 id="il-venduto-orfano-si-legge-in-due-direzioni">Il venduto orfano si legge in due direzioni</h4>
+<p><code>venduto_X</code> raccoglie i pezzi di movimenti a cui nessuno ha assegnato un magazzino. Il totale li toglie comunque, i due magazzini no.</p>
+<ul><li><strong>Positivo</strong>: sono vendite in attesa che tu scelga il magazzino. È la coda di <em>Ordini Aperti</em>, ed è normale trovarla diversa da zero (<a href="guida-3.html">guida 3</a>).</li><li><strong>Negativo</strong>: c'è un movimento che <em>aggiunge</em> merce senza dire dove. Di solito un carico o una differenza d'inventario a cui è rimasto vuoto il magazzino. Questo non è una coda: è una cosa da sistemare.</li></ul>
+<h4 id="cosa-non-trovi-in-questa-pagina">Cosa non trovi in questa pagina</h4>
+<p>Tre filtri tengono fuori i <strong>kit</strong>, i <strong>prodotti virtuali</strong> e i <strong>genitori</strong> delle famiglie di magliette. Sono i filtri che definiscono la pagina, e non stanno nella barra in alto ma nel menu dei filtri: se li togli, la pagina continua a mostrare numeri, solo che sono altri numeri (<a href="guida-8.html#s5">guida 8</a>, sezione 5).</p>
+<p>Ne segue un limite da conoscere: <strong>la giacenza di un kit non è consultabile da nessuna parte.</strong> Non è una dimenticanza — un kit non ha pezzi propri, si muovono i suoi componenti — ma se la cerchi non la trovi. Per sapere quanti kit potresti confezionare, guarda la giacenza del componente più scarso: è quello che ti limita.</p>
+<p>In barra restano due filtri di comodo, che puoi cambiare liberamente: uno per tipo di prodotto, uno per isolare i componenti di un certo kit.</p>
+<h4 id="il-numero-del-sito-e-un-altro-numero">Il numero del sito è un altro numero</h4>
+<p>Le giacenze di Grist restano in Grist: nessun automatismo le porta su WooCommerce (<a href="guida-0.html">guida 0</a>). <strong>Se le scorte sono gestite anche sul sito, carichi e conte vanno rifatti anche lì</strong> — è una delle poche cose che si fanno due volte, e nessuno te lo ricorda.</p>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g6-01-giacenze-venduto-x.png"><img src="assets/img/g6-01-giacenze-venduto-x.png" alt="La pagina Giacenze con qualche riga, di cui almeno una con venduto_X diverso da zero." loading="lazy" style="width:1119px"></a>
+<figcaption><span class="numero">Screenshot 1</span> Un solo numero lo scrivi tu, la giacenza iniziale con la sua data. Tutto il resto si calcola.</figcaption>
+</figure>
+<hr>
+<h2 id="s4"><a class="ancora" href="#s4">§4</a> Contare o registrare?</h2>
+<p>Prima delle procedure conviene sapere quale serve, perché sbagliare non produce nessun avviso: produce un numero che sembra plausibile.</p>
+<p>La domanda giusta è una sola: <strong>sto dicendo quanti pezzi ci sono, o sto registrando qualcosa che è accaduto?</strong></p>
+<figure class="figura">
+<figcaption>Figura 2 — Quale strada</figcaption>
+<pre>                    Cos'è successo alla merce?
+                              │
+      ┌───────────────────────┼───────────────────────┬──────────────────┐
+      │                       │                       │                  │
+  è ARRIVATA             si è SPOSTATA           ho CONTATO          è TORNATA
+  da un fornitore        fra i due magazzini     e non torna         da un cliente
+  o dalla stampa         (o è rotta, o           con Grist
+      │                  è un omaggio)               │                   │
+      ▼                       │                      ▼                   ▼
+  APPROVVIGIONAMENTO          ▼                 ALTRI MOVIMENTI       è un RESO
+  (sezione 5)           ALTRI MOVIMENTI         (sezione 7)           (guida 4)
+                        (guida 3 §12)
+
+                    E la RETTIFICA della giacenza iniziale?
+                    Solo per far partire il conto: un articolo
+                    nuovo, o il primo avvio (sezione 6)</pre>
+</figure>
+<h4 id="lo-stesso-arrivo-registrato-in-quattro-modi">Lo stesso arrivo, registrato in quattro modi</h4>
+<p>Hai 40 copie in magazzino e te ne arrivano 100.</p>
+<div class="tabella"><table>
+<thead><tr><th>Cosa fai</th><th>Cosa ottieni</th></tr></thead>
+<tbody><tr><td><strong>Carico</strong> di 100 pezzi</td><td>140. È giusto, e resta scritto quando sono arrivate</td></tr><tr><td><strong>Rettifica</strong> della giacenza iniziale a 140</td><td>140. È giusto oggi, ma hai cancellato la storia: le vendite precedenti alla data nuova non contano più</td></tr><tr><td><strong>Rettifica</strong> a 140 <strong>e poi</strong> il carico</td><td>240. Hai contato due volte gli stessi pezzi</td></tr><tr><td><strong>Differenza d'inventario</strong> di 100</td><td>140. Corretto, ed è la strada quando il 100 non è un arrivo ma il risultato di una conta</td></tr></tbody>
+</table></div>
+<details class="box box-perche">
+<summary>Perché funziona così — un numero e un movimento non sono la stessa cosa</summary>
+<div class="box-corpo"><p>La giacenza iniziale <strong>dichiara uno stato di fatto</strong>: a questa data c'erano tanti pezzi. Riscriverla sostituisce il vecchio valore, non lascia traccia di quello che c'era prima, e sposta il taglio da cui il sistema comincia a contare.</p>
+<p>Un movimento <strong>registra un fatto</strong>: questo giorno, in questo magazzino, sono entrati o usciti tanti pezzi. Si somma a quelli che c'erano già, resta leggibile, e non tocca il passato.</p>
+<p>Quasi tutto quello che ti capita è un fatto, non uno stato. Per questo la rettifica serve in due soli casi — far partire un articolo nuovo, e il primo avvio del sistema — e in tutti gli altri si registra un movimento.</p></div>
+</details>
+<hr>
+<h2 id="s5"><a class="ancora" href="#s5">§5</a> Registrare un carico di merce</h2>
+<p>Un <strong>approvvigionamento</strong> è merce che entra: una ristampa che arriva dalla tipografia, una fornitura di magliette, uno scatolone che la Cooperativa riceve.</p>
+<p>È <strong>interamente manuale</strong>: nessun automatismo lo riguarda, nulla lo innesca, e nessuno ti ricorda di farlo. <span class="marcatore"><a href="guida-9.html#s9" title="elenco completo nella guida 9 §9"><em>(comportamento atteso, non ancora verificato sul campo: nessun carico reale è ancora passato dal sistema)</em></a></span></p>
+<h4 id="prima-di-cominciare">Prima di cominciare</h4>
+<p><strong>Controlla che gli articoli esistano</strong> nella tabella <em>Articoli</em>, con la scheda completa. Se manca qualcosa, crealo prima (<a href="guida-5.html">guida 5</a>).</p>
+<p><strong>Se ti è arrivato un kit già confezionato, carica i componenti, non il kit.</strong> I kit non hanno giacenza: una riga con lo SKU di un kit viene semplicemente ignorata, senza avvisi. Si carica un pezzo per riga.</p>
+<h4 id="la-procedura">La procedura</h4>
+<p>Si inserisce dalla maschera <em>Inserimento Ordini</em>, come un ordine.</p>
+<p><strong>1 · Anagrafica.</strong> Il <strong>tipo di record</strong> su <code>Approvvigionamento</code> — è la prima cosa da scegliere, perché è quella che decide tutto il resto. Lo <strong>stato</strong> su <code>Completato</code>: con qualunque altro valore il record esiste, si vede, e non muove un pezzo. La <strong>data</strong> è quella in cui la merce è entrata, e non deve essere anteriore alla data di partenza di quel magazzino.</p>
+<p>Il <strong>numero</strong> se lo dà il sistema e non si tocca (<a href="guida-3.html#s6">guida 3</a>, sezione 6).</p>
+<p>Il <strong>canale</strong> puoi lasciarlo vuoto. Se ti fa comodo tenere traccia della provenienza — la tipografia, il fornitore dei gadget — puoi aggiungere da sola le voci che ti servono a quel menu: si fa dal pannello della colonna, ed è spiegato nella <a href="guida-8.html#s10">guida 8</a>, sezione 10. Nessuna formula legge quel campo, quindi è spazio libero.</p>
+<p>Nei campi del <strong>nome e cognome</strong> potresti scrivere il fornitore. Anche questi nessuno li legge: servono solo a te per ritrovare il carico.</p>
+<p><strong>2 · Spedizione.</strong> Il <strong>magazzino</strong>. Sta sulla testata, quindi vale per tutte le righe: <strong>merce che arriva in due magazzini richiede due record</strong>, uno per deposito. Se resta vuoto, i pezzi finiscono nel venduto orfano e non incrementano niente.</p>
+<p><strong>3 · Valore ordine e fattura.</strong> Si lascia <strong>tutto vuoto</strong>. Gli approvvigionamenti non entrano in nessun report, quindi il totale, le commissioni e il campo della fattura non servono a nulla. Il riferimento alla fattura del fornitore va nelle <strong>note</strong>, dove lo ritroverai.</p>
+<p><strong>4 · Prodotti.</strong> Una riga per articolo, con lo SKU e la <strong>quantità in negativo</strong>: <code>−100</code> per cento copie che entrano. Il segno è la cosa che si sbaglia più spesso, ed è anche l'unica delle quattro condizioni che ha un controllo dedicato: una quantità positiva su un carico accende un avviso.</p>
+<p>Della riga non serve nient'altro: i campi economici restano vuoti. La casella dell'esplosione dei kit <strong>non si tocca</strong>: su una riga di carico non ha senso, e cosa succeda accendendola non è mai stato provato.</p>
+<p><strong>5 · Il controllo finale.</strong> Apri la pagina <em>Approvvigionamenti</em> e cerca il record che hai appena inserito. <strong>Se la colonna degli avvisi è vuota, il carico sta contando.</strong></p>
+<p>Se il record non compare affatto, il tipo non è <code>Approvvigionamento</code>: lo trovi nella pagina <em>Ordini</em>.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — un carico lasciato su <code>Ordine</code> diventa una vendita al contrario</p>
+<p>Il tipo di record non cambia solo il nome della cosa. Un carico registrato per sbaglio come <code>Ordine</code> entra nei report: nel Registro Corrispettivi diventa un incasso negativo del giorno, e nel Report Art.74 sottrae copie vendute al trimestre.</p>
+<p>Sul magazzino l'effetto è quello giusto, quindi le giacenze non ti avvisano di niente. Te ne accorgi soltanto guardando i report, e a quel punto potresti averli già consegnati.</p>
+</aside>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — la colonna degli avvisi non vede tutto</p>
+<p>Controlla quattro cose: il segno delle quantità, il magazzino mancante, lo stato diverso da <code>Completato</code>, e il record senza righe. Sono le quattro che si sbagliano più spesso, e per quelle «nessun avviso» vuol dire davvero «a posto».</p>
+<p>Restano fuori tre modi di sbagliare, che devi guardare tu:</p>
+<ul><li>la <strong>data</strong> anteriore alla data di partenza del magazzino, che fa ignorare il carico;</li><li>uno <strong>SKU non agganciato</strong> a nessun articolo, che rende la riga cieca;</li><li>lo SKU di un <strong>kit</strong> al posto dei componenti, che fa saltare la riga.</li></ul>
+<p>In tutti e tre i casi il record è pulito, senza avvisi, e non ha alzato nessuna giacenza. Il modo più rapido di accorgersene è aprire <em>Giacenze</em> e verificare che il numero sia salito: è il vero controllo finale.</p>
+</aside>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g6-02-maschera-approvvigionamento.png"><img src="assets/img/g6-02-maschera-approvvigionamento.png" alt="La maschera Inserimento Ordini con un approvvigionamento compilato: tipo Approvvigionamento, stato Completato, magazzino, e una riga con quantità negativa." loading="lazy" style="width:1161px"></a>
+<figcaption><span class="numero">Screenshot 2</span> Un carico è un record come un ordine, con due differenze: il tipo, e le quantità in negativo.</figcaption>
+</figure>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g6-03-approvvigionamenti-alert.png"><img src="assets/img/g6-03-approvvigionamenti-alert.png" alt="La pagina Approvvigionamenti con due righe: una senza avvisi e una con un avviso nella colonna di controllo." loading="lazy" style="width:853px"></a>
+<figcaption><span class="numero">Screenshot 3</span> Riga con avviso: il record esiste e non conta. Riga pulita: le quattro cose che questa colonna guarda sono a posto — le altre tre si controllano in <em>Giacenze</em>.</figcaption>
+</figure>
+<hr>
+<h2 id="s6"><a class="ancora" href="#s6">§6</a> Le giacenze di un articolo nuovo</h2>
+<p>Un articolo appena creato ha bisogno di due cose per entrare nel conto: <strong>la data di partenza</strong> e il numero di pezzi da cui si parte. Si scrivono nella pagina <em>Giacenze</em>, una coppia per magazzino.</p>
+<p><strong>Le date si compilano sempre, anche se i pezzi sono zero.</strong> Sono la cosa più importante della scheda: senza di esse le colonne del venduto vanno in errore appena l'articolo compare in una riga d'ordine, e non calcolano più niente.</p>
+<p><strong>Quale data scegliere.</strong> Una data <strong>precedente</strong> al primo movimento va sempre bene: non c'è niente prima da ignorare. Una data successiva no, perché farebbe scomparire dal conto i movimenti già registrati. Nel dubbio, il giorno in cui hai creato l'articolo va bene se il prodotto non ha ancora venduto; se ha già venduto — è il caso degli articoli creati dal sistema — metti una data precedente al primo ordine.</p>
+<p><strong>La merce che entra si carica, non si dichiara.</strong> Su un articolo nuovo conviene scrivere <strong>zero</strong> nelle giacenze iniziali, con le date, e registrare i pezzi che hai in magazzino come un <strong>carico</strong> (sezione 5). Costa un minuto in più e ti lascia scritto quando sono arrivati e da quale fornitore: la giacenza iniziale, invece, è un numero senza storia.</p>
+<p><strong>Sul genitore di una famiglia</strong> di magliette non serve niente: non ha pezzi propri e non compare in questa pagina.</p>
+<p><strong>Sugli articoli creati dal sistema</strong> vale esattamente la stessa cosa, e l'errore nelle colonne del venduto è il segnale che le date mancano. La checklist completa di quegli articoli è nella <a href="guida-5.html#s8">guida 5</a>, sezione 8.</p>
+<hr>
+<h2 id="s7"><a class="ancora" href="#s7">§7</a> Contare il magazzino</h2>
+<p>Contare serve a rispondere a una domanda che il sistema non può porsi: <strong>i numeri corrispondono a quello che c'è sullo scaffale?</strong> Nessuna formula può accorgersene, perché tutte partono da quello che le hai detto tu.</p>
+<p>Non serve contare tutto ogni volta. Le occasioni ragionevoli sono tre: una <strong>conta completa</strong>, una volta l'anno o quando ti fa comodo; una <strong>conta parziale</strong> di una serie o di un tipo di prodotto; la <strong>verifica di un singolo articolo</strong> che non torna, che è il caso più frequente e costa cinque minuti.</p>
+<h4 id="1-prepara-la-conta">1 · Prepara la conta</h4>
+<p>È il passaggio che evita l'errore più grosso, e dura il tempo di guardare il bancone.</p>
+<p>Gli ordini già registrati sono merce che il sistema ha <strong>già scaricato</strong>, anche se il pacco è ancora lì da spedire. Quindi, prima di contare:</p>
+<ul><li><strong>spedisci quello che è pronto</strong>, oppure</li><li><strong>metti da parte i pacchi già fatti e non contarli.</strong></li></ul>
+<p>La stessa cosa vale per la merce arrivata e non ancora registrata: o la registri come carico prima di contare, oppure la lasci fuori dalla conta e la registri dopo.</p>
+<figure class="figura">
+<figcaption>Figura 3 — Cosa si conta e cosa no</figcaption>
+<pre>   LO SCAFFALE                         COSA DICE GRIST
+   ───────────                         ───────────────
+
+   ┌─────────────────┐
+   │  12 copie       │  ────────────►  queste vanno contate: 12
+   │  sullo scaffale │
+   └─────────────────┘
+
+   ┌─────────────────┐                 l'ordine è già registrato,
+   │  2 copie in un  │   ✗ NON         quindi Grist le ha già
+   │  pacco da       │   contarle      togliute: contarle vorrebbe
+   │  spedire        │                 dire ritrovarsele due volte
+   └─────────────────┘
+
+   ┌─────────────────┐                 il carico non è ancora stato
+   │  50 copie       │   ✗ NON         inserito: se le conti, il
+   │  arrivate ieri, │   contarle      carico poi le aggiungerebbe
+   │  mai registrate │   (registrale   una seconda volta
+   └─────────────────┘    prima o dopo)
+
+   La regola: si conta quello che il sistema pensa di avere,
+   non tutto quello che si vede.</pre>
+</figure>
+<h4 id="2-confronta">2 · Confronta</h4>
+<p>Apri la pagina <em>Giacenze</em>, filtra quello che ti interessa e porta con te i numeri — puoi esportarla, o stamparla con «Widget di stampa» (<a href="guida-8.html#s12">guida 8</a>, sezione 12). Poi conta, e annota la differenza per ciascun articolo, magazzino per magazzino.</p>
+<h4 id="3-registra-la-differenza-come-movimento">3 · Registra la differenza come movimento</h4>
+<p>Per ogni magazzino in cui hai trovato differenze, <strong>un record</strong> di tipo <code>Altri movimenti</code>, con una riga per articolo:</p>
+<ul><li><strong>quantità positiva</strong> se in magazzino ne hai <strong>meno</strong> di quanto dice Grist — quei pezzi sono usciti senza che nessuno l'abbia registrato;</li><li><strong>quantità negativa</strong> se ne hai <strong>di più</strong> — ci sono pezzi entrati di cui il sistema non sa niente.</li></ul>
+<p>La <strong>data</strong> è quella della conta, mai una data passata. Lo <strong>stato</strong> su <code>Completato</code>, il <strong>magazzino</strong> valorizzato, e nelle <strong>note</strong> il riferimento alla conta.</p>
+<p>La meccanica di questo tipo di record, con il suo elenco di controlli, è nella <strong><a href="guida-3.html#s12">guida 3</a>, sezione 12</strong>. Vale la pena ricordare la cosa principale: su <em>Altri movimenti</em> <strong>nessun controllo guarda il segno</strong>, perché entrambi i segni sono legittimi, e non c'è nessuna pagina che li sorvegli. <span class="marcatore"><a href="guida-9.html#s9" title="elenco completo nella guida 9 §9"><em>(comportamento atteso, non ancora verificato sul campo)</em></a></span></p>
+<h4 id="4-ricontrolla">4 · Ricontrolla</h4>
+<p>Riapri <em>Giacenze</em>: il numero deve coincidere con quello che hai contato. Se non coincide, quasi sempre è il segno (sezione 9).</p>
+<details class="box box-perche">
+<summary>Perché funziona così — la differenza si registra, non si sovrascrive</summary>
+<div class="box-corpo"><p>Verrebbe naturale scrivere il numero contato direttamente nella giacenza iniziale, con la data di oggi. Funziona, e infatti è la strada che la guida indicava un tempo. Ha però due difetti che si pagano dopo.</p>
+<p>Il primo: <strong>azzera la storia</strong>. Spostando la data a oggi, tutti i movimenti precedenti escono dal conto, e con essi ogni possibilità di ricostruire come si è arrivati a quel numero. Il secondo: <strong>non lascia traccia</strong>. Il valore vecchio viene sostituito, e non c'è modo di sapere che c'è stata una rettifica, quando, né di quanto.</p>
+<p>Registrando la differenza come movimento, invece, il numero arriva allo stesso risultato ma resta tutto leggibile nella pagina <em>Movimenti di un articolo</em>: fra sei mesi vedrai che il 30 settembre mancavano tre copie. Ed è anche il motivo per cui la conta non richiede di toccare le date, che sono il comando più delicato di questa pagina.</p></div>
+</details>
+<h4 id="spostare-pezzi-da-un-articolo-vecchio-a-uno-nuovo">Spostare pezzi da un articolo vecchio a uno nuovo</h4>
+<p>Capita quando un prodotto è stato sostituito da un articolo nuovo con uno SKU nuovo, e in magazzino restano pezzi registrati sul vecchio che da ora vendi con il nuovo (<a href="guida-5.html#s9">guida 5</a>, sezione 9).</p>
+<p>Si fa con <strong>un solo record</strong> <code>Altri movimenti</code>, sullo <strong>stesso magazzino</strong>, e due righe:</p>
+<ul><li><strong>positiva</strong> sullo SKU vecchio — quei pezzi escono da lì;</li><li><strong>negativa</strong> sullo SKU nuovo — ed entrano qui.</li></ul>
+<p>Nelle note il motivo. Il totale complessivo non cambia, ed è giusto: non è entrato né uscito niente dal magazzino.</p>
+<hr>
+<h2 id="s8"><a class="ancora" href="#s8">§8</a> La matrice delle magliette</h2>
+<p>La pagina <em>Giacenze T-Shirt</em> mostra le stesse giacenze della pagina <em>Giacenze</em>, disposte in modo diverso: <strong>una riga per modello, una colonna per taglia</strong>. Serve a una cosa sola, ed è la domanda che ci si fa davvero davanti a un ordine: di questo modello, che taglie mi restano?</p>
+<p>Due cose da sapere per leggerla.</p>
+<p><strong>I numeri sono i due magazzini insieme.</strong> Ogni cella è la giacenza totale di quella taglia. Non esiste una matrice per magazzino: se ti serve sapere dove sono, torni alla pagina <em>Giacenze</em> e filtri sul tipo di prodotto.</p>
+<p><strong>Qui non si scrive niente.</strong> È una pagina di sola lettura, ricalcolata da sola. Per correggere una giacenza si passa dalle procedure delle sezioni precedenti.</p>
+<h4 id="la-colonna-nc">La colonna <code>N.C.</code></h4>
+<p>È un presidio, non un totale, e ha l'<span class="campione campione-arancione" aria-hidden="true"></span>intestazione arancione dei controlli. Mostra i pezzi che il sistema ha contato nel totale del modello ma <strong>non ha saputo mettere in nessuna colonna-taglia</strong>, perché su quell'articolo la taglia non è stata scelta.</p>
+<p>Se mostra un numero, si va nella pagina <em>Articoli</em>, si cerca il modello e si sceglie la taglia mancante dal menu (<a href="guida-5.html#s5">guida 5</a>, sezione 5). La taglia non si compila mai da sola.</p>
+<aside class="box box-attenzione">
+<p class="box-titolo">Attenzione — una cella <code>N.C.</code> vuota non è una garanzia</p>
+<p>La colonna si accende solo quando i pezzi senza taglia sono un numero <strong>positivo</strong>. Una variante senza taglia con giacenza a zero, o negativa, non compare: è invisibile alla colonna, e resta invisibile finché qualcuno non le vende o non la carica.</p>
+<p>E c'è un caso in cui la riga non è affidabile del tutto: se una delle taglie di quel modello ha la giacenza <strong>in errore</strong> — cioè le mancano le date — i totali di quella riga non sono da prendere per buoni. Se una riga della matrice ti sembra strana, il posto dove guardare è la pagina <em>Giacenze</em> filtrata su quel modello, dove le celle in errore si vedono.</p>
+</aside>
+<p>Una maglietta può anche <strong>sparire</strong> dalla matrice invece di finire in <code>N.C.</code>, e succede quando le mancano il tipo di prodotto, il tipo di variante o il genitore. È un caso diverso e più insidioso, perché non lascia nessun segno: è spiegato nella <a href="guida-5.html#s5">guida 5</a>, sezione 5.</p>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g6-04-giacenze-tshirt-nc.png"><img src="assets/img/g6-04-giacenze-tshirt-nc.png" alt="La pagina Giacenze T-Shirt con una riga in cui la colonna N.C. mostra un numero." loading="lazy" style="width:1136px"></a>
+<figcaption><span class="numero">Screenshot 4</span> La colonna in fondo non è un totale: sono i pezzi rimasti senza taglia, che nella matrice non si vedrebbero.</figcaption>
+</figure>
+<hr>
+<h2 id="s9"><a class="ancora" href="#s9">§9</a> Quando i conti non tornano</h2>
+<p>Il primo istinto è cercare l'errore. Funziona meglio l'istinto opposto: <strong>ricostruire da dove viene il numero</strong>, che qui si può fare fino in fondo, perché ogni giacenza è la somma di righe che puoi vedere una per una.</p>
+<h4 id="le-tre-domande-nellordine">Le tre domande, nell'ordine</h4>
+<p><strong>1 · Da quale data parte questo articolo?</strong> Apri <em>Giacenze</em> e guarda le due date e le due giacenze iniziali. Se una data manca, hai già trovato il problema. Se una data è più recente di quanto pensavi, ci sono movimenti che il conto sta ignorando.</p>
+<p><strong>2 · Quali righe compongono il venduto?</strong> Apri la pagina <em>Movimenti di un articolo</em> e filtra su quello SKU. Vedi tutti i movimenti di quell'articolo — vendite, resi, carichi, differenze — con tipo, stato, magazzino e quantità.</p>
+<p><strong>3 · Quali di quelle righe contano davvero?</strong> È la colonna <code>valido_per_giacenze</code>, e risponde da sola alla domanda che altrimenti richiederebbe di incrociare tre campi. Le righe in cui è spenta esistono, si vedono, e non muovono niente.</p>
+<p>Attenzione a una cosa, leggendo quella pagina: mostra <strong>anche</strong> le righe che non contano, ed è il motivo per cui esiste. Sommare a occhio le quantità non ti dà il venduto.</p>
+<figure class="screenshot">
+<a class="ingrandisci" href="assets/img/g6-05-movimenti-articolo.png"><img src="assets/img/g6-05-movimenti-articolo.png" alt="La pagina Movimenti di un articolo filtrata su un SKU, con righe di tipo diverso e la colonna valido_per_giacenze visibile, accesa su alcune righe e spenta su altre." loading="lazy" style="width:1138px"></a>
+<figcaption><span class="numero">Screenshot 5</span> Tutti i movimenti di un articolo in un posto solo. L'ultima colonna dice quali stanno contando.</figcaption>
+</figure>
+<h4 id="sintomi-e-cause">Sintomi e cause</h4>
+<div class="tabella"><table>
+<thead><tr><th>Il sintomo</th><th>La causa più probabile</th><th>Dove si guarda</th></tr></thead>
+<tbody><tr><td>Le colonne del venduto sono <strong>in errore</strong></td><td>Manca una data di partenza</td><td><em>Giacenze</em>, sezione 6</td></tr><tr><td>Una giacenza è <strong>negativa</strong></td><td>Il segno invertito su un carico o su una differenza; oppure una giacenza iniziale mai inserita su un articolo che ha venduto</td><td><em>Movimenti di un articolo</em>, sezioni 5 e 7</td></tr><tr><td><strong>Un magazzino</strong> è sbagliato, ma il totale è giusto</td><td>Un movimento è stato attribuito al magazzino sbagliato</td><td><em>Movimenti di un articolo</em>, colonna del magazzino</td></tr><tr><td><strong>Il totale</strong> è sbagliato di poco, e il venduto orfano è diverso da zero</td><td>Ci sono ordini in attesa del magazzino: è una coda, non un errore</td><td><em>Ordini Aperti</em> (<a href="guida-3.html">guida 3</a>)</td></tr><tr><td>Il <strong>venduto orfano è negativo</strong></td><td>Un carico o una differenza senza magazzino</td><td><em>Approvvigionamenti</em>, oppure <em>Ordini</em> filtrata sul tipo</td></tr><tr><td>Un <strong>carico non ha alzato niente</strong></td><td>Data anteriore, SKU non agganciato, SKU di un kit, oppure stato non <code>Completato</code></td><td>Sezione 5, ultimo riquadro</td></tr><tr><td>Lo stesso prodotto <strong>compare due volte</strong> con lo stock diviso</td><td>Due articoli con SKU leggermente diversi</td><td><a href="guida-5.html">Guida 5</a> e <a href="guida-9.html">guida 9</a>: non si corregge lo SKU</td></tr><tr><td>Un <strong>kit compare</strong> nella pagina <em>Giacenze</em></td><td>Non ha una ricetta, oppure la ricetta è stata cancellata</td><td><a href="guida-5.html#s10">Guida 5</a>, sezioni 10 e 11</td></tr><tr><td>Il numero <strong>non corrisponde allo scaffale</strong> e i movimenti sono tutti regolari</td><td>È quello che la conta serve a scoprire</td><td>Sezione 7</td></tr></tbody>
+</table></div>
+<hr>
+<h2 id="s10"><a class="ancora" href="#s10">§10</a> Attenzione a</h2>
+<p>I sei errori che questa guida serve a evitare. Nessuno produce un messaggio di errore.</p>
+<p><strong>Registrare un carico con la quantità positiva.</strong> Le quantità contano i pezzi che escono: la merce che entra è negativa. Su un carico c'è un avviso che lo segnala, su una differenza d'inventario no.</p>
+<p><strong>Lasciare il tipo di record su <code>Ordine</code>.</strong> Il magazzino si muove come deve, e il record entra nei report come un incasso negativo.</p>
+<p><strong>Datare un movimento prima della data di partenza del magazzino.</strong> Il record esiste, si vede, non ha nessun effetto, e nessuna colonna lo segnala.</p>
+<p><strong>Spostare indietro una data di partenza.</strong> Riaccende movimenti già compresi nella giacenza iniziale, e li conta una seconda volta.</p>
+<p><strong>Riscrivere la giacenza iniziale per far tornare un numero.</strong> Cancella la storia precedente e non lascia traccia. Quello che hai contato è un fatto: si registra come movimento.</p>
+<p><strong>Contare i pacchi già pronti da spedire.</strong> Il sistema quelle copie le ha già scaricate: contarle di nuovo crea pezzi che non esistono.</p>
+<hr>
+<h2 id="s11"><a class="ancora" href="#s11">§11</a> Se qualcosa va storto</h2>
+<div class="tabella"><table>
+<thead><tr><th>Il sintomo</th><th>Cosa guardare</th></tr></thead>
+<tbody><tr><td>Una giacenza non torna</td><td>Le tre domande della sezione 9</td></tr><tr><td>Un carico inserito non compare in <em>Approvvigionamenti</em></td><td>Il tipo di record non è <code>Approvvigionamento</code>: lo trovi nella pagina <em>Ordini</em></td></tr><tr><td>Un kit non ha giacenza da nessuna parte</td><td>È corretto: non esiste. Guarda i suoi componenti (sezione 3)</td></tr><tr><td>Una maglietta non compare nella matrice</td><td><a href="guida-5.html#s5">Guida 5</a>, sezione 5</td></tr><tr><td>Le giacenze del sito e quelle di Grist sono diverse</td><td>Sono due numeri separati e nessuno li riconcilia (<a href="guida-0.html">guida 0</a>)</td></tr><tr><td>Un ordine cancellato sul sito continua a scaricare il magazzino</td><td><a href="guida-9.html">Guida 9</a></td></tr><tr><td>Non riesci a capire perché un numero è quello che è</td><td><a href="guida-9.html">Guida 9</a>, con l'elenco di cosa allegare per segnalarlo</td></tr></tbody>
+</table></div>
+<hr>
+<h2 id="s12"><a class="ancora" href="#s12">§12</a> Dove si continua</h2>
+<div class="tabella"><table>
+<thead><tr><th>Se vuoi…</th><th>Guida</th></tr></thead>
+<tbody><tr><td>Assegnare il magazzino a un ordine, o correggerne uno</td><td>3</td></tr><tr><td>Trasferire merce fra i due magazzini, o correggere un ordine partito da entrambi</td><td>3, sezione 12</td></tr><tr><td>Chiudere un reso, capire le due caselle del rientro</td><td>4</td></tr><tr><td>Creare un articolo, completare quelli automatici, costruire un kit</td><td>5</td></tr><tr><td>Capire come le giacenze entrano (e non entrano) nei report</td><td>7</td></tr><tr><td>Filtrare, esportare, aggiungere una voce a un menu</td><td>8</td></tr><tr><td>Capire perché qualcosa non funziona, o cosa segnalare</td><td>9</td></tr></tbody>
+</table></div>
+</div>
+
+  </main>
+  <footer class="pie">
+    <p>Manuale del sistema «Magazzino LwM» · generato il 17/09/2026</p>
+    <p>Per i casi che non stanno nelle guide, e per qualsiasi cosa nuova da costruire, si scrive a Paolo: cosa allegare sta nella <a href="guida-9.html#s11">guida 9 §11</a>.</p>
+  </footer>
+</div>
+
+<div class="lente" id="lente" hidden><img src="" alt=""></div>
+
+<script src="assets/manuale.js"></script>
+</body>
+</html>
